@@ -1,0 +1,6 @@
+CREATE TABLE cards
+(id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ deck VARCHAR(360),
+ front TEXT,
+ back TEXT);
+
