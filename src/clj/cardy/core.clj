@@ -96,5 +96,3 @@
     :else
     (start-app args))
   )
-
-;; clojure cond:

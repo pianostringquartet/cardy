@@ -3730,3 +3730,2530 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.716 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.64 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.718 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.748 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.758 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.723 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.675 seconds.[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.656 seconds.[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.907 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/ajax.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:8  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m 6[0m  [36m;;subscriptions[0m
+  [36m 7[0m  [36m[0m
+  [33m 8[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m 9[0m  [36m  :page[0m
+  [36m10[0m  [36m  (fn [db _][0m
+  [36m11[0m  [36m    (:page db)))[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(reg-sub[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:13  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m 9[0m  [36m  :page[0m
+  [36m10[0m  [36m  (fn [db _][0m
+  [36m11[0m  [36m    (:page db)))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m14[0m  [36m  :docs[0m
+  [36m15[0m  [36m  (fn [db _][0m
+  [36m16[0m  [36m    (:docs db)))[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(reg-sub[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:18  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m14[0m  [36m  :docs[0m
+  [36m15[0m  [36m  (fn [db _][0m
+  [36m16[0m  [36m    (:docs db)))[0m
+  [36m17[0m  [36m[0m
+  [33m18[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m19[0m  [36m  :show-decks[0m
+  [36m20[0m  [36m  (fn [db][0m
+  [36m21[0m  [36m    (:decks db)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.691 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/flashy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.679 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/flashy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:8  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m 6[0m  [36m;;subscriptions[0m
+  [36m 7[0m  [36m[0m
+  [33m 8[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m 9[0m  [36m  :page[0m
+  [36m10[0m  [36m  (fn [db _][0m
+  [36m11[0m  [36m    (:page db)))[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(reg-sub[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:13  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m 9[0m  [36m  :page[0m
+  [36m10[0m  [36m  (fn [db _][0m
+  [36m11[0m  [36m    (:page db)))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m14[0m  [36m  :docs[0m
+  [36m15[0m  [36m  (fn [db _][0m
+  [36m16[0m  [36m    (:docs db)))[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(reg-sub[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/subs.cljs   line:18  column:2  ----[0m
+
+  [1mUse of undeclared Var flashy.subs/reg-sub[0m
+
+  [36m14[0m  [36m  :docs[0m
+  [36m15[0m  [36m  (fn [db _][0m
+  [36m16[0m  [36m    (:docs db)))[0m
+  [36m17[0m  [36m[0m
+  [33m18[0m  [1m(reg-sub[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var flashy.subs/reg-sub[0m
+  [36m19[0m  [36m  :show-decks[0m
+  [36m20[0m  [36m  (fn [db][0m
+  [36m21[0m  [36m    (:decks db)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/subs.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.726 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/flashy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.624 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/flashy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.673 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/flashy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.501 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/events.cljs  ----[0m
+
+  [1mNo such namespace: flashy.db, could not locate flashy/db.cljs, flashy/db.cljc, or JavaScript source providing "flashy.db" [0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:7  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m 3[0m  [36m            [re-frame.core :refer [dispatch reg-event-db reg-sub]]))[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m;;dispatchers[0m
+  [36m 6[0m  [36m[0m
+  [33m 7[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:7  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m 3[0m  [36m            [re-frame.core :refer [dispatch reg-event-db reg-sub]]))[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m;;dispatchers[0m
+  [36m 6[0m  [36m[0m
+  [33m 7[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:12  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [33m12[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:12  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [33m12[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:17  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m18[0m  [36m  :set-docs[0m
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:17  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m18[0m  [36m  :set-docs[0m
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:23  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [33m23[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m24[0m  [36m  :request[0m
+  [36m25[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:23  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [33m23[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m24[0m  [36m  :request[0m
+  [36m25[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:30  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m[0m
+  [33m30[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m31[0m  [36m  :add-card[0m
+  [36m32[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m33[0m  [36m    (assoc db :add-card "WE TRIGGERED THE EVENT TO ADD A CARD!")))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:30  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m[0m
+  [33m30[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m31[0m  [36m  :add-card[0m
+  [36m32[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m33[0m  [36m    (assoc db :add-card "WE TRIGGERED THE EVENT TO ADD A CARD!")))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:41  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m37[0m  [36m;   :set-deck[0m
+  [36m38[0m  [36m;   (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m39[0m  [36m;     (assoc db (keyword deck-name) response)))[0m
+  [36m40[0m  [36m[0m
+  [33m41[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m42[0m  [36m  :set-deck[0m
+  [36m43[0m  [36m  (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m44[0m  [36m    (assoc-in db [:decks (keyword deck-name)] response)[0m
+  [36m45[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:41  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m37[0m  [36m;   :set-deck[0m
+  [36m38[0m  [36m;   (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m39[0m  [36m;     (assoc db (keyword deck-name) response)))[0m
+  [36m40[0m  [36m[0m
+  [33m41[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m42[0m  [36m  :set-deck[0m
+  [36m43[0m  [36m  (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m44[0m  [36m    (assoc-in db [:decks (keyword deck-name)] response)[0m
+  [36m45[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.709 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/events.cljs  ----[0m
+
+  [1mNo such namespace: flashy.db, could not locate flashy/db.cljs, flashy/db.cljc, or JavaScript source providing "flashy.db" [0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:7  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m 3[0m  [36m            [re-frame.core :refer [dispatch]]))[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m;;dispatchers[0m
+  [36m 6[0m  [36m[0m
+  [33m 7[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:7  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m 3[0m  [36m            [re-frame.core :refer [dispatch]]))[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m;;dispatchers[0m
+  [36m 6[0m  [36m[0m
+  [33m 7[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:12  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [33m12[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:12  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m 8[0m  [36m  :initialize-db[0m
+  [36m 9[0m  [36m  (fn [_ _][0m
+  [36m10[0m  [36m    db/default-db))[0m
+  [36m11[0m  [36m[0m
+  [33m12[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:17  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m18[0m  [36m  :set-docs[0m
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:17  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m13[0m  [36m  :set-active-page[0m
+  [36m14[0m  [36m  (fn [db [_ page]][0m
+  [36m15[0m  [36m    (assoc db :page page)))[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m18[0m  [36m  :set-docs[0m
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:23  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [33m23[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m24[0m  [36m  :request[0m
+  [36m25[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:23  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m19[0m  [36m  (fn [db [_ docs]][0m
+  [36m20[0m  [36m    (assoc db :docs docs)))[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [33m23[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m24[0m  [36m  :request[0m
+  [36m25[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:30  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m[0m
+  [33m30[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m31[0m  [36m  :add-card[0m
+  [36m32[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m33[0m  [36m    (assoc db :add-card "WE TRIGGERED THE EVENT TO ADD A CARD!")))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:30  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m26[0m  [36m    (assoc db :incredible "INCREDIBLE BUTTON WAS PRESSED!")))[0m
+  [36m27[0m  [36m;; this worked :-)[0m
+  [36m28[0m  [36m[0m
+  [36m29[0m  [36m[0m
+  [33m30[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m31[0m  [36m  :add-card[0m
+  [36m32[0m  [36m  (fn [db [event-id-to-ignore response]][0m
+  [36m33[0m  [36m    (assoc db :add-card "WE TRIGGERED THE EVENT TO ADD A CARD!")))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:41  column:2  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m37[0m  [36m;   :set-deck[0m
+  [36m38[0m  [36m;   (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m39[0m  [36m;     (assoc db (keyword deck-name) response)))[0m
+  [36m40[0m  [36m[0m
+  [33m41[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m42[0m  [36m  :set-deck[0m
+  [36m43[0m  [36m  (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m44[0m  [36m    (assoc-in db [:decks (keyword deck-name)] response)[0m
+  [36m45[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:41  column:2  ----[0m
+
+  [1mUse of undeclared Var re-frame/reg-event-db[0m
+
+  [36m37[0m  [36m;   :set-deck[0m
+  [36m38[0m  [36m;   (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m39[0m  [36m;     (assoc db (keyword deck-name) response)))[0m
+  [36m40[0m  [36m[0m
+  [33m41[0m  [1m(re-frame/reg-event-db[0m
+  [0m  [0m  [33m ^--- Use of undeclared Var re-frame/reg-event-db[0m
+  [36m42[0m  [36m  :set-deck[0m
+  [36m43[0m  [36m  (fn [db [event-id-to-ignore deck-name response]][0m
+  [36m44[0m  [36m    (assoc-in db [:decks (keyword deck-name)] response)[0m
+  [36m45[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.657 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/events.cljs  ----[0m
+
+  [1mNo such namespace: flashy.db, could not locate flashy/db.cljs, flashy/db.cljc, or JavaScript source providing "flashy.db" [0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m;;dispatchers[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.009 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.017 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [cardy.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs   line:1  column:1  ----[0m
+
+  [1mOnly :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+
+  [33m1[0m  [1m(ns cardy.core[0m
+  [0m [0m  [33m^--- Only :as alias, :refer (names) and :rename {from to} options supported in :require; offending spec: [car.events :as] at line 1 src/cljs/cardy/core.cljs[0m
+  [36m2[0m  [36m  (:require [reagent.core :as r][0m
+  [36m3[0m  [36m            [re-frame.core :as rf][0m
+  [36m4[0m  [36m            [secretary.core :as secretary][0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.017 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.011 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m(re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.019 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.016 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.017 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.014 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.013 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.015 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.012 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:3 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+
+  [36m1[0m  [36m(ns cardy.events[0m
+  [36m2[0m  [36m  (:require [cardy.db :as db][0m
+  [33m3[0m  [1m            [re-frame.core :as re-frame]]))[0m
+  [0m [0m  [33m            /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 3, col 42] Unmatched delimiter ].[0m
+  [36m4[0m  [36m[0m
+  [36m5[0m  [36m[0m
+  [36m6[0m  [36m; (re-frame/reg-event-db[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.647 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/core.cljs  ----[0m
+
+  [1mNo such namespace: card.views, could not locate card/views.cljs, card/views.cljc, or JavaScript source providing "card.views" [0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mUse of undeclared Var re-frame/subscribe[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- Use of undeclared Var re-frame/subscribe[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var re-frame/dispatch[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/clear-subscription-cache![0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/clear-subscription-cache![0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mUse of undeclared Var reagent/render[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var reagent/render[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch-sync[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/dispatch-sync[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:163  column:4  ----[0m
+
+  [1mUse of undeclared Var cardy.core/hook-browser-navigation![0m
+
+  [36m159[0m  [36m  (load-interceptors!)[0m
+  [36m160[0m  [36m[0m
+  [36m161[0m  [36m[0m
+  [36m162[0m  [36m  ;; ignore for now; learn about browsing history later[0m
+  [33m163[0m  [1m  (hook-browser-navigation!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var cardy.core/hook-browser-navigation![0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m  ;; here we actually render the app[0m
+  [36m166[0m  [36m  (mount-components))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.08 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mUse of undeclared Var re-frame/subscribe[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- Use of undeclared Var re-frame/subscribe[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var re-frame/dispatch[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/clear-subscription-cache![0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/clear-subscription-cache![0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mUse of undeclared Var reagent/render[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var reagent/render[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch-sync[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/dispatch-sync[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:163  column:4  ----[0m
+
+  [1mUse of undeclared Var cardy.core/hook-browser-navigation![0m
+
+  [36m159[0m  [36m  (load-interceptors!)[0m
+  [36m160[0m  [36m[0m
+  [36m161[0m  [36m[0m
+  [36m162[0m  [36m  ;; ignore for now; learn about browsing history later[0m
+  [33m163[0m  [1m  (hook-browser-navigation!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var cardy.core/hook-browser-navigation![0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m  ;; here we actually render the app[0m
+  [36m166[0m  [36m  (mount-components))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.069 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:26  column:33  ----[0m
+
+  [1mUse of undeclared Var re-frame/subscribe[0m
+
+  [36m22[0m  [36m    {:deck "die Farben" :front "rot", :back "red"}[0m
+  [36m23[0m  [36m    {:deck "die Farben" :front "violett", :back "purple"}))[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn show-decks [][0m
+  [33m26[0m  [1m  [:div "Current decks are: " @(re-frame/subscribe [:show-decks])])[0m
+  [0m  [0m  [33m                                ^--- Use of undeclared Var re-frame/subscribe[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m;; So for each (update-deck, get-deck, remove-deck action) you need:[0m
+  [36m29[0m  [36m;; 1. a Component to accept user input[0m
+  [36m30[0m  [36m;; 2. an AJAX'ing function to send user input to server and get back response[0m
+  [36m31[0m  [36m;; 3. a re-frame event (+ event handler fn) to put response into app-db[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:51  column:14  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch[0m
+
+  [36m47[0m  [36m          (do[0m
+  [36m48[0m  [36m            (js/console.log "response was " response)[0m
+  [36m49[0m  [36m            (js/console.log "response type was " (type response))[0m
+  [36m50[0m  [36m            (js/console.log "first response" (first response))[0m
+  [33m51[0m  [1m            (re-frame/dispatch [:set-deck deck-name response])[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var re-frame/dispatch[0m
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [36m56[0m  [36m  (let [text-val (reagent/atom "")][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:56  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m52[0m  [36m            ))[0m
+  [36m53[0m  [36m        }))[0m
+  [36m54[0m  [36m[0m
+  [36m55[0m  [36m(defn get-deck [][0m
+  [33m56[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m57[0m  [36m    (fn [][0m
+  [36m58[0m  [36m      [re-com/input-text[0m
+  [36m59[0m  [36m        :model text-val[0m
+  [36m60[0m  [36m        :change-on-blur? true[0m
+  [36m61[0m  [36m        :placeholder "name of deck to retrieve, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:79  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m75[0m  [36m;; in flashy, you'll probably be programmatically providing the deck to switch in[0m
+  [36m76[0m  [36m;; ... but will depend on how you SYNC decks[0m
+  [36m77[0m  [36m;; bc this is really for SYNCING (saving) decks;[0m
+  [36m78[0m  [36m(defn update-deck [][0m
+  [33m79[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m80[0m  [36m    (fn [][0m
+  [36m81[0m  [36m      [re-com/input-text[0m
+  [36m82[0m  [36m        :model text-val[0m
+  [36m83[0m  [36m        :change-on-blur? true[0m
+  [36m84[0m  [36m        :placeholder "for now just use: die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:104  column:19  ----[0m
+
+  [1mUse of undeclared Var reagent/atom[0m
+
+  [36m100[0m  [36m          (js/console.log "remove-deck-ajax response was " response))}))[0m
+  [36m101[0m  [36m[0m
+  [36m102[0m  [36m[0m
+  [36m103[0m  [36m(defn remove-deck [][0m
+  [33m104[0m  [1m  (let [text-val (reagent/atom "")][0m
+  [0m   [0m  [33m                  ^--- Use of undeclared Var reagent/atom[0m
+  [36m105[0m  [36m    (fn [][0m
+  [36m106[0m  [36m      [re-com/input-text[0m
+  [36m107[0m  [36m        :model text-val[0m
+  [36m108[0m  [36m        :change-on-blur? true[0m
+  [36m109[0m  [36m        :placeholder "name of deck to remove, eg die Farben"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:146  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/clear-subscription-cache![0m
+
+  [36m142[0m  [36m;; Initialize app[0m
+  [36m143[0m  [36m[0m
+  [36m144[0m  [36m[0m
+  [36m145[0m  [36m(defn mount-components [][0m
+  [33m146[0m  [1m  (re-frame/clear-subscription-cache!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/clear-subscription-cache![0m
+  [36m147[0m  [36m  (reagent/render [views/cardy-app][0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:147  column:4  ----[0m
+
+  [1mUse of undeclared Var reagent/render[0m
+
+  [36m145[0m  [36m(defn mount-components [][0m
+  [36m146[0m  [36m  (re-frame/clear-subscription-cache!)[0m
+  [33m147[0m  [1m  (reagent/render [views/cardy-app][0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var reagent/render[0m
+  [36m148[0m  [36m                  (.getElementById js/document "app")))[0m
+  [36m149[0m  [36m[0m
+  [36m150[0m  [36m[0m
+  [36m151[0m  [36m(defn init! [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mNo such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- No such namespace: re-frame, could not locate re_frame.cljs, re_frame.cljc, or JavaScript source providing "re-frame"[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:154  column:4  ----[0m
+
+  [1mUse of undeclared Var re-frame/dispatch-sync[0m
+
+  [36m151[0m  [36m(defn init! [][0m
+  [36m152[0m  [36m[0m
+  [36m153[0m  [36m  ;; initializing the db, I know this :-)[0m
+  [33m154[0m  [1m  (re-frame/dispatch-sync [:initialize-db])[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-frame/dispatch-sync[0m
+  [36m155[0m  [36m[0m
+  [36m156[0m  [36m  ;; load-interceptors! is defined in ajax.cljs[0m
+  [36m157[0m  [36m  ;; ... seems to be us adding CSRF headers?[0m
+  [36m158[0m  [36m  ;; ... Can leave alone for now...[0m
+  [36m159[0m  [36m  (load-interceptors!)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:163  column:4  ----[0m
+
+  [1mUse of undeclared Var cardy.core/hook-browser-navigation![0m
+
+  [36m159[0m  [36m  (load-interceptors!)[0m
+  [36m160[0m  [36m[0m
+  [36m161[0m  [36m[0m
+  [36m162[0m  [36m  ;; ignore for now; learn about browsing history later[0m
+  [33m163[0m  [1m  (hook-browser-navigation!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var cardy.core/hook-browser-navigation![0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m  ;; here we actually render the app[0m
+  [36m166[0m  [36m  (mount-components))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.076 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:163  column:4  ----[0m
+
+  [1mUse of undeclared Var cardy.core/hook-browser-navigation![0m
+
+  [36m159[0m  [36m  (load-interceptors!)[0m
+  [36m160[0m  [36m[0m
+  [36m161[0m  [36m[0m
+  [36m162[0m  [36m  ;; ignore for now; learn about browsing history later[0m
+  [33m163[0m  [1m  (hook-browser-navigation!)[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var cardy.core/hook-browser-navigation![0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m  ;; here we actually render the app[0m
+  [36m166[0m  [36m  (mount-components))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.732 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.679 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.182 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.06 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.664 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.043 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.707 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.748 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.879 seconds.[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.144 seconds.[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.379 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.234 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.006 seconds.[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.847 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/routes.cljs  ----[0m
+
+  [1mNo such namespace: cards.events, could not locate cards/events.cljs, cards/events.cljc, or JavaScript source providing "cards.events" [0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/routes.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.966 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.778 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.773 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.818 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.719 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.853 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.199 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/routes.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.856 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mNo such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- No such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mUse of undeclared Var goog-events/listen[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var goog-events/listen[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.905 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mNo such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- No such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mUse of undeclared Var goog-events/listen[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var goog-events/listen[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.812 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mNo such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- No such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mUse of undeclared Var goog-events/listen[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var goog-events/listen[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.901 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.641 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mNo such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- No such namespace: goog-events, could not locate goog_events.cljs, goog_events.cljc, or JavaScript source providing "goog-events"[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/core.cljs   line:134  column:6  ----[0m
+
+  [1mUse of undeclared Var goog-events/listen[0m
+
+  [36m130[0m  [36m;; History[0m
+  [36m131[0m  [36m; must be called after routes have been defined[0m
+  [36m132[0m  [36m(defn hook-browser-navigation! [][0m
+  [36m133[0m  [36m  (doto (History.)[0m
+  [33m134[0m  [1m    (goog-events/listen[0m
+  [0m   [0m  [33m     ^--- Use of undeclared Var goog-events/listen[0m
+  [36m135[0m  [36m      HistoryEventType/NAVIGATE[0m
+  [36m136[0m  [36m      (fn [event][0m
+  [36m137[0m  [36m        (secretary/dispatch! (.-token event))))[0m
+  [36m138[0m  [36m    (.setEnabled true)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/core.cljs  ----[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.769 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.414 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+Notifying browser that CSS file changed: resources/public/css/screen.css
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.185 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.774 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js

@@ -5,7 +5,6 @@
   (not (re-find #"^\w+?://" uri)))
 
 
-
 ;; hmm... this "x-csrf" stuff again;
 ;; but I believe you found a solution for it anyway, right?
 ;; as in, it wasn't the problem afterall.

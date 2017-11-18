@@ -1,60 +1,33 @@
 (ns cardy.routes.home
   (:require [cardy.layout :as layout]
             [compojure.core :refer [defroutes GET POST]]
+            [compojure.route :as route]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]
             [cardy.db.core :as db-core]
 
 
+
             ))
 
-; [clojure.java.jdbc :as sql]
-
-
-
-; (def dog-card {:deck "Tiere" :front "der Hund" :back "dog"})
-; (def cat-card {:deck "Tiere" :front "die Katze" :back "cat"})
-; (def spider-card {:deck "Insekten" :front "die Spinne" :back "spider"})
-
-
-; (defn add-card! [deck front back]
-;   (sql/insert! db :cards {:deck deck :front front :back back}))
-
-; ;; what's a unique identifier for a card?
-; ;; maybe the front? (for now...)
-; ;; in future should be: unique together: "user + deck + front + back"
-; (defn remove-card! [front]
-;   (sql/delete! db :cards ["front=?" front]))
-
-; ;; your real use will be to pull, update, or delete an entire deck at one time...
-
-; (defn remove-deck! [deck]
-;   (sql/delete! db :cards ["deck=?" deck]))
-
-; (defn get-deck [deck]
-;   (sql/query db ["select * from cards where deck=?" deck]))
-; ;; You'll need to massage this result into a seq of maps ...
-
-; ;; A couple things to keep straight:
-; ;; - fns that interact with SQL db
-; ;; - what these SQL-interfacing fns return
-; ;; - the Clojure data format that flashy uses (a card is a map, a deck is a seq of maps)
-
-
-
-; (GET "/add-spider-card" []
-  ;     (do
-  ;       ;; add a card to db
-  ;       (db-core/add-card! "Tiere" "die Spinne" "spider")
-  ;       (response/ok "Goood job!")))
 
 (defn home-page []
   (layout/render "home.html"))
 
+; (defn home-page []
+;   (layout/render "index.html"))
 
+;;; hmmm...
 (defroutes home-routes
   (GET "/" []
     (home-page))
+
+  ; (GET "/" []
+  ;   "index.html")
+  ; (route/resources "/")
+  ; (GET "/" []
+  ;   (response/ok "public/index.html" io/resource slurp)))
+
   (GET "/docs" []
     (-> (response/ok (-> "docs/docs.md" io/resource slurp))
         (response/header "Content-Type" "text/plain; charset=utf-8")))
