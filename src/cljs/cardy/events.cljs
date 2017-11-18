@@ -1,6 +1,12 @@
 (ns cardy.events
   (:require [cardy.db :as db]
-            [re-frame.core :as re-frame]))
+            [re-frame.core :as re-frame]
+            [clairvoyant.core :refer-macros [trace-forms]]
+            [re-frame-tracer.core :refer [tracer]]
+            ))
+
+
+ (trace-forms {:tracer (tracer :color "blue")}
 
 
 ; (re-frame/reg-event-db
@@ -286,3 +292,5 @@
             (bring-in-new-deck app-state (name (first (keys (:decks app-state))))))
           (remove-deck db deck-to-remove))))))
 
+
+) ;; end of tracer form

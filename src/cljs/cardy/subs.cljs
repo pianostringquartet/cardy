@@ -1,7 +1,13 @@
 (ns cardy.subs
   (:require [re-frame.core :as re-frame]
-            [cardy.events :as events]))
+            [cardy.events :as events]
 
+            [clairvoyant.core :refer-macros [trace-forms]]
+            [re-frame-tracer.core :refer [tracer]]
+            ))
+
+
+(trace-forms {:tracer (tracer :color "brown")}
 
 ;;subscriptions
 
@@ -122,3 +128,5 @@
   (fn [db]
     (let [current-face (:current-face db)]
       (current-face (determine-current-card db)))))
+
+) ;; end of tracer form

@@ -6257,3 +6257,50 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.774 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   env/dev/cljs/cardy/app.cljs   line:9  column:2  ----[0m
+
+  [1mUse of undeclared Var cardy.core/init![0m
+
+  [36m5[0m  [36m(enable-console-print!)[0m
+  [36m6[0m  [36m[0m
+  [36m7[0m  [36m(devtools/install!)[0m
+  [36m8[0m  [36m[0m
+  [33m9[0m  [1m(core/init!)[0m
+  [0m [0m  [33m ^--- Use of undeclared Var cardy.core/init![0m
+
+[36m----  Compiler Warning : Please see env/dev/cljs/cardy/app.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.463 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.452 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.115 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.86 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.449 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.964 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.578 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.952 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.926 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.008 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.403 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js

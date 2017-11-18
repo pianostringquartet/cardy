@@ -35,6 +35,8 @@
                  [secretary "1.2.3"]
                  [selmer "1.11.3"]
                  [re-com "2.1.0"] ;; re-frame Components
+                 [org.clojars.stumitchell/clairvoyant "0.2.1"] ;; re-frame's version of Clairvoyant
+                 [day8/re-frame-tracer "0.1.1-SNAPSHOT"]
                  ]
 
   :min-lein-version "2.0.0"
@@ -108,7 +110,10 @@
                       :output-dir "target/cljsbuild/public/js/out"
                       :source-map true
                       :optimizations :none
-                      :pretty-print true}}}}
+                      :pretty-print true
+                      ;; added:
+                      :closure-defines {"clairvoyant.core.devmode" true}
+                      }}}}
 
 
 

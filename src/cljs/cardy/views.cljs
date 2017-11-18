@@ -3,7 +3,14 @@
             [cardy.subs :as subs]
             [cardy.events :as events]
             [reagent.core  :as reagent]
-            [re-com.core :as re-com]))
+            [re-com.core :as re-com]
+
+            [clairvoyant.core :refer-macros [trace-forms]]
+            [re-frame-tracer.core :refer [tracer]]
+            ))
+
+
+ (trace-forms {:tracer (tracer :color "gold")}
 
 
 ;; the words/phrase on the :current-face of the current card :-)
@@ -244,3 +251,5 @@
 ;; wrapped in brackets (why is this again?).
 ;; re-com components are not any different in this regard than a regular
 ;; Reagent component
+
+) ;; end of tracer form
