@@ -15,9 +15,9 @@
 (defroutes home-routes
   (GET "/" []
     (home-page))
-  (GET "/docs" []
-    (-> (response/ok (-> "docs/docs.md" io/resource slurp))
-        (response/header "Content-Type" "text/plain; charset=utf-8")))
+  ; (GET "/docs" []
+  ;   (-> (response/ok (-> "docs/docs.md" io/resource slurp))
+  ;       (response/header "Content-Type" "text/plain; charset=utf-8")))
 
   (POST "/update-deck" []
     (fn [req]
@@ -38,6 +38,11 @@
     (fn [req]
       (let [deck-name (get-in req [:params :deck-name])]
         (response/ok (db-core/get-deck deck-name)))))
+  (GET "/pull-decks" []
+    (fn [req]
+      (response/ok (db-core/pull-decks))))
+
+
   (GET "/remove-deck" []
     (fn [req]
       (let [deck-name (get-in req [:params :deck-name])]

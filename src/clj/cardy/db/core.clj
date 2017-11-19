@@ -55,3 +55,29 @@
   (jdbc/with-db-transaction [t-conn *db*] ;; binding expr
       (remove-deck! deck-name)
       (doall (add-deck! deck))))
+
+;; pull all decks,
+;; return something that we can set as value of :decks key in app-db,
+;; i.e. return a map where a key is :deck-name and value is a seq of card-maps
+;; basically pulling ALL cards
+(defn get-all-decks []
+  (jdbc/query *db* ["select * from cards"]))
+
+; ({:id 1, :deck "die Tiere", :front "die Spinne", :back "spider"} {:id 2, :deck "die Tiere", :front "die Kuh", :back "cow"} {:id 4, :deck "misc", :front "das Haus", :back "house"} {:id 39, :deck "test deck", :front "test front", :back "test back"} {:id 46, :deck "die Farben", :front "violett", :back "purple"} {:id 47, :deck "die Farben", :front "rot", :back "red"} {:id 48, :deck "die Farben", :front "gelb", :back "yellow"} {:id 49, :deck "die Farben", :front "grau", :back "grey"})
+
+; start with list of card-maps, each card contains its :deck
+
+; first step: remove :id
+; (map #(dissoc % :id) raw)
+
+; then group by :deck
+; (group-by :deck xs)
+
+; but that will leave me with vectors;
+
+
+;; this fn needs to massage the return results into the
+;; {:deck-1 '(card-map card-map ...) :deck-2 '(card-map ...)} format
+(defn pull-decks []
+  nil)
+

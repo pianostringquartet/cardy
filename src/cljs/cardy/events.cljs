@@ -3,6 +3,7 @@
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
+            [ajax.core :refer [GET POST]]
             ))
 
 
@@ -14,10 +15,10 @@
 ;   (fn [_ _]
 ;     db/default-db))
 
-(re-frame/reg-event-db
-  :set-active-page
-  (fn [db [_ page]]
-    (assoc db :page page)))
+; (re-frame/reg-event-db
+;   :set-active-page
+;   (fn [db [_ page]]
+;     (assoc db :page page)))
 
 
 ; (re-frame/reg-event-db
@@ -89,13 +90,63 @@
    db/default-db))
 
 
+;; DECK SYNCING (client, db)
+
+
+; App starts up.
+; :pull-deck-event event is dispatched as part of app’s initiation.
+; :pull-deck-event event handler (reg-event-fx, not reg-event-db) returns a map with an effect-key,
+;   e.g. {:pull-deck-sync nil}    (don’t need to provide any values for now…)
+; :pull-deck-effect is recognized by the :pull-deck-effect effect handler,
+; which then uses cljs-ajax to launch the GET request;
+; the GET request itself has an “on-successful-response” handler,
+; which will dispatch an [:update-decks decks-delivered-from-server] event,
+; which will replace :decks in app-db with decks-delivered-from-server
+
+
+;; pull (all) decks from external db,
+;; and set them as :decks in app-db
+;; used when first starting up the app
+(re-frame/reg-event-fx
+  ::pull-decks
+  (fn pull-deck-handler [cofx event]
+    {:pull-decks-fx nil})) ;; return a map with just the key :pull-decks-effect
+
+;; can you not do a key like ::my-key?
+
+;; AJAX
+; (defn pull-decks-fx-ajax)
+
+;; Effect Handler for :pull-decks-fx effect-id
+;; i.e. the AJAX-calling fn
+(re-frame/reg-fx
+  :pull-decks-fx
+  (fn pull-decks-ajax []
+    (GET "/pull-decks" {:handler #(re-frame/dispatch [::set-decks %])})))
+
+;; where decks is "decks from server"
+(re-frame/reg-event-db
+  ::set-decks
+  (fn set-decks-handler [db [event-id-to-ignore decks]]
+    (assoc db :decks decks)))
+
+
+;; push client's decks into external db,
+;; used regularly (?) when client
+; (re-frame/reg-event-db
+;   ::push-decks)
+
+
+
+
+
 ;; NAVIGATING CARDS
 
 ;; flip between front and back
 ;; (returns a new app-db)
 (re-frame/reg-event-db
   ::flip
-  (fn [db]
+  (fn flip [db]
     (let [current-face (:current-face db)]
       (if (= current-face :front)
           (assoc db :current-face :back)
@@ -113,7 +164,7 @@
 ;; even though somewhere we're hitting an index out of bounds
 (re-frame/reg-event-db
   ::next
-  (fn [db]
+  (fn next [db]
     (let [current-index (:current db)
           next-index (inc current-index)
           cards (:cards db)]
@@ -128,7 +179,7 @@
 ;; move to prev card
 (re-frame/reg-event-db
   ::prev
-  (fn [db]
+  (fn prev [db]
     (let [current-index (:current db)]
       (assoc db :current (dec current-index)))))
 
@@ -137,7 +188,7 @@
 
 (re-frame/reg-event-db
   ::add-card
-  (fn [db input]
+  (fn add-card [db input]
     (let [current-cards (:cards db)
           new-card (input-to-card input)]
       (assoc db :cards (conj current-cards new-card)))))
@@ -145,7 +196,7 @@
 ;; permanently remove current card from collection
 (re-frame/reg-event-db
   ::remove-card
-  (fn [db]
+  (fn remove-card [db]
     (let [current-index (:current db)
           current-cards (:cards db)]
       (assoc db :cards (drop-nth current-index current-cards)))))
@@ -155,7 +206,7 @@
 
 (re-frame/reg-event-db
   ::exclude-card
-  (fn [db]
+  (fn exclude-card [db]
     (let [current-index (:current db)
           current-cards (:cards db)
           current-excluded (:excluded db)
@@ -207,7 +258,7 @@
 
 (re-frame/reg-event-db
   ::add-deck
-  (fn [db [event-id-to-ignore name-for-new-deck]]
+  (fn add-deck-handler [db [event-id-to-ignore name-for-new-deck]]
     (add-deck db (input-to-keyword name-for-new-deck))))
 
 
@@ -239,7 +290,7 @@
 
 (re-frame/reg-event-db
   ::change-deck
-  (fn [db [event-id-to-ignore user-input]]
+  (fn change-deck [db [event-id-to-ignore user-input]]
     (bring-in-new-deck
       (put-back-old-deck db)
       user-input)))
@@ -278,7 +329,7 @@
 
 (re-frame/reg-event-db
   ::remove-deck
-  (fn [db [event-id-to-ignore name-of-deck-to-remove]]
+  (fn remove-deck [db [event-id-to-ignore name-of-deck-to-remove]]
     (let [deck-to-remove (input-to-keyword name-of-deck-to-remove)
           remove-deck (fn [db deck-name]
             (dissoc-in db [:decks deck-name]))]
