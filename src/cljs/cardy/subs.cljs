@@ -23,14 +23,14 @@
 
 (re-frame/reg-sub
   ::show-decks
-  (fn [db]
+  (fn show-decks [db]
     (:decks db)))
 
 
 ;; how to source the app's cards
 (re-frame/reg-sub
   ::cards
-  (fn [db]
+  (fn cards [db]
     (:cards db)))
 
 ;; still how to source the app's current card,
@@ -38,37 +38,37 @@
 ;; instead of an actual card
 (re-frame/reg-sub
   ::current
-  (fn [db]
+  (fn current [db]
     (:current db)))
 
 ;; how to source app's current face
 ;; (i.e. are we supposed to be looking at front or back right now?)
 (re-frame/reg-sub
   ::current-face
-  (fn [db]
+  (fn current-face [db]
     (:current-face db)))
 
 ;; how to source excluded cards
 (re-frame/reg-sub
   ::excluded
-  (fn [db]
+  (fn excluded [db]
     (:excluded db)))
 
 ;; how to source decks
 (re-frame/reg-sub
   ::decks
-  (fn [db]
+  (fn decks [db]
     (:decks db)))
 
 ;; how to source the current deck
 (re-frame/reg-sub
   ::current-deck
-  (fn [db]
+  (fn current-deck [db]
     (:current-deck db)))
 
 (re-frame/reg-sub
   ::starter-deck
-  (fn [db]
+  (fn starter-deck [db]
     (:starter (:decks db))))
 
 
@@ -118,14 +118,14 @@
 
 (re-frame/reg-sub
   ::current-card
-  (fn [db]
+  (fn current-card [db]
     (determine-current-card db)))
 
 ;; hmm... can subscriptions refer to each other?
 ;; how to handle this?
 (re-frame/reg-sub
   ::current-phrase
-  (fn [db]
+  (fn current-phrase [db]
     (let [current-face (:current-face db)]
       (current-face (determine-current-card db)))))
 

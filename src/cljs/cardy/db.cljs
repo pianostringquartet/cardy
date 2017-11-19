@@ -17,20 +17,24 @@
 (def default-db
   {
 
-  :cards '({:front "Deutsch" :back "German"}
-            {:front "Genau" :back "Exactly"}
-            {:front "Es tut mir leid" :back "I'm sorry"}
-            {:front "Alles klar" :back "Alright"})
+  ; :cards '({:front "Deutsch" :back "German"}
+  ;           {:front "Genau" :back "Exactly"}
+  ;           {:front "Es tut mir leid" :back "I'm sorry"}
+  ;           {:front "Alles klar" :back "Alright"})
+
   ; :cards [{:front "Deutsch" :back "German"}
   ;           {:front "Genau" :back "Exactly"}
   ;           {:front "Es tut mir leid" :back "I'm sorry"}
   ;           {:front "Alles klar" :back "Alright"}]
             ;; using a vector seems fine...
 
+  :cards '({:front "das Haus" :back "house"})
+
    :current 0
    :current-face :front
    :excluded '()
-   :current-deck :starter
+   ; :current-deck :starter
+   :current-deck :misc
    :current-flag "german-flag-small"
 
     ; :decks {:verbs [{:front "verwenden" :back "to use/utilize"}
@@ -98,6 +102,8 @@
            :starter '({:front "Deutsch" :back "German"}
                       {:front "Genau" :back "Exactly"}
                       {:front "Es tut mir leid" :back "I'm sorry"}
-                      {:front "Alles klar" :back "Alright"})}
+                      {:front "Alles klar" :back "Alright"})
+           :misc '({:front "das Haus" :back "house"})
+         }
 
 })

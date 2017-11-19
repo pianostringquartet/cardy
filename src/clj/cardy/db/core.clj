@@ -4,7 +4,9 @@
     [clojure.java.jdbc :as jdbc]
     [conman.core :as conman]
     [cardy.config :refer [env]]
-    [mount.core :refer [defstate]])
+    [mount.core :refer [defstate]]
+    [medley.core :as m]
+    )
   (:import [java.sql
             BatchUpdateException
             PreparedStatement]))
@@ -63,21 +65,22 @@
 (defn get-all-decks []
   (jdbc/query *db* ["select * from cards"]))
 
-; ({:id 1, :deck "die Tiere", :front "die Spinne", :back "spider"} {:id 2, :deck "die Tiere", :front "die Kuh", :back "cow"} {:id 4, :deck "misc", :front "das Haus", :back "house"} {:id 39, :deck "test deck", :front "test front", :back "test back"} {:id 46, :deck "die Farben", :front "violett", :back "purple"} {:id 47, :deck "die Farben", :front "rot", :back "red"} {:id 48, :deck "die Farben", :front "gelb", :back "yellow"} {:id 49, :deck "die Farben", :front "grau", :back "grey"})
-
-; start with list of card-maps, each card contains its :deck
-
-; first step: remove :id
-; (map #(dissoc % :id) raw)
-
-; then group by :deck
-; (group-by :deck xs)
-
-; but that will leave me with vectors;
-
-
 ;; this fn needs to massage the return results into the
 ;; {:deck-1 '(card-map card-map ...) :deck-2 '(card-map ...)} format
-(defn pull-decks []
-  nil)
 
+; (defn pull-decks []
+;   (as-> (get-all-decks) decks
+;     (group-by :deck decks)
+;     (m/map-vals #(for [m %] (dissoc m :id :deck)) decks)))
+
+; (defn pull-decks []
+;   (->> (get-all-decks)
+;     (group-by :deck)
+;     (m/map-vals #(for [m %] (dissoc m :id :deck)))))
+
+
+(defn pull-decks []
+  (->> (get-all-decks)
+    (group-by :deck)
+    (m/map-vals #(for [m %] (dissoc m :id :deck)))
+    (m/map-keys keyword)))

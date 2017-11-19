@@ -9885,3 +9885,179 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/event
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.832 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.763 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.759 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.431 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.291 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.108 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.801 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.399 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.294 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.548 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.186 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.404 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.443 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.478 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/db.cljs [line 106, col 2] The map literal starting with :cards on line 18 column 3 contains 17 form(s). Map literals must contain an even number of forms.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.413 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106  column:2  ----[0m
+
+  [1mDuplicate key: :cards[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m ^--- Duplicate key: :cards[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.405 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106  column:2  ----[0m
+
+  [1mDuplicate key: :cards[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m ^--- Duplicate key: :cards[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.363 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:106  column:2  ----[0m
+
+  [1mDuplicate key: :cards[0m
+
+  [36m104[0m  [36m                      {:front "Alles klar" :back "Alright"})}[0m
+  [36m105[0m  [36m[0m
+  [33m106[0m  [1m})[0m
+  [0m   [0m  [33m ^--- Duplicate key: :cards[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.442 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/db.cljs   line:108  column:2  ----[0m
+
+  [1mDuplicate key: :cards[0m
+
+  [36m106[0m  [36m         }[0m
+  [36m107[0m  [36m[0m
+  [33m108[0m  [1m})[0m
+  [0m   [0m  [33m ^--- Duplicate key: :cards[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/db.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.286 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 7.811 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.47 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.046 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.801 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.745 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.004 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.38 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.249 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.997 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.516 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.857 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.82 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.82 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.956 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.868 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.184 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.905 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.718 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.131 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
