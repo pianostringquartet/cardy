@@ -24,13 +24,6 @@
       (let [deck-name (get-in req [:params :deck-name])
             deck (get-in req [:params :deck])]
         (do
-          (println "update-deck route received this deck: " deck)
-          (println "update-deck route received this deck, TYPE: " (type deck))
-          (println "update-deck route received this deck, FIRST: " (first deck))
-          (println "update-deck route received this deck, FIRST TYPE: " (type (first deck)))
-          (println "update-deck route received this deck, FIRST DECK: " (:deck (first deck)))
-          (println "update-deck route received this deck, FIRST DECK TYPE: " (type (:deck (first deck))))
-          ; (db-core/update-deck! deck-name deck)
           (db-core/update-deck! deck-name (into '() deck))
           (response/ok "Nice :-)")))))
 
@@ -42,6 +35,13 @@
     (fn [req]
       (response/ok (db-core/pull-decks))))
 
+  (POST "/push-decks" []
+    (fn [req]
+      (let [decks (get-in req [:params :decks])]
+        (do
+          (println "push-decks received: decks: " decks)
+          (db-core/push-decks! decks)
+          (response/ok "decks pushed :-)")))))
 
   (GET "/remove-deck" []
     (fn [req]

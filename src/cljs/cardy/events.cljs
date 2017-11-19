@@ -133,8 +133,25 @@
 
 ;; push client's decks into external db,
 ;; used regularly (?) when client
-; (re-frame/reg-event-db
-;   ::push-decks)
+(re-frame/reg-event-fx
+  ::push-decks
+  (fn push-decks-handler [cofx event]
+    {:push-decks-fx (:decks (:db cofx))}))
+
+(re-frame/reg-fx
+  :push-decks-fx
+  ; (fn push-decks-ajax [cofx [effect-id-to-ignore decks]]
+  (fn push-decks-ajax [decks]
+    (POST "/push-decks"
+      {:params {:decks decks}
+       :handler #(js/console.log "push-decks-ajax response was: " %)})))
+;; no need to do anything with response from server...
+
+
+; Pressing a button dispatches the “push-decks” event.
+; push-decks event handler fn returns {:push-deck-fx (:deck db)}
+; The :push-decks-fx effect handler makes sends POST request containing value of app-db’s :decks key to server.
+; Server accepts data and stores in db, then responds with 200 OK.
 
 
 

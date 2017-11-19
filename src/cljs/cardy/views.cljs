@@ -127,8 +127,10 @@
 ;         :on-change #(remove-deck-ajax (reset! text-val %))])))
 
 
-
-
+(defn push-decks []
+  [:input
+    {:type "button" :value "sync decks"
+     :on-click #(re-frame/dispatch [::events/push-decks])}])
 
 
 
@@ -358,6 +360,7 @@
       [card-display]
       [card-review]
       [card-manipulation]
+      [push-decks] ;; better place for this?
       [deck-modal]]])
 
 (defn cardy-app []

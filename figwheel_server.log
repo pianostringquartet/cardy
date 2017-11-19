@@ -10061,3 +10061,280 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.131 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.823 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.405 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.821 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.575 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.882 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.296 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.989 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.499 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.474 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.9 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.34 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.389 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:10  column:2  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m 6[0m  [36m            [ajax.core :refer [GET POST]][0m
+  [36m 7[0m  [36m            ))[0m
+  [36m 8[0m  [36m[0m
+  [36m 9[0m  [36m[0m
+  [33m10[0m  [1m (trace-forms {:tracer (tracer :color "blue")}[0m
+  [0m  [0m  [33m ^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m; (re-frame/reg-event-db[0m
+  [36m14[0m  [36m;   :initialize-db[0m
+  [36m15[0m  [36m;   (fn [_ _][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:136  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m134[0m  [36m;; push client's decks into external db,[0m
+  [36m135[0m  [36m;; used regularly (?) when client[0m
+  [33m136[0m  [1m(re-frame/reg-event-fx[0m
+  [0m   [0m  [33m^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m137[0m  [36m  ::push-decks)[0m
+  [36m138[0m  [36m[0m
+  [36m139[0m  [36m; Pressing a button dispatches the “push-decks” event.[0m
+  [36m140[0m  [36m; push-decks event handler fn returns {:push-deck-fx (:deck db)}[0m
+  [36m141[0m  [36m; The :push-decks-fx effect handler makes sends POST request containing value of app-db’s :decks key to server.[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.977 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.924 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.174 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.824 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.889 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.019 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.969 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.247 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.497 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :params on line 145 column 7 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :params on line 145 column 7 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.372 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.458 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.426 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.4 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.412 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.508 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.462 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 70] The map literal starting with :decks on line 145 column 16 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.385 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:146 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 71] Unmatched delimiter ).[0m
+
+  [36m144[0m  [36m    (POST "/push-decks"[0m
+  [36m145[0m  [36m      {:params {:decks decks[0m
+  [33m146[0m  [1m       :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+  [0m   [0m  [33m       /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 146, col 71] Unmatched delimiter ).[0m
+  [36m147[0m  [36m      }[0m
+  [36m148[0m  [36m;; no need to do anything with response[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.803 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.942 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.399 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.964 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.297 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.204 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.079 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.706 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.832 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.743 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.732 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.701 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.486 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.854 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:144 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 144, col 31] Unmatched delimiter ].[0m
+
+  [36m142[0m  [36m:push-decks-fx[0m
+  [36m143[0m  [36m; (fn push-decks-ajax [cofx [effect-id-to-ignore decks]][0m
+  [33m144[0m  [1m(fn push-decks-ajax [decks]][0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 144, col 31] Unmatched delimiter ].[0m
+  [36m145[0m  [36m  (POST "/push-decks"[0m
+  [36m146[0m  [36m    {:params {:decks decks}[0m
+  [36m147[0m  [36m     :handler #(js/console.log "push-decks-ajax response was: " %)})))[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.489 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.552 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js

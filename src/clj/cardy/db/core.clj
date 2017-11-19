@@ -84,3 +84,34 @@
     (group-by :deck)
     (m/map-vals #(for [m %] (dissoc m :id :deck)))
     (m/map-keys keyword)))
+
+
+; (defn push-decks [] nil)
+
+; (def decks {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})})
+
+; for each k/v pair, where v is a seq of maps, you want to add a k/v ":deck k" pair in each map
+
+;; prepare cards in a given deck for insertion
+; (defn prep [deck]
+;   (let [cards (second deck) deck-name (first deck)]
+;     (for [card cards] (merge {:deck deck-name} card))))
+(defn prep [deck]
+  (let [cards (second deck) deck-name (name (first deck))]
+    (for [card cards] (merge {:deck deck-name} card))))
+
+
+; (defn push-decks! [decks]
+;   (let [prepped-decks (map prep decks)]
+;       (for [deck prepped-decks]
+;         (update-deck! (some :deck deck) deck))))
+
+
+
+(defn push-decks! [decks]
+  (let [prepped-decks (map prep decks)]
+      (doall
+        (for [deck prepped-decks]
+          (update-deck! (some :deck deck) deck)))))
+
+; {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})}
