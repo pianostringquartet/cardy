@@ -7,3 +7,9 @@
 (deftest test-home
   (is (= true true)))
 
+(deftest another-test
+  (is (= 2 (+ 1 1))))
+
+
+(deftest another-test-2
+  (is (= 4 (+ 3 1))))

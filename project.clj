@@ -38,6 +38,7 @@
                  [org.clojars.stumitchell/clairvoyant "0.2.1"] ;; re-frame's version of Clairvoyant
                  [day8/re-frame-tracer "0.1.1-SNAPSHOT"]
                  [medley "1.0.0"] ;; additional fns e.g. map-vals, take-upto etc.
+                 [day8.re-frame/test "0.1.5"] ;; re-frame testing
                  ]
 
   :min-lein-version "2.0.0"
@@ -112,6 +113,7 @@
                       :source-map true
                       :optimizations :none
                       :pretty-print true
+
                       ;; added:
                       :closure-defines {"clairvoyant.core.devmode" true}
                       }}}}
