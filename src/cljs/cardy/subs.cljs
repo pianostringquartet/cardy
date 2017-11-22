@@ -116,17 +116,39 @@
              :back "You can flip me. But you really should add a card!"}
           ))))
 
+
+; (re-frame/reg-sub
+;   ::current-card
+;   (fn current-card [db]
+;     (determine-current-card db)))
+
 (re-frame/reg-sub
   ::current-card
   (fn current-card [db]
-    (determine-current-card db)))
+    (:current-card db)))
+
 
 ;; hmm... can subscriptions refer to each other?
 ;; how to handle this?
+; (re-frame/reg-sub
+;   ::current-phrase
+;   (fn current-phrase [db]
+;     (let [current-face (:current-face db)]
+;       (current-face (determine-current-card db)))))
+
 (re-frame/reg-sub
   ::current-phrase
   (fn current-phrase [db]
     (let [current-face (:current-face db)]
-      (current-face (determine-current-card db)))))
+      (current-face (:current-card db)))))
+
+
+(re-frame/reg-sub
+  ::removed
+  (fn removed-cards [db]
+    (:removed db)))
+
+
 
 ) ;; end of tracer form
+

@@ -10,35 +10,17 @@
  (trace-forms {:tracer (tracer :color "blue")}
 
 
-; (re-frame/reg-event-db
-;   :initialize-db
-;   (fn [_ _]
-;     db/default-db))
 
-; (re-frame/reg-event-db
-;   :set-active-page
-;   (fn [db [_ page]]
-;     (assoc db :page page)))
+(def placeholder-card
+  {:front "This deck has no cards yet. Add one!"
+   :back "You can flip me. But you really should add a card!"})
 
+(def placeholder-deck
+  {:placeholder-deck '(placeholder-card)})
 
-; (re-frame/reg-event-db
-;   :add-card
-;   (fn [db [event-id-to-ignore response]]
-;     (assoc db :add-card "WE TRIGGERED THE EVENT TO ADD A CARD!")))
-
-
-; (re-frame/reg-event-db
-;   :set-deck
-;   (fn [db [event-id-to-ignore deck-name response]]
-;     (assoc db (keyword deck-name) response)))
-
-; (re-frame/reg-event-db
-;   :set-deck
-;   (fn [db [event-id-to-ignore deck-name response]]
-;     (assoc-in db [:decks (keyword deck-name)] response)
-;     ))
-
-
+(defn add-back-excluded
+  [db]
+  (assoc db :excluded #{}))
 
 
 ;; ----------------------------------------
@@ -56,10 +38,14 @@
 
 (defn input-to-card
   "Accepts input (a string), returns a card (a map)."
-  [[event-id-to-ignore a-string]] ;; note the destructuring of the Event vector!
+  ; [[event-id-to-ignore a-string]] ;; note the destructuring of the Event vector!
+  [a-string] ;; note the destructuring of the Event vector!
     (do (println "a-string in input-to-card: " a-string)
       (let [words (map clojure.string/trim (clojure.string/split a-string #";"))]
           {:front (first words) :back (second words)})))
+
+
+;; I'm a change
 
 ;; this is ridiculous to use just a single time...
 (defn dissoc-in
@@ -85,24 +71,18 @@
 ;; ----------------------------------------
 
 (re-frame/reg-event-db
+  ::initialize-test-db
+  (fn [_ _]
+    db/test-db))
+
+
+(re-frame/reg-event-db
  ::initialize-db
  (fn  [_ _]
    db/default-db))
 
 
 ;; DECK SYNCING (client, db)
-
-
-; App starts up.
-; :pull-deck-event event is dispatched as part of app’s initiation.
-; :pull-deck-event event handler (reg-event-fx, not reg-event-db) returns a map with an effect-key,
-;   e.g. {:pull-deck-sync nil}    (don’t need to provide any values for now…)
-; :pull-deck-effect is recognized by the :pull-deck-effect effect handler,
-; which then uses cljs-ajax to launch the GET request;
-; the GET request itself has an “on-successful-response” handler,
-; which will dispatch an [:update-decks decks-delivered-from-server] event,
-; which will replace :decks in app-db with decks-delivered-from-server
-
 
 ;; pull (all) decks from external db,
 ;; and set them as :decks in app-db
@@ -170,87 +150,199 @@
           (assoc db :current-face :front)))))
 
 ;; move to next card
-#_(re-frame/reg-event-db
-  ::next
-  (fn [db]
-    (let [current-index (:current db)]
-      (assoc db :current (inc current-index)))))
+; #_(re-frame/reg-event-db
+;   ::next
+;   (fn [db]
+;     (let [current-index (:current db)]
+;       (assoc db :current (inc current-index)))))
 
 
-;; using this fn does allow me to continue through :cards,
-;; even though somewhere we're hitting an index out of bounds
+; (defn next-card [db]
+;   (let [excluded (:excluded db)
+;         current-card (:current-card db)
+;         cards (:cards db)]
+;     (first (shuffle (remove (conj excluded current-card) cards)))))
+
+
+;; accepts db, returns card
+(defn next-card [db]
+  (let [ineligible
+          (conj
+            (clojure.set/union (:excluded db) (:removed db))
+            (:current-card db))]
+    (first (shuffle (remove ineligible (:cards db))))))
+
+;; accepts db, returns db with new :current-card
+; (defn new-current-card [db]
+;   (assoc db :current-card (next-card db)))
+
+
+(defn new-current-card [db]
+  (let [new-card (next-card db)]
+    (cond
+
+      ; test 1
+      (and (nil? new-card)
+           (not (empty? (:excluded db))))
+      ; return 1
+      (new-current-card (add-back-excluded db))
+      ;; ^^^ this is recursive, but when we call new-curr-card the 2nd time,
+      ;; the db param will have an empty :excluded,
+      ;; so test 1 will return false
+
+      ; test 2
+      (nil? new-card)
+      ; return 2
+      (assoc db :current-card placeholder-card)
+
+      ;; else default
+      :else (assoc db :current-card new-card)
+
+      )))
+
+
+
+
+
 (re-frame/reg-event-db
   ::next
-  (fn next [db]
-    (let [current-index (:current db)
-          next-index (inc current-index)
-          cards (:cards db)]
-      (if (= next-index (count cards))
-        (assoc db :current 0)
-        (assoc db :current next-index)))))
-;; ah, right, with indexes, the "last indexical" will be n-1 where n = (count coll)
-;; fic
+  new-current-card)
 
 
-
-;; move to prev card
-(re-frame/reg-event-db
-  ::prev
-  (fn prev [db]
-    (let [current-index (:current db)]
-      (assoc db :current (dec current-index)))))
 
 
 ;; ADDING, REMOVING CARDS
 
+(defn add-card
+  ; [db input]
+  [db [event-id-to-ignore user-input]]
+  (let [current-cards (:cards db)
+        ; new-card (input-to-card input)]
+        new-card (input-to-card user-input)]
+    (assoc db :cards (conj current-cards new-card))))
+
+
 (re-frame/reg-event-db
   ::add-card
-  (fn add-card [db input]
-    (let [current-cards (:cards db)
-          new-card (input-to-card input)]
-      (assoc db :cards (conj current-cards new-card)))))
+  add-card)
 
-;; permanently remove current card from collection
+; (re-frame/reg-event-db
+;   ::add-card
+;   (fn add-card [db input]
+;     (let [current-cards (:cards db)
+;           new-card (input-to-card input)]
+;       (assoc db :cards (conj current-cards new-card)))))
+
+
+
+
+(defn remove-card [db]
+  (as-> db app-state
+    (assoc app-state :removed (clojure.set/union
+                                #{(:current-card app-state)}
+                                 (:removed app-state)))
+    (new-current-card app-state)))
+
 (re-frame/reg-event-db
   ::remove-card
-  (fn remove-card [db]
-    (let [current-index (:current db)
-          current-cards (:cards db)]
-      (assoc db :cards (drop-nth current-index current-cards)))))
+  remove-card)
+
+
 
 
 ;; EXCLUDING CARDS
 
+
+;; add card to :excluded set
+; (re-frame/reg-event-db
+;   ::exclude-card
+;   (fn exclude-card [db]
+;     (let [excluded (:excluded db)
+;           current-card (:current-card db)]
+;       (as-> db app-state
+;         (assoc app-state :excluded (conj excluded current-card))
+;         ;; next-card needs updated :excluded set :-)
+;         (assoc app-state :current-card (next-card app-state)))
+;       )))
+
+
+
+
+(defn exclude-card [db]
+  (let [excluded (:excluded db)
+        current-card (:current-card db)]
+    (as-> db app-state
+      (assoc app-state :excluded (conj excluded current-card))
+      ;; next-card needs updated :excluded set :-)
+      (new-current-card app-state))
+    ))
+
+
 (re-frame/reg-event-db
   ::exclude-card
-  (fn exclude-card [db]
-    (let [current-index (:current db)
-          current-cards (:cards db)
-          current-excluded (:excluded db)
-          current-card (nth current-cards current-index)]
-      (-> db
-        (assoc :excluded (conj current-excluded current-card))
-        (assoc :cards (drop-nth current-index current-cards))))))
+  exclude-card)
+
+
+; (re-frame/reg-event-db
+;   ::exclude-card
+;   (fn exclude-card [db]
+;     (let [excluded (:excluded db)
+;           current-card (:current-card db)]
+;       (as-> db app-state
+;         (assoc app-state :excluded (conj excluded current-card))
+;         ;; next-card needs updated :excluded set :-)
+;         (new-current-card app-state))
+;       )))
+
+
+
+
+; (re-frame/reg-event-db
+;   ::exclude-card
+;   (fn exclude-card [db]
+;     (let [current-cards (:cards db)
+;           current-excluded (:excluded db)
+;           current-card (nth current-cards current-index)]
+;       (-> db
+;         (assoc :excluded (conj current-excluded current-card))
+;         (assoc :cards (drop-nth current-index current-cards))))))
+
+
+
+; (re-frame/reg-event-db
+;   ::exclude-card
+;   (fn exclude-card [db]
+;     (let [current-index (:current db)
+;           current-cards (:cards db)
+;           current-excluded (:excluded db)
+;           current-card (nth current-cards current-index)]
+;       (-> db
+;         (assoc :excluded (conj current-excluded current-card))
+;         (assoc :cards (drop-nth current-index current-cards))))))
+
 
 
 ;; separate out this event handler fn,
 ;; bc you need to use it instead as just a fn in change-deck event hander fn
-(defn add-back-excluded
-  [db]
-  (let [current-excluded (:excluded db)
-          current-cards (:cards db)]
-      (-> db
-        (assoc :cards (flatten (conj current-cards current-excluded)))
-        (assoc :excluded '()))))
+; (defn add-back-excluded
+;   [db]
+;   (let [current-excluded (:excluded db)
+;           current-cards (:cards db)]
+;       (-> db
+;         (assoc :cards (flatten (conj current-cards current-excluded)))
+;         (assoc :excluded '()))))
 
-#_(re-frame/reg-event-db
-  ::add-back-excluded
-  (fn [db]
-    (let [current-excluded (:excluded db)
-          current-cards (:cards db)]
-      (-> db
-        (assoc :cards (flatten (conj current-cards current-excluded)))
-        (assoc :excluded '())))))
+
+
+; #_(re-frame/reg-event-db
+;   ::add-back-excluded
+;   (fn [db]
+;     (let [current-excluded (:excluded db)
+;           current-cards (:cards db)]
+;       (-> db
+;         (assoc :cards (flatten (conj current-cards current-excluded)))
+;         (assoc :excluded '())))))
+
 
 (re-frame/reg-event-db
   ::add-back-excluded
@@ -262,15 +354,23 @@
 ;; associate with that event-id
 
 
+
+(defn clear-removed [db]
+  (assoc db :removed #{}))
+
+
 ;; DECKS
 
 
 
 ;; now, if we add a deck and the only other deck was
+; (defn add-deck [db deck-name]
+;   "Assumes deck-name is :keyword"
+;   (assoc-in db [:decks deck-name] '()))
+
 (defn add-deck [db deck-name]
   "Assumes deck-name is :keyword"
-  (assoc-in db [:decks deck-name] '()))
-
+  (assoc-in db [:decks deck-name] #{}))
 
 
 (re-frame/reg-event-db
@@ -279,21 +379,46 @@
     (add-deck db (input-to-keyword name-for-new-deck))))
 
 
-
 #_(re-frame/reg-event-db
   ::add-deck
   (fn [db [event-id-to-ignore name-for-new-deck]]
     (assoc-in db [:decks (input-to-keyword name-for-new-deck)] '())))
 
 
+
+
 ;; during this step, :cards changes but :current-deck does not change
+; (defn put-back-old-deck
+;   [db]
+;   (let [current-deck (:current-deck db)] ; a keyword
+;     (as-> db app-state
+;       (add-back-excluded app-state) ;; update old deck to include :excluded
+;       (assoc-in app-state ;; put old deck into :decks storage
+;         [:decks current-deck] (:cards app-state)))))
+
+
+;; when we put back an old deck, we set :excluded to #{}
+;; and do not include the "removed" cards
+; (defn put-back-old-deck
+;   [db]
+;   (let [deck-less-removed (clojure.set/difference (:cards db) (:removed db))]
+;     (clear-removed
+;       (assoc-in
+;         (add-back-excluded db) ;; set :excluded to #{}
+;         [:decks (:current-deck db)] ;; path: :decks :current-deck
+;         deck-less-removed))))
+
+
 (defn put-back-old-deck
   [db]
-  (let [current-deck (:current-deck db)] ; a keyword
-    (as-> db app-state
-      (add-back-excluded app-state) ;; update old deck to include :excluded
-      (assoc-in app-state ;; put old deck into :decks storage
-        [:decks current-deck] (:cards app-state)))))
+  (let [deck-less-removed (clojure.set/difference (:cards db) (:removed db))]
+    (clear-removed
+      (assoc-in
+        (add-back-excluded db) ;; set :excluded to #{}
+        [:decks (:current-deck db)] ;; path: :decks :current-deck
+        deck-less-removed))))
+
+
 
 ;; during this step, :cards changes and :current-deck changes,
 ;; but user provided 'desired deck' does not change
@@ -305,12 +430,41 @@
       (assoc app-state :cards (desired-deck (:decks app-state)))
       (assoc app-state :current-deck desired-deck))))
 
+; (re-frame/reg-event-db
+;   ::change-deck
+;   (fn change-deck [db [event-id-to-ignore user-input]]
+;     (bring-in-new-deck
+;       (put-back-old-deck db)
+;       user-input)))
+
+; (re-frame/reg-event-db
+;   ::change-deck
+;   (fn change-deck [db [event-id-to-ignore user-input]]
+;     (bring-in-new-deck
+;       (put-back-old-deck db)
+;       user-input)))
+
+
+(defn change-deck
+  [db [event-id-to-ignore user-input]]
+  (as-> db app-state
+    (put-back-old-deck app-state)
+    (bring-in-new-deck app-state user-input)
+    (assoc app-state :current-card (next-card app-state))))
+
 (re-frame/reg-event-db
   ::change-deck
-  (fn change-deck [db [event-id-to-ignore user-input]]
-    (bring-in-new-deck
-      (put-back-old-deck db)
-      user-input)))
+  change-deck)
+
+; (re-frame/reg-event-db
+;   ::change-deck
+;   (fn change-deck [db [event-id-to-ignore user-input]]
+;     (as-> db app-state
+;       (put-back-old-deck app-state)
+;       (bring-in-new-deck app-state user-input)
+;       (assoc app-state :current-card (next-card app-state)))))
+
+
 
 ;; bool
 (defn removing-current-deck? [db deck-to-remove]
@@ -324,12 +478,7 @@
 ;; you have this defined both here and in subs...
 ;; maybe you need to make a utils.cljs?
 ;; or common.cljs?
-(def placeholder-card
-  {:front "This deck has no cards yet. Add one!"
-   :back "You can flip me. But you really should add a card!"})
 
-(def placeholder-deck
-  {:placeholder-deck '(placeholder-card)})
 
 ;; bool
 (defn no-decks? [db]
@@ -346,7 +495,7 @@
 
 (re-frame/reg-event-db
   ::remove-deck
-  (fn remove-deck [db [event-id-to-ignore name-of-deck-to-remove]]
+  (fn remove-deck-handler [db [event-id-to-ignore name-of-deck-to-remove]]
     (let [deck-to-remove (input-to-keyword name-of-deck-to-remove)
           remove-deck (fn [db deck-name]
             (dissoc-in db [:decks deck-name]))]
@@ -357,7 +506,8 @@
         (if (removing-current-deck? db deck-to-remove)
           (as-> db app-state
             (remove-deck app-state deck-to-remove)
-            (bring-in-new-deck app-state (name (first (keys (:decks app-state))))))
+            (bring-in-new-deck app-state (name (first (keys (:decks app-state)))))
+            (new-current-card app-state))
           (remove-deck db deck-to-remove))))))
 
 

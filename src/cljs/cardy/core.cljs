@@ -55,7 +55,7 @@
 
   ;; dispatch or dispatch-sync?
   ;; as part of startup, retrieve decks from db
-  (re-frame/dispatch-sync [::events/pull-decks])
+  ; (re-frame/dispatch-sync [::events/pull-decks])
 
   ;; load-interceptors! is defined in ajax.cljs
   ;; ... seems to be us adding CSRF headers?

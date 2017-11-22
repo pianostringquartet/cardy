@@ -303,8 +303,9 @@
     :children [
       [:div "Cards: " @(re-frame/subscribe [::subs/cards])]
       [:div "Number of cards: " (count @(re-frame/subscribe [::subs/cards]))]
-      [:div "Current (index): " @(re-frame/subscribe [::subs/current])]
+      ; [:div "Current (index): " @(re-frame/subscribe [::subs/current])]
       [:div "Excluded cards: " @(re-frame/subscribe [::subs/excluded])]
+      [:div "Removed cards: " @(re-frame/subscribe [::subs/removed])]
       [:div "Available decks: " (map str (keys @(re-frame/subscribe [::subs/decks])))]
       [:div "Number of available decks: " (count (keys @(re-frame/subscribe [::subs/decks])))]
       [:div "Current deck is: " @(re-frame/subscribe [::subs/current-deck])]
@@ -370,7 +371,8 @@
     :align :center
     :children [
       [main-components]
-      [visualization]]])
+      [visualization]
+      ]])
 
 ;; Remember that each child Component in a parent Component needs to be
 ;; wrapped in brackets (why is this again?).

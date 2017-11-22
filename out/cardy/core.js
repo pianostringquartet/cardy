@@ -22,8 +22,6 @@ return reagent.core.render.call(null,new cljs.core.PersistentVector(null, 1, 5, 
 cardy.core.init_BANG_ = (function cardy$core$init_BANG_(){
 re_frame.core.dispatch_sync.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("cardy.events","initialize-db","cardy.events/initialize-db",1650796766)], null));
 
-re_frame.core.dispatch_sync.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("cardy.events","pull-decks","cardy.events/pull-decks",-274600551)], null));
-
 cardy.ajax.load_interceptors_BANG_.call(null);
 
 return cardy.core.mount_components.call(null);
