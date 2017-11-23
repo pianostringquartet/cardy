@@ -1,6 +1,6 @@
 (defproject cardy "0.1.0-SNAPSHOT"
 
-  :description "FIXME: write description"
+  :description "A flashcard app built with re-frame."
   :url "http://example.com/FIXME"
 
   :dependencies [[clj-time "0.14.0"]
@@ -57,14 +57,18 @@
             [lein-immutant "2.1.0"]]
   :clean-targets ^{:protect false}
   [:target-path [:cljsbuild :builds :app :compiler :output-dir] [:cljsbuild :builds :app :compiler :output-to]]
+
   :figwheel
   {:http-server-root "public"
    :nrepl-port 7002
+   ; probably want to move your cardy.css into this directory
    :css-dirs ["resources/public/css"]
    :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
 
   :profiles
+
+  ;; okay, it looks
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
              :cljsbuild
@@ -85,6 +89,8 @@
              :source-paths ["env/prod/clj"]
              :resource-paths ["env/prod/resources"]}
 
+    ;; e.g. the :dev profile is a mix of two profiles:
+    ;;  the :project/dev profile and the :profiles/dev profile
    :dev           [:project/dev :profiles/dev]
    :test          [:project/dev :project/test :profiles/test]
 

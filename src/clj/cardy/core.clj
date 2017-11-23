@@ -13,6 +13,7 @@
   [["-p" "--port PORT" "Port number"
     :parse-fn #(Integer/parseInt %)]])
 
+;; this is defstate http-sever
 (mount/defstate ^{:on-reload :noop}
                 http-server
                 :start
@@ -24,6 +25,7 @@
                 :stop
                 (http/stop http-server))
 
+;; this is defstate repl-server
 (mount/defstate ^{:on-reload :noop}
                 repl-server
                 :start
@@ -33,12 +35,10 @@
                 (when repl-server
                   (repl/stop repl-server)))
 
+;; and before we've
 
-;; where is component defined?
-;; I assume it's from the component library, but where are we importing that?
-;; ah, component is a var we bind to;
-;; the important part here is doseq,
-;; doseq lets you do some binding
+
+
 (defn stop-app []
   (doseq [component (:stopped (mount/stop))]
     (log/info component "stopped"))
@@ -46,8 +46,11 @@
 
 
 ;; think about what component's form evals to...
+
+
 (defn start-app [args]
   (doseq [component (-> args
+    ;; we parse the args, then
                         (parse-opts cli-options)
                         mount/start-with-args
                         :started)]
@@ -58,6 +61,9 @@
 
 ;; I'm not sure when / where exactly this is called,
 ;; but it's a rather impressive function :)
+
+
+;; main is passed any commandline args in "args"
 (defn -main [& args]
 
   ;; (cond & clauses) where a clause is a pair: a test-expr and a return-expr
@@ -68,6 +74,11 @@
     ;; (some pred args)
     ;; the set is our pred;
     ;; expr evals to true just if "init" is in args
+
+
+    ;; if the we pass in "init" as a command line arg,
+    ;; then we'll call the :start method of
+
 
     ;; TEST EXPR 1
     (some #{"init"} args)
