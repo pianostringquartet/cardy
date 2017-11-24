@@ -39,6 +39,7 @@
                  [day8/re-frame-tracer "0.1.1-SNAPSHOT"]
                  [medley "1.0.0"] ;; additional fns e.g. map-vals, take-upto etc.
                  [day8.re-frame/test "0.1.5"] ;; re-frame testing
+                 [buddy/buddy-core "1.4.0"] ;; security
                  ]
 
   :min-lein-version "2.0.0"

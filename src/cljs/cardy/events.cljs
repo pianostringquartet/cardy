@@ -435,13 +435,40 @@
 ;; where login-attempt is what the Server returned
 (defn attempt-login [db [event-id-to-ignore login-attempt]]
   (case login-attempt
-    :succeeded (assoc db :logged-in true)
-    :failed (assoc db :logged-in false)))
+    "succeeded" (assoc db :logged-in true)
+    "failed" (assoc db :logged-in false)))
 
 
 (re-frame/reg-event-db
   ::attempt-login
   attempt-login)
+
+
+;; register
+
+(re-frame/reg-event-fx
+  ::register
+  (fn register-handler [cofx [event-id-to-ignore username email password]]
+    {:register-fx {:username username
+                :email email
+                :password password}}))
+
+(re-frame/reg-fx
+  :register-fx
+  (fn register-ajax [credentials]
+    (POST "/register-creds"
+      {:params credentials
+       ; :handler #(re-frame/dispatch [::attempt-register %])
+       :handler #(js/console.log "register-ajax response was: " %)
+
+       ;; this is, "on successful POST request" handler;
+       ;; if the server decides the creds were incorrect,
+       ;; the server will still send back a successful post request,
+       ;; no? (or, how do other people handle this?)
+
+        })
+    ))
+
 
 
 ;;; PANELS

@@ -321,19 +321,29 @@
               :children [
                 [re-com/input-text
                   :model username
+                  :placeholder "username"
                   :on-change #(reset! username %)
                   :change-on-blur? true]
                 [re-com/input-text
                   :model email
+                  :placeholder "email"
                   :on-change #(reset! email %)
                   :change-on-blur? true]
-                [re-com/input-text
+                [re-com/input-password
                   :model password
+                  :placeholder "password"
                   :on-change #(reset! password %)
                   :change-on-blur? true]
                 [:input
                   {:type "button" :value "login"
                    :on-click #(re-frame/dispatch [::events/login @username
+                                                                @email
+                                                                @password])
+                   }]
+
+                [:input
+                  {:type "button" :value "register"
+                   :on-click #(re-frame/dispatch [::events/register @username
                                                                 @email
                                                                 @password])
                    }]

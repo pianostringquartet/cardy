@@ -12782,3 +12782,110 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/event
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.754 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.819 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.25 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.79 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.704 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.967 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.24 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.008 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:10  column:2  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m 6[0m  [36m            [ajax.core :refer [GET POST]][0m
+  [36m 7[0m  [36m            ))[0m
+  [36m 8[0m  [36m[0m
+  [36m 9[0m  [36m[0m
+  [33m10[0m  [1m (trace-forms {:tracer (tracer :color "blue")}[0m
+  [0m  [0m  [33m ^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(def placeholder-card[0m
+  [36m15[0m  [36m  {:front "This deck has no cards yet. Add one!"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:447  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m443[0m  [36m  ::attempt-login[0m
+  [36m444[0m  [36m  attempt-login)[0m
+  [36m445[0m  [36m[0m
+  [36m446[0m  [36m[0m
+  [33m447[0m  [1m(re-frame/reg-event-fx[0m
+  [0m   [0m  [33m^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m448[0m  [36m  ::register)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.493 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:10  column:2  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m 6[0m  [36m            [ajax.core :refer [GET POST]][0m
+  [36m 7[0m  [36m            ))[0m
+  [36m 8[0m  [36m[0m
+  [36m 9[0m  [36m[0m
+  [33m10[0m  [1m (trace-forms {:tracer (tracer :color "blue")}[0m
+  [0m  [0m  [33m ^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(def placeholder-card[0m
+  [36m15[0m  [36m  {:front "This deck has no cards yet. Add one!"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:447  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+
+  [36m443[0m  [36m  ::attempt-login[0m
+  [36m444[0m  [36m  attempt-login)[0m
+  [36m445[0m  [36m[0m
+  [36m446[0m  [36m[0m
+  [33m447[0m  [1m(re-frame/reg-event-fx[0m
+  [0m   [0m  [33m^--- Wrong number of args (1) passed to re-frame.core/reg-event-fx[0m
+  [36m448[0m  [36m  ::register[0m
+  [36m449[0m  [36m[0m
+  [36m450[0m  [36m  )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.492 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.358 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.638 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.276 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.883 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.052 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.265 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js

@@ -6,6 +6,9 @@
     [cardy.config :refer [env]]
     [mount.core :refer [defstate]]
     [medley.core :as m]
+    [buddy.core.hash :as hash]
+    [buddy.core.codecs :as codecs]
+
     )
   (:import [java.sql
             BatchUpdateException
@@ -17,6 +20,7 @@
 
 ;; defstate is from the mount library;
 ;; per L docs, anything defstate'd will be started and stopped
+;; hmmm... but what is this "^:dynamic" notation to defstate?
 (defstate ^:dynamic *db*
            :start (conman/connect! {:jdbc-url (env :database-url)})
            :stop (conman/disconnect! *db*))
@@ -103,6 +107,18 @@
 ; {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})}
 
 
+
+;; for new users
+;; you'll want to add a MySQL date field to table
+;; and handle dates in Clojure
+; (defn create-user! [username email password]
+;   )
+
+
+
+
+;;; AUTHENTICATION
+
 ;;; you'll want to make email unique, no?
 ; (defn retrieve-user [email]
 ;   (jdbc/query *db* ["select * from users where email=?" email]))
@@ -111,11 +127,55 @@
   (first (jdbc/query *db* ["select * from users where email=?" email])))
 
 
+;; eventually move to an "auth" directory?
+
+(defn encrypt [a-str]
+  (codecs/bytes->hex (hash/sha256 a-str)))
+
+
+(defn valid-email-format?
+  [email]
+  (let [pattern
+        #"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"]
+    (if (and (string? email) (re-matches pattern email))
+      true
+      false)))
+
+
+;; assumes password is already encrypted
+(defn add-user! [username email password]
+  (jdbc/insert!
+    *db*
+    :users
+    {:username username :email email :password password}))
+
+
+; (defn valid-registration? [username email password]
+;   (if (and (valid-email-format? email))))
+
+;; this is going to be a weird fn --
+; (defn register-user! [username email password]
+(defn register-user! [{:keys [username email password]}]
+  (if (valid-email-format? email)
+    (do
+      (doall (add-user! username email (encrypt password)))
+      "registered") ;; return "registered" to front end if succeeded
+    ; (doall (add-user! username email (encrypt password))
+    ;   "registered") ;; return "registered" to front end if succeeded
+    "invalid email" ;; else, tell client that email form was bad.
+    ))
+
+
+
+;; probably a better way to do this e.g.
+;; map
+;;  #(-> (select-keys [username email password]) =)
+;;  credentials user
 (defn validate-credentials [{:keys [username email password]}]
   (let [user (retrieve-user email)]
     (if (and (= (:username user) username)
              (= (:email user) email)
-             (= (:password user) password))
+             (= (:password user) (encrypt password)))
         "succeeded"
         "failed")))
 

@@ -54,6 +54,14 @@
         (response/ok (db-core/validate-credentials credentials))
         )))
 
+  (POST "/register-creds" []
+    (fn [req]
+      (let [credentials (:params req)]
+        (response/ok (db-core/register-user! credentials))
+        )))
+
+
+
   )
 
 
