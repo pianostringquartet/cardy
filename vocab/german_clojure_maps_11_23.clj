@@ -1,5 +1,6 @@
 (def deutsch-11-23-2017
     {
+
     :Common-Verbs-11-23
 
     #{{:front "abbrechen" :back "o abort, to discontinue"}

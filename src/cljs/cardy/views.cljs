@@ -26,106 +26,6 @@
 (defn show-decks []
   [:div "Current decks are: " @(re-frame/subscribe [::subs/show-decks])])
 
-;; So for each (update-deck, get-deck, remove-deck action) you need:
-;; 1. a Component to accept user input
-;; 2. an AJAX'ing function to send user input to server and get back response
-;; 3. a re-frame event (+ event handler fn) to put response into app-db
-
-;; Note that in L's get-docs example, the AJAX fn (2) actually has
-;; the re-frame event dispatch (3) as its (successful response) :handler
-;; ... So the Component's on-change fn is an AJAX fn
-
-;; When something happens in the app, does it always need to be an event?
-;; Maybe, any thing that changes the app-db needs to be an event?
-
-;; how do you handle managing another, external source of data?
-;; you DON'T! you're just using the external db to persist data;
-;; but in a given "use session", all the important data will be in app-db
-
-;; e.g. a Component's button being pressed can
-;; first trigger an AJAX call, but for the result of that
-
-;; hmmm, re-frame docs recommend against this approach;
-;; rf recommends effectful handlers via re-frame-http-fx
-
-;; remember, rf views are just display logic;
-;; so ajax-call logic should be in a handler
-
-
-
-
-
-; (defn get-deck-ajax [deck-name]
-;   (GET "/get-deck"
-;     {:params
-;         {:deck-name deck-name}
-;      :handler
-;         (fn [response]
-;           (do
-;             (js/console.log "response was " response)
-;             (js/console.log "response type was " (type response))
-;             (js/console.log "first response" (first response))
-;             (re-frame/dispatch [::events/set-deck deck-name response])
-;             ))
-;         }))
-
-; (defn get-deck []
-;   (let [text-val (reagent/atom "")]
-;     (fn []
-;       [re-com/input-text
-;         :model text-val
-;         :change-on-blur? true
-;         :placeholder "name of deck to retrieve, eg die Farben"
-;         :on-change #(get-deck-ajax (reset! text-val %))])))
-
-
-; (defn update-deck-ajax [deck-name deck]
-;   (POST "/update-deck"
-;     {:params
-;         {:deck-name deck-name :deck deck}
-;      :handler
-;         (fn [response]
-;           ;; response should just be 200 OK
-;           (js/console.log "update-deck-ajax response was " response))}))
-
-
-;; in flashy, you'll probably be programmatically providing the deck to switch in
-;; ... but will depend on how you SYNC decks
-;; bc this is really for SYNCING (saving) decks;
-; (defn update-deck []
-;   (let [text-val (reagent/atom "")]
-;     (fn []
-;       [re-com/input-text
-;         :model text-val
-;         :change-on-blur? true
-;         :placeholder "for now just use: die Farben"
-;         :on-change #(update-deck-ajax "die Farben" new-color-deck-2)])))
-;; just have functionality to add back a deck,
-;; so you can test the remove-deck stuff too
-
-
-
-;; depends on how you will call this...
-;; but for now you're not writing the event dispatch;
-; (defn remove-deck-ajax [deck-name]
-;   (GET "/remove-deck"
-;     {:params
-;         {:deck-name deck-name}
-;      :handler
-;         (fn [response]
-;           ;; response should just be 200 OK
-;           (js/console.log "remove-deck-ajax response was " response))}))
-
-
-; (defn remove-deck []
-;   (let [text-val (reagent/atom "")]
-;     (fn []
-;       [re-com/input-text
-;         :model text-val
-;         :change-on-blur? true
-;         :placeholder "name of deck to remove, eg die Farben"
-;         :on-change #(remove-deck-ajax (reset! text-val %))])))
-
 
 (defn push-decks []
   [:input
@@ -139,10 +39,29 @@
 ; (defn show-current-phrase []
 ;   [:div @(re-frame/subscribe [::subs/current-phrase])])
 
+
+;; you want to wrap the text...
+; (defn show-current-phrase []
+;   [re-com/label
+;     :label @(re-frame/subscribe [::subs/current-phrase])
+;     ; :width "150px"
+;     ]
+  ; )
+
+; p has an implicit wrapping
 (defn show-current-phrase []
-  [re-com/title
-    :label @(re-frame/subscribe [::subs/current-phrase])
-    :level :level2])
+  [re-com/p
+    {:style
+      {:font-size "130%" :width "150px" :min-width "150px"}}
+    @(re-frame/subscribe [::subs/current-phrase])])
+
+
+; (defn show-current-phrase []
+;   [re-com/title
+;     :label @(re-frame/subscribe [::subs/current-phrase])
+;     :level :level2])
+
+
 
 (defn current-flag []
   (let [current-face @(re-frame/subscribe [::subs/current-face])]
@@ -280,19 +199,24 @@
                          (reset! show? false)
                          false)]
     (fn []
-      [:div
-        [re-com/button
-          :label "Decks"
-          :class "btn-info"
-          ;:on-click #(do
-           ; (reset! show? true))]
-           :on-click #(reset! show? true)]
-        (when @show? [re-com/modal-panel
-                        :backdrop-color "grey"
-                        :backdrop-opacity 0.4
-                        ;:child [:div "I am a child!"]])
-                        :child [deck-modal-dialog process-ok process-cancel]])
+      [re-com/v-box
+        :children [
+          [re-com/button
+            :label "Decks"
+            :class "btn-info"
+            ;:on-click #(do
+             ; (reset! show? true))]
+             :on-click #(reset! show? true)]
+          (when @show? [re-com/modal-panel
+                          :backdrop-color "grey"
+                          :backdrop-opacity 0.4
+                          ;:child [:div "I am a child!"]])
+                          :child [deck-modal-dialog process-ok process-cancel]]
+                          )
+        ]
         ])))
+
+
 
 
 (defn visualization []
@@ -315,35 +239,47 @@
 
 
 ;; component for reviewing cards
+; (defn card-review []
+;   [re-com/h-box
+;     :size "auto"
+;     :children [
+;       [exclude-current-card]
+;       [flip-button]
+;       [next-button]]])
+
 (defn card-review []
   [re-com/h-box
+    ; :size "initial"
     :size "auto"
+    ; :align-self :center
     :children [
       [exclude-current-card]
       [flip-button]
       [next-button]]])
 
-;comp for displaying current card (inc. flags)
-; (defn card-display []
-;   [re-com/h-box
-;     :size "auto"
-;     :children [
-;       [show-current-flag]
-;       [show-current-phrase]]])
 
 
+;; this is:
+;; FLAG    TEXT
+;; you want both to stay put,
+;; and TEXT wraps if too long
 (defn card-display []
   [re-com/h-box
+    ; :width "300px"
+    ; :height "100px"
     :children [
       [re-com/box
         :child [show-current-flag]
         :width "120px"
         :height "90px"
-        :padding "20px 10px 10px 10px"]
+        :padding "20px 10px 10px 10px"
+        ]
       [re-com/box
         :child [show-current-phrase]
-        :align :center
-        :padding "20px"]]])
+        :size "auto"
+        :max-width "50px"
+        :padding "20px 10px 10px 10px"
+        :align-self :center]]])
 
 
 (defn card-manipulation []
@@ -357,6 +293,7 @@
   [re-com/v-box
     :size "auto" ;; = "flex"
     :gap "20px" ;; 10px gap between each child
+    :align :center
     :children [
       [card-display]
       [card-review]

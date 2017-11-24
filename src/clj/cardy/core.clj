@@ -46,8 +46,6 @@
 
 
 ;; think about what component's form evals to...
-
-
 (defn start-app [args]
   (doseq [component (-> args
     ;; we parse the args, then

@@ -66,19 +66,23 @@
    (keep-indexed #(if (not= %1 n) %2) coll))
 
 
+
+(defn face-front [db]
+  (assoc db :current-face :front))
+
+
 ;; ----------------------------------------
 ;; Associating event-ids with event handler fns
 ;; ----------------------------------------
 
 (re-frame/reg-event-db
   ::initialize-test-db
-  (fn [_ _]
+  (fn initialize-test-db [_ _]
     db/test-db))
-
 
 (re-frame/reg-event-db
  ::initialize-db
- (fn  [_ _]
+ (fn initialize-db [_ _]
    db/default-db))
 
 
@@ -149,20 +153,6 @@
           (assoc db :current-face :back)
           (assoc db :current-face :front)))))
 
-;; move to next card
-; #_(re-frame/reg-event-db
-;   ::next
-;   (fn [db]
-;     (let [current-index (:current db)]
-;       (assoc db :current (inc current-index)))))
-
-
-; (defn next-card [db]
-;   (let [excluded (:excluded db)
-;         current-card (:current-card db)
-;         cards (:cards db)]
-;     (first (shuffle (remove (conj excluded current-card) cards)))))
-
 
 ;; accepts db, returns card
 (defn next-card [db]
@@ -172,54 +162,38 @@
             (:current-card db))]
     (first (shuffle (remove ineligible (:cards db))))))
 
-;; accepts db, returns db with new :current-card
-; (defn new-current-card [db]
-;   (assoc db :current-card (next-card db)))
-
 
 (defn new-current-card [db]
   (let [new-card (next-card db)]
     (cond
-
-      ; test 1
       (and (nil? new-card)
            (not (empty? (:excluded db))))
-      ; return 1
-      (new-current-card (add-back-excluded db))
-      ;; ^^^ this is recursive, but when we call new-curr-card the 2nd time,
-      ;; the db param will have an empty :excluded,
-      ;; so test 1 will return false
-
-      ; test 2
+        (new-current-card (add-back-excluded db))
       (nil? new-card)
-      ; return 2
-      (assoc db :current-card placeholder-card)
-
-      ;; else default
-      :else (assoc db :current-card new-card)
-
-      )))
-
-
-
+        (assoc db :current-card placeholder-card)
+      :else
+        (assoc db :current-card new-card))))
 
 
 (re-frame/reg-event-db
   ::next
-  new-current-card)
-
+  (fn next-handler [db]
+    (face-front
+      (new-current-card db))))
 
 
 
 ;; ADDING, REMOVING CARDS
 
 (defn add-card
-  ; [db input]
   [db [event-id-to-ignore user-input]]
   (let [current-cards (:cards db)
-        ; new-card (input-to-card input)]
         new-card (input-to-card user-input)]
-    (assoc db :cards (conj current-cards new-card))))
+    (as-> db app-state
+      (assoc app-state :cards (conj current-cards new-card))
+      (new-current-card app-state))))
+
+
 
 
 (re-frame/reg-event-db
@@ -253,95 +227,21 @@
 ;; EXCLUDING CARDS
 
 
-;; add card to :excluded set
-; (re-frame/reg-event-db
-;   ::exclude-card
-;   (fn exclude-card [db]
-;     (let [excluded (:excluded db)
-;           current-card (:current-card db)]
-;       (as-> db app-state
-;         (assoc app-state :excluded (conj excluded current-card))
-;         ;; next-card needs updated :excluded set :-)
-;         (assoc app-state :current-card (next-card app-state)))
-;       )))
-
-
 
 
 (defn exclude-card [db]
   (let [excluded (:excluded db)
         current-card (:current-card db)]
-    (as-> db app-state
+    (as-> db app-state ;; just use -> ?
       (assoc app-state :excluded (conj excluded current-card))
-      ;; next-card needs updated :excluded set :-)
-      (new-current-card app-state))
+      (new-current-card app-state)
+      (face-front app-state)
+      )
     ))
-
 
 (re-frame/reg-event-db
   ::exclude-card
   exclude-card)
-
-
-; (re-frame/reg-event-db
-;   ::exclude-card
-;   (fn exclude-card [db]
-;     (let [excluded (:excluded db)
-;           current-card (:current-card db)]
-;       (as-> db app-state
-;         (assoc app-state :excluded (conj excluded current-card))
-;         ;; next-card needs updated :excluded set :-)
-;         (new-current-card app-state))
-;       )))
-
-
-
-
-; (re-frame/reg-event-db
-;   ::exclude-card
-;   (fn exclude-card [db]
-;     (let [current-cards (:cards db)
-;           current-excluded (:excluded db)
-;           current-card (nth current-cards current-index)]
-;       (-> db
-;         (assoc :excluded (conj current-excluded current-card))
-;         (assoc :cards (drop-nth current-index current-cards))))))
-
-
-
-; (re-frame/reg-event-db
-;   ::exclude-card
-;   (fn exclude-card [db]
-;     (let [current-index (:current db)
-;           current-cards (:cards db)
-;           current-excluded (:excluded db)
-;           current-card (nth current-cards current-index)]
-;       (-> db
-;         (assoc :excluded (conj current-excluded current-card))
-;         (assoc :cards (drop-nth current-index current-cards))))))
-
-
-
-;; separate out this event handler fn,
-;; bc you need to use it instead as just a fn in change-deck event hander fn
-; (defn add-back-excluded
-;   [db]
-;   (let [current-excluded (:excluded db)
-;           current-cards (:cards db)]
-;       (-> db
-;         (assoc :cards (flatten (conj current-cards current-excluded)))
-;         (assoc :excluded '()))))
-
-
-
-; #_(re-frame/reg-event-db
-;   ::add-back-excluded
-;   (fn [db]
-;     (let [current-excluded (:excluded db)
-;           current-cards (:cards db)]
-;       (-> db
-;         (assoc :cards (flatten (conj current-cards current-excluded)))
-;         (assoc :excluded '())))))
 
 
 (re-frame/reg-event-db
@@ -450,19 +350,12 @@
   (as-> db app-state
     (put-back-old-deck app-state)
     (bring-in-new-deck app-state user-input)
-    (assoc app-state :current-card (next-card app-state))))
+    (new-current-card app-state)
+    ))
 
 (re-frame/reg-event-db
   ::change-deck
   change-deck)
-
-; (re-frame/reg-event-db
-;   ::change-deck
-;   (fn change-deck [db [event-id-to-ignore user-input]]
-;     (as-> db app-state
-;       (put-back-old-deck app-state)
-;       (bring-in-new-deck app-state user-input)
-;       (assoc app-state :current-card (next-card app-state)))))
 
 
 
