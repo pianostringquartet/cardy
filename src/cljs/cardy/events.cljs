@@ -405,6 +405,45 @@
 
 
 
+;;; AUTH
+
+;; the login event will actually be a custom Fx ...
+(re-frame/reg-event-fx
+  ::login
+  (fn login-handler [cofx [event-id-to-ignore username email password]]
+    {:login-fx {:username username
+                :email email
+                :password password}}))
+
+(re-frame/reg-fx
+  :login-fx
+  (fn login-ajax [credentials]
+    (POST "/login-creds"
+      {:params credentials
+       ; :handler #(re-frame/dispatch [::attempt-login %])
+       :handler #(js/console.log "login-ajax response was: " %)
+
+       ;; this is, "on successful POST request" handler;
+       ;; if the server decides the creds were incorrect,
+       ;; the server will still send back a successful post request,
+       ;; no? (or, how do other people handle this?)
+
+        })
+    ))
+
+
+;; where login-attempt is what the Server returned
+(defn attempt-login [db [event-id-to-ignore login-attempt]]
+  (case login-attempt
+    :succeeded (assoc db :logged-in true)
+    :failed (assoc db :logged-in false)))
+
+
+(re-frame/reg-event-db
+  ::attempt-login
+  attempt-login)
+
+
 ;;; PANELS
 
 ;; expects panel param to be :keyword

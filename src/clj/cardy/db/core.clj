@@ -65,20 +65,6 @@
 (defn get-all-decks []
   (jdbc/query *db* ["select * from cards"]))
 
-;; this fn needs to massage the return results into the
-;; {:deck-1 '(card-map card-map ...) :deck-2 '(card-map ...)} format
-
-; (defn pull-decks []
-;   (as-> (get-all-decks) decks
-;     (group-by :deck decks)
-;     (m/map-vals #(for [m %] (dissoc m :id :deck)) decks)))
-
-; (defn pull-decks []
-;   (->> (get-all-decks)
-;     (group-by :deck)
-;     (m/map-vals #(for [m %] (dissoc m :id :deck)))))
-
-
 (defn pull-decks []
   (->> (get-all-decks)
     (group-by :deck)
@@ -115,3 +101,21 @@
           (update-deck! (some :deck deck) deck)))))
 
 ; {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})}
+
+
+;;; you'll want to make email unique, no?
+; (defn retrieve-user [email]
+;   (jdbc/query *db* ["select * from users where email=?" email]))
+
+(defn retrieve-user [email]
+  (first (jdbc/query *db* ["select * from users where email=?" email])))
+
+
+(defn validate-credentials [{:keys [username email password]}]
+  (let [user (retrieve-user email)]
+    (if (and (= (:username user) username)
+             (= (:email user) email)
+             (= (:password user) password))
+        "succeeded"
+        "failed")))
+

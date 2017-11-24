@@ -6,12 +6,15 @@
 
 
 
+    ;; authentication (basics)
+   :logged-in false
+   :temp-name "temporary name"
+   :temp-email "temporary email"
+   :temp-pw "temporary pw"
+
+
    :current-panel :intro ;; i.e. login / signup
-
-
    :panels '(:intro :home :study :edit :profile)
-
-
 
 
     ;; study-panel's data

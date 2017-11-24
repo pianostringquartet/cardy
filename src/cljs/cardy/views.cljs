@@ -297,6 +297,56 @@
 ;     ]])
 
 
+
+;; Login / signup
+
+;; you don't need a "form" per se
+;; you just need to accept input from 3 different sources (name, email, pw),
+;; store the input in the app-db as we get it (or just keep in atom?)
+;; then when user hits a separate "submit" button,
+;; we send the data back to the server to validate it etc.
+
+
+
+
+
+(defn login-form []
+  (let [username (reagent/atom "")
+        email (reagent/atom "")
+        password (reagent/atom "")]
+
+      (fn []
+        [re-com/v-box
+              :gap "10px"
+              :children [
+                [re-com/input-text
+                  :model username
+                  :on-change #(reset! username %)
+                  :change-on-blur? true]
+                [re-com/input-text
+                  :model email
+                  :on-change #(reset! email %)
+                  :change-on-blur? true]
+                [re-com/input-text
+                  :model password
+                  :on-change #(reset! password %)
+                  :change-on-blur? true]
+                [:input
+                  {:type "button" :value "login"
+                   :on-click #(re-frame/dispatch [::events/login @username
+                                                                @email
+                                                                @password])
+                   }]
+
+              ]
+            ])
+    ))
+
+
+
+
+
+
 ;; ViewFns: PANELS
 
 (defn intro-picture []
@@ -304,14 +354,20 @@
   :width "450px"
   :height "300px"
   :child [:img
-    {:src "intent_bear.png"}]])
+      {:src "intent_bear.png"}]])
+
+
+;; for dev purposes
+(defn intro-panel-button []
+  [:input
+    {:type "button" :value "intro"
+     :on-click #(re-frame/dispatch [::events/change-panel :intro])}])
 
 
 (defn home-panel-button []
   [:input
     {:type "button" :value "home"
      :on-click #(re-frame/dispatch [::events/change-panel :home])}])
-
 
 (defn study-panel-button []
   [:input
@@ -341,9 +397,10 @@
         :children [
           [intro-picture]
           [re-com/title
-            :label "Welcome to Cardy!"
-            :level :level2]]]
-      [home-panel-button]]])
+            :label "Welcome to Cardy!" :level :level2]]]
+      [login-form]
+      [home-panel-button]
+      ]])
 
 (defn home-panel []
   [re-com/v-box
@@ -352,7 +409,9 @@
       [re-com/title :label "HOME PANEL" :level :level1]
       [study-panel-button]
       [edit-panel-button]
-      [profile-panel-button]]
+      [profile-panel-button]
+      [intro-panel-button]
+      ]
   ])
 
 
