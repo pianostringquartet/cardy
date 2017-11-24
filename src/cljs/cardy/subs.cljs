@@ -9,11 +9,18 @@
 
 (trace-forms {:tracer (tracer :color "brown")}
 
-
 (re-frame/reg-sub
-  :page
-  (fn [db _]
-    (:page db)))
+  ::current-panel
+  (fn current-panel [db]
+    (:current-panel db)))
+
+
+
+
+; (re-frame/reg-sub
+;   :page
+;   (fn [db _]
+;     (:page db)))
 
 ; (re-frame/reg-sub
 ;   :docs

@@ -2,7 +2,21 @@
 
 
 (def default-db
-  {:cards #{{:front "Deutsch" :back "German"}
+  {
+
+
+
+   :current-panel :intro ;; i.e. login / signup
+
+
+   :panels '(:intro :home :study :edit :profile)
+
+
+
+
+    ;; study-panel's data
+
+    :cards #{{:front "Deutsch" :back "German"}
                       {:front "Genau" :back "Exactly"}
                       {:front "Es tut mir leid" :back "I'm sorry"}
                       {:front "Alles klar" :back "Alright"}}
@@ -12,7 +26,6 @@
    :current-face :front
    :excluded #{}
    :removed #{}
-
    :current-deck :starter
    :current-flag "german-flag-small"
 

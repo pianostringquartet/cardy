@@ -14,6 +14,8 @@
 
 
 
+
+
 ;; from cardy.core.cljs:
 
 
@@ -33,20 +35,6 @@
      :on-click #(re-frame/dispatch [::events/push-decks])}])
 
 
-
-
-;; the words/phrase on the :current-face of the current card :-)
-; (defn show-current-phrase []
-;   [:div @(re-frame/subscribe [::subs/current-phrase])])
-
-
-;; you want to wrap the text...
-; (defn show-current-phrase []
-;   [re-com/label
-;     :label @(re-frame/subscribe [::subs/current-phrase])
-;     ; :width "150px"
-;     ]
-  ; )
 
 ; p has an implicit wrapping
 (defn show-current-phrase []
@@ -71,7 +59,7 @@
 
 (defn show-current-flag []
   [:img
-      {:src (current-flag)}])
+    {:src (current-flag)}])
 
 (defn flip-button []
     [:input
@@ -80,9 +68,9 @@
 
 ;; i.e. "I don't know this "
 (defn next-button []
-    [:input
-      {:type "button" :value "I don't know it"
-       :on-click #(re-frame/dispatch [::events/next])}])
+  [:input
+    {:type "button" :value "I don't know it"
+     :on-click #(re-frame/dispatch [::events/next])}])
 
 ;; i.e. "I know this"
 (defn exclude-current-card []
@@ -289,31 +277,170 @@
       [add-card]
       [remove-current-card]]])
 
-(defn main-components []
-  [re-com/v-box
-    :size "auto" ;; = "flex"
-    :gap "20px" ;; 10px gap between each child
-    :align :center
-    :children [
-      [card-display]
-      [card-review]
-      [card-manipulation]
-      [push-decks] ;; better place for this?
-      [deck-modal]]])
 
-(defn cardy-app []
+
+
+
+
+
+; (defn main-components []
+;   [re-com/v-box
+;     :size "auto" ;; = "flex"
+;     :gap "20px" ;; 10px gap between each child
+;     :align :center
+;     :children [
+;       [card-display]
+;       [card-review]
+      ; [card-manipulation]
+      ; [push-decks] ;; better place for this?
+      ; [deck-modal]
+;     ]])
+
+
+;; ViewFns: PANELS
+
+(defn intro-picture []
+  [re-com/box
+  :width "450px"
+  :height "300px"
+  :child [:img
+    {:src "intent_bear.png"}]])
+
+
+(defn home-panel-button []
+  [:input
+    {:type "button" :value "home"
+     :on-click #(re-frame/dispatch [::events/change-panel :home])}])
+
+
+(defn study-panel-button []
+  [:input
+    {:type "button" :value "study"
+     :on-click #(re-frame/dispatch [::events/change-panel :study])}])
+
+(defn edit-panel-button []
+  [:input
+    {:type "button" :value "edit"
+     :on-click #(re-frame/dispatch [::events/change-panel :edit])}])
+
+(defn profile-panel-button []
+  [:input
+    {:type "button" :value "profile"
+     :on-click #(re-frame/dispatch [::events/change-panel :profile])}])
+
+
+
+
+(defn intro-panel []
+  [re-com/v-box
+    :size "auto"
+    :gap "100px"
+    :children [
+      [re-com/h-box
+        :size "auto"
+        :children [
+          [intro-picture]
+          [re-com/title
+            :label "Welcome to Cardy!"
+            :level :level2]]]
+      [home-panel-button]]])
+
+(defn home-panel []
+  [re-com/v-box
+    :gap "20px"
+    :children [
+      [re-com/title :label "HOME PANEL" :level :level1]
+      [study-panel-button]
+      [edit-panel-button]
+      [profile-panel-button]]
+  ])
+
+
+(defn study-panel []
   [re-com/v-box
     :size "auto"
     :gap "50px"
     :align :center
     :children [
-      [main-components]
-      [visualization]
-      ]])
+      [card-display]
+      [card-review]
+      [home-panel-button]
+    ]])
+
+(defn edit-panel []
+  [re-com/v-box
+    :gap "20px"
+    :align :center
+    :children [
+      [card-manipulation]
+      [push-decks] ;; better place for this?
+      [deck-modal]
+      [home-panel-button]
+      ]
+  ]
+  )
+
+
+(defn profile-panel []
+  [re-com/v-box
+    :gap "20px"
+    :align :center
+    :children [
+      [re-com/label :label "logic for editing your profile here!"]
+      [home-panel-button]
+
+    ]])
+
+
+
+
+
+
+
+
+
+;; logic for which panel to show
+(defn show-panel []
+  (case @(re-frame/subscribe [::subs/current-panel])
+
+    ; :intro [study-panel]
+
+    :intro [intro-panel]
+    :home [home-panel]
+    :study [study-panel]
+    :edit [edit-panel]
+    :profile [profile-panel]
+
+    )
+
+  )
+
+;; i.e. show panel
+(defn cardy-app []
+  [show-panel])
+
+
+
+; (defn cardy-app []
+;   [re-com/v-box
+;     :size "auto"
+;     :gap "50px"
+;     :align :center
+;     :children [
+;       [main-components]
+;       [visualization]
+;       ]])
 
 ;; Remember that each child Component in a parent Component needs to be
 ;; wrapped in brackets (why is this again?).
 ;; re-com components are not any different in this regard than a regular
 ;; Reagent component
 
+
+
+
+
+
 ) ;; end of tracer form
+
+

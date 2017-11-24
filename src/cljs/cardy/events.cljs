@@ -404,4 +404,18 @@
           (remove-deck db deck-to-remove))))))
 
 
+
+;;; PANELS
+
+;; expects panel param to be :keyword
+(defn change-panel [db [event-id-to-ignore panel]]
+  (assoc db :current-panel panel))
+
+(re-frame/reg-event-db
+  ::change-panel
+  change-panel)
+
+
+
+
 ) ;; end of tracer form
