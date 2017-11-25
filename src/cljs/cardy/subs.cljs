@@ -156,6 +156,12 @@
     (:removed db)))
 
 
+(re-frame/reg-sub
+  ::intro-error-message
+  (fn intro-error-message [db]
+    (:intro-error-message db)))
+
+
 
 ) ;; end of tracer form
 

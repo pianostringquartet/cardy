@@ -395,12 +395,20 @@
      :on-click #(re-frame/dispatch [::events/change-panel :profile])}])
 
 
+(defn display-intro-user-error []
+  (let [user-error @(re-frame/subscribe [::subs/intro-error-message])]
+        (when user-error
+          [re-com/box
+            :align-self :center
+            :child
+              [re-com/title
+                :label user-error :level :level2]])))
 
 
 (defn intro-panel []
   [re-com/v-box
     :size "auto"
-    :gap "100px"
+    :gap "20px"
     :children [
       [re-com/h-box
         :size "auto"
@@ -409,8 +417,69 @@
           [re-com/title
             :label "Welcome to Cardy!" :level :level2]]]
       [login-form]
-      [home-panel-button]
-      ]])
+      [display-intro-user-error]
+      ; (let [user-error @(re-frame/subscribe [::subs/intro-error-message])]
+      ;   (when user-error
+      ;     [re-com/box
+      ;       :align-self :center
+      ;       :child
+      ;         [re-com/title
+      ;           :label user-error :level :level2]]))
+      [home-panel-button]]])
+
+
+
+
+
+;; the user error message is not being re-rendered automatically;
+;; that's only happening after a save / recompile
+;; right. the let-binding kind of format is for state that's supposed to
+;; be held in the component across re-renderings (is that true?)
+;; so you want a more sensitive listening
+; (defn intro-panel []
+;   (let [user-error @(re-frame/subscribe [::subs/intro-error-message])]
+;     (fn []
+;       [re-com/v-box
+;         :size "auto"
+;         :gap "20px"
+;         :children [
+;           [re-com/h-box
+;             :size "auto"
+;             :children [
+;               [intro-picture]
+;               [re-com/title
+;                 :label "Welcome to Cardy!" :level :level2]]]
+;           [login-form]
+
+;           (when user-error
+;             [re-com/box
+;               :align-self :center
+;               :child
+;                 [re-com/title
+;                   :label user-error :level :level2]])
+
+;           [home-panel-button]
+
+;           ]])))
+
+
+
+
+; (defn intro-panel []
+;   [re-com/v-box
+;     :size "auto"
+;     :gap "100px"
+;     :children [
+;       [re-com/h-box
+;         :size "auto"
+;         :children [
+;           [intro-picture]
+;           [re-com/title
+;             :label "Welcome to Cardy!" :level :level2]]]
+;       [login-form]
+;       [home-panel-button]
+      ; ]])
+
 
 (defn home-panel []
   [re-com/v-box

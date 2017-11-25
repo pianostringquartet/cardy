@@ -16,6 +16,8 @@
    :current-panel :intro ;; i.e. login / signup
    :panels '(:intro :home :study :edit :profile)
 
+   ;; use nil, because empty string is truthy
+   :intro-error-message nil
 
     ;; study-panel's data
 

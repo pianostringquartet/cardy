@@ -142,6 +142,22 @@
       false)))
 
 
+(defn valid-password-format?
+  [password]
+  "Password should be 8 or more characters long and
+   have at least one of each: uppercase, lowercase, number."
+  (let [uppercase #"[A-Z]"
+        lowercase #"[a-z]"
+        number #"[0-9]"
+        has (fn [regex a-str] (re-find regex a-str))]
+    (if (and (has uppercase password)
+             (has lowercase password)
+             (has number password)
+             (>= (count password) 8))
+        true
+        false)))
+
+
 ;; assumes password is already encrypted
 (defn add-user! [username email password]
   (jdbc/insert!
@@ -150,20 +166,65 @@
     {:username username :email email :password password}))
 
 
+;; users are identified by their e
+(defn user-already-exists? [email]
+  (not (nil? (retrieve-user email))))
+
 ; (defn valid-registration? [username email password]
 ;   (if (and (valid-email-format? email))))
 
-;; this is going to be a weird fn --
-; (defn register-user! [username email password]
+; ;; this is going to be a weird fn --
+; ; (defn register-user! [username email password]
+; (defn register-user! [{:keys [username email password]}]
+;   ; (if (valid-email-format? email)
+;   ; (if (and (valid-email-format? email)
+;   ;          (not (user-already-exists? email)))
+
+;   (if (and (valid-email-format? email)
+;            (not (user-already-exists? email))
+;            (valid-password-format? password)
+;            )
+;     (do
+;       (doall (add-user! username email (encrypt password)))
+;       "registered") ;; return "registered" to front end if succeeded
+;     ; (doall (add-user! username email (encrypt password))
+;     ;   "registered") ;; return "registered" to front end if succeeded
+;     "invalid email or email already exists" ;; else, tell client that email form was bad.
+;     ))
+
+
+
+;;; this fn needs to be more complicated --
+;;; you need a cond, and to return specific errors when
 (defn register-user! [{:keys [username email password]}]
-  (if (valid-email-format? email)
-    (do
-      (doall (add-user! username email (encrypt password)))
-      "registered") ;; return "registered" to front end if succeeded
+  (cond
+    (not (valid-email-format? email))
+      "invalid email format"
+    (user-already-exists? email)
+      "email already in use"
+    (not (valid-password-format? password))
+      "invalid password format"
+    :else (do
+            (doall (add-user! username email (encrypt password)))
+            "registered")))
+
+
+  ; (if (and (valid-email-format? email)
+  ;          (not (user-already-exists? email))
+  ;          (valid-password-format? password)
+  ;          )
+
+      ;; return "registered" to front end if succeeded
     ; (doall (add-user! username email (encrypt password))
     ;   "registered") ;; return "registered" to front end if succeeded
-    "invalid email" ;; else, tell client that email form was bad.
-    ))
+    ; "invalid email or email already exists" ;; else, tell client that email form was bad.
+    ; ))
+
+
+
+
+
+
 
 
 

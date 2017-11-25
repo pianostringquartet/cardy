@@ -11,6 +11,31 @@
 
 
 
+
+;;; PANELS
+
+;; expects panel param to be :keyword
+; (defn change-panel [db [event-id-to-ignore panel]]
+;   (assoc db :current-panel panel))
+
+; (re-frame/reg-event-db
+;   ::change-panel
+;   change-panel)
+
+
+(defn change-panel [db panel]
+  (assoc db :current-panel panel))
+
+(re-frame/reg-event-db
+  ::change-panel
+  (fn change-panel-handler [db [event-id-to-ignore panel]]
+    (change-panel db panel)))
+
+
+
+
+
+
 (def placeholder-card
   {:front "This deck has no cards yet. Add one!"
    :back "You can flip me. But you really should add a card!"})
@@ -407,6 +432,10 @@
 
 ;;; AUTH
 
+
+(defn error-message-for-user [db message]
+  (assoc db :intro-error-message message))
+
 ;; the login event will actually be a custom Fx ...
 (re-frame/reg-event-fx
   ::login
@@ -420,8 +449,8 @@
   (fn login-ajax [credentials]
     (POST "/login-creds"
       {:params credentials
-       ; :handler #(re-frame/dispatch [::attempt-login %])
-       :handler #(js/console.log "login-ajax response was: " %)
+       :handler #(re-frame/dispatch [::attempt-login %])
+       ; :handler #(js/console.log "login-ajax response was: " %)
 
        ;; this is, "on successful POST request" handler;
        ;; if the server decides the creds were incorrect,
@@ -435,8 +464,17 @@
 ;; where login-attempt is what the Server returned
 (defn attempt-login [db [event-id-to-ignore login-attempt]]
   (case login-attempt
-    "succeeded" (assoc db :logged-in true)
-    "failed" (assoc db :logged-in false)))
+    ; "succeeded" (assoc db :logged-in true)
+
+    "succeeded" (change-panel
+                  (assoc db :logged-in true)
+                  :home)
+
+    "failed" (error-message-for-user
+                (assoc db :logged-in false)
+                "Login failed. Double check email and password.")
+    ; "failed" (assoc db :logged-in false)
+    ))
 
 
 (re-frame/reg-event-db
@@ -450,16 +488,17 @@
   ::register
   (fn register-handler [cofx [event-id-to-ignore username email password]]
     {:register-fx {:username username
-                :email email
-                :password password}}))
+                   :email email
+                   :password password}}))
 
 (re-frame/reg-fx
   :register-fx
   (fn register-ajax [credentials]
     (POST "/register-creds"
       {:params credentials
-       ; :handler #(re-frame/dispatch [::attempt-register %])
-       :handler #(js/console.log "register-ajax response was: " %)
+       :handler #(re-frame/dispatch [::attempt-registration %])
+
+       ; :handler #(js/console.log "register-ajax response was: " %)
 
        ;; this is, "on successful POST request" handler;
        ;; if the server decides the creds were incorrect,
@@ -470,16 +509,34 @@
     ))
 
 
+(defn attempt-registration [db [event-id-to-ignore registration-attempt]]
+  (case registration-attempt
 
-;;; PANELS
+    ;; do more than just log someone in -- move them to the Home panel
+    ;; by updating :current-panel in app-db
+    "registered" (change-panel
+                    (assoc db :logged-in true)
+                    :home)
 
-;; expects panel param to be :keyword
-(defn change-panel [db [event-id-to-ignore panel]]
-  (assoc db :current-panel panel))
+    ; "registered" (assoc db :logged-in true)
+      "invalid email format" (error-message-for-user db registration-attempt)
+      "email already in use"  (error-message-for-user db registration-attempt)
+      "invalid password format" (error-message-for-user db registration-attempt)
+
+    (error-message-for-user db "An unknown error happened while registering.")
+    ; i.e. the "else" condition
+    ; (assoc db :logged-in false)
+    ; "invalid email format"
+
+    ))
+
 
 (re-frame/reg-event-db
-  ::change-panel
-  change-panel)
+  ::attempt-registration
+  attempt-registration)
+
+
+
 
 
 
