@@ -7,6 +7,7 @@
             [ajax.core :refer [GET POST]]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
+            [reanimated.core :as anim]
             ))
 
 (trace-forms {:tracer (tracer :color "gold")}
@@ -251,6 +252,10 @@
 ;; FLAG    TEXT
 ;; you want both to stay put,
 ;; and TEXT wraps if too long
+
+
+
+
 (defn card-display []
   [re-com/h-box
     ; :width "300px"
@@ -418,67 +423,7 @@
             :label "Welcome to Cardy!" :level :level2]]]
       [login-form]
       [display-intro-user-error]
-      ; (let [user-error @(re-frame/subscribe [::subs/intro-error-message])]
-      ;   (when user-error
-      ;     [re-com/box
-      ;       :align-self :center
-      ;       :child
-      ;         [re-com/title
-      ;           :label user-error :level :level2]]))
       [home-panel-button]]])
-
-
-
-
-
-;; the user error message is not being re-rendered automatically;
-;; that's only happening after a save / recompile
-;; right. the let-binding kind of format is for state that's supposed to
-;; be held in the component across re-renderings (is that true?)
-;; so you want a more sensitive listening
-; (defn intro-panel []
-;   (let [user-error @(re-frame/subscribe [::subs/intro-error-message])]
-;     (fn []
-;       [re-com/v-box
-;         :size "auto"
-;         :gap "20px"
-;         :children [
-;           [re-com/h-box
-;             :size "auto"
-;             :children [
-;               [intro-picture]
-;               [re-com/title
-;                 :label "Welcome to Cardy!" :level :level2]]]
-;           [login-form]
-
-;           (when user-error
-;             [re-com/box
-;               :align-self :center
-;               :child
-;                 [re-com/title
-;                   :label user-error :level :level2]])
-
-;           [home-panel-button]
-
-;           ]])))
-
-
-
-
-; (defn intro-panel []
-;   [re-com/v-box
-;     :size "auto"
-;     :gap "100px"
-;     :children [
-;       [re-com/h-box
-;         :size "auto"
-;         :children [
-;           [intro-picture]
-;           [re-com/title
-;             :label "Welcome to Cardy!" :level :level2]]]
-;       [login-form]
-;       [home-panel-button]
-      ; ]])
 
 
 (defn home-panel []
@@ -494,6 +439,255 @@
   ])
 
 
+(defn logo-component []
+  (let [tilt (reagent/atom 0)
+        rotation (anim/spring tilt)
+        flip (reagent/atom 90)
+        scale (anim/spring flip)
+        size (reagent/atom 0)
+        width (anim/spring size)]
+    (fn a-logo-component []
+      [:div
+       [anim/timeout #(reset! size 300) 1000]
+
+       ;; (anim/interval f t)
+       ;; "call function f every period t while mounted to DOM"
+       ; [anim/interval #(swap! flip -) 10000]
+       [anim/interval #(swap! flip -) 10000]
+
+       [:img
+        ; {:src "img/monster_zombie_hand-512.png"
+        {:src "bearstack_left_facing.png"
+         :width (str @width "px")
+
+         ;; so we're directly manipulating the CSS here?
+         ;;
+
+         ;; for a genuine
+         :style (zipmap [:-ms-transform
+                         :-moz-transform
+                         :-webkit-transform
+                         :transform]
+                        (repeat (str "rotate(" @rotation "deg) rotateY(" (+ 90 @scale) "deg)")))
+         ; :on-click (fn logo-click [e]
+         ;              (reset! tilt 0))
+         ; :on-mouse-over (fn logo-mouseover [e]
+         ;                  (reset! tilt 15))
+         ; :on-mouse-out (fn logo-mouseout [e]
+         ;                 (reset! tilt 0))
+          }
+        ]
+      ]
+
+      )))
+
+
+;; hmmm... you know the CSS styles that you need, and which elems
+;; need to have which styles.
+;; ... he's achieving his effect via a hover over,
+;; but I want a click...
+;; how about you dynamically change the
+;; CSS?
+;; e.g. store some local state in a ratom
+
+;; also, is there a hiccup equivalent of:
+; "this.classList.toggle('hover')
+
+; (defn flippy-card []
+;   [:div.flip-container
+;     [:div.flipper
+;       [:div.front "The front!"]
+;       [:div.back "The back!"]
+
+;             ; added:
+;       ; [:input ]
+;       ;; add an input button that, when clicked,
+;       ;; modifies the css style
+
+;     ]
+;   ]
+;   )
+
+
+; (defn flippy-card []
+;   [:div.flip-container
+;     {:on-click nil}
+;     [:div.flipper
+;       [:div.front "The front!"]
+;       [:div.back "The back!"]
+
+;             ; added:
+;       ; [:input ]
+;       ;; add an input button that, when clicked,
+;       ;; modifies the css style
+
+;     ]
+;   ]
+;   )
+
+
+
+
+
+
+
+
+
+(defn flippy-card []
+  (let [show-back? (reagent/atom false)]
+    (fn []
+      [:div
+
+      [:input {:type "button" :value "flip da card!"
+              :on-click #(reset! show-back? true)}]
+
+      [:div ; i.e. flip.container
+
+        {:style {:perspective "1000px"
+                         :width "320px"
+                         :height "480px"}}
+
+              ; {:style
+              ;         (if @show-back?
+              ;           ; hover CSS
+              ;           {
+              ;           :perspective "1000px"
+              ;            :width "320px"
+              ;            :height "480px"
+              ;            ; :transform "rotateY(180deg)"
+              ;            ; :transform "rotateY(-180deg)"
+              ;          }
+              ;           ; original CSS
+              ;           {:perspective "1000px"
+              ;            :width "320px"
+              ;            :height "480px"}
+
+              ;                               )
+              ; }
+
+              [:div ; flipper
+                {:style
+                    (if @show-back?
+                        ; hover CSS
+                        {:perspective "1000px"
+                         :width "320px"
+                         :height "480px"
+
+                         :transition "0.6s"
+                         :transform-style "preserve-3d"
+                         :position "relative"
+
+                         :transform "rotateY(180deg)"
+                         ; :transform "rotateY(-180deg)"
+                       }
+                        ; original CSS
+                        {:perspective "1000px"
+                         :width "320px"
+                         :height "480px"
+
+                         :transition "0.6s"
+                         :transform-style "preserve-3d"
+                         :position "relative"
+
+                       }
+                         )
+
+
+                        ; {:transition "0.6s"
+                        ;  :transform-style "preserve-3d"
+                        ;  :position "relative"}
+                }
+
+                [:div ; front
+                  {:style
+
+
+                      (if @show-back?
+                        ;; "flipped"
+                        {:backface-visibility "hidden"
+                          :color "green"
+
+                          ; added:
+                          ; :perspective "1000px"
+                          :background "blue"
+                                                 :position "absolute"
+                                                 :top "0"
+                                                 :left "0"
+
+                                                ;; added
+                                                :width "320px"
+                                                :height "480px"
+
+                                                 ; unique to front
+                                                 :z-index "2"
+                                                 :transform "rotateY(0deg)"
+                                               }
+                        ;; original
+                        {:backface-visibility "hidden"
+
+                          ;; added
+                        ; :perspective "1000px"
+
+                        :background "blue"
+                                                 :position "absolute"
+                                                 :top "0"
+                                                 :left "0"
+
+                                                 ;; added                                                  ;; added
+                                                :width "320px"
+                                                :height "480px"
+
+                                                 ; unique to front
+                                                 :z-index "2"
+                                                 :transform "rotateY(0deg)"
+                                                 })
+
+                          ; {:backface-visibility "hidden"
+                          ;  :position "absolute"
+                          ;  :top "0"
+                          ;  :left "0"
+
+                          ;  ; unique to front
+                          ;  :z-index "2"
+                          ;  }
+                  }
+                  "The front"
+                ]
+                [:div ; back
+                  {:style {:backface-visibility "hidden"
+                           :position "absolute"
+                           :top "0"
+                           :left "0"
+
+                           ; :perspective "1000px" ; added
+
+                           ; :z-index "2" ;; added
+
+                          :background "yellow"
+                           ;; added                                                  ;; added
+                          :width "320px"
+                          :height "480px"
+
+                           ; unique to back
+                           ; :transform "rotateY(-179deg)"
+
+                           :transform "rotateY(180deg)"
+                           }}
+                    "The back"
+
+                ]
+
+              ]
+            ]]
+    )
+  )
+)
+
+
+
+
+
+
 (defn study-panel []
   [re-com/v-box
     :size "auto"
@@ -502,6 +696,10 @@
     :children [
       [card-display]
       [card-review]
+
+      ; [logo-component]
+      [flippy-card]
+
       [home-panel-button]
     ]])
 

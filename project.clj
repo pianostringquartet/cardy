@@ -40,6 +40,7 @@
                  [medley "1.0.0"] ;; additional fns e.g. map-vals, take-upto etc.
                  [day8.re-frame/test "0.1.5"] ;; re-frame testing
                  [buddy/buddy-core "1.4.0"] ;; security
+                 [reanimated "0.6.0"] ;; animation
                  ]
 
   :min-lein-version "2.0.0"

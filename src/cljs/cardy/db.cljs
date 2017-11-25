@@ -13,7 +13,9 @@
    :temp-pw "temporary pw"
 
 
-   :current-panel :intro ;; i.e. login / signup
+   ; :current-panel :intro ;; i.e. login / signup
+   :current-panel :study
+
    :panels '(:intro :home :study :edit :profile)
 
    ;; use nil, because empty string is truthy
