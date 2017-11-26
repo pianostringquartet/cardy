@@ -45,6 +45,10 @@
     @(re-frame/subscribe [::subs/current-phrase])])
 
 
+
+
+
+
 ; (defn show-current-phrase []
 ;   [re-com/title
 ;     :label @(re-frame/subscribe [::subs/current-phrase])
@@ -65,7 +69,11 @@
 (defn flip-button []
     [:input
       {:type "button" :value "flip"
-       :on-click #(re-frame/dispatch [::events/flip])}])
+
+       ; :on-click #(re-frame/dispatch [::events/flip])
+       :on-click #(re-frame/dispatch [::events/show-back])
+
+       }])
 
 ;; i.e. "I don't know this "
 (defn next-button []
@@ -236,15 +244,28 @@
 ;       [flip-button]
 ;       [next-button]]])
 
+
 (defn card-review []
   [re-com/h-box
     ; :size "initial"
-    :size "auto"
+    ; :size "auto"
     ; :align-self :center
+    :gap "20px"
     :children [
       [exclude-current-card]
-      [flip-button]
       [next-button]]])
+
+
+
+; (defn card-review []
+;   [re-com/h-box
+;     ; :size "initial"
+;     :size "auto"
+;     ; :align-self :center
+;     :children [
+;       [exclude-current-card]
+;       [flip-button]
+;       [next-button]]])
 
 
 
@@ -254,25 +275,98 @@
 ;; and TEXT wraps if too long
 
 
+(defn show-current-card-front []
+  [re-com/p
+    {:style
+      {:font-size "120%"
+      :width "150px" :min-width "150px"
+      }}
+    @(re-frame/subscribe [::subs/current-card-front])])
+
+(defn show-current-card-back []
+  [re-com/p
+    {:style
+      {:font-size "120%"
+      :width "150px" :min-width "150px"
+      }}
+    @(re-frame/subscribe [::subs/current-card-back])])
 
 
-(defn card-display []
+(defn card-front-display []
   [re-com/h-box
     ; :width "300px"
     ; :height "100px"
     :children [
       [re-com/box
-        :child [show-current-flag]
+        ; :child [show-current-flag]
+        :child [:img {:src @(re-frame/subscribe [::subs/front-flag])}]
         :width "120px"
         :height "90px"
         :padding "20px 10px 10px 10px"
+        :align-self :center
         ]
       [re-com/box
-        :child [show-current-phrase]
+        ; :child [show-current-phrase]
+        :child [show-current-card-front]
+
         :size "auto"
         :max-width "50px"
         :padding "20px 10px 10px 10px"
         :align-self :center]]])
+
+
+(defn card-back-display []
+  [re-com/h-box
+    ; :width "300px"
+    ; :height "100px"
+    :children [
+      [re-com/box
+        ; :child [show-current-flag]
+        :child [:img {:src @(re-frame/subscribe [::subs/back-flag])}]
+        :width "120px"
+        :height "90px"
+        :padding "20px 10px 10px 10px"
+        ; :align-self :center
+        ; :justify :start
+        ]
+      [re-com/box
+        ; :child [show-current-phrase]
+        ; :child [show-current-card-back]
+        :child [re-com/scroller
+          :v-scroll :auto
+          :height "110px"
+          ; :width "100px"
+          :child [show-current-card-back]]
+
+        :size "auto"
+        ; :max-width "50px"
+        :padding "20px 10px 10px 10px"
+        :align-self :center]]])
+
+
+
+
+
+
+
+
+; (defn card-display []
+;   [re-com/h-box
+;     ; :width "300px"
+;     ; :height "100px"
+;     :children [
+;       [re-com/box
+;         :child [show-current-flag]
+;         :width "120px"
+;         :height "90px"
+;         :padding "20px 10px 10px 10px"
+;         ]
+;       [re-com/box
+;         :child [show-current-phrase]
+;         :size "auto"
+;         :max-width "50px"
+;         :padding "20px 10px 10px 10px"
+;         :align-self :center]]])
 
 
 (defn card-manipulation []
@@ -439,269 +533,150 @@
   ])
 
 
-(defn logo-component []
-  (let [tilt (reagent/atom 0)
-        rotation (anim/spring tilt)
-        flip (reagent/atom 90)
-        scale (anim/spring flip)
-        size (reagent/atom 0)
-        width (anim/spring size)]
-    (fn a-logo-component []
-      [:div
-       [anim/timeout #(reset! size 300) 1000]
-
-       ;; (anim/interval f t)
-       ;; "call function f every period t while mounted to DOM"
-       ; [anim/interval #(swap! flip -) 10000]
-       [anim/interval #(swap! flip -) 10000]
-
-       [:img
-        ; {:src "img/monster_zombie_hand-512.png"
-        {:src "bearstack_left_facing.png"
-         :width (str @width "px")
-
-         ;; so we're directly manipulating the CSS here?
-         ;;
-
-         ;; for a genuine
-         :style (zipmap [:-ms-transform
-                         :-moz-transform
-                         :-webkit-transform
-                         :transform]
-                        (repeat (str "rotate(" @rotation "deg) rotateY(" (+ 90 @scale) "deg)")))
-         ; :on-click (fn logo-click [e]
-         ;              (reset! tilt 0))
-         ; :on-mouse-over (fn logo-mouseover [e]
-         ;                  (reset! tilt 15))
-         ; :on-mouse-out (fn logo-mouseout [e]
-         ;                 (reset! tilt 0))
-          }
-        ]
-      ]
-
-      )))
-
-
-;; hmmm... you know the CSS styles that you need, and which elems
-;; need to have which styles.
-;; ... he's achieving his effect via a hover over,
-;; but I want a click...
-;; how about you dynamically change the
-;; CSS?
-;; e.g. store some local state in a ratom
-
-;; also, is there a hiccup equivalent of:
-; "this.classList.toggle('hover')
-
-; (defn flippy-card []
-;   [:div.flip-container
-;     [:div.flipper
-;       [:div.front "The front!"]
-;       [:div.back "The back!"]
-
-;             ; added:
-;       ; [:input ]
-;       ;; add an input button that, when clicked,
-;       ;; modifies the css style
-
-;     ]
-;   ]
-;   )
-
-
-; (defn flippy-card []
-;   [:div.flip-container
-;     {:on-click nil}
-;     [:div.flipper
-;       [:div.front "The front!"]
-;       [:div.back "The back!"]
-
-;             ; added:
-;       ; [:input ]
-;       ;; add an input button that, when clicked,
-;       ;; modifies the css style
-
-;     ]
-;   ]
-;   )
 
 
 
+(defn show-front-flag []
+  [:img
+    {:src
+      @(re-frame/subscribe [::subs/front-flag])
+      }])
 
 
 
+(def card-style-front-and-back
+  {:backface-visibility "hidden"
+   :background "lightgrey"
+   :position "absolute"
+   :top "0"
+   :left "0"
+   :width "300px"
+   ; :height "300px"
+   ; :height "200px"
+   :height "150px"
+   })
+
+
+(defn card-front []
+  [re-com/box
+    :style (merge
+              card-style-front-and-back
+              {:z-index "2"
+               :transform "rotateY(0deg)"})
+    :align-self :start
+    :child [card-front-display]])
+
+
+(defn card-back []
+  [re-com/box
+    :style (merge
+              card-style-front-and-back
+              {:transform "rotateY(180deg)"})
+    :child [card-back-display]])
+
+
+;; works
+(defn card [show-back?]
+  [re-com/v-box
+    :style
+    (let [main-style {
+      ; :height "90px"
+                      ; :width "50px"
+                      :transition "0.6s"
+                      :transform-style "preserve-3d"
+                      :position "relative"}]
+              (if @show-back?
+                (assoc main-style :transform "rotateY(180deg)")
+                main-style))
+    :children [
+      [card-front]
+      [card-back]]])
 
 
 
-(defn flippy-card []
+;;; was flip-card-container
+(defn flippable-card [show-back?]
   (let [show-back? (reagent/atom false)]
     (fn []
-      [:div
+      [re-com/v-box
+        ; :style {:perspective "1000px" :width "50px"}
+        :size "auto"
+        :style {:perspective "1000px"
 
-      [:input {:type "button" :value "flip da card!"
-              :on-click #(reset! show-back? true)}]
+                ;; we want this to always be at least this big
+                ; :min-width "50px"
+                ; :min-height "150px"
 
-      [:div ; i.e. flip.container
+                :width "300px"
+                :height "150px"
 
-        {:style {:perspective "1000px"
-                         :width "320px"
-                         :height "480px"}}
-
-              ; {:style
-              ;         (if @show-back?
-              ;           ; hover CSS
-              ;           {
-              ;           :perspective "1000px"
-              ;            :width "320px"
-              ;            :height "480px"
-              ;            ; :transform "rotateY(180deg)"
-              ;            ; :transform "rotateY(-180deg)"
-              ;          }
-              ;           ; original CSS
-              ;           {:perspective "1000px"
-              ;            :width "320px"
-              ;            :height "480px"}
-
-              ;                               )
-              ; }
-
-              [:div ; flipper
-                {:style
-                    (if @show-back?
-                        ; hover CSS
-                        {:perspective "1000px"
-                         :width "320px"
-                         :height "480px"
-
-                         :transition "0.6s"
-                         :transform-style "preserve-3d"
-                         :position "relative"
-
-                         :transform "rotateY(180deg)"
-                         ; :transform "rotateY(-180deg)"
-                       }
-                        ; original CSS
-                        {:perspective "1000px"
-                         :width "320px"
-                         :height "480px"
-
-                         :transition "0.6s"
-                         :transform-style "preserve-3d"
-                         :position "relative"
-
-                       }
-                         )
+                ; :max-width "50px"
+              }
+        :attr {:on-click #(reset! show-back? (if @show-back? false true))}
+        :children [[card show-back?]]])))
 
 
-                        ; {:transition "0.6s"
-                        ;  :transform-style "preserve-3d"
-                        ;  :position "relative"}
-                }
-
-                [:div ; front
-                  {:style
 
 
-                      (if @show-back?
-                        ;; "flipped"
-                        {:backface-visibility "hidden"
-                          :color "green"
 
-                          ; added:
-                          ; :perspective "1000px"
-                          :background "blue"
-                                                 :position "absolute"
-                                                 :top "0"
-                                                 :left "0"
+; ;;
+; (defn flippable-card []
+;   (let [show-back? (reagent/atom false)]
+;     (fn []
+;       [re-com/v-box
+;         :children [
+;           [flip-card-container show-back?]
 
-                                                ;; added
-                                                :width "320px"
-                                                :height "480px"
+;           [:input {:type "button" :value "flip the card!"
+;                    :on-click #(reset! show-back? (if @show-back? false true))}]
 
-                                                 ; unique to front
-                                                 :z-index "2"
-                                                 :transform "rotateY(0deg)"
-                                               }
-                        ;; original
-                        {:backface-visibility "hidden"
+;           ; [flip-card-container]
+;           ; [:input {:type "button" :value "flip the card!"
+;           ;          :on-click #(reset! show-back? (if @show-back? false true))}]
 
-                          ;; added
-                        ; :perspective "1000px"
-
-                        :background "blue"
-                                                 :position "absolute"
-                                                 :top "0"
-                                                 :left "0"
-
-                                                 ;; added                                                  ;; added
-                                                :width "320px"
-                                                :height "480px"
-
-                                                 ; unique to front
-                                                 :z-index "2"
-                                                 :transform "rotateY(0deg)"
-                                                 })
-
-                          ; {:backface-visibility "hidden"
-                          ;  :position "absolute"
-                          ;  :top "0"
-                          ;  :left "0"
-
-                          ;  ; unique to front
-                          ;  :z-index "2"
-                          ;  }
-                  }
-                  "The front"
-                ]
-                [:div ; back
-                  {:style {:backface-visibility "hidden"
-                           :position "absolute"
-                           :top "0"
-                           :left "0"
-
-                           ; :perspective "1000px" ; added
-
-                           ; :z-index "2" ;; added
-
-                          :background "yellow"
-                           ;; added                                                  ;; added
-                          :width "320px"
-                          :height "480px"
-
-                           ; unique to back
-                           ; :transform "rotateY(-179deg)"
-
-                           :transform "rotateY(180deg)"
-                           }}
-                    "The back"
-
-                ]
-
-              ]
-            ]]
-    )
-  )
-)
-
-
+;           ]])))
 
 
 
 
 (defn study-panel []
   [re-com/v-box
-    :size "auto"
-    :gap "50px"
+    :gap "20px"
+    :padding "20px 20px 20px 20px"
     :align :center
     :children [
-      [card-display]
+      [flippable-card]
+
+      ;; card-review is just a component of two buttons
+      ;; no styling there
       [card-review]
-
-      ; [logo-component]
-      [flippy-card]
-
       [home-panel-button]
-    ]])
+    ]
+
+    ])
+
+
+
+
+
+; (defn study-panel []
+;   [re-com/v-box
+;     :size "auto"
+;     :gap "50px"
+;     :align :center
+;     :children [
+
+;       [flippable-card]
+
+;       [card-display]
+
+;       [card-review]
+
+;       ; [logo-component]
+;       ; [flippable-card]
+
+;       [home-panel-button]
+;     ]])
 
 (defn edit-panel []
   [re-com/v-box
@@ -726,11 +701,6 @@
       [home-panel-button]
 
     ]])
-
-
-
-
-
 
 
 

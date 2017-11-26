@@ -179,6 +179,18 @@
           (assoc db :current-face :front)))))
 
 
+
+
+(re-frame/reg-event-db
+  ::show-back
+  (fn show-back-handler [db]
+    (let [currently-showing-back? (:show-back? db)]
+      (if currently-showing-back?
+          (assoc db :show-back? :false)
+          (assoc db :show-back? :true)))))
+
+
+
 ;; accepts db, returns card
 (defn next-card [db]
   (let [ineligible

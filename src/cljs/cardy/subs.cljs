@@ -40,6 +40,38 @@
   (fn cards [db]
     (:cards db)))
 
+
+
+
+
+(re-frame/reg-sub
+  ::current-card-front
+  (fn current-card-front [db]
+    (:front (:current-card db))))
+
+(re-frame/reg-sub
+  ::current-card-back
+  (fn current-card-back [db]
+    (:back (:current-card db))))
+
+
+(re-frame/reg-sub
+  ::front-flag
+  (fn front-flag [db]
+    (:front-flag db)))
+
+(re-frame/reg-sub
+  ::back-flag
+  (fn back-flag [db]
+    (:back-flag db)))
+
+
+(re-frame/reg-sub
+  ::show-back?
+  (fn show-back [db]
+    (:show-back? db)))
+
+
 ;; still how to source the app's current card,
 ;; but now the "current card" is a number (i.e. an index position)
 ;; instead of an actual card
