@@ -15,6 +15,7 @@
 
    ; :current-panel :intro ;; i.e. login / signup
    :current-panel :study
+   ; :current-panel :edit
 
    :panels '(:intro :home :study :edit :profile)
 

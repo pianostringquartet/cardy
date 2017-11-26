@@ -15,11 +15,6 @@
 
 
 
-
-
-;; from cardy.core.cljs:
-
-
 (def new-color-deck-2
   '({:deck "die Farben" :front "grau", :back "grey"}
     {:deck "die Farben" :front "gelb", :back "yellow"}
@@ -35,45 +30,6 @@
     {:type "button" :value "sync decks"
      :on-click #(re-frame/dispatch [::events/push-decks])}])
 
-
-
-; p has an implicit wrapping
-(defn show-current-phrase []
-  [re-com/p
-    {:style
-      {:font-size "130%" :width "150px" :min-width "150px"}}
-    @(re-frame/subscribe [::subs/current-phrase])])
-
-
-
-
-
-
-; (defn show-current-phrase []
-;   [re-com/title
-;     :label @(re-frame/subscribe [::subs/current-phrase])
-;     :level :level2])
-
-
-
-(defn current-flag []
-  (let [current-face @(re-frame/subscribe [::subs/current-face])]
-    (if (= current-face :front)
-      "german-flag-small.jpg"
-      "american-flag-medium.jpg")))
-
-(defn show-current-flag []
-  [:img
-    {:src (current-flag)}])
-
-(defn flip-button []
-    [:input
-      {:type "button" :value "flip"
-
-       ; :on-click #(re-frame/dispatch [::events/flip])
-       :on-click #(re-frame/dispatch [::events/show-back])
-
-       }])
 
 ;; i.e. "I don't know this "
 (defn next-button []
@@ -101,7 +57,7 @@
                   :model selected-deck
                   :placeholder "select a deck"
                   :width "300px"
-                  :max-height "400px"
+                  :max-height "180px"
                   :on-change
                     #(re-frame/dispatch [::events/change-deck (reset! selected-deck %)])
                   ]])))
@@ -127,25 +83,6 @@
       {:type "button" :value "throw away current card"
        :on-click #(re-frame/dispatch [::events/remove-card])}])
 
-
-;; when you add a deck, you should be required to add a card too
-#_(defn add-deck []
-  (let [text-val (reagent/atom "")]
-    (fn []
-      [re-com/input-text
-        :model text-val
-        :change-on-blur? true
-        :placeholder "add a new deck"
-        :on-change
-          #(re-frame/dispatch [::events/add-deck (reset! text-val %)])])))
-
-;; so you need more complicated logic here
-;; i.e. you need to show the "add-card" option here too
-;; ... you're basically saying that a deck can't be empty.
-;; What you probably need is a form, with two text entry spots?
-;; deck name then first card in deck.
-
-
 ;; A deck is only "empty" (i.e. contains no cards) if :cards is empty
 ;; AND :excluded is empty too
 (defn add-deck []
@@ -157,9 +94,6 @@
         :placeholder "add a new deck"
         :on-change
           #(re-frame/dispatch [::events/add-deck (reset! text-val %)])])))
-
-
-
 
 (defn remove-deck []
   (let [text-val (reagent/atom "")]
@@ -207,6 +141,10 @@
           (when @show? [re-com/modal-panel
                           :backdrop-color "grey"
                           :backdrop-opacity 0.4
+
+                          ; :style {:max-width "200px"}
+
+
                           ;:child [:div "I am a child!"]])
                           :child [deck-modal-dialog process-ok process-cancel]]
                           )
@@ -235,16 +173,6 @@
       ]])
 
 
-;; component for reviewing cards
-; (defn card-review []
-;   [re-com/h-box
-;     :size "auto"
-;     :children [
-;       [exclude-current-card]
-;       [flip-button]
-;       [next-button]]])
-
-
 (defn card-review []
   [re-com/h-box
     ; :size "initial"
@@ -256,117 +184,49 @@
       [next-button]]])
 
 
-
-; (defn card-review []
-;   [re-com/h-box
-;     ; :size "initial"
-;     :size "auto"
-;     ; :align-self :center
-;     :children [
-;       [exclude-current-card]
-;       [flip-button]
-;       [next-button]]])
+(defn show-flag [flag]
+  [:img {:src flag}])
 
 
-
-;; this is:
-;; FLAG    TEXT
-;; you want both to stay put,
-;; and TEXT wraps if too long
-
-
-(defn show-current-card-front []
+;; better: a single wrap-text, taking
+;; card-text and style-map as parameters
+(defn wrap-text [card-text]
   [re-com/p
     {:style
       {:font-size "120%"
       :width "150px" :min-width "150px"
       }}
-    @(re-frame/subscribe [::subs/current-card-front])])
+    card-text])
 
-(defn show-current-card-back []
+(defn wrap-edit-text [card-text]
   [re-com/p
     {:style
-      {:font-size "120%"
-      :width "150px" :min-width "150px"
+      {:font-size "90%"
+      ; :width "150px" :min-width "150px"
+      ; :width "100px" :min-width "100px"
+      :width "120px" :min-width "120px"
       }}
-    @(re-frame/subscribe [::subs/current-card-back])])
+    card-text])
 
 
-(defn card-front-display []
+;; better?: flag and text display
+(defn card-side-display [flag card-text]
   [re-com/h-box
-    ; :width "300px"
-    ; :height "100px"
     :children [
       [re-com/box
-        ; :child [show-current-flag]
-        :child [:img {:src @(re-frame/subscribe [::subs/front-flag])}]
+        :child [show-flag flag]
         :width "120px"
         :height "90px"
-        :padding "20px 10px 10px 10px"
-        :align-self :center
-        ]
+        :padding "20px 10px 10px 10px"]
       [re-com/box
-        ; :child [show-current-phrase]
-        :child [show-current-card-front]
-
-        :size "auto"
-        :max-width "50px"
-        :padding "20px 10px 10px 10px"
-        :align-self :center]]])
-
-
-(defn card-back-display []
-  [re-com/h-box
-    ; :width "300px"
-    ; :height "100px"
-    :children [
-      [re-com/box
-        ; :child [show-current-flag]
-        :child [:img {:src @(re-frame/subscribe [::subs/back-flag])}]
-        :width "120px"
-        :height "90px"
-        :padding "20px 10px 10px 10px"
-        ; :align-self :center
-        ; :justify :start
-        ]
-      [re-com/box
-        ; :child [show-current-phrase]
-        ; :child [show-current-card-back]
         :child [re-com/scroller
           :v-scroll :auto
           :height "110px"
-          ; :width "100px"
-          :child [show-current-card-back]]
-
+          :child [wrap-text card-text]]
         :size "auto"
-        ; :max-width "50px"
         :padding "20px 10px 10px 10px"
-        :align-self :center]]])
-
-
-
-
-
-
-
-
-; (defn card-display []
-;   [re-com/h-box
-;     ; :width "300px"
-;     ; :height "100px"
-;     :children [
-;       [re-com/box
-;         :child [show-current-flag]
-;         :width "120px"
-;         :height "90px"
-;         :padding "20px 10px 10px 10px"
-;         ]
-;       [re-com/box
-;         :child [show-current-phrase]
-;         :size "auto"
-;         :max-width "50px"
-;         :padding "20px 10px 10px 10px"
-;         :align-self :center]]])
+        :align-self :center]
+        ]])
 
 
 (defn card-manipulation []
@@ -378,25 +238,6 @@
 
 
 
-
-
-
-
-; (defn main-components []
-;   [re-com/v-box
-;     :size "auto" ;; = "flex"
-;     :gap "20px" ;; 10px gap between each child
-;     :align :center
-;     :children [
-;       [card-display]
-;       [card-review]
-      ; [card-manipulation]
-      ; [push-decks] ;; better place for this?
-      ; [deck-modal]
-;     ]])
-
-
-
 ;; Login / signup
 
 ;; you don't need a "form" per se
@@ -404,9 +245,6 @@
 ;; store the input in the app-db as we get it (or just keep in atom?)
 ;; then when user hits a separate "submit" button,
 ;; we send the data back to the server to validate it etc.
-
-
-
 
 
 (defn login-form []
@@ -522,25 +360,57 @@
 
 (defn home-panel []
   [re-com/v-box
-    :gap "20px"
+    :gap "50px"
+    :align :center
     :children [
       [re-com/title :label "HOME PANEL" :level :level1]
-      [study-panel-button]
-      [edit-panel-button]
-      [profile-panel-button]
+
+      [re-com/h-box
+        :size "auto"
+        :gap "40px"
+        :children [
+          [re-com/v-box
+            :align-self :center
+            :children [
+                [re-com/title
+                    :label "Deck:"]
+                [re-com/title
+                    :label
+                      (name @(re-frame/subscribe [::subs/current-deck]))
+                                    ]]]
+          [re-com/v-box
+            :gap "20px"
+            :children [
+              [study-panel-button]
+              [edit-panel-button]]]
+        ]
+      ]
+      [re-com/h-box
+        :gap "20px"
+        :children [
+          [deck-modal]
+          [profile-panel-button]
+        ]
+      ]
       [intro-panel-button]
+
       ]
   ])
 
 
 
+; (defn home-panel []
+;   [re-com/v-box
+;     :gap "20px"
+;     :children [
+;       [re-com/title :label "HOME PANEL" :level :level1]
+;       [study-panel-button]
+;       [edit-panel-button]
+;       [profile-panel-button]
+;       [intro-panel-button]
+;       ]
+;   ])
 
-
-(defn show-front-flag []
-  [:img
-    {:src
-      @(re-frame/subscribe [::subs/front-flag])
-      }])
 
 
 
@@ -551,8 +421,6 @@
    :top "0"
    :left "0"
    :width "300px"
-   ; :height "300px"
-   ; :height "200px"
    :height "150px"
    })
 
@@ -564,7 +432,10 @@
               {:z-index "2"
                :transform "rotateY(0deg)"})
     :align-self :start
-    :child [card-front-display]])
+    :child [
+      card-side-display
+        @(re-frame/subscribe [::subs/front-flag])
+        @(re-frame/subscribe [::subs/current-card-front])]])
 
 
 (defn card-back []
@@ -572,7 +443,12 @@
     :style (merge
               card-style-front-and-back
               {:transform "rotateY(180deg)"})
-    :child [card-back-display]])
+    :align-self :start
+    :child [
+      card-side-display
+        @(re-frame/subscribe [::subs/back-flag])
+        @(re-frame/subscribe [::subs/current-card-back])]])
+
 
 
 ;; works
@@ -599,44 +475,12 @@
   (let [show-back? (reagent/atom false)]
     (fn []
       [re-com/v-box
-        ; :style {:perspective "1000px" :width "50px"}
         :size "auto"
         :style {:perspective "1000px"
-
-                ;; we want this to always be at least this big
-                ; :min-width "50px"
-                ; :min-height "150px"
-
                 :width "300px"
-                :height "150px"
-
-                ; :max-width "50px"
-              }
+                :height "150px"}
         :attr {:on-click #(reset! show-back? (if @show-back? false true))}
         :children [[card show-back?]]])))
-
-
-
-
-
-; ;;
-; (defn flippable-card []
-;   (let [show-back? (reagent/atom false)]
-;     (fn []
-;       [re-com/v-box
-;         :children [
-;           [flip-card-container show-back?]
-
-;           [:input {:type "button" :value "flip the card!"
-;                    :on-click #(reset! show-back? (if @show-back? false true))}]
-
-;           ; [flip-card-container]
-;           ; [:input {:type "button" :value "flip the card!"
-;           ;          :on-click #(reset! show-back? (if @show-back? false true))}]
-
-;           ]])))
-
-
 
 
 (defn study-panel []
@@ -646,50 +490,137 @@
     :align :center
     :children [
       [flippable-card]
-
-      ;; card-review is just a component of two buttons
-      ;; no styling there
       [card-review]
-      [home-panel-button]
+      [home-panel-button]]])
+
+
+; (defn card-edit-display [front back]
+;   [re-com/h-box
+;         :size "auto"
+
+;         ; a border instead of a background would be better?
+;         :style {:background "lightgrey"}
+
+;         ; :padding "20px 10px 10px 10px"
+;         :align-self :center
+;         :children [
+;           [re-com/scroller
+;             :v-scroll :auto
+;             :height "45px"
+;             :child [wrap-edit-text front]
+;           ]
+;           [re-com/scroller
+;             :v-scroll :auto
+;             :height "45px"
+;             :child [wrap-edit-text back]
+;           ]
+;         ]
+;         ]
+;         )
+
+
+(defn card-edit-display [front back]
+  [re-com/border
+      :border "1px dashed lightgrey"
+      ; top, right, bottom, left
+      :padding "10px 10px 0px 10px"
+      :child [re-com/h-box
+          :size "auto"
+          :align-self :center
+          :children [
+            [re-com/scroller
+              :v-scroll :auto
+              :height "45px"
+              :child [wrap-edit-text front]
+            ]
+            [re-com/scroller
+              :v-scroll :auto
+              :height "45px"
+              :child [wrap-edit-text back]
+            ]
+          ]
+      ]]
+        )
+
+
+
+
+
+
+(defn clickable-trash-icon [front back]
+  [re-com/box
+    :child [:img
+      {:src "trash_icon.png"
+        :style {:max-width "20px" :max-height "20px"}
+        :on-click #(re-frame/dispatch [::events/remove-card front back])}]]
+      )
+
+
+(defn trash-and-card [front back]
+  [re-com/h-box
+    :gap "10px"
+    ; :padding "10px"
+    ; :padding "0px 10px 10px 0px"
+    :children [
+      [clickable-trash-icon front back]
+      [card-edit-display front back]
+
+    ]])
+
+
+(defn card-displayer [{:keys [front back]}]
+  [re-com/box
+    :padding "10px"
+    :child [trash-and-card front back]])
+
+;; this whole thing should be in a scroller as well --
+;; if there are too many cards too display at once
+(defn card-list []
+  (let [cards @(re-frame/subscribe [::subs/cards]) ;; will be a set
+        removed-cards @(re-frame/subscribe [::subs/removed])]
+    [re-com/v-box
+      ; :gap "40px"
+      :children [
+        (for [card (clojure.set/difference cards removed-cards)]
+          ^{:key (rand-int 99999)}
+          [card-displayer card])
+      ]
     ]
-
-    ])
-
+))
 
 
 
-
-; (defn study-panel []
-;   [re-com/v-box
-;     :size "auto"
-;     :gap "50px"
-;     :align :center
-;     :children [
-
-;       [flippable-card]
-
-;       [card-display]
-
-;       [card-review]
-
-;       ; [logo-component]
-;       ; [flippable-card]
-
-;       [home-panel-button]
-;     ]])
-
+;; second, "to do" version of edit-panel
+; (defn todos []
 (defn edit-panel []
   [re-com/v-box
+    :padding "50px 0px 20px 0px"
     :gap "20px"
     :align :center
     :children [
-      [card-manipulation]
-      [push-decks] ;; better place for this?
-      [deck-modal]
+      [add-card] ;; "add todo"
+      [card-list]
+
       [home-panel-button]
-      ]
-  ]
-  )
+
+    ]])
+
+
+; (defn edit-panel []
+;   [re-com/v-box
+;     :gap "20px"
+;     :align :center
+;     :children [
+;       [card-manipulation]
+;       [push-decks] ;; better place for this?
+;       [deck-modal]
+;       [home-panel-button]
+
+;       [re-com/title :label "DEV: "]
+;       [todos]
+;       ]
+;   ]
+;   )
 
 
 (defn profile-panel []
@@ -703,48 +634,13 @@
     ]])
 
 
-
-
-;; logic for which panel to show
-(defn show-panel []
+(defn cardy-app []
   (case @(re-frame/subscribe [::subs/current-panel])
-
-    ; :intro [study-panel]
-
     :intro [intro-panel]
     :home [home-panel]
     :study [study-panel]
     :edit [edit-panel]
-    :profile [profile-panel]
-
-    )
-
-  )
-
-;; i.e. show panel
-(defn cardy-app []
-  [show-panel])
-
-
-
-; (defn cardy-app []
-;   [re-com/v-box
-;     :size "auto"
-;     :gap "50px"
-;     :align :center
-;     :children [
-;       [main-components]
-;       [visualization]
-;       ]])
-
-;; Remember that each child Component in a parent Component needs to be
-;; wrapped in brackets (why is this again?).
-;; re-com components are not any different in this regard than a regular
-;; Reagent component
-
-
-
-
+    :profile [profile-panel]))
 
 
 ) ;; end of tracer form

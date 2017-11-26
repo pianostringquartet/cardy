@@ -247,16 +247,48 @@
 
 
 
-(defn remove-card [db]
+; (defn remove-card [db]
+;   (as-> db app-state
+;     (assoc app-state :removed (clojure.set/union
+;                                 #{(:current-card app-state)}
+;                                  (:removed app-state)))
+;     (new-current-card app-state)))
+
+
+; (re-frame/reg-event-db
+;   ::remove-card
+;   remove-card)
+
+
+;; return ONE set;
+;; thought set might contain more than one card...
+;; set -> set
+(defn card-to-remove [cards front back]
+  (let [cards-to-remove (clojure.set/select
+                        #{{:front front :back back}}
+                        cards)]
+    (if (empty? cards-to-remove)
+      #{}
+      cards-to-remove)))
+
+
+;; now, instead of just removing current card,
+;; we want to "find" the card in :cards to remove
+;; i.e. we receive a front and a back,
+;; and exclude the card with that front and back
+(defn remove-card [db front back]
   (as-> db app-state
     (assoc app-state :removed (clojure.set/union
-                                #{(:current-card app-state)}
-                                 (:removed app-state)))
+                                (card-to-remove (:cards app-state) front back)
+                                (:removed app-state)))
     (new-current-card app-state)))
+
+
 
 (re-frame/reg-event-db
   ::remove-card
-  remove-card)
+  (fn remove-card-handler [db [event-id-to-ignore front back]]
+    (remove-card db front back)))
 
 
 
