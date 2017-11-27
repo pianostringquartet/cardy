@@ -247,20 +247,42 @@
 ;; we send the data back to the server to validate it etc.
 
 
+(defn forgot-pw-form []
+  ; (let [email (reagent/atom "")]
+  (let [email (reagent/atom "")
+        pw-reset-message @(re-frame/subscribe [::subs/pw-reset-message])]
+    (fn []
+      [re-com/v-box
+        :gap "10px"
+        :children [
+          [re-com/label :label "Password reset"]
+
+          ;; enter email address
+          [re-com/input-text
+              :model email
+              :placeholder "email"
+              :on-change #(reset! email %)
+              :change-on-blur? true]
+          [:input
+              {:type "button" :value "send password reset code"
+               :on-click #(re-frame/dispatch
+                            [::events/send-pw-reset-email @email])}]
+          ;; i.e. only show pw-reset-message
+          ;; when there's something to show!
+          (when pw-reset-message
+            [re-com/label :label pw-reset-message])
+          ]
+      ])))
+
+
 (defn login-form []
   (let [username (reagent/atom "")
         email (reagent/atom "")
         password (reagent/atom "")]
-
       (fn []
         [re-com/v-box
               :gap "10px"
               :children [
-                [re-com/input-text
-                  :model username
-                  :placeholder "username"
-                  :on-change #(reset! username %)
-                  :change-on-blur? true]
                 [re-com/input-text
                   :model email
                   :placeholder "email"
@@ -271,23 +293,20 @@
                   :placeholder "password"
                   :on-change #(reset! password %)
                   :change-on-blur? true]
-                [:input
-                  {:type "button" :value "login"
-                   :on-click #(re-frame/dispatch [::events/login @username
-                                                                @email
-                                                                @password])
-                   }]
 
-                [:input
-                  {:type "button" :value "register"
-                   :on-click #(re-frame/dispatch [::events/register @username
-                                                                @email
-                                                                @password])
-                   }]
-
-              ]
-            ])
-    ))
+                [re-com/h-box
+                  :children [
+                    [:input
+                      {:type "button" :value "login"
+                       :on-click #(re-frame/dispatch [::events/login @username
+                                                                    @email
+                                                                    @password])}]
+                    [:input
+                      {:type "button" :value "register"
+                       :on-click #(re-frame/dispatch [::events/register @username
+                                                                    @email
+                                                                    @password])}]
+                  ]]]])))
 
 
 
@@ -298,8 +317,21 @@
 
 (defn intro-picture []
   [re-com/box
-  :width "450px"
-  :height "300px"
+  ; :width "450px"
+  ; :height "300px"
+
+  ; :size "auto"
+  ; :size "0 0 200px"
+
+  ;; on iPhone 6 vertical position,
+  ;; he doesn't get resized?
+  ;; flexbox is a little beyond me at the moment...
+
+  ; :min-width "100px"
+  ; :min-height "50px"
+  :max-width "300px"
+  :max-height "200px"
+
   :child [:img
       {:src "intent_bear.png"}]])
 
@@ -339,22 +371,27 @@
             :align-self :center
             :child
               [re-com/title
-                :label user-error :level :level2]])))
+                :label user-error :level :level3
+                :style {:color "red" :font-size "14px"}
+                ]
+          ]
+                )))
 
 
 (defn intro-panel []
   [re-com/v-box
-    :size "auto"
     :gap "20px"
+    :align :center
     :children [
-      [re-com/h-box
-        :size "auto"
+      [intro-picture]
+      [re-com/v-box
+        :gap "5px"
         :children [
-          [intro-picture]
-          [re-com/title
-            :label "Welcome to Cardy!" :level :level2]]]
-      [login-form]
-      [display-intro-user-error]
+          [login-form]
+          [display-intro-user-error]
+
+          [forgot-pw-form]
+          ]]
       [home-panel-button]]])
 
 
@@ -421,8 +458,7 @@
    :top "0"
    :left "0"
    :width "300px"
-   :height "150px"
-   })
+   :height "150px"})
 
 
 (defn card-front []

@@ -8,6 +8,7 @@
     [medley.core :as m]
     [buddy.core.hash :as hash]
     [buddy.core.codecs :as codecs]
+    [postal.core :as postal]
 
     )
   (:import [java.sql
@@ -223,11 +224,6 @@
 
 
 
-
-
-
-
-
 ;; probably a better way to do this e.g.
 ;; map
 ;;  #(-> (select-keys [username email password]) =)
@@ -239,4 +235,63 @@
              (= (:password user) (encrypt password)))
         "succeeded"
         "failed")))
+
+
+;; RESET PASSWORD
+(defn generate-password-reset-code []
+  (encrypt (str (rand-int 9999)))) ;; might need to give sha256 a string not a number?
+
+(defn add-pw-reset-code-to-user [email code]
+  ;; update :code col to code where :email col = email
+  ;; assumes code is already encrypted and hexed
+  (jdbc/update! *db* :users {:reset_code code} ["email = ?" email]))
+
+;; pull these from environment!
+;; e.g. Heroku CONFIG_VARS for prod,
+;; dev/test maps in profiles.cljs for local
+(def cardy-mail-address "cardytheapp@gmail.com")
+(def cardy-mail-pw "Cardy@Flashcard")
+
+;; okay, this seems to ignore the "to" field and just
+;; always send an email to cardy-mail-address
+(defn send-reset-code-in-email [email code]
+  (postal/send-message
+    ;; conn
+    {:host "smtp.gmail.com" :ssl true
+     :user cardy-mail-address :pass cardy-mail-pw}
+
+    ;; email itself
+    {:from cardy-mail-address :to email
+     :subject "Cardy here. Let's reset your password."
+     :body (str "Use this code to reset your password: " code)}))
+
+;; the entrypoint/gate function
+(defn send-password-reset-email [email]
+  (let [reset-code (generate-password-reset-code)]
+    (do
+      ; (add-pw-reset-code-to-user email reset-code)
+
+      ;; this is nil?
+      (println "send-password-reset-email email: " email)
+
+      (doall (add-pw-reset-code-to-user email reset-code))
+      (send-reset-code-in-email email reset-code)
+      "pw reset email sent from server"
+      )
+    ))
+
+
+
+
+; ... tell user password reset code email has been sent
+;; okay, confirm that everything up to this point WORKS.
+
+; client part 2:
+;   user enters pw-reset-code (will be quite long) into UI elem;
+;   dispatches [::confirm-pw-reset-code entered-code] event
+;   makes POST request to server
+
+; server part 2:
+;   if entered-code matches code-in-db, then let them reset pw;
+;     else show error
 

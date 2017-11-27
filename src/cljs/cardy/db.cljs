@@ -13,14 +13,17 @@
    :temp-pw "temporary pw"
 
 
-   ; :current-panel :intro ;; i.e. login / signup
-   :current-panel :study
+   :current-panel :intro ;; i.e. login / signup
+   ; :current-panel :study
    ; :current-panel :edit
 
    :panels '(:intro :home :study :edit :profile)
 
    ;; use nil, because empty string is truthy
    :intro-error-message nil
+
+   ;; for now just use this for "password was reset"
+   :pw-reset-message nil
 
     ;; study-panel's data
 

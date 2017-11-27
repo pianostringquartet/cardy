@@ -581,6 +581,28 @@
 
 
 
+;;; PASSWORD RESET
+;
+(re-frame/reg-event-fx
+    ::send-pw-reset-email
+    (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
+      {:send-pw-reset-email-fx email}))
+
+  (re-frame/reg-fx
+    :send-pw-reset-email-fx
+    (fn send-pw-reset-email-ajax [email-address]
+      (POST "/send-pw-reset-email"
+        {:params {:email email-address}
+        ; {:params email-address
+          ; :handler #(js/console.log "send-pw-reset-email-ajax response was: " %)}
+          :handler #(re-frame/dispatch
+                      [::notify-user-of-pw-reset-email])}
+          )))
+
+(re-frame/reg-event-db
+  ::notify-user-of-pw-reset-email
+  (fn notify-user-of-pw-reset-email [db]
+    (assoc db :pw-reset-message "Password reset email sent!")))
 
 
 

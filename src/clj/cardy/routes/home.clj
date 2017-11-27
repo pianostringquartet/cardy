@@ -60,6 +60,16 @@
         (response/ok (db-core/register-user! credentials))
         )))
 
+    (POST "/send-pw-reset-email" []
+    (fn [req]
+      (let [email (get-in req [:params :email ])]
+
+        ; (do
+        ;   (println "POST /send-pw-reset-email received req")
+        ;   (response/ok (db-core/send-password-reset-email email)))
+
+        (response/ok (db-core/send-password-reset-email email))
+        )))
 
 
   )

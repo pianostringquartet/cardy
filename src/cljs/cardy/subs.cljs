@@ -194,6 +194,12 @@
     (:intro-error-message db)))
 
 
+(re-frame/reg-sub
+  ::pw-reset-message
+  (fn pw-reset-message [db]
+    (:pw-reset-message db)))
+
+
 
 ) ;; end of tracer form
 

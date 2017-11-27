@@ -41,6 +41,9 @@
                  [day8.re-frame/test "0.1.5"] ;; re-frame testing
                  [buddy/buddy-core "1.4.0"] ;; security
                  [reanimated "0.6.0"] ;; animation
+
+                 [camdez/sendgrid "0.1.0"] ;; SendGrid Clojure API
+                 [com.draines/postal "2.0.2"] ;; sending emails
                  ]
 
   :min-lein-version "2.0.0"
