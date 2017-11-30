@@ -20326,3 +20326,1739 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/event
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.083 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.47 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.971 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:291  column:35  ----[0m
+
+  [1mUse of undeclared Var cardy.views/email[0m
+
+  [36m287[0m  [36m;; enter code address[0m
+  [36m288[0m  [36m[re-com/input-text[0m
+  [36m289[0m  [36m    :model code[0m
+  [36m290[0m  [36m    :placeholder "code"[0m
+  [33m291[0m  [1m    :on-change #(reset! email %)[0m
+  [0m   [0m  [33m                        ^--- Use of undeclared Var cardy.views/email[0m
+  [36m292[0m  [36m    :change-on-blur? true][0m
+  [36m293[0m  [36m[:input[0m
+  [36m294[0m  [36m    {:type "button" :value "enter password reset code"[0m
+  [36m295[0m  [36m     :on-click #(re-frame/dispatch[0m
+  [36m296[0m  [36m                  [::events/send-pw-reset-email @email])}][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:296  column:60  ----[0m
+
+  [1mUse of undeclared Var cardy.views/email[0m
+
+  [36m292[0m  [36m    :change-on-blur? true][0m
+  [36m293[0m  [36m[:input[0m
+  [36m294[0m  [36m    {:type "button" :value "enter password reset code"[0m
+  [36m295[0m  [36m     :on-click #(re-frame/dispatch[0m
+  [33m296[0m  [1m                  [::events/send-pw-reset-email @email])}][0m
+  [0m   [0m  [33m                                                 ^--- Use of undeclared Var cardy.views/email[0m
+  [36m297[0m  [36m;; i.e. only show pw-reset-message[0m
+  [36m298[0m  [36m;; when there's something to show![0m
+  [36m299[0m  [36m(when pw-reset-message[0m
+  [36m300[0m  [36m  [re-com/label :label pw-reset-message])[0m
+  [36m301[0m  [36m][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:291  column:35  ----[0m
+
+  [1mUse of undeclared Var cardy.views/email[0m
+
+  [36m287[0m  [36m;; enter code address[0m
+  [36m288[0m  [36m[re-com/input-text[0m
+  [36m289[0m  [36m    :model code[0m
+  [36m290[0m  [36m    :placeholder "code"[0m
+  [33m291[0m  [1m    :on-change #(reset! email %)[0m
+  [0m   [0m  [33m                        ^--- Use of undeclared Var cardy.views/email[0m
+  [36m292[0m  [36m    :change-on-blur? true][0m
+  [36m293[0m  [36m[:input[0m
+  [36m294[0m  [36m    {:type "button" :value "enter password reset code"[0m
+  [36m295[0m  [36m     :on-click #(re-frame/dispatch[0m
+  [36m296[0m  [36m                  [::events/send-pw-reset-email @email])}][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:296  column:60  ----[0m
+
+  [1mUse of undeclared Var cardy.views/email[0m
+
+  [36m292[0m  [36m    :change-on-blur? true][0m
+  [36m293[0m  [36m[:input[0m
+  [36m294[0m  [36m    {:type "button" :value "enter password reset code"[0m
+  [36m295[0m  [36m     :on-click #(re-frame/dispatch[0m
+  [33m296[0m  [1m                  [::events/send-pw-reset-email @email])}][0m
+  [0m   [0m  [33m                                                 ^--- Use of undeclared Var cardy.views/email[0m
+  [36m297[0m  [36m;; i.e. only show pw-reset-message[0m
+  [36m298[0m  [36m;; when there's something to show![0m
+  [36m299[0m  [36m(when pw-reset-message[0m
+  [36m300[0m  [36m  [re-com/label :label pw-reset-message])[0m
+  [36m301[0m  [36m][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.059 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.961 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.652 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.504 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.854 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.541 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.254 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.463 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.269 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.448 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:624 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 624, col 58] Unmatched delimiter }.[0m
+
+  [36m622[0m  [36m  {:params {:email email :code code}[0m
+  [36m623[0m  [36m    :handler #(re-frame/dispatch[0m
+  [33m624[0m  [1m      [::notify-user-of-reset-code-verification %])}}[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 624, col 58] Unmatched delimiter }.[0m
+  [36m625[0m  [36m  )[0m
+  [36m626[0m  [36m))[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.378 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.303 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.165 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.143 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.663 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.137 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.315 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.916 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.194 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.733 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.285 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.969 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.085 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.999 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.977 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.974 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.321 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.968 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.452 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.981 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.172 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.236 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.173 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.085 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.252 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.914 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.925 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.147 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.081 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.055 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.171 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.01 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.546 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.529 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.07 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.449 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.578 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.617 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:337 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+  [36m335[0m  [36m         }][0m
+  [36m336[0m  [36m    ][0m
+  [33m337[0m  [1m])))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.51 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:337 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+  [36m335[0m  [36m         }][0m
+  [36m336[0m  [36m    ][0m
+  [33m337[0m  [1m])))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 2.72 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:337 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+  [36m335[0m  [36m         }][0m
+  [36m336[0m  [36m    ][0m
+  [33m337[0m  [1m])))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.514 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:337 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+  [36m335[0m  [36m         }][0m
+  [36m336[0m  [36m    ][0m
+  [33m337[0m  [1m])))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 10] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.574 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:853 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 853, col 2] Unmatched delimiter ).[0m
+
+  [33m853[0m  [1m) ;; end of tracer form[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 853, col 2] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.493 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:337 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 9] Unmatched delimiter ).[0m
+
+  [36m335[0m  [36m    ][0m
+  [36m336[0m  [36m][0m
+  [33m337[0m  [1m)))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 337, col 9] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.498 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:338 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 338, col 4] Unmatched delimiter ).[0m
+
+  [36m336[0m  [36m    ][0m
+  [36m337[0m  [36m    )[0m
+  [33m338[0m  [1m))[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 338, col 4] Unmatched delimiter ).[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.111 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.703 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.452 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.51 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.282 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.12 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.707 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.595 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.41 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.872 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.537 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.455 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.919 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.373 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.786 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.321 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.709 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.599 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.404 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.399 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.209 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.044 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.966 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.188 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.372 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.711 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.869 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.203 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.211 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:31  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn verify-pw-reset-code [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:verify-pw-reset-code-fx code}))[0m
+  [0m   [0m  [33m                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m[0m
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:31  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn verify-pw-reset-code [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:verify-pw-reset-code-fx code}))[0m
+  [0m   [0m  [33m                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m[0m
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.029 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m[0m
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m[0m
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.029 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :verify-pw-reset-code-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.925 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.874 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:647  column:21  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m644[0m  [36m(re-frame/reg-event-fx[0m
+  [36m645[0m  [36m  ::set-new-pw[0m
+  [36m646[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m647[0m  [1m    {:set-new-pw-fx code}))[0m
+  [0m   [0m  [33m                    ^--- Use of undeclared Var cardy.events/code[0m
+  [36m648[0m  [36m[0m
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email code][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.367 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:653  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [33m653[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m654[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m655[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m656[0m  [36m      )[0m
+  [36m657[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:653  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m649[0m  [36m(re-frame/reg-fx[0m
+  [36m650[0m  [36m  :set-new-pw-fx[0m
+  [36m651[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m652[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [33m653[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m654[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m655[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m656[0m  [36m      )[0m
+  [36m657[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.165 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:654  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [33m654[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m655[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m656[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m657[0m  [36m      )[0m
+  [36m658[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:654  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m650[0m  [36m(re-frame/reg-fx[0m
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [33m654[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m655[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m656[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m657[0m  [36m      )[0m
+  [36m658[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.472 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m[0m
+  [36m657[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m659[0m  [36m      )[0m
+  [36m660[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:36  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email email :code code}[0m
+  [0m   [0m  [33m                                   ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m[0m
+  [36m657[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m659[0m  [36m      )[0m
+  [36m660[0m  [36m    ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.229 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-reset-code-verification %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.149 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.133 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.105 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.036 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.649 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m  :set-new-pw-fx[0m
+  [36m652[0m  [36m  (fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m    (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m      ; hardcoding email for now[0m
+  [33m655[0m  [1m      {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                              ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m      ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m[0m
+  [36m658[0m  [36m        :handler #(re-frame/dispatch[0m
+  [36m659[0m  [36m          [::notify-user-of-new-pw %])}[0m
+  [36m660[0m  [36m      )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.081 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m:set-new-pw-fx[0m
+  [36m652[0m  [36m(fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m  (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m    ; hardcoding email for now[0m
+  [33m655[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m659[0m  [36m    )[0m
+  [36m660[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m:set-new-pw-fx[0m
+  [36m652[0m  [36m(fn verify-pw-reset-code-ajax [email new-pw][0m
+  [36m653[0m  [36m  (POST "/verify-pw-reset-code"[0m
+  [36m654[0m  [36m    ; hardcoding email for now[0m
+  [33m655[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m659[0m  [36m    )[0m
+  [36m660[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.205 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m:set-new-pw-fx[0m
+  [36m652[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m653[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m654[0m  [36m    ; hardcoding email for now[0m
+  [33m655[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m659[0m  [36m    )[0m
+  [36m660[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:655  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m651[0m  [36m:set-new-pw-fx[0m
+  [36m652[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m653[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m654[0m  [36m    ; hardcoding email for now[0m
+  [33m655[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m656[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m657[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m658[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m659[0m  [36m    )[0m
+  [36m660[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.097 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.226 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.956 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.908 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/events.cljs   line:657  column:47  ----[0m
+
+  [1mUse of undeclared Var cardy.events/code[0m
+
+  [36m653[0m  [36m:set-new-pw-fx[0m
+  [36m654[0m  [36m(fn sent-new-pw-ajax [email new-pw][0m
+  [36m655[0m  [36m  (POST "/sent-new-pw-ajax"[0m
+  [36m656[0m  [36m    ; hardcoding email for now[0m
+  [33m657[0m  [1m    {:params {:email "cjc500@nyu.edu" :code code}[0m
+  [0m   [0m  [33m                                            ^--- Use of undeclared Var cardy.events/code[0m
+  [36m658[0m  [36m    ; {:params {:email email :code code}[0m
+  [36m659[0m  [36m      :handler #(re-frame/dispatch[0m
+  [36m660[0m  [36m        [::notify-user-of-new-pw %])}[0m
+  [36m661[0m  [36m    )[0m
+  [36m662[0m  [36m  ))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/events.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.993 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.66 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.653 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.807 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.54 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.459 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.736 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.995 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.436 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:649 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 649, col 45] The map literal starting with :set-new-pw-fx on line 649 column 5 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m647[0m  [36m  ::set-new-pw[0m
+  [36m648[0m  [36m  (fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m649[0m  [1m    {:set-new-pw-fx "cjc500@nyu.edu" new-pw}))[0m
+  [0m   [0m  [33m    /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 649, col 45] The map literal starting with :set-new-pw-fx on line 649 column 5 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m650[0m  [36m[0m
+  [36m651[0m  [36m[0m
+  [36m652[0m  [36m(re-frame/reg-fx[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.43 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:650 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 650, col 45] The map literal starting with :set-new-pw-fx on line 650 column 5 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m648[0m  [36m      ; hardcoding email for now[0m
+  [36m649[0m  [36m(fn set-new-pw [cofx [event-id-to-ignore new-pw]][0m
+  [33m650[0m  [1m  {:set-new-pw-fx "cjc500@nyu.edu" new-pw}))[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 650, col 45] The map literal starting with :set-new-pw-fx on line 650 column 5 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.67 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.952 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.612 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.838 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.741 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.544 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.458 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.581 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.316 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:581  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/card-displayer[0m
+
+  [36m577[0m  [36m      ; :gap "40px"[0m
+  [36m578[0m  [36m      :children [[0m
+  [36m579[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m580[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [33m581[0m  [1m          [card-displayer deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/card-displayer[0m
+  [36m582[0m  [36m      ][0m
+  [36m583[0m  [36m    ][0m
+  [36m584[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:581  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/card-displayer[0m
+
+  [36m577[0m  [36m      ; :gap "40px"[0m
+  [36m578[0m  [36m      :children [[0m
+  [36m579[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m580[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [33m581[0m  [1m          [card-displayer deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/card-displayer[0m
+  [36m582[0m  [36m      ][0m
+  [36m583[0m  [36m    ][0m
+  [36m584[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.547 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.38 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.548 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:582 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 582, col 4] Unmatched delimiter ).[0m
+
+  [36m580[0m  [36m      deck-clickable deck-name[0m
+  [36m581[0m  [36m    ][0m
+  [33m582[0m  [1m  )[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 582, col 4] Unmatched delimiter ).[0m
+  [36m583[0m  [36m[0m
+  [36m584[0m  [36m[0m
+  [36m585[0m  [36m(defn deck-list [][0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.513 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:580 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 580, col 4] Unmatched delimiter ).[0m
+
+  [36m578[0m  [36m    :padding "10px"[0m
+  [36m579[0m  [36m    :child [re-com/title deck-name][0m
+  [33m580[0m  [1m  )[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 580, col 4] Unmatched delimiter ).[0m
+  [36m581[0m  [36m[0m
+  [36m582[0m  [36m[0m
+  [36m583[0m  [36m(defn deck-list [][0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.508 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:580 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 580, col 4] Unmatched delimiter ).[0m
+
+  [36m578[0m  [36m    :padding "10px"[0m
+  [36m579[0m  [36m    :child [re-com/title :label ("A deck: " deck-name)][0m
+  [33m580[0m  [1m  )[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 580, col 4] Unmatched delimiter ).[0m
+  [36m581[0m  [36m[0m
+  [36m582[0m  [36m[0m
+  [36m583[0m  [36m(defn deck-list [][0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.452 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:550  column:8  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-list[0m
+
+  [36m546[0m  [36m      [intro-panel-button][0m
+  [36m547[0m  [36m[0m
+  [36m548[0m  [36m[0m
+  [36m549[0m  [36m      ; stub for deck flow[0m
+  [33m550[0m  [1m      [deck-list][0m
+  [0m   [0m  [33m       ^--- Use of undeclared Var cardy.views/deck-list[0m
+  [36m551[0m  [36m[0m
+  [36m552[0m  [36m[0m
+  [36m553[0m  [36m[0m
+  [36m554[0m  [36m[0m
+  [36m555[0m  [36m      ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.535 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.112 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.222 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.32 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.978 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.779 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.138 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:65  ----[0m
+
+  [1mUse of undeclared Var cardy.views/front[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                          ^--- Use of undeclared Var cardy.views/front[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:492  column:71  ----[0m
+
+  [1mUse of undeclared Var cardy.views/back[0m
+
+  [36m488[0m  [36m    {:src "pencil_icon.png"[0m
+  [36m489[0m  [36m     :style {:max-width "20px" :max-height "20px"}[0m
+  [36m490[0m  [36m      ; clicking the pencil icon should take you to an edit panel[0m
+  [36m491[0m  [36m      ; for that particular deck[0m
+  [33m492[0m  [1m      :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [0m   [0m  [33m                                                                ^--- Use of undeclared Var cardy.views/back[0m
+  [36m493[0m  [36m  ][0m
+  [36m494[0m  [36m][0m
+  [36m495[0m  [36m[re-com/title :label (name deck-name)][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:495  column:34  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-name[0m
+
+  [36m491[0m  [36m            ; for that particular deck[0m
+  [36m492[0m  [36m            :on-click #(re-frame/dispatch [::events/remove-card front back])}[0m
+  [36m493[0m  [36m        ][0m
+  [36m494[0m  [36m      ][0m
+  [33m495[0m  [1m      [re-com/title :label (name deck-name)][0m
+  [0m   [0m  [33m                                 ^--- Use of undeclared Var cardy.views/deck-name[0m
+  [36m496[0m  [36m[0m
+  [36m497[0m  [36m[0m
+  [36m498[0m  [36m[0m
+  [36m499[0m  [36m    ][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.702 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.73 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.671 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.722 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.877 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.986 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.525 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.404 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.257 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.124 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.303 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:516  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-clickables[0m
+
+  [36m512[0m  [36m      :children [[0m
+  [36m513[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m514[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [36m515[0m  [36m          ; [deck-displayer deck-name])[0m
+  [33m516[0m  [1m          [deck-clickables deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/deck-clickables[0m
+  [36m517[0m  [36m      ][0m
+  [36m518[0m  [36m    ][0m
+  [36m519[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:516  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-clickables[0m
+
+  [36m512[0m  [36m      :children [[0m
+  [36m513[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m514[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [36m515[0m  [36m          ; [deck-displayer deck-name])[0m
+  [33m516[0m  [1m          [deck-clickables deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/deck-clickables[0m
+  [36m517[0m  [36m      ][0m
+  [36m518[0m  [36m    ][0m
+  [36m519[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:516  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-clickables[0m
+
+  [36m512[0m  [36m      :children [[0m
+  [36m513[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m514[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [36m515[0m  [36m          ; [deck-displayer deck-name])[0m
+  [33m516[0m  [1m          [deck-clickables deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/deck-clickables[0m
+  [36m517[0m  [36m      ][0m
+  [36m518[0m  [36m    ][0m
+  [36m519[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:516  column:12  ----[0m
+
+  [1mUse of undeclared Var cardy.views/deck-clickables[0m
+
+  [36m512[0m  [36m      :children [[0m
+  [36m513[0m  [36m        (for [deck-name (keys decks)][0m
+  [36m514[0m  [36m          ^{:key (rand-int 99999)}[0m
+  [36m515[0m  [36m          ; [deck-displayer deck-name])[0m
+  [33m516[0m  [1m          [deck-clickables deck-name])[0m
+  [0m   [0m  [33m           ^--- Use of undeclared Var cardy.views/deck-clickables[0m
+  [36m517[0m  [36m      ][0m
+  [36m518[0m  [36m    ][0m
+  [36m519[0m  [36m))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.331 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.251 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.589 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.856 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.6 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.349 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.132 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.509 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.165 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.453 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.193 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.936 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.411 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.884 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.264 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.42 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.255 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.268 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.407 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.473 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.335 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.493 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.043 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.912 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.398 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.563 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:497 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 497, col 93] The map literal starting with :style on line 497 column 9 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m495[0m  [36m; [re-com/title :label (name deck-name)][0m
+  [36m496[0m  [36m[re-com/box[0m
+  [33m497[0m  [1m  {:style :on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 497, col 93] The map literal starting with :style on line 497 column 9 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m498[0m  [36m  :child [re-com/title :label (name deck-name)[0m
+  [36m499[0m  [36m  ; {:on-click } ;; on click, we go to study panel for this deck[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.525 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:497 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 497, col 92] Unmatched delimiter }.[0m
+
+  [36m495[0m  [36m; [re-com/title :label (name deck-name)][0m
+  [36m496[0m  [36m[re-com/box[0m
+  [33m497[0m  [1m  :style :on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 497, col 92] Unmatched delimiter }.[0m
+  [36m498[0m  [36m  :child [re-com/title :label (name deck-name)[0m
+  [36m499[0m  [36m  ; {:on-click } ;; on click, we go to study panel for this deck[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.291 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.485 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js

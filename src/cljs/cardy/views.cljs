@@ -249,8 +249,7 @@
 
 (defn forgot-pw-form []
   ; (let [email (reagent/atom "")]
-  (let [email (reagent/atom "")
-        pw-reset-message @(re-frame/subscribe [::subs/pw-reset-message])]
+  (let [email (reagent/atom "")]
     (fn []
       [re-com/v-box
         :gap "10px"
@@ -269,10 +268,70 @@
                             [::events/send-pw-reset-email @email])}]
           ;; i.e. only show pw-reset-message
           ;; when there's something to show!
-          (when pw-reset-message
-            [re-com/label :label pw-reset-message])
+
           ]
       ])))
+
+
+
+(defn pw-code-reset-form []
+  (let [code (reagent/atom "")
+        email (reagent/atom "")]
+    (fn []
+    ; (fn [code code-verified?]
+      [re-com/v-box
+        :gap "10px"
+        :children [
+          [re-com/label :label "Enter password reset code"]
+
+          ;; enter email address
+          [re-com/input-text
+              :model email
+              :placeholder "email"
+              :on-change #(reset! email %)
+              :change-on-blur? true]
+          ;; enter code
+          [re-com/input-text
+              :model code
+              :placeholder "code"
+              :on-change #(reset! code %)
+              :change-on-blur? true]
+          [:input
+              {:type "button" :value "enter password reset code"
+               :on-click #(re-frame/dispatch
+                            [::events/verify-pw-reset-code @email @code])
+               }]
+          ]
+      ]
+      )
+  ))
+
+
+
+
+; you need to decompose these...
+(defn new-pw-form []
+  (let [new-pw (reagent/atom "")]
+    (fn []
+      [re-com/v-box
+        :gap "10px"
+        :children [
+          [re-com/label :label "Enter new password"]
+
+          [re-com/input-password
+              :model new-pw
+              :placeholder "new-pw"
+              :on-change #(reset! new-pw %)
+              :change-on-blur? true]
+          [:input
+              {:type "button" :value "enter new password"
+               :on-click #(re-frame/dispatch
+                            [::events/set-new-pw @new-pw])}]
+          ]
+      ])))
+
+
+
 
 
 (defn login-form []
@@ -377,10 +436,112 @@
           ]
                 )))
 
+(defn display-pw-reset-note []
+  (let [user-error @(re-frame/subscribe [::subs/pw-reset-message])]
+        (when user-error
+          [re-com/box
+            :align-self :center
+            :child
+              [re-com/title
+                :label user-error :level :level3
+                :style {:color "red" :font-size "14px"}
+                ]
+          ]
+                )))
+
+
+(defn display-reset-code-note []
+  (let [user-error @(re-frame/subscribe [::subs/code-verified])]
+        (when user-error
+          [re-com/box
+            :align-self :center
+            :child
+              [re-com/title
+                :label user-error :level :level3
+                :style {:color "red" :font-size "14px"}
+                ]
+          ]
+                )))
+
+
+
+
+
+; (def deck-names (keys (:decks db))) ; a seq of strs
+; for each deck name:
+;   make a deck-face
+;     a deck-face
+
+;;   overall this will be similar to the "edit deck's cards" view;
+;; you could do an "options" button instead of the trash can;
+;;  and clicking on
+
+
+(defn deck-clickables [deck-name]
+  [re-com/h-box
+    :padding "10px"
+    :children [
+
+      ;; pencil icon
+      [re-com/box
+        :child [:img
+          {:src "pencil_icon.png"
+           :style {:max-width "20px" :max-height "20px"}
+            ; clicking the pencil icon should take you to an edit panel
+            ; for that particular deck
+            :on-click #(re-frame/dispatch [::events/edit-given-deck (name deck-name)])}
+        ]
+      ]
+      ; [re-com/title :label (name deck-name)]
+      [re-com/box
+        :attr {:on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}
+        :child [re-com/title :label (name deck-name)
+        ; {:on-click } ;; on click, we go to study panel for this deck
+
+        ]
+
+
+      ]
+
+
+    ]])
+
+
+
+(defn deck-displayer [deck-name]
+  [re-com/box
+    :padding "10px"
+    :child [re-com/title :label (name deck-name)]
+    ]
+  )
+
+
+(defn deck-list []
+  (let [decks @(re-frame/subscribe [::subs/decks])]
+    [re-com/v-box
+      ; :gap "40px"
+      :children [
+        (for [deck-name (keys decks)]
+          ^{:key (rand-int 99999)}
+          ; [deck-displayer deck-name])
+          [deck-clickables deck-name])
+      ]
+    ]
+))
+
+
+(defn deck-flow []
+  [re-com/box
+    :child [deck-list]])
+
+
+
+
 
 (defn intro-panel []
   [re-com/v-box
-    :gap "20px"
+    ; :gap "20px"
+    :gap "40px"
     :align :center
     :children [
       [intro-picture]
@@ -390,9 +551,37 @@
           [login-form]
           [display-intro-user-error]
 
+          ;; when we update the :pw-reset-message
+          ;; and :code-verified,
+          ;; this components aren't getting re-rendered
+          ;; (but they're form )
+
+          ; I forgot my password, send me an email
+          ; -- user provides email
           [forgot-pw-form]
+
+          ; [display-pw-reset-note]
+
+          ; I received the pw reset email, I provide you the code
+          ; -- user provides email, code
+          ; ^^^ you should source the email from the user's login session
+          [pw-code-reset-form]
+
+          ; [display-reset-code-note]
+
+          [new-pw-form]
+
+
+
+          ;;
+
           ]]
       [home-panel-button]]])
+
+
+
+
+
 
 
 (defn home-panel []
@@ -431,8 +620,18 @@
       ]
       [intro-panel-button]
 
+
+      ; stub for deck flow
+      [deck-flow]
+
+
+
+
       ]
   ])
+
+
+
 
 
 
@@ -588,7 +787,9 @@
     :child [:img
       {:src "trash_icon.png"
         :style {:max-width "20px" :max-height "20px"}
-        :on-click #(re-frame/dispatch [::events/remove-card front back])}]]
+        :on-click #(re-frame/dispatch [::events/remove-card front back])}
+        ]
+  ]
       )
 
 

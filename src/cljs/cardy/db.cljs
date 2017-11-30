@@ -23,23 +23,25 @@
    :intro-error-message nil
 
    ;; for now just use this for "password was reset"
+   ;; better name: reset-email-sent?
    :pw-reset-message nil
+   :code-verified? nil
 
     ;; study-panel's data
 
-    ; :cards #{{:front "Deutsch" :back "German"}
-    ;                   {:front "Genau" :back "Exactly"}
-    ;                   {:front "Es tut mir leid" :back "I'm sorry"}
-    ;                   {:front "Alles klar" :back "Alright"}}
+    :cards #{{:front "Deutsch" :back "German"}
+                      {:front "Genau" :back "Exactly"}
+                      {:front "Es tut mir leid" :back "I'm sorry"}
+                      {:front "Alles klar" :back "Alright"}}
 
-    :cards #{{:front "A BIG CARD"
-              :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
-              {:front "Genau"
-               :back "Exactly"}}
+    ; :cards #{{:front "A BIG CARD"
+    ;           :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
+    ;           {:front "Genau"
+    ;            :back "Exactly"}}
 
-   ; :current-card {:front "Deutsch" :back "German"}
-   :current-card {:front "A BIG CARD"
-                  :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
+   :current-card {:front "Deutsch" :back "German"}
+   ; :current-card {:front "A BIG CARD"
+   ;                :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
    :current 0
    :current-face :front
    :excluded #{}
@@ -264,12 +266,6 @@
         {:front "schön" :back "beautiful"}}
 
          } ;; decks
-
-
-
-
-
-
 
 
 

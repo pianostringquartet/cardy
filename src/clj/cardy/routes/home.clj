@@ -60,17 +60,22 @@
         (response/ok (db-core/register-user! credentials))
         )))
 
-    (POST "/send-pw-reset-email" []
+  (POST "/send-pw-reset-email" []
     (fn [req]
       (let [email (get-in req [:params :email ])]
+        (response/ok (db-core/send-password-reset-email email)))))
 
-        ; (do
-        ;   (println "POST /send-pw-reset-email received req")
-        ;   (response/ok (db-core/send-password-reset-email email)))
+  (POST "/verify-pw-reset-code" []
+    (fn [req]
+      (let [email (get-in req [:params :email])
+            code (get-in req [:params :code])]
+        (response/ok (db-core/verify-pw-reset-code email code)))))
 
-        (response/ok (db-core/send-password-reset-email email))
-        )))
-
+  (POST "/set-new-pw-ajax" []
+    (fn [req]
+      (let [email (get-in req [:params :email])
+            new-pw (get-in req [:params :new-pw])]
+        (response/ok (db-core/set-new-pw email new-pw)))))
 
   )
 

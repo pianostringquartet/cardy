@@ -199,6 +199,11 @@
   (fn pw-reset-message [db]
     (:pw-reset-message db)))
 
+(re-frame/reg-sub
+  ::code-verified?
+  (fn code-verified? [db]
+    (:code-verified? db)))
+
 
 
 ) ;; end of tracer form

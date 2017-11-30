@@ -428,6 +428,41 @@
 
 
 
+; DOES NOT ACCEPT EVENT ID TO IGNORE
+; you should probably have the "handler fn"
+; remove the event-id-to-ignore
+(defn change-deck-pure
+  [db user-input]
+  (as-> db app-state
+    (put-back-old-deck app-state)
+    (bring-in-new-deck app-state user-input)
+    (new-current-card app-state)
+    ))
+
+
+; change current deck
+; change current panel
+
+(re-frame/reg-event-db
+  ::edit-given-deck
+  (fn edit-given-deck [db [event-id-to-ignore deck-name]]
+    (change-panel
+      (change-deck-pure db deck-name)
+      :edit
+      )))
+
+
+(re-frame/reg-event-db
+  ::study-given-deck
+  (fn study-given-deck [db [event-id-to-ignore deck-name]]
+    (change-panel
+      (change-deck-pure db deck-name)
+      :study
+      )))
+
+
+
+
 ;; bool
 (defn removing-current-deck? [db deck-to-remove]
   "Expects deck-to-remove to be a :keyword."
@@ -471,6 +506,10 @@
             (bring-in-new-deck app-state (name (first (keys (:decks app-state)))))
             (new-current-card app-state))
           (remove-deck db deck-to-remove))))))
+
+
+
+
 
 
 
@@ -553,6 +592,8 @@
     ))
 
 
+;; you need some of this logic for reuse
+;;  in resetting a password
 (defn attempt-registration [db [event-id-to-ignore registration-attempt]]
   (case registration-attempt
 
@@ -582,7 +623,9 @@
 
 
 ;;; PASSWORD RESET
-;
+
+
+;; sending reset email
 (re-frame/reg-event-fx
     ::send-pw-reset-email
     (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
@@ -603,6 +646,70 @@
   ::notify-user-of-pw-reset-email
   (fn notify-user-of-pw-reset-email [db]
     (assoc db :pw-reset-message "Password reset email sent!")))
+
+
+
+
+;; verifying email's reset code
+(re-frame/reg-event-fx
+  ::verify-pw-reset-code
+  (fn verify-pw-reset-code [cofx [event-id-to-ignore email code]]
+    {:verify-pw-reset-code-fx [email code]}))
+
+;; huh? where am I providing the email?
+;; i.e. the reg-event-fx above isn't  is returning "code"
+;; which is
+(re-frame/reg-fx
+  :verify-pw-reset-code-fx
+  ; (fn verify-pw-reset-code-ajax [email code]
+  (fn verify-pw-reset-code-ajax [[email code]]
+    (POST "/verify-pw-reset-code"
+      {:params {:email email :code code}
+        :handler #(re-frame/dispatch
+          [::notify-user-of-reset-code-verification %])}
+      )
+    ))
+
+
+(re-frame/reg-event-db
+  ::notify-user-of-reset-code-verification
+  (fn notify-user-of-reset-code-verification [db [event-id-to-ignore server-response]]
+    (if (= server-response "failed")
+        (assoc db :code-verified? "Codes did not match.")
+        (assoc db :code-verified? "Codes matched! Now let's reset your password!"))))
+
+
+
+;; updating a user's password
+
+(re-frame/reg-event-fx
+  ::set-new-pw
+  ; hardcoding email for now
+  (fn set-new-pw [cofx [event-id-to-ignore new-pw]]
+    {:set-new-pw-fx ["cjc500@nyu.edu" new-pw]}))
+
+
+
+(re-frame/reg-fx
+  :set-new-pw-fx
+  (fn set-new-pw-ajax [[email new-pw]]
+    (POST "/set-new-pw-ajax"
+
+      {:params {:email email :new-pw new-pw}
+        :handler #(re-frame/dispatch
+          [::notify-user-of-new-pw %])}
+      )
+    ))
+
+
+(re-frame/reg-event-db
+  ::notify-user-of-new-pw
+  (fn notify-user-of-new-pw [db [event-id-to-ignore server-response]]
+    (if (= server-response "succeeded")
+        (assoc db :new-pw-set? "New password has been set! :-D")
+        (assoc db :new-pw-set? "New password not set. :'("))))
+
+
 
 
 

@@ -283,15 +283,60 @@
 
 
 
-; ... tell user password reset code email has been sent
-;; okay, confirm that everything up to this point WORKS.
+; (defn retrieve-reset-code [email]
+;     (jdbc/query *db* :users ["select * where email = ?" email]))
 
-; client part 2:
-;   user enters pw-reset-code (will be quite long) into UI elem;
-;   dispatches [::confirm-pw-reset-code entered-code] event
-;   makes POST request to server
+; (defn retrieve-reset-code [email]
+;     (first
+;       (jdbc/query *db* :users ["select * where email = ?" email])))
 
-; server part 2:
-;   if entered-code matches code-in-db, then let them reset pw;
-;     else show error
+
+; (defn retrieve-deck [deck]
+;   (jdbc/query *db* ["select * from cards where deck=?" deck]))
+
+;; retrieve this email's assoc'd reset code
+;; ... to be compared against client-sent reset code
+(defn retrieve-reset-code [email]
+  (:reset_code
+    (first
+      (jdbc/query *db*
+        ; :users
+        ; ["select * where email = ?" email])))
+        ["select * from users where email = ?" email])))
+)
+
+
+;; can you provide double parameters like this?
+;; where 'code' was sent from client
+(defn verify-pw-reset-code [email code]
+  (if (= code (retrieve-reset-code email))
+    "succeeded" ;; codes matched
+    "failed" ;; codes didn't match
+  ))
+
+
+; confirm that the user exists?
+;
+
+(defn update-pw! [email new-pw]
+  (jdbc/update! *db* :users {:password (encrypt new-pw)} ["email = ?" email]))
+
+; this is "okay";
+; but you will also want to tell user if pw is too short etc.
+
+(defn set-new-pw [email new-pw]
+  (do
+    (println "email is: " email)
+    (println "new-pw is: " new-pw)
+    (doall (update-pw! email new-pw))
+    "succeeded"
+    )
+  )
+
+
+; last part:
+
+; user sees UI form where they enter in password
+; dispatches
+
 
