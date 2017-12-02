@@ -15,19 +15,13 @@
 
 
 
-(def new-color-deck-2
-  '({:deck "die Farben" :front "grau", :back "grey"}
-    {:deck "die Farben" :front "gelb", :back "yellow"}
-    {:deck "die Farben" :front "rot", :back "red"}
-    {:deck "die Farben" :front "violett", :back "purple"}))
-
 (defn show-decks []
   [:div "Current decks are: " @(re-frame/subscribe [::subs/show-decks])])
 
 
 (defn push-decks []
   [:input
-    {:type "button" :value "sync decks"
+    {:type "button" :value "sync decks"`
      :on-click #(re-frame/dispatch [::events/push-decks])}])
 
 
@@ -106,6 +100,16 @@
           #(re-frame/dispatch [::events/remove-deck (reset! text-val %)])])))
 
 ;; where we have the actual options for manipulating decks
+(defn add-deck-modal-dialog
+  [process-ok process-cancel]
+  [re-com/v-box
+    :padding "10px"
+    :gap "10px"
+    :style {:backdrop-color "blue"}
+    :children [[add-deck]
+               [re-com/button :label "Done" :on-click process-ok]]])
+
+
 (defn deck-modal-dialog
   [process-ok process-cancel]
   [re-com/v-box
@@ -118,6 +122,29 @@
                [remove-deck]
                [re-com/button :label "Done" :on-click process-ok]]])
 
+(defn add-deck-modal []
+  (let [show? (reagent/atom false)
+        process-ok (fn [event]
+                         (reset! show? false)
+                         false)
+        process-cancel (fn [event]
+                         (reset! show? false)
+                         false)]
+    (fn []
+      [re-com/v-box
+        :children [
+          [re-com/button
+            :label "add deck"
+            :class "btn-info"
+            ;:on-click #(do
+             ; (reset! show? true))]
+             :on-click #(reset! show? true)]
+          (when @show? [re-com/modal-panel
+                          :backdrop-color "grey"
+                          :backdrop-opacity 0.4
+                          :child [add-deck-modal-dialog process-ok process-cancel]])
+          ]
+        ])))
 
 ;; modal for deck manipulation
 ;; this controls the display (show, not show) of the modal-dialog
@@ -141,14 +168,8 @@
           (when @show? [re-com/modal-panel
                           :backdrop-color "grey"
                           :backdrop-opacity 0.4
-
-                          ; :style {:max-width "200px"}
-
-
-                          ;:child [:div "I am a child!"]])
-                          :child [deck-modal-dialog process-ok process-cancel]]
-                          )
-        ]
+                          :child [deck-modal-dialog process-ok process-cancel]])
+          ]
         ])))
 
 
@@ -365,6 +386,10 @@
                        :on-click #(re-frame/dispatch [::events/register @username
                                                                     @email
                                                                     @password])}]
+
+                    [:input
+                      {:type "button" :value "Forgot password?"
+                       :on-click #(re-frame/dispatch [::events/change-panel :pw-reset])}]
                   ]]]])))
 
 
@@ -477,48 +502,122 @@
 ;;  and clicking on
 
 
-(defn deck-clickables [deck-name]
-  [re-com/h-box
-    :padding "10px"
-    :children [
-
-      ;; pencil icon
-      [re-com/box
-        :child [:img
+(defn clickable-pencil [deck-name]
+  [:img
           {:src "pencil_icon.png"
            :style {:max-width "20px" :max-height "20px"}
             ; clicking the pencil icon should take you to an edit panel
             ; for that particular deck
             :on-click #(re-frame/dispatch [::events/edit-given-deck (name deck-name)])}
         ]
-      ]
-      ; [re-com/title :label (name deck-name)]
-      [re-com/box
-        :attr {:on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}
-        :child [re-com/title :label (name deck-name)
-        ; {:on-click } ;; on click, we go to study panel for this deck
+  )
 
-        ]
-
-
-      ]
-
-
-    ]])
-
-
-
-(defn deck-displayer [deck-name]
+(defn clickable-deck-name [deck-name]
   [re-com/box
-    :padding "10px"
-    :child [re-com/title :label (name deck-name)]
-    ]
+    :attr {:on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}
+    :child [re-com/title :label (name deck-name)]]
   )
 
 
+(defn really-delete-dialogue [deck-name]
+  (let [showing? (reagent/atom false)]
+    (fn []
+      [re-com/popover-anchor-wrapper
+        :showing? showing?
+        :position :right-below
+
+        ; what the popover is attached to
+        :anchor [
+          :img
+            {:src "trash_icon.png"
+              :style {:max-width "20px" :max-height "20px"}
+              ; :on-click #(reset! showing? (if (@showing? false true)))}]
+              :on-click #(reset! showing? true)}]
+
+        ; the popover itself
+        :popover [
+          re-com/popover-content-wrapper
+
+            ; when we exit popover, call this fn
+            :on-cancel #(reset! showing? false)
+
+            ; when popover is open, tint backdrop by this much
+            :backdrop-opacity 0.3
+
+            ; putt
+            ; :body "Love is answer and the problem."
+            ; :body ["Are you "]
+            ; :title "Really delete this deck?"
+            :body [
+              re-com/v-box
+                ; :gap "5px"
+                :gap "15px"
+                :padding "10px"
+                :children [
+
+                  [re-com/label :label (str "Really delete " (name deck-name) " deck?")]
+
+                  ; a confirm button
+                  [:input
+                    {:type "button" :value "confirm"
+                    :on-click #(re-frame/dispatch
+                      [::events/remove-deck (name deck-name)])
+                    }]
+
+                  ; a cancel button
+                  [:input
+                    {:type "button" :value "cancel"
+                    :on-click #(reset! showing? false)
+                    }]
+                ]
+                ]
+          ]
+        ]
+      )
+    ))
+
+
+
+
+
+
+
+(defn clickable-to-delete-deck [deck-name]
+  [re-com/box
+    :child [:img
+      {:src "trash_icon.png"
+        :style {:max-width "20px" :max-height "20px"}
+        :on-click #(re-frame/dispatch [::events/remove-deck (name deck-name)])}
+      ]])
+
+
+
+(defn deck-clickables [deck-name]
+  [re-com/border
+      :border "1px dashed lightgrey"
+      :child [re-com/h-box
+      ; hmm... :padding here, and not :gap in parent component,
+      ; controls space between deck-clickables... bleh
+      ; :padding "10px"
+      :padding "30px"
+      :gap "20px"
+      :children [
+        [clickable-pencil deck-name]
+        ; [clickable-to-delete-deck deck-name]
+        [really-delete-dialogue deck-name]
+        [clickable-deck-name deck-name]
+
+        ]]]
+
+    )
+
+
+; need to make a form-2 component, for
+; if we add a deck
 (defn deck-list []
   (let [decks @(re-frame/subscribe [::subs/decks])]
     [re-com/v-box
+      ; :gap "40px"
       ; :gap "40px"
       :children [
         (for [deck-name (keys decks)]
@@ -535,9 +634,6 @@
     :child [deck-list]])
 
 
-
-
-
 (defn intro-panel []
   [re-com/v-box
     ; :gap "20px"
@@ -548,28 +644,30 @@
       [re-com/v-box
         :gap "5px"
         :children [
+
+
           [login-form]
           [display-intro-user-error]
 
-          ;; when we update the :pw-reset-message
-          ;; and :code-verified,
-          ;; this components aren't getting re-rendered
-          ;; (but they're form )
+          ; ;; when we update the :pw-reset-message
+          ; ;; and :code-verified,
+          ; ;; this components aren't getting re-rendered
+          ; ;; (but they're form )
 
-          ; I forgot my password, send me an email
-          ; -- user provides email
-          [forgot-pw-form]
+          ; ; I forgot my password, send me an email
+          ; ; -- user provides email
+          ; [forgot-pw-form]
 
-          ; [display-pw-reset-note]
+          ; ; [display-pw-reset-note]
 
-          ; I received the pw reset email, I provide you the code
-          ; -- user provides email, code
-          ; ^^^ you should source the email from the user's login session
-          [pw-code-reset-form]
+          ; ; I received the pw reset email, I provide you the code
+          ; ; -- user provides email, code
+          ; ; ^^^ you should source the email from the user's login session
+          ; [pw-code-reset-form]
 
-          ; [display-reset-code-note]
+          ; ; [display-reset-code-note]
 
-          [new-pw-form]
+          ; [new-pw-form]
 
 
 
@@ -581,7 +679,21 @@
 
 
 
-
+(defn deck-fuzzy-search []
+  (let [decks @(re-frame/subscribe [::subs/decks])
+        suggestion-for-search
+          (fn [a-string]
+              (into [])
+                (take 16
+                  (for [n (map #(name %) (keys decks))
+                        :when (re-find (re-pattern (str "(?i)" a-string)) n)]
+                    n)))]
+    (fn []
+      [re-com/typeahead
+        :data-source suggestion-for-search
+        :placeholder "search for a deck"
+        :on-change #(re-frame/dispatch [::events/study-given-deck %])
+        :change-on-blur? true])))
 
 
 (defn home-panel []
@@ -590,63 +702,44 @@
     :align :center
     :children [
       [re-com/title :label "HOME PANEL" :level :level1]
-
-      [re-com/h-box
-        :size "auto"
-        :gap "40px"
-        :children [
-          [re-com/v-box
-            :align-self :center
-            :children [
-                [re-com/title
-                    :label "Deck:"]
-                [re-com/title
-                    :label
-                      (name @(re-frame/subscribe [::subs/current-deck]))
-                                    ]]]
-          [re-com/v-box
-            :gap "20px"
-            :children [
-              [study-panel-button]
-              [edit-panel-button]]]
-        ]
-      ]
+      [intro-panel-button]
       [re-com/h-box
         :gap "20px"
         :children [
-          [deck-modal]
-          [profile-panel-button]
-        ]
-      ]
-      [intro-panel-button]
-
-
-      ; stub for deck flow
+          [deck-fuzzy-search]
+          [add-deck-modal]
+        ]]
       [deck-flow]
-
-
-
-
       ]
   ])
 
 
+; this works, you just want different placement now
+(defn congrats-message []
+  (let [size (reagent/atom 0)
+        width (anim/spring size)]
+    (fn a-congrats-message []
+      [:div
 
+       ;; WORKAROUND: when resizing to 0 (e.g. reset! size 0),
+       ;; re-animated intermittently shows full-size image;
+       ;; smaller resizing steps avoid this.
+       ; [anim/timeout #(reset! size 200) 500]
+       [anim/timeout #(reset! size 200)] ;; show immediately
+       [anim/timeout #(reset! size 100) 2000]
+       [anim/timeout #(reset! size 50) 3000]
+       [anim/timeout #(reset! size 25) 4000]
+       [anim/timeout
+          #(re-frame/dispatch [::events/remove-congrats-message])
+          4100]
 
-
-
-; (defn home-panel []
-;   [re-com/v-box
-;     :gap "20px"
-;     :children [
-;       [re-com/title :label "HOME PANEL" :level :level1]
-;       [study-panel-button]
-;       [edit-panel-button]
-;       [profile-panel-button]
-;       [intro-panel-button]
-;       ]
-;   ])
-
+       [:img
+        {:src "good_job.png"
+         :width (str @width "px")
+         ; User can click the image to kill it
+         :on-click #(re-frame/dispatch [::events/remove-congrats-message])}
+         ]]
+         )))
 
 
 
@@ -657,7 +750,11 @@
    :top "0"
    :left "0"
    :width "300px"
-   :height "150px"})
+   :height "150px"
+
+   ; added
+   :box-shadow "10px 10px 5px grey"
+   })
 
 
 (defn card-front []
@@ -705,8 +802,10 @@
 
 
 
-;;; was flip-card-container
-(defn flippable-card [show-back?]
+
+
+; alt version, with superimposed congrats-message
+(defn flippable-card [] ; true or nil
   (let [show-back? (reagent/atom false)]
     (fn []
       [re-com/v-box
@@ -715,43 +814,46 @@
                 :width "300px"
                 :height "150px"}
         :attr {:on-click #(reset! show-back? (if @show-back? false true))}
-        :children [[card show-back?]]])))
+        :children [
+          [card show-back?]
+          ]])))
 
 
+(defn display-ex-count [xc]
+  [re-com/title :label (str "# of cards excluded: " xc)])
+
+; this is not rerendering
+; ah, there we go!
+; we set the value of the var to be the Reaction Stream itself
+; and we deref only at the precise place where we need the VALUE of the Reaction itself
 (defn study-panel []
-  [re-com/v-box
-    :gap "20px"
-    :padding "20px 20px 20px 20px"
-    :align :center
-    :children [
-      [flippable-card]
-      [card-review]
-      [home-panel-button]]])
+  (let [xc (re-frame/subscribe [::subs/excluded-count])
+        congrats (re-frame/subscribe [::subs/congrats])]
+
+    (fn []
+      [re-com/v-box
+          :gap "20px"
+          :padding "20px 20px 20px 20px"
+          :align :center
+          :children [
+            [flippable-card]
+
+            ; [flippable-card congrats]
+
+            (when @congrats [congrats-message])
+
+            [card-review]
+            [home-panel-button]
+
+            [display-ex-count @xc]
 
 
-; (defn card-edit-display [front back]
-;   [re-com/h-box
-;         :size "auto"
+            ]]))
+      )
 
-;         ; a border instead of a background would be better?
-;         :style {:background "lightgrey"}
 
-;         ; :padding "20px 10px 10px 10px"
-;         :align-self :center
-;         :children [
-;           [re-com/scroller
-;             :v-scroll :auto
-;             :height "45px"
-;             :child [wrap-edit-text front]
-;           ]
-;           [re-com/scroller
-;             :v-scroll :auto
-;             :height "45px"
-;             :child [wrap-edit-text back]
-;           ]
-;         ]
-;         ]
-;         )
+
+
 
 
 (defn card-edit-display [front back]
@@ -843,21 +945,99 @@
     ]])
 
 
-; (defn edit-panel []
-;   [re-com/v-box
-;     :gap "20px"
-;     :align :center
-;     :children [
-;       [card-manipulation]
-;       [push-decks] ;; better place for this?
-;       [deck-modal]
-;       [home-panel-button]
 
-;       [re-com/title :label "DEV: "]
-;       [todos]
-;       ]
-;   ]
-;   )
+(defn pw-reset-panel []
+  (let [flow-stage (re-frame/subscribe [::subs/pw-reset-flow-stage])]
+    (fn []
+        [re-com/v-box
+          :align :center
+          :padding "10px"
+          :gap "10px"
+          :children [
+
+            (case @flow-stage
+              :sending-pw-reset-email [forgot-pw-form]
+              :confirming-pw-reset-code [pw-code-reset-form]
+              :setting-new-pw [new-pw-form]
+
+              )
+
+
+            ; ; I forgot my password, send me an email
+            ; ; -- user provides email
+            ; [forgot-pw-form]
+
+            ; ; [display-pw-reset-note]
+
+            ; ; I received the pw reset email, I provide you the code
+            ; ; -- user provides email, code
+            ; ; ^^^ you should source the email from the user's login session
+            ; [pw-code-reset-form]
+
+            ; ; [display-reset-code-note]
+
+            ; [new-pw-form]
+          ]
+        ]
+      )
+    )
+)
+
+
+
+; (defn pw-reset-panel []
+;   [re-com/v-box
+;     :align :center
+;     :padding "10px"
+;     :gap "10px"
+;     :children [
+
+;       ; I forgot my password, send me an email
+;       ; -- user provides email
+;       [forgot-pw-form]
+
+;       ; [display-pw-reset-note]
+
+;       ; I received the pw reset email, I provide you the code
+;       ; -- user provides email, code
+;       ; ^^^ you should source the email from the user's login session
+;       [pw-code-reset-form]
+
+;       ; [display-reset-code-note]
+
+;       [new-pw-form]
+;     ]
+; ])
+
+
+
+; should show forms for resetting password
+
+; but you only want to show one step in the flow at a time
+; so you could do something like pass in the child to be rendered
+; (defn pw-reset-panel []
+;   [re-com/v-box
+;     :align :center
+;     :padding "10px"
+;     :gap "10px"
+;     :children [
+
+;       ; I forgot my password, send me an email
+;       ; -- user provides email
+;       [forgot-pw-form]
+
+;       ; [display-pw-reset-note]
+
+;       ; I received the pw reset email, I provide you the code
+;       ; -- user provides email, code
+;       ; ^^^ you should source the email from the user's login session
+;       [pw-code-reset-form]
+
+;       ; [display-reset-code-note]
+
+;       [new-pw-form]
+;     ]
+; ])
 
 
 (defn profile-panel []
@@ -877,7 +1057,10 @@
     :home [home-panel]
     :study [study-panel]
     :edit [edit-panel]
-    :profile [profile-panel]))
+    :profile [profile-panel]
+
+    :pw-reset [pw-reset-panel]
+    ))
 
 
 ) ;; end of tracer form

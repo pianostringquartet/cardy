@@ -13,6 +13,8 @@
    :temp-pw "temporary pw"
 
 
+   :pw-reset-flow-stage :sending-pw-reset-email
+
    :current-panel :intro ;; i.e. login / signup
    ; :current-panel :study
    ; :current-panel :edit
@@ -27,26 +29,25 @@
    :pw-reset-message nil
    :code-verified? nil
 
+   :excluded-count 0
     ;; study-panel's data
 
-    :cards #{{:front "Deutsch" :back "German"}
-                      {:front "Genau" :back "Exactly"}
-                      {:front "Es tut mir leid" :back "I'm sorry"}
-                      {:front "Alles klar" :back "Alright"}}
+    ; :cards #{{:front "Deutsch" :back "German"}
+    ;                   {:front "Genau" :back "Exactly"}
+    ;                   {:front "Es tut mir leid" :back "I'm sorry"}
+    ;                   {:front "Alles klar" :back "Alright"}}
 
-    ; :cards #{{:front "A BIG CARD"
-    ;           :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
-    ;           {:front "Genau"
-    ;            :back "Exactly"}}
+    :cards #{{:front "das Haus" :back "house"}
+             {:front "der Hund" :back "dog"}}
 
-   :current-card {:front "Deutsch" :back "German"}
+   :current-card {:front "das Haus" :back "house"}
    ; :current-card {:front "A BIG CARD"
    ;                :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
    :current 0
    :current-face :front
    :excluded #{}
    :removed #{}
-   :current-deck :starter
+   :current-deck :two-card-deck
    :current-flag "german-flag-small"
 
    :show-back? false
@@ -55,7 +56,12 @@
    :front-flag "german-flag-small.jpg"
    :back-flag "american-flag-medium.jpg"
 
-   :decks {:verbs #{{:front "verwenden" :back "to use/utilize"}
+   :decks {
+
+    :two-card-deck #{{:front "das Haus" :back "house"}
+                     {:front "der Hund" :back "dog"}}
+
+    :verbs #{{:front "verwenden" :back "to use/utilize"}
                     {:front "sprechen" :back "to speak"}
                     {:front "suchen" :back "to seek/search"}
                     {:front "schicken" :back "to send/drop/dispatch/forward"}
@@ -252,18 +258,18 @@
 
     :Adjektive-11-23
     #{{:front "verrückt" :back "crazy"}
-        {:front "leicht" :back "easy, light"}
-        {:front "leise" :back "quiet, soft"}
-        {:front "schwer" :back "difficult, heavy, hard"}
-        {:front "kompliziert" :back "complicated"}
-        {:front "trotzig" :back "defiant, contrary"}
-        {:front "klein" :back "small"}
-        {:front "gross" :back "big"}
-        {:front "rein" :back "pure, clean"}
-        {:front "gründlich" :back "thorough, careful, rigorous"}
-        {:front "schmutzig" :back "dirty"}
-        {:front "unschön" :back "ugly"}
-        {:front "schön" :back "beautiful"}}
+      {:front "leicht" :back "easy, light"}
+      {:front "leise" :back "quiet, soft"}
+      {:front "schwer" :back "difficult, heavy, hard"}
+      {:front "kompliziert" :back "complicated"}
+      {:front "trotzig" :back "defiant, contrary"}
+      {:front "klein" :back "small"}
+      {:front "gross" :back "big"}
+      {:front "rein" :back "pure, clean"}
+      {:front "gründlich" :back "thorough, careful, rigorous"}
+      {:front "schmutzig" :back "dirty"}
+      {:front "unschön" :back "ugly"}
+      {:front "schön" :back "beautiful"}}
 
          } ;; decks
 

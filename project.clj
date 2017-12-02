@@ -127,6 +127,10 @@
 
                       ;; added:
                       :closure-defines {"clairvoyant.core.devmode" true}
+
+                      ; added
+                      :preloads [devtools.preload]
+
                       }}}}
 
 

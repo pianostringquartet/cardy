@@ -338,5 +338,3 @@
 
 ; user sees UI form where they enter in password
 ; dispatches
-
-

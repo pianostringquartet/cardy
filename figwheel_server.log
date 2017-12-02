@@ -22062,3 +22062,1397 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.485 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.921 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:514 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 514, col 18] Invalid number: 10px.[0m
+
+  [36m512[0m  [36m[re-com/box[0m
+  [36m513[0m  [36m  ; :padding "10px"[0m
+  [33m514[0m  [1m  :padding 10px[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 514, col 18] Invalid number: 10px.[0m
+  [36m515[0m  [36m  :child [re-com/title :label (name deck-name)][0m
+  [36m516[0m  [36m  ][0m
+  [36m517[0m  [36m)[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.988 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 11.889 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 8.379 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.273 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.799 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.16 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.997 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:592  column:28  ----[0m
+
+  [1mUse of undeclared Var cardy.views/names[0m
+
+  [36m588[0m  [36m        suggestion-for-search[0m
+  [36m589[0m  [36m          (fn [a-string][0m
+  [36m590[0m  [36m              (into [])[0m
+  [36m591[0m  [36m                (take 16[0m
+  [33m592[0m  [1m                  (for [n (names (keys decks))][0m
+  [0m   [0m  [33m                           ^--- Use of undeclared Var cardy.views/names[0m
+  [36m593[0m  [36m                    (:when (re-find (re-pattern (str "(?i)" a-string)) n)))))[0m
+  [36m594[0m  [36m        ][0m
+  [36m595[0m  [36m[0m
+  [36m596[0m  [36m    (fn [][0m
+  [36m597[0m  [36m      [re-com/typeahead[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:592  column:28  ----[0m
+
+  [1mUse of undeclared Var cardy.views/names[0m
+
+  [36m588[0m  [36m        suggestion-for-search[0m
+  [36m589[0m  [36m          (fn [a-string][0m
+  [36m590[0m  [36m              (into [])[0m
+  [36m591[0m  [36m                (take 16[0m
+  [33m592[0m  [1m                  (for [n (names (keys decks))][0m
+  [0m   [0m  [33m                           ^--- Use of undeclared Var cardy.views/names[0m
+  [36m593[0m  [36m                    (:when (re-find (re-pattern (str "(?i)" a-string)) n)))))[0m
+  [36m594[0m  [36m        ][0m
+  [36m595[0m  [36m[0m
+  [36m596[0m  [36m    (fn [][0m
+  [36m597[0m  [36m      [re-com/typeahead[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.154 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.443 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.501 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.918 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/views.cljs   line:13  column:1  ----[0m
+
+  [1mWrong number of args (1) passed to: core/for[0m
+
+  [36m11[0m  [36m            ))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(trace-forms {:tracer (tracer :color "gold")}[0m
+  [0m  [0m  [33m^--- Wrong number of args (1) passed to: core/for[0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.962 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.556 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.77 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.355 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.685 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.867 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.13 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.566 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.471 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.624 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.454 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.666 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.467 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.438 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.765 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.581 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.495 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.43 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.401 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.697 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.061 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.43 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.482 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.421 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.362 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.52 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.683 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.826 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.487 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.342 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.509 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:523 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 523, col 7] Unmatched delimiter ].[0m
+
+  [33m523[0m  [1m]])[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 523, col 7] Unmatched delimiter ].[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.409 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.195 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.321 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.53 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.549 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.001 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.427 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.496 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.327 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.665 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.893 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.679 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.365 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.454 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.4 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.377 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.409 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.421 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.031 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.785 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.451 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.629 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.639 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.765 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.564 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.61 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.026 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.496 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.639 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.728 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.577 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.847 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.434 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.677 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.616 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.475 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.458 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.671 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.529 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.429 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.051 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.846 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.579 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.577 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.556 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.504 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:532 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+
+  [36m530[0m  [36m    :anchor [clickable-to-delete-deck deck-name]][0m
+  [36m531[0m  [36m    :[0m
+  [33m532[0m  [1m[0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 532, col 1] A single colon is not a valid keyword.[0m
+  [36m533[0m  [36m    )[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.59 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.729 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.387 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.771 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.174 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.822 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.706 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.667 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.685 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.582 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.677 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.099 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.629 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.502 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.443 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.522 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.451 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.783 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.145 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.881 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.665 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.687 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.576 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.533 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.45 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.512 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.632 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.756 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.61 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.516 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:616 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 616, col 33] Invalid number: 20px.[0m
+
+  [36m614[0m  [36m:child [:img[0m
+  [36m615[0m  [36m  {:src "trash_icon.png"[0m
+  [33m616[0m  [1m    :style {:max-width "20px" :max-height "20px"}[0m
+  [0m   [0m  [33m    /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 616, col 33] Invalid number: 20px.[0m
+  [36m617[0m  [36m    :on-click #(re-frame/dispatch [::events/remove-deck (name deck-name)])}[0m
+  [36m618[0m  [36m  ]])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.469 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:616 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 616, col 33] Invalid number: 20px.[0m
+
+  [36m614[0m  [36m:child [:img[0m
+  [36m615[0m  [36m  {:src "trash_icon.png"[0m
+  [33m616[0m  [1m    :style {:max-width "20px" :max-height "20px"}[0m
+  [0m   [0m  [33m    /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 616, col 33] Invalid number: 20px.[0m
+  [36m617[0m  [36m    :on-click #(re-frame/dispatch [::events/remove-deck (name deck-name)])}[0m
+  [36m618[0m  [36m  ]])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.548 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.574 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.504 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.448 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.429 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.969 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.666 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.552 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.575 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.379 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.498 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.294 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.747 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.792 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.721 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.109 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.712 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.567 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.637 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.886 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.788 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 7.618 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.777 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.83 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.34 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.248 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.71 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.361 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.269 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.686 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.775 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.387 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.245 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.305 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.024 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.219 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.615 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.545 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.756 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.881 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.037 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.455 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.569 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:908 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 908, col 10] Invalid symbol: div:.[0m
+
+  [36m906[0m  [36m  (reagent/atom true) ; condition ratom ?[0m
+  [36m907[0m  [36m  ; "render me" ; vector or value to be rendered[0m
+  [33m908[0m  [1m  [div: "render me"] ; vector or value to be rendered[0m
+  [0m   [0m  [33m  /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 908, col 10] Invalid symbol: div:.[0m
+  [36m909[0m  [36m  {:duration 3000} ;[0m
+  [36m910[0m  [36m  ][0m
+  [36m911[0m  [36m)[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.781 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:945  column:14  ----[0m
+
+  [1mUse of undeclared Var cardy.views/if[0m
+
+  [36m941[0m  [36m            [display-ex-count @xc][0m
+  [36m942[0m  [36m[0m
+  [36m943[0m  [36m            ; [display-congrats @congrats][0m
+  [36m944[0m  [36m[0m
+  [33m945[0m  [1m            [if @congrats[0m
+  [0m   [0m  [33m             ^--- Use of undeclared Var cardy.views/if[0m
+  [36m946[0m  [36m              [anim/pop-when congrats [:div "nice!"] {:duration 3000}][0m
+  [36m947[0m  [36m              "ich arbeite..."][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:945  column:14  ----[0m
+
+  [1mUse of undeclared Var cardy.views/if[0m
+
+  [36m941[0m  [36m            [display-ex-count @xc][0m
+  [36m942[0m  [36m[0m
+  [36m943[0m  [36m            ; [display-congrats @congrats][0m
+  [36m944[0m  [36m[0m
+  [33m945[0m  [1m            [if @congrats[0m
+  [0m   [0m  [33m             ^--- Use of undeclared Var cardy.views/if[0m
+  [36m946[0m  [36m              [anim/pop-when congrats [:div "nice!"] {:duration 3000}][0m
+  [36m947[0m  [36m              "ich arbeite..."][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.894 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:947  column:20  ----[0m
+
+  [1mUse of undeclared Var cardy.views/if[0m
+
+  [36m943[0m  [36m            ; [display-congrats @congrats][0m
+  [36m944[0m  [36m[0m
+  [36m945[0m  [36m            [re-com/box[0m
+  [36m946[0m  [36m              :child[0m
+  [33m947[0m  [1m                  [if @congrats[0m
+  [0m   [0m  [33m                   ^--- Use of undeclared Var cardy.views/if[0m
+  [36m948[0m  [36m                   [anim/pop-when congrats [:div "nice!"] {:duration 3000}][0m
+  [36m949[0m  [36m                    "ich arbeite..."]][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:947  column:20  ----[0m
+
+  [1mUse of undeclared Var cardy.views/if[0m
+
+  [36m943[0m  [36m            ; [display-congrats @congrats][0m
+  [36m944[0m  [36m[0m
+  [36m945[0m  [36m            [re-com/box[0m
+  [36m946[0m  [36m              :child[0m
+  [33m947[0m  [1m                  [if @congrats[0m
+  [0m   [0m  [33m                   ^--- Use of undeclared Var cardy.views/if[0m
+  [36m948[0m  [36m                   [anim/pop-when congrats [:div "nice!"] {:duration 3000}][0m
+  [36m949[0m  [36m                    "ich arbeite..."]][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.841 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.581 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.023 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.906 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.52 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:960 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 960, col 15] Unmatched delimiter ].[0m
+
+  [33m960[0m  [1m      ]]))[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 960, col 15] Unmatched delimiter ].[0m
+  [36m961[0m  [36m)[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.054 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:960 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 960, col 15] Unmatched delimiter ].[0m
+
+  [33m960[0m  [1m      ]]))[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 960, col 15] Unmatched delimiter ].[0m
+  [36m961[0m  [36m)[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.897 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.031 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.653 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.027 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.899 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.415 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 7.576 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 9.047 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.985 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.832 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.787 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.873 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.621 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:932 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 932, col 11] Unmatched delimiter ].[0m
+
+  [36m930[0m  [36m; :on-mouse-out (fn logo-mouseout [e][0m
+  [36m931[0m  [36m;                 (reset! tilt 0))}[0m
+  [33m932[0m  [1m]][0m
+  [0m   [0m  [33m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 932, col 11] Unmatched delimiter ].[0m
+  [36m933[0m  [36m)))[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.762 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.926 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.476 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.939 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.046 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.125 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.079 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.165 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.691 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:941 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 941, col 12] The map literal starting with :src on line 908 column 9 contains 7 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m939[0m  [36m; :on-mouse-out (fn logo-mouseout [e][0m
+  [36m940[0m  [36m;                 (reset! tilt 0))[0m
+  [33m941[0m  [1m }[0m
+  [0m   [0m  [33m /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 941, col 12] The map literal starting with :src on line 908 column 9 contains 7 form(s). Map literals must contain an even number of forms.[0m
+  [36m942[0m  [36m]][0m
+  [36m943[0m  [36m)))[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.592 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.69 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.293 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.132 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.029 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.789 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.301 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.262 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.797 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.06 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.379 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.226 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.667 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.42 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.087 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.328 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.87 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.76 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.963 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.871 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.372 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.86 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.752 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.735 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.001 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.769 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.937 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.975 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.262 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.804 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.847 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.095 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.922 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.056 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.785 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.864 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.691 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.08 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.925 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.86 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.913 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.793 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.65 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.45 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.876 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.473 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.179 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.303 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.128 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.025 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.855 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.477 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:890  column:28  ----[0m
+
+  [1mUse of undeclared Var cardy.views/congrats-message[0m
+
+  [36m886[0m  [36m        :width "300px"[0m
+  [36m887[0m  [36m        :height "150px"}[0m
+  [36m888[0m  [36m:attr {:on-click #(reset! show-back? (if @show-back? false true))}[0m
+  [36m889[0m  [36m:children [[0m
+  [33m890[0m  [1m  (when @congrats [congrats-message])[0m
+  [0m   [0m  [33m                   ^--- Use of undeclared Var cardy.views/congrats-message[0m
+  [36m891[0m  [36m  [card show-back?][0m
+  [36m892[0m  [36m  ]])))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 6.057 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:890  column:28  ----[0m
+
+  [1mUse of undeclared Var cardy.views/congrats-message[0m
+
+  [36m886[0m  [36m        :width "300px"[0m
+  [36m887[0m  [36m        :height "150px"}[0m
+  [36m888[0m  [36m:attr {:on-click #(reset! show-back? (if @show-back? false true))}[0m
+  [36m889[0m  [36m:children [[0m
+  [33m890[0m  [1m  (when @congrats [congrats-message])[0m
+  [0m   [0m  [33m                   ^--- Use of undeclared Var cardy.views/congrats-message[0m
+  [36m891[0m  [36m  [card show-back?][0m
+  [36m892[0m  [36m  ]])))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.438 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.979 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.359 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.813 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.162 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.041 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 8.873 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.335 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.017 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.51 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/views.cljs   line:13  column:1  ----[0m
+
+  [1mParameter declaration missing[0m
+
+  [36m11[0m  [36m            ))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(trace-forms {:tracer (tracer :color "gold")}[0m
+  [0m  [0m  [33m^--- Parameter declaration missing[0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.322 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/views.cljs   line:13  column:1  ----[0m
+
+  [1mParameter declaration missing[0m
+
+  [36m11[0m  [36m            ))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(trace-forms {:tracer (tracer :color "gold")}[0m
+  [0m  [0m  [33m^--- Parameter declaration missing[0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.14 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/views.cljs   line:13  column:1  ----[0m
+
+  [1mParameter declaration missing[0m
+
+  [36m11[0m  [36m            ))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(trace-forms {:tracer (tracer :color "gold")}[0m
+  [0m  [0m  [33m^--- Parameter declaration missing[0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.803 seconds.[0m
+[36m----  Could not Analyze  src/cljs/cardy/views.cljs   line:13  column:1  ----[0m
+
+  [1mParameter declaration missing[0m
+
+  [36m11[0m  [36m            ))[0m
+  [36m12[0m  [36m[0m
+  [33m13[0m  [1m(trace-forms {:tracer (tracer :color "gold")}[0m
+  [0m  [0m  [33m^--- Parameter declaration missing[0m
+
+[36m----  Analysis Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:1035  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m1031[0m  [36m    :study [study-panel][0m
+  [36m1032[0m  [36m    :edit [edit-panel][0m
+  [36m1033[0m  [36m    :profile [profile-panel][0m
+  [36m1034[0m  [36m[0m
+  [33m1035[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m    [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m1036[0m  [36m    ))[0m
+  [36m1037[0m  [36m[0m
+  [36m1038[0m  [36m[0m
+  [36m1039[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:1035  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m1031[0m  [36m    :study [study-panel][0m
+  [36m1032[0m  [36m    :edit [edit-panel][0m
+  [36m1033[0m  [36m    :profile [profile-panel][0m
+  [36m1034[0m  [36m[0m
+  [33m1035[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m    [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m1036[0m  [36m    ))[0m
+  [36m1037[0m  [36m[0m
+  [36m1038[0m  [36m[0m
+  [36m1039[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.86 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.837 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:1002  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m 998[0m  [36m    :study [study-panel][0m
+  [36m 999[0m  [36m    :edit [edit-panel][0m
+  [36m1000[0m  [36m    :profile [profile-panel][0m
+  [36m1001[0m  [36m[0m
+  [33m1002[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m    [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m1003[0m  [36m    ))[0m
+  [36m1004[0m  [36m[0m
+  [36m1005[0m  [36m[0m
+  [36m1006[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:1002  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m 998[0m  [36m    :study [study-panel][0m
+  [36m 999[0m  [36m    :edit [edit-panel][0m
+  [36m1000[0m  [36m    :profile [profile-panel][0m
+  [36m1001[0m  [36m[0m
+  [33m1002[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m    [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m1003[0m  [36m    ))[0m
+  [36m1004[0m  [36m[0m
+  [36m1005[0m  [36m[0m
+  [36m1006[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.155 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:996  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m 992[0m  [36m    :study [study-panel][0m
+  [36m 993[0m  [36m    :edit [edit-panel][0m
+  [36m 994[0m  [36m    :profile [profile-panel][0m
+  [36m 995[0m  [36m[0m
+  [33m 996[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m    [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m 997[0m  [36m    ))[0m
+  [36m 998[0m  [36m[0m
+  [36m 999[0m  [36m[0m
+  [36m1000[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:996  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m992[0m  [36m    :pw-reset [pw-reset-panel][0m
+  [36m993[0m  [36m    ))[0m
+  [36m994[0m  [36m[0m
+  [36m995[0m  [36m[0m
+  [33m996[0m  [1m) ;; end of tracer form[0m
+  [0m   [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.649 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.377 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:973  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m969[0m  [36m    :study [study-panel][0m
+  [36m970[0m  [36m    :edit [edit-panel][0m
+  [36m971[0m  [36m    :profile [profile-panel][0m
+  [36m972[0m  [36m[0m
+  [33m973[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m   [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m974[0m  [36m    ))[0m
+  [36m975[0m  [36m[0m
+  [36m976[0m  [36m[0m
+  [36m977[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/views.cljs   line:973  column:16  ----[0m
+
+  [1mUse of undeclared Var cardy.views/pw-reset-panel[0m
+
+  [36m969[0m  [36m    :study [study-panel][0m
+  [36m970[0m  [36m    :edit [edit-panel][0m
+  [36m971[0m  [36m    :profile [profile-panel][0m
+  [36m972[0m  [36m[0m
+  [33m973[0m  [1m    :pw-reset [pw-reset-panel][0m
+  [0m   [0m  [33m               ^--- Use of undeclared Var cardy.views/pw-reset-panel[0m
+  [36m974[0m  [36m    ))[0m
+  [36m975[0m  [36m[0m
+  [36m976[0m  [36m[0m
+  [36m977[0m  [36m) ;; end of tracer form[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 7.353 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.661 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.485 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:763 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 763, col 1] Unexpected EOF while reading item 67 of list, starting at line 10 and column 2.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.572 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:763 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 763, col 1] Unexpected EOF while reading item 67 of list, starting at line 10 and column 2.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.452 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:763 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 763, col 1] Unexpected EOF while reading item 67 of list, starting at line 10 and column 2.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.521 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/events.cljs   line:763 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/events.cljs [line 763, col 1] Unexpected EOF while reading item 67 of list, starting at line 10 and column 2.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/events.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.927 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.352 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/events.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.121 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.296 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.135 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 4.522 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.982 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.862 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:973 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+
+  [36m971[0m  [36m            [new-pw-form][0m
+  [36m972[0m  [36m          ][0m
+  [33m973[0m  [1m      )[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+  [36m974[0m  [36m    )[0m
+  [36m975[0m  [36m[0m
+  [36m976[0m  [36m])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.417 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/subs.cljs   line:230 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/subs.cljs [line 230, col 1] Unexpected EOF while reading item 30 of list, starting at line 10 and column 1.[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/subs.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.021 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:973 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+
+  [36m971[0m  [36m            [new-pw-form][0m
+  [36m972[0m  [36m          ][0m
+  [33m973[0m  [1m      )[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+  [36m974[0m  [36m    )[0m
+  [36m975[0m  [36m[0m
+  [36m976[0m  [36m])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 3.421 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:973 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+
+  [36m971[0m  [36m            [new-pw-form][0m
+  [36m972[0m  [36m          ][0m
+  [33m973[0m  [1m      )[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 973, col 8] Unmatched delimiter ).[0m
+  [36m974[0m  [36m    )[0m
+  [36m975[0m  [36m[0m
+  [36m976[0m  [36m])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.493 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:981 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 981, col 8] Unmatched delimiter ).[0m
+
+  [36m979[0m  [36m            ; [new-pw-form][0m
+  [36m980[0m  [36m          ][0m
+  [33m981[0m  [1m      )[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 981, col 8] Unmatched delimiter ).[0m
+  [36m982[0m  [36m    )[0m
+  [36m983[0m  [36m[0m
+  [36m984[0m  [36m])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 3.18 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/views.cljs   line:981 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 981, col 8] Unmatched delimiter ).[0m
+
+  [36m979[0m  [36m            ; [new-pw-form][0m
+  [36m980[0m  [36m          ][0m
+  [33m981[0m  [1m      )[0m
+  [0m   [0m  [33m      /Users/concerto/cs/cardy/src/cljs/cardy/views.cljs [line 981, col 8] Unmatched delimiter ).[0m
+  [36m982[0m  [36m    )[0m
+  [36m983[0m  [36m[0m
+  [36m984[0m  [36m])[0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.96 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.946 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 5.544 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js

@@ -206,5 +206,24 @@
 
 
 
+(re-frame/reg-sub
+  ::excluded-count
+  (fn excluded-count [db]
+    (:excluded-count db)))
+
+(re-frame/reg-sub
+  ::congrats
+  (fn congrats [db]
+    (:congrats db)))
+
+
+(re-frame/reg-sub
+  ::pw-reset-flow-stage
+  (fn pw-reset-flow-stage [db]
+    (:pw-reset-flow-stage db)))
+
+
+
+
 ) ;; end of tracer form
 

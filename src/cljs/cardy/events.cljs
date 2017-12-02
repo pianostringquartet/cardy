@@ -3,11 +3,12 @@
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
-            [ajax.core :refer [GET POST]]
-            ))
+            [ajax.core :refer [GET POST]]))
 
 
- (trace-forms {:tracer (tracer :color "blue")}
+
+(trace-forms {:tracer (tracer :color "blue")}
+
 
 
 
@@ -190,22 +191,47 @@
           (assoc db :show-back? :true)))))
 
 
+(defn remove-congrats-message [db]
+  (assoc db :congrats nil))
+
+(re-frame/reg-event-db
+  ::remove-congrats-message
+  remove-congrats-message)
+
+
+
+
+(defn add-congrats-message [db]
+  (assoc db :congrats true))
 
 ;; accepts db, returns card
+;; returns map or nil
 (defn next-card [db]
   (let [ineligible
           (conj
             (clojure.set/union (:excluded db) (:removed db))
             (:current-card db))]
     (first (shuffle (remove ineligible (:cards db))))))
-
+;; ^^ this could probably be handled via dependency graph, no?
 
 (defn new-current-card [db]
   (let [new-card (next-card db)]
     (cond
+
+      ;; i.e. we've successfully gone through the deck!
+      ; (and (nil? new-card)
+      ;      (not (empty? (:excluded db))))
+      ;   (new-current-card (add-back-excluded db))
+      ;; should be loop/recur?
+
       (and (nil? new-card)
            (not (empty? (:excluded db))))
-        (new-current-card (add-back-excluded db))
+        (new-current-card
+          (add-congrats-message
+          (add-back-excluded db)))
+
+
+
       (nil? new-card)
         (assoc db :current-card placeholder-card)
       :else
@@ -297,6 +323,20 @@
 
 
 
+; now we want to say,
+; if we're on the last available card
+; and we exclude it,
+; then show a "good job!" image or something like that
+
+; 1. knowing whether card is last card
+; 2. adding "show good-job image" key to db
+
+; step back.
+; this could actually be a relatively advanced feature:
+;   you've had trouble in the past updating a given component based on
+;   an update to the app-db
+
+
 
 (defn exclude-card [db]
   (let [excluded (:excluded db)
@@ -305,12 +345,18 @@
       (assoc app-state :excluded (conj excluded current-card))
       (new-current-card app-state)
       (face-front app-state)
+
+      ;; added
+      (assoc app-state :excluded-count (inc (:excluded-count db)))
+
       )
     ))
 
 (re-frame/reg-event-db
   ::exclude-card
   exclude-card)
+
+
 
 
 (re-frame/reg-event-db
@@ -419,8 +465,8 @@
   (as-> db app-state
     (put-back-old-deck app-state)
     (bring-in-new-deck app-state user-input)
-    (new-current-card app-state)
-    ))
+    (new-current-card app-state)))
+
 
 (re-frame/reg-event-db
   ::change-deck
@@ -436,20 +482,20 @@
   (as-> db app-state
     (put-back-old-deck app-state)
     (bring-in-new-deck app-state user-input)
-    (new-current-card app-state)
-    ))
+    (new-current-card app-state)))
 
 
 ; change current deck
 ; change current panel
+
 
 (re-frame/reg-event-db
   ::edit-given-deck
   (fn edit-given-deck [db [event-id-to-ignore deck-name]]
     (change-panel
       (change-deck-pure db deck-name)
-      :edit
-      )))
+      :edit)))
+
 
 
 (re-frame/reg-event-db
@@ -457,8 +503,8 @@
   (fn study-given-deck [db [event-id-to-ignore deck-name]]
     (change-panel
       (change-deck-pure db deck-name)
-      :study
-      )))
+      :study)))
+
 
 
 
@@ -710,8 +756,12 @@
         (assoc db :new-pw-set? "New password not set. :'("))))
 
 
+(re-frame/reg-event-db
+  ::update-pw-reset-flow-stage
+  (fn update-pw-reset-flow-stage [db [event-id-to-ignore new-stage]]
+    (assoc db :pw-reset-flow-stage new-stage)))
 
 
 
 
-) ;; end of tracer form
+) ; end of tracer form
