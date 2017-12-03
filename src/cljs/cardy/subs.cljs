@@ -222,7 +222,22 @@
   (fn pw-reset-flow-stage [db]
     (:pw-reset-flow-stage db)))
 
+(re-frame/reg-sub
+  ::login-attempt-failed?
+  (fn login-attempt-failed? [db]
+    (:login-attempt-failed? db)))
 
+(re-frame/reg-sub
+  ::registration-failure-reason
+  (fn registration-failure-reason [db]
+    (:registration-failure-reason db)))
+
+
+; used during password reset flow
+(re-frame/reg-sub
+  ::current-email
+  (fn current-email [db]
+    (:current-email db)))
 
 
 ) ;; end of tracer form

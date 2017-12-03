@@ -48,7 +48,7 @@
       (let [deck-name (get-in req [:params :deck-name])]
         (response/ok (db-core/remove-deck! deck-name)))))
 
-  (POST "/login-creds" []
+  (POST "/login" []
     (fn [req]
       (let [credentials (:params req)]
         (response/ok (db-core/validate-credentials credentials))

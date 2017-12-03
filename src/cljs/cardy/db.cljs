@@ -15,11 +15,12 @@
 
    :pw-reset-flow-stage :sending-pw-reset-email
 
-   :current-panel :intro ;; i.e. login / signup
+   :current-panel :auth ;; i.e. login / signup
+   ; :current-panel :home
    ; :current-panel :study
    ; :current-panel :edit
 
-   :panels '(:intro :home :study :edit :profile)
+   :panels '(:auth :home :study :edit :profile)
 
    ;; use nil, because empty string is truthy
    :intro-error-message nil

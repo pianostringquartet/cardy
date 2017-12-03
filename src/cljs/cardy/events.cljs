@@ -6,11 +6,7 @@
             [ajax.core :refer [GET POST]]))
 
 
-
 (trace-forms {:tracer (tracer :color "blue")}
-
-
-
 
 
 ;;; PANELS
@@ -18,11 +14,6 @@
 ;; expects panel param to be :keyword
 ; (defn change-panel [db [event-id-to-ignore panel]]
 ;   (assoc db :current-panel panel))
-
-; (re-frame/reg-event-db
-;   ::change-panel
-;   change-panel)
-
 
 (defn change-panel [db panel]
   (assoc db :current-panel panel))
@@ -34,15 +25,12 @@
 
 
 
-
-
-
 (def placeholder-card
   {:front "This deck has no cards yet. Add one!"
    :back "You can flip me. But you really should add a card!"})
 
-(def placeholder-deck
-  {:placeholder-deck '(placeholder-card)})
+; (def placeholder-deck
+;   {:placeholder-deck '(placeholder-card)})
 
 (defn add-back-excluded
   [db]
@@ -73,28 +61,25 @@
 
 ;; I'm a change
 
-;; this is ridiculous to use just a single time...
-(defn dissoc-in
-  "Dissociates an entry from a nested associative structure returning a new
-  nested structure. keys is a sequence of keys. Any empty maps that result
-  will not be present in the new structure."
-  [m [k & ks :as keys]]
-  (if ks
-    (if-let [nextmap (get m k)]
-      (let [newmap (dissoc-in nextmap ks)]
-        (if (seq newmap)
-          (assoc m k newmap)
-          (dissoc m k)))
-      m)
-    (dissoc m k)))
+; ;; this is ridiculous to use just a single time...
+; (defn dissoc-in
+;   "Dissociates an entry from a nested associative structure returning a new
+;   nested structure. keys is a sequence of keys. Any empty maps that result
+;   will not be present in the new structure."
+;   [m [k & ks :as keys]]
+;   (if ks
+;     (if-let [nextmap (get m k)]
+;       (let [newmap (dissoc-in nextmap ks)]
+;         (if (seq newmap)
+;           (assoc m k newmap)
+;           (dissoc m k)))
+;       m)
+;     (dissoc m k)))
 
-(defn drop-nth [n coll]
-   (keep-indexed #(if (not= %1 n) %2) coll))
+; (defn drop-nth [n coll]
+;    (keep-indexed #(if (not= %1 n) %2) coll))
 
 
-
-(defn face-front [db]
-  (assoc db :current-face :front))
 
 
 ;; ----------------------------------------
@@ -191,12 +176,12 @@
           (assoc db :show-back? :true)))))
 
 
-(defn remove-congrats-message [db]
-  (assoc db :congrats nil))
+; (defn remove-congrats-message [db]
+;   (assoc db :congrats nil))
 
-(re-frame/reg-event-db
-  ::remove-congrats-message
-  remove-congrats-message)
+; (re-frame/reg-event-db
+;   ::remove-congrats-message
+;   remove-congrats-message)
 
 
 
@@ -230,131 +215,11 @@
           (add-congrats-message
           (add-back-excluded db)))
 
-
-
       (nil? new-card)
         (assoc db :current-card placeholder-card)
       :else
         (assoc db :current-card new-card))))
 
-
-(re-frame/reg-event-db
-  ::next
-  (fn next-handler [db]
-    (face-front
-      (new-current-card db))))
-
-
-
-;; ADDING, REMOVING CARDS
-
-(defn add-card
-  [db [event-id-to-ignore user-input]]
-  (let [current-cards (:cards db)
-        new-card (input-to-card user-input)]
-    (as-> db app-state
-      (assoc app-state :cards (conj current-cards new-card))
-      (new-current-card app-state))))
-
-
-
-
-(re-frame/reg-event-db
-  ::add-card
-  add-card)
-
-; (re-frame/reg-event-db
-;   ::add-card
-;   (fn add-card [db input]
-;     (let [current-cards (:cards db)
-;           new-card (input-to-card input)]
-;       (assoc db :cards (conj current-cards new-card)))))
-
-
-
-
-; (defn remove-card [db]
-;   (as-> db app-state
-;     (assoc app-state :removed (clojure.set/union
-;                                 #{(:current-card app-state)}
-;                                  (:removed app-state)))
-;     (new-current-card app-state)))
-
-
-; (re-frame/reg-event-db
-;   ::remove-card
-;   remove-card)
-
-
-;; return ONE set;
-;; thought set might contain more than one card...
-;; set -> set
-(defn card-to-remove [cards front back]
-  (let [cards-to-remove (clojure.set/select
-                        #{{:front front :back back}}
-                        cards)]
-    (if (empty? cards-to-remove)
-      #{}
-      cards-to-remove)))
-
-
-;; now, instead of just removing current card,
-;; we want to "find" the card in :cards to remove
-;; i.e. we receive a front and a back,
-;; and exclude the card with that front and back
-(defn remove-card [db front back]
-  (as-> db app-state
-    (assoc app-state :removed (clojure.set/union
-                                (card-to-remove (:cards app-state) front back)
-                                (:removed app-state)))
-    (new-current-card app-state)))
-
-
-
-(re-frame/reg-event-db
-  ::remove-card
-  (fn remove-card-handler [db [event-id-to-ignore front back]]
-    (remove-card db front back)))
-
-
-
-
-;; EXCLUDING CARDS
-
-
-
-; now we want to say,
-; if we're on the last available card
-; and we exclude it,
-; then show a "good job!" image or something like that
-
-; 1. knowing whether card is last card
-; 2. adding "show good-job image" key to db
-
-; step back.
-; this could actually be a relatively advanced feature:
-;   you've had trouble in the past updating a given component based on
-;   an update to the app-db
-
-
-
-(defn exclude-card [db]
-  (let [excluded (:excluded db)
-        current-card (:current-card db)]
-    (as-> db app-state ;; just use -> ?
-      (assoc app-state :excluded (conj excluded current-card))
-      (new-current-card app-state)
-      (face-front app-state)
-
-      ;; added
-      (assoc app-state :excluded-count (inc (:excluded-count db)))
-
-      )
-    ))
-
-(re-frame/reg-event-db
-  ::exclude-card
-  exclude-card)
 
 
 
@@ -362,67 +227,9 @@
 (re-frame/reg-event-db
   ::add-back-excluded
   add-back-excluded)
-;; right -- you just need to provide the function;
-;; i.e. you DECLARE (via the function) how the db will change/what happens
-;; ... it's re-frame that does the actual calling;
-;; i.e. reg-event-db accepts an event-id and a event-handler-fn to
-;; associate with that event-id
-
-
 
 (defn clear-removed [db]
   (assoc db :removed #{}))
-
-
-;; DECKS
-
-
-
-;; now, if we add a deck and the only other deck was
-; (defn add-deck [db deck-name]
-;   "Assumes deck-name is :keyword"
-;   (assoc-in db [:decks deck-name] '()))
-
-(defn add-deck [db deck-name]
-  "Assumes deck-name is :keyword"
-  (assoc-in db [:decks deck-name] #{}))
-
-
-(re-frame/reg-event-db
-  ::add-deck
-  (fn add-deck-handler [db [event-id-to-ignore name-for-new-deck]]
-    (add-deck db (input-to-keyword name-for-new-deck))))
-
-
-#_(re-frame/reg-event-db
-  ::add-deck
-  (fn [db [event-id-to-ignore name-for-new-deck]]
-    (assoc-in db [:decks (input-to-keyword name-for-new-deck)] '())))
-
-
-
-
-;; during this step, :cards changes but :current-deck does not change
-; (defn put-back-old-deck
-;   [db]
-;   (let [current-deck (:current-deck db)] ; a keyword
-;     (as-> db app-state
-;       (add-back-excluded app-state) ;; update old deck to include :excluded
-;       (assoc-in app-state ;; put old deck into :decks storage
-;         [:decks current-deck] (:cards app-state)))))
-
-
-;; when we put back an old deck, we set :excluded to #{}
-;; and do not include the "removed" cards
-; (defn put-back-old-deck
-;   [db]
-;   (let [deck-less-removed (clojure.set/difference (:cards db) (:removed db))]
-;     (clear-removed
-;       (assoc-in
-;         (add-back-excluded db) ;; set :excluded to #{}
-;         [:decks (:current-deck db)] ;; path: :decks :current-deck
-;         deck-less-removed))))
-
 
 (defn put-back-old-deck
   [db]
@@ -432,8 +239,6 @@
         (add-back-excluded db) ;; set :excluded to #{}
         [:decks (:current-deck db)] ;; path: :decks :current-deck
         deck-less-removed))))
-
-
 
 ;; during this step, :cards changes and :current-deck changes,
 ;; but user provided 'desired deck' does not change
@@ -445,19 +250,6 @@
       (assoc app-state :cards (desired-deck (:decks app-state)))
       (assoc app-state :current-deck desired-deck))))
 
-; (re-frame/reg-event-db
-;   ::change-deck
-;   (fn change-deck [db [event-id-to-ignore user-input]]
-;     (bring-in-new-deck
-;       (put-back-old-deck db)
-;       user-input)))
-
-; (re-frame/reg-event-db
-;   ::change-deck
-;   (fn change-deck [db [event-id-to-ignore user-input]]
-;     (bring-in-new-deck
-;       (put-back-old-deck db)
-;       user-input)))
 
 
 (defn change-deck
@@ -471,297 +263,6 @@
 (re-frame/reg-event-db
   ::change-deck
   change-deck)
-
-
-
-; DOES NOT ACCEPT EVENT ID TO IGNORE
-; you should probably have the "handler fn"
-; remove the event-id-to-ignore
-(defn change-deck-pure
-  [db user-input]
-  (as-> db app-state
-    (put-back-old-deck app-state)
-    (bring-in-new-deck app-state user-input)
-    (new-current-card app-state)))
-
-
-; change current deck
-; change current panel
-
-
-(re-frame/reg-event-db
-  ::edit-given-deck
-  (fn edit-given-deck [db [event-id-to-ignore deck-name]]
-    (change-panel
-      (change-deck-pure db deck-name)
-      :edit)))
-
-
-
-(re-frame/reg-event-db
-  ::study-given-deck
-  (fn study-given-deck [db [event-id-to-ignore deck-name]]
-    (change-panel
-      (change-deck-pure db deck-name)
-      :study)))
-
-
-
-
-
-;; bool
-(defn removing-current-deck? [db deck-to-remove]
-  "Expects deck-to-remove to be a :keyword."
-  (= deck-to-remove (:current-deck db)))
-
-
-;; needs a little more logic too;
-;; if removing last deck, then bring in placeholder deck
-
-;; you have this defined both here and in subs...
-;; maybe you need to make a utils.cljs?
-;; or common.cljs?
-
-
-;; bool
-(defn no-decks? [db]
-  (empty? (:decks db)))
-
-(defn last-deck? [db]
-  (= 1 (count (:decks db))))
-
-
-;; clearly separe the "parsing of user input" fn
-;; from the "event handler fn";
-;; ideally, call the "parse user input" before you hand the arg to
-
-
-(re-frame/reg-event-db
-  ::remove-deck
-  (fn remove-deck-handler [db [event-id-to-ignore name-of-deck-to-remove]]
-    (let [deck-to-remove (input-to-keyword name-of-deck-to-remove)
-          remove-deck (fn [db deck-name]
-            (dissoc-in db [:decks deck-name]))]
-      (if (last-deck? db)
-        (as-> db app-state ;; just use -> here
-          (add-deck app-state :placeholder)
-          (bring-in-new-deck app-state "placeholder"))
-        (if (removing-current-deck? db deck-to-remove)
-          (as-> db app-state
-            (remove-deck app-state deck-to-remove)
-            (bring-in-new-deck app-state (name (first (keys (:decks app-state)))))
-            (new-current-card app-state))
-          (remove-deck db deck-to-remove))))))
-
-
-
-
-
-
-
-;;; AUTH
-
-
-(defn error-message-for-user [db message]
-  (assoc db :intro-error-message message))
-
-;; the login event will actually be a custom Fx ...
-(re-frame/reg-event-fx
-  ::login
-  (fn login-handler [cofx [event-id-to-ignore username email password]]
-    {:login-fx {:username username
-                :email email
-                :password password}}))
-
-(re-frame/reg-fx
-  :login-fx
-  (fn login-ajax [credentials]
-    (POST "/login-creds"
-      {:params credentials
-       :handler #(re-frame/dispatch [::attempt-login %])
-       ; :handler #(js/console.log "login-ajax response was: " %)
-
-       ;; this is, "on successful POST request" handler;
-       ;; if the server decides the creds were incorrect,
-       ;; the server will still send back a successful post request,
-       ;; no? (or, how do other people handle this?)
-
-        })
-    ))
-
-
-;; where login-attempt is what the Server returned
-(defn attempt-login [db [event-id-to-ignore login-attempt]]
-  (case login-attempt
-    ; "succeeded" (assoc db :logged-in true)
-
-    "succeeded" (change-panel
-                  (assoc db :logged-in true)
-                  :home)
-
-    "failed" (error-message-for-user
-                (assoc db :logged-in false)
-                "Login failed. Double check email and password.")
-    ; "failed" (assoc db :logged-in false)
-    ))
-
-
-(re-frame/reg-event-db
-  ::attempt-login
-  attempt-login)
-
-
-;; register
-
-(re-frame/reg-event-fx
-  ::register
-  (fn register-handler [cofx [event-id-to-ignore username email password]]
-    {:register-fx {:username username
-                   :email email
-                   :password password}}))
-
-(re-frame/reg-fx
-  :register-fx
-  (fn register-ajax [credentials]
-    (POST "/register-creds"
-      {:params credentials
-       :handler #(re-frame/dispatch [::attempt-registration %])
-
-       ; :handler #(js/console.log "register-ajax response was: " %)
-
-       ;; this is, "on successful POST request" handler;
-       ;; if the server decides the creds were incorrect,
-       ;; the server will still send back a successful post request,
-       ;; no? (or, how do other people handle this?)
-
-        })
-    ))
-
-
-;; you need some of this logic for reuse
-;;  in resetting a password
-(defn attempt-registration [db [event-id-to-ignore registration-attempt]]
-  (case registration-attempt
-
-    ;; do more than just log someone in -- move them to the Home panel
-    ;; by updating :current-panel in app-db
-    "registered" (change-panel
-                    (assoc db :logged-in true)
-                    :home)
-
-    ; "registered" (assoc db :logged-in true)
-      "invalid email format" (error-message-for-user db registration-attempt)
-      "email already in use"  (error-message-for-user db registration-attempt)
-      "invalid password format" (error-message-for-user db registration-attempt)
-
-    (error-message-for-user db "An unknown error happened while registering.")
-    ; i.e. the "else" condition
-    ; (assoc db :logged-in false)
-    ; "invalid email format"
-
-    ))
-
-
-(re-frame/reg-event-db
-  ::attempt-registration
-  attempt-registration)
-
-
-
-;;; PASSWORD RESET
-
-
-;; sending reset email
-(re-frame/reg-event-fx
-    ::send-pw-reset-email
-    (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
-      {:send-pw-reset-email-fx email}))
-
-  (re-frame/reg-fx
-    :send-pw-reset-email-fx
-    (fn send-pw-reset-email-ajax [email-address]
-      (POST "/send-pw-reset-email"
-        {:params {:email email-address}
-        ; {:params email-address
-          ; :handler #(js/console.log "send-pw-reset-email-ajax response was: " %)}
-          :handler #(re-frame/dispatch
-                      [::notify-user-of-pw-reset-email])}
-          )))
-
-(re-frame/reg-event-db
-  ::notify-user-of-pw-reset-email
-  (fn notify-user-of-pw-reset-email [db]
-    (assoc db :pw-reset-message "Password reset email sent!")))
-
-
-
-
-;; verifying email's reset code
-(re-frame/reg-event-fx
-  ::verify-pw-reset-code
-  (fn verify-pw-reset-code [cofx [event-id-to-ignore email code]]
-    {:verify-pw-reset-code-fx [email code]}))
-
-;; huh? where am I providing the email?
-;; i.e. the reg-event-fx above isn't  is returning "code"
-;; which is
-(re-frame/reg-fx
-  :verify-pw-reset-code-fx
-  ; (fn verify-pw-reset-code-ajax [email code]
-  (fn verify-pw-reset-code-ajax [[email code]]
-    (POST "/verify-pw-reset-code"
-      {:params {:email email :code code}
-        :handler #(re-frame/dispatch
-          [::notify-user-of-reset-code-verification %])}
-      )
-    ))
-
-
-(re-frame/reg-event-db
-  ::notify-user-of-reset-code-verification
-  (fn notify-user-of-reset-code-verification [db [event-id-to-ignore server-response]]
-    (if (= server-response "failed")
-        (assoc db :code-verified? "Codes did not match.")
-        (assoc db :code-verified? "Codes matched! Now let's reset your password!"))))
-
-
-
-;; updating a user's password
-
-(re-frame/reg-event-fx
-  ::set-new-pw
-  ; hardcoding email for now
-  (fn set-new-pw [cofx [event-id-to-ignore new-pw]]
-    {:set-new-pw-fx ["cjc500@nyu.edu" new-pw]}))
-
-
-
-(re-frame/reg-fx
-  :set-new-pw-fx
-  (fn set-new-pw-ajax [[email new-pw]]
-    (POST "/set-new-pw-ajax"
-
-      {:params {:email email :new-pw new-pw}
-        :handler #(re-frame/dispatch
-          [::notify-user-of-new-pw %])}
-      )
-    ))
-
-
-(re-frame/reg-event-db
-  ::notify-user-of-new-pw
-  (fn notify-user-of-new-pw [db [event-id-to-ignore server-response]]
-    (if (= server-response "succeeded")
-        (assoc db :new-pw-set? "New password has been set! :-D")
-        (assoc db :new-pw-set? "New password not set. :'("))))
-
-
-(re-frame/reg-event-db
-  ::update-pw-reset-flow-stage
-  (fn update-pw-reset-flow-stage [db [event-id-to-ignore new-stage]]
-    (assoc db :pw-reset-flow-stage new-stage)))
-
-
 
 
 ) ; end of tracer form
