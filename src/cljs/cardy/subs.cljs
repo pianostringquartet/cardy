@@ -15,71 +15,6 @@
     (:current-panel db)))
 
 
-
-
-; (re-frame/reg-sub
-;   :page
-;   (fn [db _]
-;     (:page db)))
-
-; (re-frame/reg-sub
-;   :docs
-;   (fn [db _]
-;     (:docs db)))
-
-
-(re-frame/reg-sub
-  ::show-decks
-  (fn show-decks [db]
-    (:decks db)))
-
-
-;; how to source the app's cards
-(re-frame/reg-sub
-  ::cards
-  (fn cards [db]
-    (:cards db)))
-
-
-
-
-
-(re-frame/reg-sub
-  ::current-card-front
-  (fn current-card-front [db]
-    (:front (:current-card db))))
-
-(re-frame/reg-sub
-  ::current-card-back
-  (fn current-card-back [db]
-    (:back (:current-card db))))
-
-
-(re-frame/reg-sub
-  ::front-flag
-  (fn front-flag [db]
-    (:front-flag db)))
-
-(re-frame/reg-sub
-  ::back-flag
-  (fn back-flag [db]
-    (:back-flag db)))
-
-
-(re-frame/reg-sub
-  ::show-back?
-  (fn show-back [db]
-    (:show-back? db)))
-
-
-;; still how to source the app's current card,
-;; but now the "current card" is a number (i.e. an index position)
-;; instead of an actual card
-(re-frame/reg-sub
-  ::current
-  (fn current [db]
-    (:current db)))
-
 ;; how to source app's current face
 ;; (i.e. are we supposed to be looking at front or back right now?)
 (re-frame/reg-sub
@@ -88,156 +23,51 @@
     (:current-face db)))
 
 ;; how to source excluded cards
-(re-frame/reg-sub
-  ::excluded
-  (fn excluded [db]
-    (:excluded db)))
-
-;; how to source decks
-(re-frame/reg-sub
-  ::decks
-  (fn decks [db]
-    (:decks db)))
-
-;; how to source the current deck
-(re-frame/reg-sub
-  ::current-deck
-  (fn current-deck [db]
-    (:current-deck db)))
-
-(re-frame/reg-sub
-  ::starter-deck
-  (fn starter-deck [db]
-    (:starter (:decks db))))
-
-
-;; helper fn..
-;; where should this logic go -- in the subs (i.e. data sourcing)
-;; or in the views?
-
-
-(def placeholder-card
-  {:front "This deck has no cards yet. Add one!"
-   :back "You can flip me. But you really should add a card!"})
-
-;; returns bool
-;; is :cards empty?
-(defn empty-cards? []
-  (empty? @(re-frame/subscribe [::cards])))
-;; I have to use the double colon?
-
-;; can we use a sub here? ... well, why not?
-;; The re-framers advise against uses subs in event handlers
-;; Ah, the re-framers recommend only using subs in views...
-
-
-;; returns bool
-;; is :excluded empty?
-(defn cards-excluded? []
-  (not (empty? @(re-frame/subscribe [::excluded]))))
-
-;; are there no more cards in this deck ?
-(defn all-cards-removed? []
-  (and empty-cards? (not (cards-excluded?))))
-
-
-;; clean this up; use condp?
-(defn determine-current-card [db]
-  (let [current-index (:current db)
-        cards (:cards db)]
-      (if (not (empty-cards?))
-        (nth cards current-index)
-        (if (and (empty-cards?) (cards-excluded?))
-            (re-frame/dispatch [::events/add-back-excluded])
-            ;; is this weird, to dispatch an event in a subscription?
-
-            {:front "This deck has no cards yet. Add one!"
-             :back "You can flip me. But you really should add a card!"}
-          ))))
-
-
 ; (re-frame/reg-sub
-;   ::current-card
-;   (fn current-card [db]
-;     (determine-current-card db)))
+;   ::excluded
+;   (fn excluded [db]
+;     (:excluded db)))
+;; just bc it's in db doesn't mean it needs to
+;; be a node in the sub graph
 
+
+; probly better to use this + :front vs. :back,
+; than separate nodes for front-card, back-card
 (re-frame/reg-sub
   ::current-card
   (fn current-card [db]
     (:current-card db)))
 
 
-;; hmm... can subscriptions refer to each other?
-;; how to handle this?
-; (re-frame/reg-sub
-;   ::current-phrase
-;   (fn current-phrase [db]
-;     (let [current-face (:current-face db)]
-;       (current-face (determine-current-card db)))))
-
+; will likely be used by both Study and Edit panels
 (re-frame/reg-sub
-  ::current-phrase
-  (fn current-phrase [db]
-    (let [current-face (:current-face db)]
-      (current-face (:current-card db)))))
+  ::current-deck
+  (fn current-deck [db]
+    (:current-deck db)))
 
 
 (re-frame/reg-sub
-  ::removed
-  (fn removed-cards [db]
-    (:removed db)))
+  ::decks
+  (fn decks [db]
+    (:decks db)))
 
 
+;; LAYER 3 SUBS
+
+; layer 3 subs do not pull directly from db;
+; they simply accept input from layer 2 subs,
+; and calculate some result
 (re-frame/reg-sub
-  ::intro-error-message
-  (fn intro-error-message [db]
-    (:intro-error-message db)))
-
-
-(re-frame/reg-sub
-  ::pw-reset-message
-  (fn pw-reset-message [db]
-    (:pw-reset-message db)))
-
-(re-frame/reg-sub
-  ::code-verified?
-  (fn code-verified? [db]
-    (:code-verified? db)))
+  ::cards
+  ;; inputs:
+  :<-[::current-deck]
+  :<-[::decks]
+  ;;
+  (fn cards [[current-deck decks]]
+    (current-deck decks)))
 
 
 
-(re-frame/reg-sub
-  ::excluded-count
-  (fn excluded-count [db]
-    (:excluded-count db)))
-
-(re-frame/reg-sub
-  ::congrats
-  (fn congrats [db]
-    (:congrats db)))
-
-
-(re-frame/reg-sub
-  ::pw-reset-flow-stage
-  (fn pw-reset-flow-stage [db]
-    (:pw-reset-flow-stage db)))
-
-(re-frame/reg-sub
-  ::login-attempt-failed?
-  (fn login-attempt-failed? [db]
-    (:login-attempt-failed? db)))
-
-(re-frame/reg-sub
-  ::registration-failure-reason
-  (fn registration-failure-reason [db]
-    (:registration-failure-reason db)))
-
-
-; used during password reset flow
-(re-frame/reg-sub
-  ::current-email
-  (fn current-email [db]
-    (:current-email db)))
 
 
 ) ;; end of tracer form

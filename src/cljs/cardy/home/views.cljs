@@ -1,7 +1,7 @@
 (ns cardy.home.views
   (:require [re-frame.core :as re-frame]
-            [cardy.subs :as subs]
 
+            [cardy.home.subs :as subs]
             [cardy.home.events :as events]
 
             [reagent.core  :as reagent]
@@ -16,17 +16,6 @@
 
 
 
-;; A deck is only "empty" (i.e. contains no cards) if :cards is empty
-;; AND :excluded is empty too
-(defn add-deck []
-  (let [text-val (reagent/atom "")]
-    (fn []
-      [re-com/input-text
-        :model text-val
-        :change-on-blur? true
-        :placeholder "add a new deck"
-        :on-change
-          #(re-frame/dispatch [::events/add-deck (reset! text-val %)])])))
 
 (defn remove-deck []
   (let [text-val (reagent/atom "")]
@@ -38,7 +27,22 @@
         :on-change
           #(re-frame/dispatch [::events/remove-deck (reset! text-val %)])])))
 
-;; where we have the actual options for manipulating decks
+
+
+
+;; Adds a(n empty) deck
+(defn add-deck []
+  (let [text-val (reagent/atom "")]
+    (fn []
+      [re-com/input-text
+        :model text-val
+        :change-on-blur? true
+        :placeholder "add a new deck"
+        :attr {:auto-focus "true"}
+        :on-change
+          #(re-frame/dispatch [::events/add-deck (reset! text-val %)])])))
+
+
 (defn add-deck-modal-dialog
   [process-ok process-cancel]
   [re-com/v-box
@@ -47,19 +51,6 @@
     :style {:backdrop-color "blue"}
     :children [[add-deck]
                [re-com/button :label "Done" :on-click process-ok]]])
-
-
-; (defn deck-modal-dialog
-;   [process-ok process-cancel]
-;   [re-com/v-box
-;     :padding "10px"
-;     :gap "10px"
-;     :style {:backdrop-color "blue"}
-;     :children [[re-com/title :label "Change, add or delete a deck"]
-;                [deck-dropdown]
-;                [add-deck]
-;                [remove-deck]
-;                [re-com/button :label "Done" :on-click process-ok]]])
 
 (defn add-deck-modal []
   (let [show? (reagent/atom false)
@@ -75,8 +66,6 @@
           [re-com/button
             :label "add deck"
             :class "btn-info"
-            ;:on-click #(do
-             ; (reset! show? true))]
              :on-click #(reset! show? true)]
           (when @show? [re-com/modal-panel
                           :backdrop-color "grey"
@@ -85,49 +74,19 @@
           ]
         ])))
 
-;; modal for deck manipulation
-;; this controls the display (show, not show) of the modal-dialog
-; (defn deck-modal []
-;   (let [show? (reagent/atom false)
-;         process-ok (fn [event]
-;                          (reset! show? false)
-;                          false)
-;         process-cancel (fn [event]
-;                          (reset! show? false)
-;                          false)]
-;     (fn []
-;       [re-com/v-box
-;         :children [
-;           [re-com/button
-;             :label "Decks"
-;             :class "btn-info"
-;             ;:on-click #(do
-;              ; (reset! show? true))]
-;              :on-click #(reset! show? true)]
-;           (when @show? [re-com/modal-panel
-;                           :backdrop-color "grey"
-;                           :backdrop-opacity 0.4
-;                           :child [deck-modal-dialog process-ok process-cancel]])
-;           ]
-;         ])))
-
-
-
-
 
 (defn clickable-pencil [deck-name]
   [:img
-          {:src "pencil_icon.png"
-           :style {:max-width "20px" :max-height "20px"}
-            ; clicking the pencil icon should take you to an edit panel
-            ; for that particular deck
-            :on-click #(re-frame/dispatch [::events/edit-given-deck (name deck-name)])}
-        ]
-  )
+    {:src "pencil_icon.png"
+     :style {:max-width "20px" :max-height "20px"}
+      ; clicking the pencil icon should take you to an edit panel
+      ; for that particular deck
+      :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])}])
+
 
 (defn clickable-deck-name [deck-name]
   [re-com/box
-    :attr {:on-click #(re-frame/dispatch [::events/study-given-deck (name deck-name)])}
+    :attr {:on-click #(re-frame/dispatch [::events/study-given-deck deck-name])}
     :child [re-com/title :label (name deck-name)]]
   )
 
@@ -190,21 +149,6 @@
     ))
 
 
-
-
-
-
-
-(defn clickable-to-delete-deck [deck-name]
-  [re-com/box
-    :child [:img
-      {:src "trash_icon.png"
-        :style {:max-width "20px" :max-height "20px"}
-        :on-click #(re-frame/dispatch [::events/remove-deck (name deck-name)])}
-      ]])
-
-
-
 (defn deck-clickables [deck-name]
   [re-com/border
       :border "1px dashed lightgrey"
@@ -216,10 +160,8 @@
       :gap "20px"
       :children [
         [clickable-pencil deck-name]
-        ; [clickable-to-delete-deck deck-name]
         [really-delete-dialogue deck-name]
         [clickable-deck-name deck-name]
-
         ]]]
 
     )
@@ -260,7 +202,12 @@
       [re-com/typeahead
         :data-source suggestion-for-search
         :placeholder "search for a deck"
-        :on-change #(re-frame/dispatch [::events/study-given-deck %])
+        :attr {:auto-focus "true"}
+        :on-change
+          (fn [selection]
+            (if (empty? selection)
+              nil ;; ignore input if field was blank when enter was pressed
+              (re-frame/dispatch [::events/study-given-deck (keyword selection)])))
         :change-on-blur? true])))
 
 
@@ -269,18 +216,11 @@
     :gap "50px"
     :align :center
     :children [
-      [re-com/title :label "HOME PANEL" :level :level1]
-      ; [intro-panel-button]
+      [re-com/title :label "DECKS" :level :level1]
       [re-com/h-box
         :gap "20px"
         :children [
           [deck-fuzzy-search]
-          [add-deck-modal]
-        ]]
-      [deck-flow]
-      ]
-  ])
-
-
-)
+          [add-deck-modal]]]
+      [deck-flow]]]))
 

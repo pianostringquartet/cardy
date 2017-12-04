@@ -6,101 +6,94 @@
             [ajax.core :refer [GET POST]]
 
             [cardy.events :refer [
-                new-current-card
                 input-to-card
                 input-to-keyword
-                add-back-excluded
-                put-back-old-deck
-                bring-in-new-deck
                 change-panel
+                remove-deck
                 ]]
             ))
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-; home views uses:
 
-; add-deck
-; remove-deck
 
-; study-given-deck
-; edit-given-deck
 
 
 ;; this is ridiculous to use just a single time...
-(defn dissoc-in
-  "Dissociates an entry from a nested associative structure returning a new
-  nested structure. keys is a sequence of keys. Any empty maps that result
-  will not be present in the new structure."
-  [m [k & ks :as keys]]
-  (if ks
-    (if-let [nextmap (get m k)]
-      (let [newmap (dissoc-in nextmap ks)]
-        (if (seq newmap)
-          (assoc m k newmap)
-          (dissoc m k)))
-      m)
-    (dissoc m k)))
+; (defn dissoc-in
+;   "Dissociates an entry from a nested associative structure returning a new
+;   nested structure. keys is a sequence of keys. Any empty maps that result
+;   will not be present in the new structure."
+;   [m [k & ks :as keys]]
+;   (if ks
+;     (if-let [nextmap (get m k)]
+;       (let [newmap (dissoc-in nextmap ks)]
+;         (if (seq newmap)
+;           (assoc m k newmap)
+;           (dissoc m k)))
+;       m)
+;     (dissoc m k)))
+
+
+; (defn removing-current-deck? [db deck-to-remove]
+;   "Expects deck-to-remove to be a :keyword."
+;   (= deck-to-remove (:current-deck db)))
+
+; (defn last-deck? [db]
+;   (= 1 (count (:decks db))))
+
+
+;  where is this event being used / called?
+; ah, it's callable via the trash can icon on a deck face in Home
+; ... so you should move this logic to Common Events,
+; since we also need this in
+; (re-frame/reg-event-db
+;   ::remove-deck
+;   (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
+;     (dissoc-in db [:decks (input-to-keyword deck-name)])))
+
+; (re-frame/reg-event-db
+;   ::remove-deck
+;   (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
+;     (dissoc-in db [:decks (input-to-keyword deck-name)])))
+
+(re-frame/reg-event-db
+  ::remove-deck
+  (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
+    (remove-deck db (input-to-keyword deck-name))))
 
 
 (defn add-deck [db deck-name]
   "Assumes deck-name is :keyword"
   (assoc-in db [:decks deck-name] #{}))
 
-(defn removing-current-deck? [db deck-to-remove]
-  "Expects deck-to-remove to be a :keyword."
-  (= deck-to-remove (:current-deck db)))
-
-(defn last-deck? [db]
-  (= 1 (count (:decks db))))
-
-(re-frame/reg-event-db
-  ::remove-deck
-  (fn remove-deck-handler [db [event-id-to-ignore name-of-deck-to-remove]]
-    (let [deck-to-remove (input-to-keyword name-of-deck-to-remove)
-          remove-deck (fn [db deck-name]
-            (dissoc-in db [:decks deck-name]))]
-      (if (last-deck? db)
-        (as-> db app-state ;; just use -> here
-          (add-deck app-state :placeholder)
-          (bring-in-new-deck app-state "placeholder"))
-        (if (removing-current-deck? db deck-to-remove)
-          (as-> db app-state
-            (remove-deck app-state deck-to-remove)
-            (bring-in-new-deck app-state (name (first (keys (:decks app-state)))))
-            (new-current-card app-state))
-          (remove-deck db deck-to-remove))))))
-
-
-
-
-(re-frame/reg-event-db
-  ::add-deck
-  (fn add-deck-handler [db [event-id-to-ignore name-for-new-deck]]
-    (add-deck db (input-to-keyword name-for-new-deck))))
-
-
-(defn change-deck-pure
-  [db user-input]
-  (as-> db app-state
-    (put-back-old-deck app-state)
-    (bring-in-new-deck app-state user-input)
-    (new-current-card app-state)))
-
 
 (re-frame/reg-event-db
   ::study-given-deck
+  ;;; where deck-name is keyword
   (fn study-given-deck [db [event-id-to-ignore deck-name]]
     (change-panel
-      (change-deck-pure db deck-name)
+      (assoc
+        (assoc db :current-deck deck-name) ;; set :current-deck, so Study knows which cards to draw from
+        :current-card
+        (first (deck-name (:decks db)))) ;; set :current-card as simply the first card from now :current-deck
       :study)))
+
 
 (re-frame/reg-event-db
   ::edit-given-deck
   (fn edit-given-deck [db [event-id-to-ignore deck-name]]
     (change-panel
-      (change-deck-pure db deck-name)
+      (assoc db :current-deck deck-name)
       :edit)))
 
+
+(re-frame/reg-event-fx
+  ::add-deck
+  (fn add-deck-handler [cofx [event-id-to-ignore new-decks-name]]
+    (let [deck-name (input-to-keyword new-decks-name)
+          db (:db cofx)]
+      {:db (add-deck db deck-name)
+       :dispatch [::edit-given-deck deck-name]})))
 
 ) ;; end of tracer form

@@ -4,70 +4,55 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [ajax.core :refer [GET POST]]
-
-            [cardy.events :refer [new-current-card input-to-card]]
+            [medley.core :as medley]
+            [cardy.events :refer [input-to-card change-panel remove-deck]]
             ))
 
 (trace-forms {:tracer (tracer :color "blue")}
 
 
-; edit.views uses these events:
-
-; remove-card
-; add-card
-
-
-;; ADDING, REMOVING CARDS
-
-(defn add-card
-  [db [event-id-to-ignore user-input]]
-  (let [current-cards (:cards db)
+;; this needs to now add directly to the deck in :decks
+; works
+(defn add-card [db [event-id-to-ignore user-input]]
+  (let [cards (get-in db [:decks (:current-deck db)])
         new-card (input-to-card user-input)]
-    (as-> db app-state
-      (assoc app-state :cards (conj current-cards new-card))
-      (new-current-card app-state))))
-
-
-
+    (assoc-in
+      db
+      [:decks (:current-deck db)]
+      (conj cards new-card))))
 
 (re-frame/reg-event-db
   ::add-card
   add-card)
 
 
-;; return ONE set;
-;; thought set might contain more than one card...
-;; set -> set
-(defn card-to-remove [cards front back]
-  (let [cards-to-remove (clojure.set/select
-                        #{{:front front :back back}}
-                        cards)]
-    (if (empty? cards-to-remove)
-      #{}
-      cards-to-remove)))
+; where card is a map
+(defn remove-card [db card]
+  (let [cards (get-in db [:decks (:current-deck db)])]
+    (assoc-in
+      db
+      [:decks (:current-deck db)]
+      (clojure.set/difference cards #{card}))))
 
 
-;; now, instead of just removing current card,
-;; we want to "find" the card in :cards to remove
-;; i.e. we receive a front and a back,
-;; and exclude the card with that front and back
-(defn remove-card [db front back]
-  (as-> db app-state
-    (assoc app-state :removed (clojure.set/union
-                                (card-to-remove (:cards app-state) front back)
-                                (:removed app-state)))
-    (new-current-card app-state)))
-
-
+(defn remove-deck-if-empty [db]
+  (let [cards (get-in db [:decks (:current-deck db)])]
+    (if (empty? cards)
+      (remove-deck db (:current-deck db))
+      db)))
 
 (re-frame/reg-event-db
   ::remove-card
-  (fn remove-card-handler [db [event-id-to-ignore front back]]
-    (remove-card db front back)))
+  (fn remove-card-handler [db [event-id-to-ignore card]]
+    (remove-card db card)))
+
+(re-frame/reg-event-db
+  ::return-home-from-edit
+  (fn return-home-from-edit [db]
+    (assoc
+      (remove-deck-if-empty db)
+      :current-panel
+      :home)))
 
 
-
-
-
-
-)
+) ;; end of tracer form

@@ -1,8 +1,11 @@
 (ns cardy.edit.views
   (:require [re-frame.core :as re-frame]
-            [cardy.subs :as subs]
+
+            [cardy.edit.subs :as subs]
+            [cardy.subs :as core-subs]
 
             [cardy.edit.events :as events]
+            [cardy.events :as core-events]
 
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
@@ -13,6 +16,25 @@
 ; [cardy.events :as events]
 
 (trace-forms {:tracer (tracer :color "gold")}
+
+
+
+; (defn home-panel-button []
+;   [:input
+;     {:type "button" :value "home"
+;      :on-click #(re-frame/dispatch [::core-events/change-panel :home])}])
+
+
+; every change that we make to a given-being-edited deck,
+; is already reflected in db,
+; so we can simply change panels back to home
+(defn return-home-button []
+  [:input
+    {:type "button" :value "return home"
+     :on-click #(re-frame/dispatch [::events/return-home-from-edit])}] ;; an Edit event
+  )
+
+
 
 
 (defn wrap-edit-text [card-text]
@@ -27,7 +49,8 @@
 
 
 
-(defn card-edit-display [front back]
+; (defn card-edit-display [front back]
+(defn card-edit-display [{:keys [front back]}]
   [re-com/border
       :border "1px dashed lightgrey"
       ; top, right, bottom, left
@@ -55,39 +78,44 @@
 
 
 
-(defn clickable-trash-icon [front back]
+(defn clickable-trash-icon [card]
   [re-com/box
     :child [:img
       {:src "trash_icon.png"
         :style {:max-width "20px" :max-height "20px"}
-        :on-click #(re-frame/dispatch [::events/remove-card front back])}
-        ]
-  ]
-      )
+        :on-click #(re-frame/dispatch [::events/remove-card card])}]])
 
 
-(defn trash-and-card [front back]
+(defn trash-and-card [card]
   [re-com/h-box
     :gap "10px"
     ; :padding "10px"
     ; :padding "0px 10px 10px 0px"
     :children [
-      [clickable-trash-icon front back]
-      [card-edit-display front back]
+      [clickable-trash-icon card]
+      ; [card-edit-display front back]
+      [card-edit-display card]
 
     ]])
 
 
-(defn card-displayer [{:keys [front back]}]
+(defn card-displayer [card]
   [re-com/box
     :padding "10px"
-    :child [trash-and-card front back]])
+    :child [trash-and-card card]])
 
 ;; this whole thing should be in a scroller as well --
 ;; if there are too many cards too display at once
 (defn card-list []
-  (let [cards @(re-frame/subscribe [::subs/cards]) ;; will be a set
+
+  ; (let [cards @(re-frame/subscribe [::subs/cards]) ;; will be a set
+  ;       removed-cards @(re-frame/subscribe [::subs/removed])]
+
+  ; you want to do (:current-deck :decks db) instead of cards
+  ; ... can a sub take a parameter?
+  (let [cards @(re-frame/subscribe [::core-subs/cards]) ;; will be a set
         removed-cards @(re-frame/subscribe [::subs/removed])]
+
     [re-com/v-box
       ; :gap "40px"
       :children [
@@ -106,8 +134,18 @@
         :model text-val
         :change-on-blur? true
         :placeholder "new card: the front ; the back"
+        :attr {:auto-focus "true"}
         :on-change
           #(re-frame/dispatch [::events/add-card (reset! text-val %)])])))
+
+
+
+
+; the edit panel is always the editing of a given deck
+; so when you call "edit-given-deck", that's when you need to set
+
+; and when you leave the edit panel,
+; that's when you need to make
 
 
 
@@ -122,9 +160,8 @@
       [add-card] ;; "add todo"
       [card-list]
       ; [home-panel-button]
+      [return-home-button]
     ]])
-
-
 
 
 )

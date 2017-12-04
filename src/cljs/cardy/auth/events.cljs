@@ -6,12 +6,6 @@
             [ajax.core :refer [GET POST]]
 
             [cardy.events :refer [
-                new-current-card
-                input-to-card
-                input-to-keyword
-                add-back-excluded
-                put-back-old-deck
-                bring-in-new-deck
                 change-panel
                 ]]
             ))

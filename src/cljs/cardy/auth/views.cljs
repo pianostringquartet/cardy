@@ -1,10 +1,12 @@
 (ns cardy.auth.views
   (:require [re-frame.core :as re-frame]
-            [cardy.subs :as subs]
+
+            [cardy.auth.subs :as subs]
 
             [cardy.auth.events :as events]
 
             [cardy.events :as core-events]
+
 
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
@@ -14,6 +16,41 @@
 
 
 (trace-forms {:tracer (tracer :color "gold")}
+
+
+
+(defn home-panel-button []
+  [:input
+    {:type "button" :value "home"
+     :on-click #(re-frame/dispatch [::core-events/change-panel :home])}])
+
+
+(defn display-pw-reset-note []
+  (let [user-error @(re-frame/subscribe [::subs/pw-reset-message])]
+        (when user-error
+          [re-com/box
+            :align-self :center
+            :child
+              [re-com/title
+                :label user-error :level :level3
+                :style {:color "red" :font-size "14px"}
+                ]
+          ]
+                )))
+
+
+(defn display-reset-code-note []
+  (let [user-error @(re-frame/subscribe [::subs/code-verified])]
+        (when user-error
+          [re-com/box
+            :align-self :center
+            :child
+              [re-com/title
+                :label user-error :level :level3
+                :style {:color "red" :font-size "14px"}
+                ]
+          ]
+                )))
 
 
 (defn intro-picture []
@@ -62,6 +99,7 @@
                   :model email
                   :placeholder "email"
                   :on-change #(reset! email %)
+                  :attr {:auto-focus "true"}
                   :change-on-blur? true]
                 [re-com/input-password
                   :model password
@@ -241,21 +279,11 @@
       [re-com/v-box
         :gap "5px"
         :children [
-
-
           [login-form]
-
           [re-com/hyperlink
             :label "Forgot password?"
             :on-click #(re-frame/dispatch [::core-events/change-panel :pw-reset])
-            :style {:color "blue"}
-          ]
-
-          ]]
-
-        ; probably need to move this somewhere else?
-      ; [home-panel-button]
-
+            :style {:color "blue"}]]]
       ]])
 
 
