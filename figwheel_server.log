@@ -33605,3 +33605,222 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.535 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.614 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.733 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.647 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.615 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.614 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.721 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.965 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.966 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.405 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.158 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.889 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.661 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.469 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.254 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.478 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.247 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.683 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.451 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 7.346 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.104 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/db.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.439 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.611 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.913 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.732 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.454 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.665 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/subs.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    :label (str "Study progress so far: " @study-progress)])[0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m[0m
+  [36m166[0m  [36m; (defn show-study-progress [study-progress][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    :label (str "Study progress so far: " @study-progress)])[0m
+  [36m164[0m  [36m[0m
+  [36m165[0m  [36m[0m
+  [36m166[0m  [36m; (defn show-study-progress [study-progress][0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.411 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.592 seconds.[0m
+[36m----  Could not Read  src/cljs/cardy/study/views.cljs   line:164 ----[0m
+
+  [1m/Users/concerto/cs/cardy/src/cljs/cardy/study/views.cljs [line 164, col 6] Unmatched delimiter ).[0m
+
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    ;:label (str "Study progress so far: " @study-progress)][0m
+  [33m164[0m  [1m    )[0m
+  [0m   [0m  [33m    /Users/concerto/cs/cardy/src/cljs/cardy/study/views.cljs [line 164, col 6] Unmatched delimiter ).[0m
+  [36m165[0m  [36m[0m
+  [36m166[0m  [36m[0m
+  [36m167[0m  [36m; (defn show-study-progress [study-progress][0m
+
+[36m----  Reader Error : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    :label (str "Study progress so far: " @study-progress)[0m
+  [36m164[0m  [36m    ][0m
+  [36m165[0m  [36m    )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    :label (str "Study progress so far: " @study-progress)[0m
+  [36m164[0m  [36m    ][0m
+  [36m165[0m  [36m    )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.572 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.82 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    ;:label (str "Study progress so far: " @study-progress)[0m
+  [36m164[0m  [36m    ][0m
+  [36m165[0m  [36m    )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/cardy/study/views.cljs   line:161  column:4  ----[0m
+
+  [1mUse of undeclared Var re-com.core/progress[0m
+
+  [36m157[0m  [36m      [next-card-button]]])[0m
+  [36m158[0m  [36m[0m
+  [36m159[0m  [36m; looking good -- now make this an actual re-com progress bar elem[0m
+  [36m160[0m  [36m(defn show-study-progress [study-progress][0m
+  [33m161[0m  [1m  [re-com/progress[0m
+  [0m   [0m  [33m   ^--- Use of undeclared Var re-com.core/progress[0m
+  [36m162[0m  [36m    :model (* @study-progress 100)[0m
+  [36m163[0m  [36m    ;:label (str "Study progress so far: " @study-progress)[0m
+  [36m164[0m  [36m    ][0m
+  [36m165[0m  [36m    )[0m
+
+[36m----  Compiler Warning : Please see src/cljs/cardy/study/views.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.63 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.45 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.512 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.251 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.822 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cardy/study/views.js

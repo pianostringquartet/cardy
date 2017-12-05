@@ -2,6 +2,8 @@
   (:require [re-frame.core :as re-frame]
             [cardy.events :as events]
 
+            [cardy.subs :as core-subs]
+
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
@@ -49,4 +51,18 @@
     (:excluded-count db)))
 
 
-    )
+(re-frame/reg-sub
+  ::excluded
+  (fn excluded [db]
+    (:excluded db)))
+
+; a Layer 3 sub for the progress bar
+(re-frame/reg-sub
+  ::study-progress
+  :<-[::core-subs/cards]
+  :<-[::excluded]
+  (fn study-progress [[cards excluded]]
+    (/ (count excluded) (count cards))))
+
+
+) ;; end of tracer form

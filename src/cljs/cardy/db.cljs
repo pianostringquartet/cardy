@@ -83,22 +83,22 @@
        :back "love love love!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"}
     }
 
-    ; :verbs #{{:front "verwenden" :back "to use/utilize"}
-    ;                 {:front "sprechen" :back "to speak"}
-    ;                 {:front "suchen" :back "to seek/search"}
-    ;                 {:front "schicken" :back "to send/drop/dispatch/forward"}
-    ;                 {:front "gehen" :back "to go, to walk"}
-    ;                 {:front "essen" :back "to eat"}
-    ;                 {:front "bedeuten" :back "to matter, to mean, to imply, to involve"}
-    ;                 {:front "anzukommen" :back "to arrive"}
-    ;                 {:front "kommen" :back "to come"}
-    ;                 {:front "können" :back "to be able to (can)"}}
-    ;        :adjectives #{{:front "entspannt" :back "relaxed"}
-    ;                      {:front "gespannt" :back "curious, excited"}
-    ;                      {:front "komisch" :back "funny, odd, curious"}
-    ;                      {:front "wichtig" :back "important, vital"}
-    ;                      {:front "besser" :back "better"}
-    ;                      {:front "kompliziert" :back "complicated"}}
+    :verbs #{{:front "verwenden" :back "to use/utilize"}
+                    {:front "sprechen" :back "to speak"}
+                    {:front "suchen" :back "to seek/search"}
+                    {:front "schicken" :back "to send/drop/dispatch/forward"}
+                    {:front "gehen" :back "to go, to walk"}
+                    {:front "essen" :back "to eat"}
+                    {:front "bedeuten" :back "to matter, to mean, to imply, to involve"}
+                    {:front "anzukommen" :back "to arrive"}
+                    {:front "kommen" :back "to come"}
+                    {:front "können" :back "to be able to (can)"}}
+           :adjectives #{{:front "entspannt" :back "relaxed"}
+                         {:front "gespannt" :back "curious, excited"}
+                         {:front "komisch" :back "funny, odd, curious"}
+                         {:front "wichtig" :back "important, vital"}
+                         {:front "besser" :back "better"}
+                         {:front "kompliziert" :back "complicated"}}
     ;        :other #{{:front "aber" :back "but"}
     ;                 {:front "auch" :back "too, also"}
     ;                 {:front "als" :back "than (e.g. better than, worse than)"}

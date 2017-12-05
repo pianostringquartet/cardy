@@ -156,9 +156,22 @@
       [exclude-current-card-button]
       [next-card-button]]])
 
+; looking good -- now make this an actual re-com progress bar elem
+(defn show-study-progress [study-progress]
+  [re-com/progress-bar
+    :model (* @study-progress 100)
+    :width "300px"
+    :striped? true])
+
+
+; (defn show-study-progress [study-progress]
+;   [re-com/label
+;     :label (str "Study progress so far: " @study-progress)])
 
 (defn study-panel []
-  (let [congrats (re-frame/subscribe [::subs/congrats])]
+  ; (let [congrats (re-frame/subscribe [::subs/congrats])]
+  (let [congrats (re-frame/subscribe [::subs/congrats])
+        study-progress (re-frame/subscribe [::subs/study-progress])]
     (fn study-panel-comp []
       [re-com/v-box
           ; :gap "20px"
@@ -169,6 +182,14 @@
             [flippable-card]
             (when @congrats [congrats-message])
             [card-review]
+
+            ; add a progress bar here,
+            ; indicating how far along you are in the deck;
+            ; % completed = # cards excluded / # cards in deck
+
+            ; the model
+            [show-study-progress study-progress]
+
             [return-home-button]
             ]])))
 
