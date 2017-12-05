@@ -87,6 +87,20 @@
           ])))
 
 
+(defn display-registration-failure-reason []
+  ; (let [user-error (re-frame/subscribe [::subs/intro-error-message])]
+  (let [regisration-failed-bc (re-frame/subscribe [::subs/registration-failure-reason])]
+        (when @regisration-failed-bc
+          [re-com/box
+            :align-self :center
+            :padding "5px"
+            :child
+              [re-com/title
+                :label @regisration-failed-bc :level :level3
+                :style {:color "red" :font-size "12px"}]])))
+
+
+; BAD: this is both for login and registration
 (defn login-form []
   (let [username (reagent/atom "")
         email (reagent/atom "")
@@ -121,6 +135,7 @@
                                                                     @password])}]
                   ]]
                 [display-login-failure]
+                [display-registration-failure-reason]
 
                   ]])))
 
@@ -147,8 +162,11 @@
               ; when they request the reset code to be sent,
               ; I want to send the code and move them to the next stage
               ; in the pw-reset-flow
+               ; :on-click #(re-frame/dispatch
+               ;              [::events/send-pw-reset-email @email])
                :on-click #(re-frame/dispatch
-                            [::events/send-pw-reset-email @email])}]
+                            [::events/verify-user-exists @email])
+               }]
 
           ;; i.e. only show pw-reset-message
           ;; when there's something to show!
@@ -157,20 +175,10 @@
       ])))
 
 
-
-; (defn forgot-pw-stage []
-;   [re-com/v-box
-;     :children [
-;       ; an image h
-;       [forgot-pw-form]
-;     ]])
-
-
 (defn pw-code-reset-form []
   (let [code (reagent/atom "")
         email (reagent/atom "")]
     (fn []
-    ; (fn [code code-verified?]
       [re-com/v-box
         :gap "10px"
         :children [
@@ -185,12 +193,7 @@
                :on-click #(re-frame/dispatch
                             [::events/verify-pw-reset-code
                             @(re-frame/subscribe [::subs/current-email] )
-                            @code])
-               }]
-          ]
-      ]
-      )
-  ))
+                            @code])}]]])))
 
 
 ; you need to decompose these...
@@ -200,11 +203,7 @@
       [re-com/v-box
         :gap "10px"
         :children [
-
-        ; here you want to show a different bearstack pic :-)
-
           [re-com/label :label "Code verified! Now let's set your new password."]
-
           [re-com/input-password
               :model new-pw
               :placeholder "enter new password"
@@ -213,9 +212,28 @@
           [:input
               {:type "button" :value "save new password"
                :on-click #(re-frame/dispatch
-                            [::events/set-new-pw @new-pw])}]
-          ]
-      ])))
+                            [::events/set-new-pw @new-pw])}]]])))
+
+
+
+(defn pw-reset-email-sending-failed-message []
+  (let [reset-mail-failed? (re-frame/subscribe [::subs/pw-reset-email-sending-failed?])]
+    (fn []
+      (when @reset-mail-failed?
+        [re-com/title :label "Hmmm... We couldn't find that email."]))))
+
+(defn code-verification-message []
+  (let [code-verification-failed? (re-frame/subscribe [::subs/code-verification-failed?])]
+    (fn []
+      (when @code-verification-failed?
+        [re-com/title :label "That reset code doesn't match."]))))
+
+(defn new-pw-not-set-message []
+  (let [new-pw-not-set? (re-frame/subscribe [::subs/new-pw-not-set?])]
+    (fn []
+      (when @new-pw-not-set?
+        [re-com/title
+          :label "New password not set. :'(  Make sure it's at least 8 characters long, and contains one number and one uppercase and one lowercase letter."]))))
 
 
 (defn pw-reset-panel []
@@ -227,40 +245,34 @@
           :gap "25px"
           :children [
 
-            ; [pw-reset-picture]
-
             (case @flow-stage
-              ; you need to show more than just a form during these stages
-
-              ; :sending-pw-reset-email [forgot-pw-form]
-
-              ; :confirming-pw-reset-code [pw-code-reset-form]
-
-              ; :setting-new-pw [new-pw-form]
-
 
               :sending-pw-reset-email
                 [re-com/v-box
                   :align :center
                   :children [
                     [pw-reset-picture]
-                    [forgot-pw-form]]]
+                    [forgot-pw-form]
+                    [pw-reset-email-sending-failed-message]
+                    ]]
 
               :confirming-pw-reset-code
                 [re-com/v-box
                   :align :center
                   :children [
                     [pw-reset-picture]
-                    [pw-code-reset-form]]]
+                    [pw-code-reset-form]
+                    [code-verification-message]
+                    ]]
 
-              :setting-new-pw ;[new-pw-form]
+              :setting-new-pw
                 [re-com/v-box
                   :align :center
                   :children [
                     [code-verified-picture]
-                    [new-pw-form]]]
-
-
+                    [new-pw-form]
+                    [new-pw-not-set-message]
+                    ]]
             )
           ]
         ]

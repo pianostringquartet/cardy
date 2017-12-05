@@ -13,22 +13,8 @@
 (trace-forms {:tracer (tracer :color "blue")}
 
 
-; auth.views uses:
-
-; login
-; register
-; change-panel
-; send-pw-reset-email
-; verify-pw-reset-code
-; set-new-pw
-
-
 
 ;;; LOGIN
-
-
-; (defn error-message-for-user [db message]
-;   (assoc db :intro-error-message message))
 
 
 (re-frame/reg-event-fx
@@ -43,11 +29,7 @@
   (fn login-ajax [credentials]
     (POST "/login"
       {:params credentials
-        ; receive the response from the server
-        ; then
-       :handler #(re-frame/dispatch [::attempt-login %])
-        })
-    ))
+       :handler #(re-frame/dispatch [::attempt-login %])})))
 
 
 (defn login-attempt-failed [db]
@@ -71,7 +53,7 @@
   attempt-login)
 
 
-;; register
+;; REGISTER
 
 (re-frame/reg-event-fx
   ::register
@@ -97,23 +79,21 @@
         })
     ))
 
+
 (defn registration-failure-reason [db reason]
   (assoc db :registration-failure-reason reason))
-
 
 ;; you need some of this logic for reuse
 ;;  in resetting a password
 (defn attempt-registration [db [event-id-to-ignore registration-attempt]]
   (case registration-attempt
-
     "registered" (change-panel
                     (assoc db :logged-in true)
                     :home)
     "invalid email format" (registration-failure-reason db registration-attempt)
     "email already in use"  (registration-failure-reason db registration-attempt)
     "invalid password format" (registration-failure-reason db registration-attempt)
-
-    (registration-failure-reason db "An unknown error happened while registering.")
+    (registration-failure-reason db "An unknown error happened while registering. Reach out to Cardy at cardytheapp@gmail.com")
 
     ))
 
@@ -126,9 +106,6 @@
 
 ;;; PASSWORD RESET
 
-
-
-
 ;; sending reset email
 ; (re-frame/reg-event-fx
 ;     ::send-pw-reset-email
@@ -136,33 +113,111 @@
 ;       {:send-pw-reset-email-fx email}))
 
 
+; client launches "verify-user-exists" event-id
+; which makes a POST request
+
+; vue event
+; vue fx
+; vue fx handler
+
 (re-frame/reg-event-fx
-    ::send-pw-reset-email
-    (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
-      {:db (assoc (:db cofx) :current-email email)
-       :send-pw-reset-email-fx email}))
+  ::verify-user-exists
+  (fn verify-user-exists [cofx [event-id-to-ignore email]]
+    ; add email to db as :current-email so you can access it later
+    {:db (assoc (:db cofx) :current-email email)
+     :verify-user-exists-fx email}))
+
+; (defn send-reset-email-if-user-exists [response email]
+;   (if (= response "succeeded")
+;     ; i.e. if user exists, we'll move user to next auth stage
+;     ; and will fire another request to send the email
+;     {:dispatch [::move-to-code-confirmation-stage]
+;      :send-pw-reset-email-fx email}
+
+;     ;; if user doesn't exist, we'll
+;     "failed"))
+
+; (re-frame/reg-event-db
+(re-frame/reg-event-fx
+  ::possibly-move-to-code-confirmation-stage
+  (fn possibly-move-to-code-confirmation-stage [cofx [event-id-to-ignore response]]
+    (let [db (:db cofx)]
+      (if (= response "failed")
+          ; if user does not exist, don't send the email;
+          ; just tell db that sending email failed
+          {:db (assoc db :pw-reset-email-sending-failed? true)}
+
+          ; else, i.e. if user does indeed exist,
+          ; we'll move user to next pw reset stage
+          ; and fire off another request to send the email
+          {:db (assoc db :pw-reset-flow-stage :confirming-pw-reset-code)
+
+            ; problem: the send-pw-reset-email event is expecting to
+            ; receive an email as well
+           :dispatch [::send-pw-reset-email]}
+          ; (assoc db :pw-reset-flow-stage :confirming-pw-reset-code)
+          ))))
+
+
+
+(re-frame/reg-fx
+  :verify-user-exists-fx
+  (fn verify-user-exists-ajax [email-address]
+    (POST "/verify-user-exists"
+      {:params {:email email-address}
+        ; we'll let
+        :handler #(re-frame/dispatch
+                    [::possibly-move-to-code-confirmation-stage %])}
+
+        )))
+
+
+(re-frame/reg-event-fx
+  ::send-pw-reset-email
+  (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
+    ; we will have stored user's email in :current-email in the
+    ; verify-user-exists event-handler
+    {:send-pw-reset-email-fx (:current-email (:db cofx))}))
+
+
+; (re-frame/reg-event-fx
+;   ::send-pw-reset-email
+;   (fn send-pw-reset-email [cofx [event-id-to-ignore email]]
+;     {:db (assoc (:db cofx) :current-email email)
+;      :send-pw-reset-email-fx email}))
 ; okay, but do i also need to update the reg-fx for :db?
 ; ah, no, that reg-fx is already in re-frame :)
 
 
 (re-frame/reg-fx
-    :send-pw-reset-email-fx
-    (fn send-pw-reset-email-ajax [email-address]
-      (POST "/send-pw-reset-email"
-        {:params {:email email-address}
-        ; {:params email-address
-          ; :handler #(js/console.log "send-pw-reset-email-ajax response was: " %)}
-          :handler #(re-frame/dispatch
-                      [::move-to-code-confirmation-stage])}
-          )))
+  :send-pw-reset-email-fx
+  (fn send-pw-reset-email-ajax [email-address]
+    (POST "/send-pw-reset-email"
+      {:params {:email email-address}
+        :handler #(js/console.log "response from send-pw-reset-email request was: " %)}
+        ; :handler #(re-frame/dispatch
+        ;             [::move-to-code-confirmation-stage])}
+        ; :handler #(re-frame/dispatch
+        ;             [::possibly-move-to-code-confirmation-stage %])
+
+        )))
+
+;; the handler needs to be more complicated
+
+; (re-frame/reg-event-db
+;   ::possibly-move-to-code-confirmation-stage
+;   (fn possibly-move-to-code-confirmation-stage [db response]
+;     (if (= response "failed")
+;       (assoc db :pw-reset-email-sending-failed? true)
+;       (assoc db :pw-reset-flow-stage :confirming-pw-reset-code))))
+
+; (re-frame/reg-event-db
+;   ::move-to-code-confirmation-stage
+;   (fn move-to-code-confirmation-stage [db]
+;     (assoc db :pw-reset-flow-stage :confirming-pw-reset-code)))
 
 
-(re-frame/reg-event-db
-  ::move-to-code-confirmation-stage
-  (fn move-to-code-confirmation-stage [db]
-    (assoc db :pw-reset-flow-stage :confirming-pw-reset-code)))
-
-
+; not used anymore?
 (re-frame/reg-event-db
   ::notify-user-of-pw-reset-email
   (fn notify-user-of-pw-reset-email [db]
@@ -170,6 +225,8 @@
 
 
 
+
+;; VERIFYING RESET CODE
 
 ;; verifying email's reset code
 (re-frame/reg-event-fx
@@ -192,6 +249,13 @@
     ))
 
 
+
+
+
+
+
+
+
 ; if we've verified code, then we can go to next reset-stage
 ; (re-frame/reg-event-db
 ;   ::move-to-pw-reset-stage
@@ -205,7 +269,7 @@
   ::notify-user-of-reset-code-verification
   (fn notify-user-of-reset-code-verification [db [event-id-to-ignore server-response]]
     (if (= server-response "failed")
-        (assoc db :code-verified? "Codes did not match.")
+        (assoc db :code-verification-failed? true)
         ; ^^^ if codes did not match, then do not move to next stage
 
         ; (assoc db :code-verified? "Codes matched! Now let's reset your password!")
@@ -228,12 +292,12 @@
   :set-new-pw-fx
   (fn set-new-pw-ajax [[email new-pw]]
     (POST "/set-new-pw-ajax"
-
       {:params {:email email :new-pw new-pw}
         :handler #(re-frame/dispatch
           [::notify-user-of-new-pw %])}
       )
     ))
+
 
 
 (re-frame/reg-event-db
@@ -252,11 +316,7 @@
         ; then simply log user in
         ; (maybe also tell the user that pw was successfully reset?)
 
-        (assoc db :new-pw-set? "New password not set. :'(")
-
-        ;
-
-        )))
+        (assoc db :new-pw-not-set? true))))
 
 
 

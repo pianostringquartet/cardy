@@ -10,8 +10,8 @@
 
    :pw-reset-flow-stage :sending-pw-reset-email
 
-   ; :current-panel :auth ;; i.e. login / signup
-   :current-panel :home
+   :current-panel :auth ;; i.e. login / signup
+   ; :current-panel :home
    ; :current-panel :study
    ; :current-panel :edit
 

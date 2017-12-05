@@ -11,10 +11,7 @@
             [re-frame-tracer.core :refer [tracer]]))
 
 
-
 (trace-forms {:tracer (tracer :color "gold")}
-
-
 
 
 (defn remove-deck []
@@ -26,8 +23,6 @@
         :placeholder "remove a deck"
         :on-change
           #(re-frame/dispatch [::events/remove-deck (reset! text-val %)])])))
-
-
 
 
 ;; Adds a(n empty) deck
@@ -75,20 +70,33 @@
         ])))
 
 
+; (defn clickable-pencil [deck-name]
+;   [:img
+;     {:src "pencil_icon.png"
+;      :style {:max-width "20px" :max-height "20px"}
+;       ; clicking the pencil icon should take you to an edit panel
+;       ; for that particular deck
+;       :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])}])
+
+
 (defn clickable-pencil [deck-name]
-  [:img
-    {:src "pencil_icon.png"
-     :style {:max-width "20px" :max-height "20px"}
-      ; clicking the pencil icon should take you to an edit panel
-      ; for that particular deck
-      :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])}])
+  [re-com/md-icon-button
+          :md-icon-name "zmdi-edit"
+          :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])
+          :size :larger
+          :tooltip "Edit this deck"])
 
 
 (defn clickable-deck-name [deck-name]
   [re-com/box
-    :attr {:on-click #(re-frame/dispatch [::events/study-given-deck deck-name])}
-    :child [re-com/title :label (name deck-name)]]
-  )
+    :align :center
+    :child [
+      re-com/hyperlink
+        :attr {:cursor "pointer"}
+        :tooltip "Study this deck"
+        :on-click #(re-frame/dispatch
+                    [::events/study-given-deck deck-name])
+        :label (name deck-name)]])
 
 
 (defn really-delete-dialogue [deck-name]
@@ -100,11 +108,20 @@
 
         ; what the popover is attached to
         :anchor [
-          :img
-            {:src "trash_icon.png"
-              :style {:max-width "20px" :max-height "20px"}
-              ; :on-click #(reset! showing? (if (@showing? false true)))}]
-              :on-click #(reset! showing? true)}]
+              re-com/md-icon-button
+                    :md-icon-name "zmdi-delete"
+                    :on-click #(re-frame/dispatch
+                      [::events/remove-deck (name deck-name)])
+                    :size :larger
+                    :tooltip "Delete this deck"
+
+          ; :img
+          ;   {:src "trash_icon.png"
+          ;     :style {:max-width "20px" :max-height "20px"}
+          ;     ; :on-click #(reset! showing? (if (@showing? false true)))}]
+          ;     :on-click #(reset! showing? true)}
+
+          ]
 
         ; the popover itself
         :popover [
@@ -172,8 +189,6 @@
 (defn deck-list []
   (let [decks @(re-frame/subscribe [::subs/decks])]
     [re-com/v-box
-      ; :gap "40px"
-      ; :gap "40px"
       :children [
         (for [deck-name (keys decks)]
           ^{:key (rand-int 99999)}
@@ -202,6 +217,7 @@
       [re-com/typeahead
         :data-source suggestion-for-search
         :placeholder "search for a deck"
+        ; re-com typeahead doesn't support autofocus?
         :attr {:auto-focus "true"}
         :on-change
           (fn [selection]

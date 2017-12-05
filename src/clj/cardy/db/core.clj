@@ -171,32 +171,7 @@
 (defn user-already-exists? [email]
   (not (nil? (retrieve-user email))))
 
-; (defn valid-registration? [username email password]
-;   (if (and (valid-email-format? email))))
 
-; ;; this is going to be a weird fn --
-; ; (defn register-user! [username email password]
-; (defn register-user! [{:keys [username email password]}]
-;   ; (if (valid-email-format? email)
-;   ; (if (and (valid-email-format? email)
-;   ;          (not (user-already-exists? email)))
-
-;   (if (and (valid-email-format? email)
-;            (not (user-already-exists? email))
-;            (valid-password-format? password)
-;            )
-;     (do
-;       (doall (add-user! username email (encrypt password)))
-;       "registered") ;; return "registered" to front end if succeeded
-;     ; (doall (add-user! username email (encrypt password))
-;     ;   "registered") ;; return "registered" to front end if succeeded
-;     "invalid email or email already exists" ;; else, tell client that email form was bad.
-;     ))
-
-
-
-;;; this fn needs to be more complicated --
-;;; you need a cond, and to return specific errors when
 (defn register-user! [{:keys [username email password]}]
   (cond
     (not (valid-email-format? email))
@@ -210,24 +185,6 @@
             "registered")))
 
 
-  ; (if (and (valid-email-format? email)
-  ;          (not (user-already-exists? email))
-  ;          (valid-password-format? password)
-  ;          )
-
-      ;; return "registered" to front end if succeeded
-    ; (doall (add-user! username email (encrypt password))
-    ;   "registered") ;; return "registered" to front end if succeeded
-    ; "invalid email or email already exists" ;; else, tell client that email form was bad.
-    ; ))
-
-
-
-
-;; probably a better way to do this e.g.
-;; map
-;;  #(-> (select-keys [username email password]) =)
-;;  credentials user
 (defn validate-credentials [{:keys [username email password]}]
   (let [user (retrieve-user email)]
     (if (and (= (:username user) username)
@@ -238,6 +195,14 @@
 
 
 ;; RESET PASSWORD
+
+; for pw reset, first confirm email/user exists
+(defn verify-user-exists [email]
+  (if (not (user-already-exists? email))
+      "failed"
+      "succeeded"))
+
+
 (defn generate-password-reset-code []
   (encrypt (str (rand-int 9999)))) ;; might need to give sha256 a string not a number?
 
@@ -245,6 +210,7 @@
   ;; update :code col to code where :email col = email
   ;; assumes code is already encrypted and hexed
   (jdbc/update! *db* :users {:reset_code code} ["email = ?" email]))
+
 
 ;; pull these from environment!
 ;; e.g. Heroku CONFIG_VARS for prod,
@@ -269,11 +235,6 @@
 (defn send-password-reset-email [email]
   (let [reset-code (generate-password-reset-code)]
     (do
-      ; (add-pw-reset-code-to-user email reset-code)
-
-      ;; this is nil?
-      (println "send-password-reset-email email: " email)
-
       (doall (add-pw-reset-code-to-user email reset-code))
       (send-reset-code-in-email email reset-code)
       "pw reset email sent from server"
@@ -283,16 +244,6 @@
 
 
 
-; (defn retrieve-reset-code [email]
-;     (jdbc/query *db* :users ["select * where email = ?" email]))
-
-; (defn retrieve-reset-code [email]
-;     (first
-;       (jdbc/query *db* :users ["select * where email = ?" email])))
-
-
-; (defn retrieve-deck [deck]
-;   (jdbc/query *db* ["select * from cards where deck=?" deck]))
 
 ;; retrieve this email's assoc'd reset code
 ;; ... to be compared against client-sent reset code
@@ -324,14 +275,23 @@
 ; this is "okay";
 ; but you will also want to tell user if pw is too short etc.
 
+
 (defn set-new-pw [email new-pw]
-  (do
-    (println "email is: " email)
-    (println "new-pw is: " new-pw)
-    (doall (update-pw! email new-pw))
-    "succeeded"
-    )
-  )
+  (if (not (valid-password-format? new-pw))
+    "failed"
+    (do
+      (doall (update-pw! email new-pw))
+      "succeeded")))
+
+
+; (defn set-new-pw [email new-pw]
+;   (do
+;     (println "email is: " email)
+;     (println "new-pw is: " new-pw)
+;     (doall (update-pw! email new-pw))
+;     "succeeded"
+;     )
+;   )
 
 
 ; last part:

@@ -133,15 +133,20 @@
           [card show-back?]]])))
 
 
+; make this prettier?
 (defn next-card-button []
-  [:input
-    {:type "button" :value "I don't know it"
-     :on-click #(re-frame/dispatch [::events/next])}])
+  [re-com/button
+    :label "I don't know it"
+    :on-click #(re-frame/dispatch [::events/next])
+    :class "btn btn-warning"])
+
 
 (defn exclude-current-card-button []
-    [:input
-      {:type "button" :value "I know it"
-       :on-click #(re-frame/dispatch [::events/exclude-card])}])
+  [re-com/button
+    :label "I know it"
+    :on-click #(re-frame/dispatch [::events/exclude-card])
+    :class "btn btn-success"])
+
 
 
 (defn card-review []

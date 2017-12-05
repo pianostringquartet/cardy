@@ -60,6 +60,13 @@
         (response/ok (db-core/register-user! credentials))
         )))
 
+
+  ;; confirm that user (email) really exists
+  (POST "/verify-user-exists" []
+    (fn [req]
+      (let [email (get-in req [:params :email ])]
+        (response/ok (db-core/verify-user-exists email)))))
+
   (POST "/send-pw-reset-email" []
     (fn [req]
       (let [email (get-in req [:params :email ])]
