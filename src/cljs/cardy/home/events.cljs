@@ -9,30 +9,10 @@
                 input-to-card
                 input-to-keyword
                 change-panel
-                remove-deck
                 ]]
             ))
 
 (trace-forms {:tracer (tracer :color "blue")}
-
-
-
-
-
-;; this is ridiculous to use just a single time...
-; (defn dissoc-in
-;   "Dissociates an entry from a nested associative structure returning a new
-;   nested structure. keys is a sequence of keys. Any empty maps that result
-;   will not be present in the new structure."
-;   [m [k & ks :as keys]]
-;   (if ks
-;     (if-let [nextmap (get m k)]
-;       (let [newmap (dissoc-in nextmap ks)]
-;         (if (seq newmap)
-;           (assoc m k newmap)
-;           (dissoc m k)))
-;       m)
-;     (dissoc m k)))
 
 
 ; (defn removing-current-deck? [db deck-to-remove]
@@ -57,10 +37,11 @@
 ;   (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
 ;     (dissoc-in db [:decks (input-to-keyword deck-name)])))
 
-(re-frame/reg-event-db
-  ::remove-deck
-  (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
-    (remove-deck db (input-to-keyword deck-name))))
+; (re-frame/reg-event-db
+;   ::remove-deck
+;   (fn remove-deck-handler [db [event-id-to-ignore deck-name]]
+;     (remove-deck db (input-to-keyword deck-name))))
+
 
 
 (defn add-deck [db deck-name]

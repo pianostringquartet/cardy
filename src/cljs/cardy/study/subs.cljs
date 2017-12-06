@@ -62,7 +62,21 @@
   :<-[::core-subs/cards]
   :<-[::excluded]
   (fn study-progress [[cards excluded]]
-    (/ (count excluded) (count cards))))
+    (Math/ceil
+      (* 100
+         (/ (count excluded)
+            (count cards))))))
+
+;; Layer 3 sub (base determination for ineligibles)
+;; then in Events, based on the event-id, we can
+;; determine whether to also add :current-card to ineligibles
+
+;; e.g. if (len cards == 1) then don't include :current-card in ineligibles
+
+; (re-frame/reg-sub
+;   ::ineligi)
+
+;; ah, right -- Events are not supposed to use Subs...
 
 
 ) ;; end of tracer form

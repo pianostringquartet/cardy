@@ -10,7 +10,8 @@
             [re-com.core :as re-com]
             [cardy.events :as events]
             [cardy.views :as views]
-            [cardy.subs :as subs])
+            [cardy.subs :as subs]
+            [day8.re-frame.http-fx])
 
   (:import goog.History))
 

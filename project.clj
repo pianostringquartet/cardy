@@ -44,6 +44,8 @@
 
                  [camdez/sendgrid "0.1.0"] ;; SendGrid Clojure API
                  [com.draines/postal "2.0.2"] ;; sending emails
+
+                 [day8.re-frame/http-fx "0.1.4"]
                  ]
 
   :min-lein-version "2.0.0"

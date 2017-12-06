@@ -3,6 +3,7 @@
 
             [cardy.home.subs :as subs]
             [cardy.home.events :as events]
+            [cardy.edit.events :as edit-events]
 
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
@@ -22,7 +23,8 @@
         :change-on-blur? true
         :placeholder "remove a deck"
         :on-change
-          #(re-frame/dispatch [::events/remove-deck (reset! text-val %)])])))
+        #(re-frame/dispatch [::edit-events/remove-deck (reset! text-val %)])])))
+          ; #(re-frame/dispatch [::events/remove-deck (reset! text-val %)])])))
 
 
 ;; Adds a(n empty) deck
@@ -111,7 +113,8 @@
               re-com/md-icon-button
                     :md-icon-name "zmdi-delete"
                     :on-click #(re-frame/dispatch
-                      [::events/remove-deck (name deck-name)])
+                      ; [::events/remove-deck (name deck-name)])
+                      [::edit-events/remove-deck (name deck-name)])
                     :size :larger
                     :tooltip "Delete this deck"
 
@@ -150,7 +153,9 @@
                   [:input
                     {:type "button" :value "confirm"
                     :on-click #(re-frame/dispatch
-                      [::events/remove-deck (name deck-name)])
+                      ; [::events/remove-deck (name deck-name)])
+                      [::edit-events/remove-deck (name deck-name)])
+                    ; wtf you have like 3 event dispatches for remove-deck...
                     }]
 
                   ; a cancel button

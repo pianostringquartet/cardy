@@ -30,12 +30,34 @@
 
 
 ;; add-card-3
-(defn add-card! [card-map]
+; (defn add-card! [card-map]
+;   "card-map: {:deck <str> :front <str> :back <str>"
+;   (jdbc/insert! *db* :cards card-map))
+
+;; updated Dec 5:
+(defn insert-card! [card-map]
   "card-map: {:deck <str> :front <str> :back <str>"
   (jdbc/insert! *db* :cards card-map))
 
-(defn retrieve-deck [deck]
-  (jdbc/query *db* ["select * from cards where deck=?" deck]))
+
+(defn to-card [deck-name card email]
+  (merge
+    {:deck (name deck-name) :email email}
+    card))
+
+(defn add-card! [deck-name card email]
+  (insert-card! (to-card deck-name card email)))
+
+; (defn add-card! [deck-name card]
+;   (insert-card! (merge {:deck (name deck-name)} card)))
+
+
+
+; (defn retrieve-deck [deck]
+;   (jdbc/query *db* ["select * from cards where deck=?" deck]))
+
+(defn retrieve-deck [deck email]
+  (jdbc/query *db* ["select * from cards where deck=? and email=?" deck email]))
 
 ; ;; returns deck (seq of card-maps) with :id removed
 ; (defn get-deck [deck]
@@ -43,60 +65,79 @@
 
 ;; we don't want to include :id or :deck
 ;; we just return the seq of maps
-(defn get-deck [deck]
-  (map #(dissoc % :id :deck) (retrieve-deck deck)))
+; (defn get-deck [deck]
+;   (map #(dissoc % :id :deck) (retrieve-deck deck)))
 
+
+; (defn get-deck [deck email]
+;   (map #(dissoc % :id :deck) (retrieve-deck deck email)))
 
 ; ;; add-deck-3
-(defn add-deck! [cards]
-  (for [card cards] (add-card! card)))
+(defn add-deck! [deck-name cards email]
+  (for [card cards] (add-card! deck-name card email)))
+
+; (defn add-deck! [deck-name deck]
+;   (for [card cards] (add-card! card)))
 
 
-(defn remove-deck! [deck]
-  (jdbc/delete! *db* :cards ["deck=?" deck]))
+; (defn remove-deck! [deck]
+;   (jdbc/delete! *db* :cards ["deck=?" deck]))
+
+(defn remove-deck! [deck email]
+  (jdbc/delete! *db* :cards ["deck=? and email=?" deck email]))
+
+; (defn update-deck! [deck-name deck]
+;   "deck-name: str
+;   deck: seq of card-maps, where map is {:deck :front :back}"
+;   (jdbc/with-db-transaction [t-conn *db*] ;; binding expr
+;       (remove-deck! deck-name)
+;       (doall (add-deck! deck))))
 
 
-(defn update-deck! [deck-name deck]
+
+; (defn prep-2 [deck-name deck]
+;   (for [card deck] (merge {:deck deck-name} card)))
+
+; (defn update-deck! [deck-name deck]
+(defn update-deck! [deck-name deck email]
   "deck-name: str
   deck: seq of card-maps, where map is {:deck :front :back}"
   (jdbc/with-db-transaction [t-conn *db*] ;; binding expr
-      (remove-deck! deck-name)
-      (doall (add-deck! deck))))
+      (remove-deck! deck-name email)
+      (doseq [card deck]
+        (add-card! deck-name card email))
+      ))
+
+;;; you technically want to do something like update
+
+;;; and you need a more general function like
+;;; "as-card" or "to-card" to add the :deck param
+
+
+
+
 
 ;; pull all decks,
 ;; return something that we can set as value of :decks key in app-db,
 ;; i.e. return a map where a key is :deck-name and value is a seq of card-maps
 ;; basically pulling ALL cards
-(defn get-all-decks []
-  (jdbc/query *db* ["select * from cards"]))
+; (defn get-all-decks []
+;   (jdbc/query *db* ["select * from cards"]))
 
-(defn pull-decks []
-  (->> (get-all-decks)
+
+(defn get-all-decks [email]
+  (jdbc/query *db* ["select * from cards where email=?" email]))
+
+(defn pull-decks [email]
+  (->> (get-all-decks email)
     (group-by :deck)
     (m/map-vals #(for [m %] (dissoc m :id :deck)))
     (m/map-keys keyword)))
 
 
-; (defn push-decks [] nil)
-
-; (def decks {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})})
-
-; for each k/v pair, where v is a seq of maps, you want to add a k/v ":deck k" pair in each map
-
-;; prepare cards in a given deck for insertion
-; (defn prep [deck]
-;   (let [cards (second deck) deck-name (first deck)]
-;     (for [card cards] (merge {:deck deck-name} card))))
 (defn prep [deck]
   (let [cards (second deck) deck-name (name (first deck))]
     (for [card cards] (merge {:deck deck-name} card))))
-
-
-; (defn push-decks! [decks]
-;   (let [prepped-decks (map prep decks)]
-;       (for [deck prepped-decks]
-;         (update-deck! (some :deck deck) deck))))
-
 
 
 (defn push-decks! [decks]
@@ -105,15 +146,9 @@
         (for [deck prepped-decks]
           (update-deck! (some :deck deck) deck)))))
 
-; {:Tiere '({:front "die Spinne", :back "spider"} {:front "die Kuh", :back "cow"}), :misc '({:front "das Haus", :back "house"}), :test '({:front "test front", :back "test back"}), :Farben '({:front "violett", :back "purple"} {:front "rot", :back "red"} {:front "gelb", :back "yellow"} {:front "grau", :back "grey"})}
 
 
 
-;; for new users
-;; you'll want to add a MySQL date field to table
-;; and handle dates in Clojure
-; (defn create-user! [username email password]
-;   )
 
 
 
@@ -298,3 +333,4 @@
 
 ; user sees UI form where they enter in password
 ; dispatches
+

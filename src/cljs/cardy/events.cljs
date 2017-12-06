@@ -9,6 +9,28 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
+;; utility events:
+
+
+; (re-frame/reg-fx
+;   :ajax-post
+;   (fn ajax-post [{:keys [uri params handler]}]
+;     (POST uri {:params params :handler handler})))
+
+
+
+(re-frame/reg-fx
+  :ajax-post
+  (fn ajax-post [{:keys [uri params handler]}]
+    (POST uri {:params params :handler handler})))
+
+; accepts uri, params, handler
+; returns {:ajax-post {:uri :params :handler}}
+(defn post-request [uri params handler]
+  {:ajax-post {:uri uri :params params :handler handler}})
+
+
+
 
 ;;; PANELS
 
@@ -23,6 +45,14 @@
   ::change-panel
   (fn change-panel-handler [db [event-id-to-ignore panel]]
     (change-panel db panel)))
+
+
+;; utility event
+(re-frame/reg-event-db
+  ::go-home
+  (fn go-home [db]
+    (assoc db :current-panel :home)))
+
 
 
 ; (def placeholder-card
@@ -79,7 +109,7 @@
 (re-frame/reg-event-fx
   ::pull-decks
   (fn pull-deck-handler [cofx event]
-    {:pull-decks-fx nil})) ;; return a map with just the key :pull-decks-effect
+    {:pull-decks-fx (:email (:db cofx))})) ;; return a map with just the key :pull-decks-effect
 
 ;; can you not do a key like ::my-key?
 
@@ -88,10 +118,17 @@
 
 ;; Effect Handler for :pull-decks-fx effect-id
 ;; i.e. the AJAX-calling fn
+
+;; REWRITE TO USE post-request...
 (re-frame/reg-fx
   :pull-decks-fx
-  (fn pull-decks-ajax []
-    (GET "/pull-decks" {:handler #(re-frame/dispatch [::set-decks %])})))
+  (fn pull-decks-ajax [email]
+    (POST
+      "/pull-decks"
+      {:params {:email email}
+        :handler #(re-frame/dispatch [::set-decks %])})))
+    ; (GET "/pull-decks" {:handler #(re-frame/dispatch [::set-decks %])})))
+
 
 ;; where decks is "decks from server"
 (re-frame/reg-event-db
@@ -102,19 +139,39 @@
 
 ;; push client's decks into external db,
 ;; used regularly (?) when client
-(re-frame/reg-event-fx
-  ::push-decks
-  (fn push-decks-handler [cofx event]
-    {:push-decks-fx (:decks (:db cofx))}))
+; (re-frame/reg-event-fx
+;   ::push-decks
+;   (fn push-decks-handler [cofx event]
+;     {:push-decks-fx (:decks (:db cofx))}))
+; ; ^^^ grabed all decks
+; ; i.e. the :decks map in db
 
-(re-frame/reg-fx
-  :push-decks-fx
-  ; (fn push-decks-ajax [cofx [effect-id-to-ignore decks]]
-  (fn push-decks-ajax [decks]
-    (POST "/push-decks"
-      {:params {:decks decks}
-       :handler #(js/console.log "push-decks-ajax response was: " %)})))
+; (re-frame/reg-fx
+;   :push-decks-fx
+;   ; (fn push-decks-ajax [cofx [effect-id-to-ignore decks]]
+;   (fn push-decks-ajax [decks]
+;     (POST "/push-decks"
+;       {:params {:decks decks}
+;        :handler #(js/console.log "push-decks-ajax response was: " %)})))
+
+
 ;; no need to do anything with response from server...
+
+; View just passes deck-name (keyword)
+; Event Handler fn also retrieves deck itself (set of maps),
+; and sends both to Server
+; (re-frame/reg-event-fx
+;   ::update-deck
+;   (fn update-deck! [cofx [event-id-to-ignore deck-name]]
+;     {:update-deck-fx {:deck-name deck-name
+;                       :deck (get-in cofx [:db :decks deck-name])}}))
+; (re-frame/reg-fx
+;   :update-deck-fx
+;   ; (fn push-decks-ajax [cofx [effect-id-to-ignore decks]]
+;   (fn update-deck-ajax [deck-name-and-deck]
+;     (POST "/update-deck"
+;       {:params deck-name-and-deck ;; map with :deck-name, :deck keys
+;        :handler #(js/console.log "update-deck-ajax response was: " %)})))
 
 
 
@@ -136,8 +193,12 @@
 
 
 ; where deck-name is :keyword
-(defn remove-deck [db deck-name]
-  (dissoc-in db [:decks deck-name]))
+
+; remove-deck event needs to kick off request to delete deck
+; from external db too
+
+; (defn remove-deck [db deck-name]
+;   (dissoc-in db [:decks deck-name]))
 
 
 

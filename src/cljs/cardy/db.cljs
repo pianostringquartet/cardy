@@ -10,8 +10,8 @@
 
    :pw-reset-flow-stage :sending-pw-reset-email
 
-   :current-panel :auth ;; i.e. login / signup
-   ; :current-panel :home
+   ; :current-panel :auth ;; i.e. login / signup
+   :current-panel :home
    ; :current-panel :study
    ; :current-panel :edit
 
@@ -33,11 +33,11 @@
     ;                   {:front "Es tut mir leid" :back "I'm sorry"}
     ;                   {:front "Alles klar" :back "Alright"}}
 
-    ; :cards #{{:front "das Haus" :back "house"}
-    ;          {:front "der Hund" :back "dog"}}
+    :cards #{{:front "das Haus" :back "house"}
+             {:front "der Hund" :back "dog"}}
 
 
-   ; :current-card {:front "das Haus" :back "house"}
+   :current-card {:front "das Haus" :back "house"}
    ; :current-card {:front "A BIG CARD"
    ;                :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
 
@@ -49,10 +49,11 @@
    ; these are only to be set when
    ; we are in Edit or Study mode;
    ; otherwise they are nil.
-   :cards nil
-   :current-card nil
+   ; :cards nil
+   ; :current-card nil
 
-   :current-deck nil
+   ; :current-deck nil
+   :current-deck :two-card-deck
 
    ; make sure we wipe these
    :excluded #{}
@@ -70,35 +71,40 @@
    :front-flag "german-flag-small.jpg"
    :back-flag "american-flag-medium.jpg"
 
-
    :decks {
+   ; :decks {
 
     :two-card-deck #{{:front "das Haus" :back "house"}
                      {:front "der Hund" :back "dog"}}
+    :one-card-deck #{{:front "lieben" :back "to love"}}
 
-    :wild-deck #{
-      {:front "LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG front"
-       :back "a short back"}
-       {:front "lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words"
-       :back "love love love!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"}
-    }
+   ;  :wild-deck #{
+   ;    {:front "LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG front"
+   ;     :back "a short back"}
+   ;     {:front "lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words lots of words"
+   ;     :back "love love love!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"}
+   ;  }
 
-    :verbs #{{:front "verwenden" :back "to use/utilize"}
-                    {:front "sprechen" :back "to speak"}
-                    {:front "suchen" :back "to seek/search"}
-                    {:front "schicken" :back "to send/drop/dispatch/forward"}
-                    {:front "gehen" :back "to go, to walk"}
-                    {:front "essen" :back "to eat"}
-                    {:front "bedeuten" :back "to matter, to mean, to imply, to involve"}
-                    {:front "anzukommen" :back "to arrive"}
-                    {:front "kommen" :back "to come"}
-                    {:front "können" :back "to be able to (can)"}}
-           :adjectives #{{:front "entspannt" :back "relaxed"}
-                         {:front "gespannt" :back "curious, excited"}
-                         {:front "komisch" :back "funny, odd, curious"}
-                         {:front "wichtig" :back "important, vital"}
-                         {:front "besser" :back "better"}
-                         {:front "kompliziert" :back "complicated"}}
+   ;  :verbs #{{:front "verwenden" :back "to use/utilize"}
+   ;                  {:front "sprechen" :back "to speak"}
+   ;                  {:front "suchen" :back "to seek/search"}
+   ;                  {:front "schicken" :back "to send/drop/dispatch/forward"}
+   ;                  {:front "gehen" :back "to go, to walk"}
+   ;                  {:front "essen" :back "to eat"}
+   ;                  {:front "bedeuten" :back "to matter, to mean, to imply, to involve"}
+   ;                  {:front "anzukommen" :back "to arrive"}
+   ;                  {:front "kommen" :back "to come"}
+   ;                  {:front "können" :back "to be able to (can)"}}
+   ;         :adjectives #{{:front "entspannt" :back "relaxed"}
+   ;                       {:front "gespannt" :back "curious, excited"}
+   ;                       {:front "komisch" :back "funny, odd, curious"}
+   ;                       {:front "wichtig" :back "important, vital"}
+   ;                       {:front "besser" :back "better"}
+   ;                       {:front "kompliziert" :back "complicated"}}
+
+
+
+
     ;        :other #{{:front "aber" :back "but"}
     ;                 {:front "auch" :back "too, also"}
     ;                 {:front "als" :back "than (e.g. better than, worse than)"}
