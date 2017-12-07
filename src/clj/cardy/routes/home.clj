@@ -15,54 +15,13 @@
 (defroutes home-routes
   (GET "/" []
     (home-page))
-  ; (GET "/docs" []
-  ;   (-> (response/ok (-> "docs/docs.md" io/resource slurp))
-  ;       (response/header "Content-Type" "text/plain; charset=utf-8")))
-
 
   ;; Cards API
 
-  ; (POST "/update-deck" []
-  ;   (fn [req]
-  ;     (let [deck-name (get-in req [:params :deck-name])
-  ;           deck (get-in req [:params :deck])]
-  ;       (do
-  ;         (db-core/update-deck! deck-name (into '() deck))
-  ;         (response/ok "Nice :-)")))))
-
- ; (GET "/get-deck" []
- ;    (fn [req]
- ;      (let [deck-name (get-in req [:params :deck-name])]
- ;        (response/ok (db-core/get-deck deck-name)))))
-
-  ; (GET "/pull-decks" []
-  ;   (fn [req]
-  ;     (response/ok (db-core/pull-decks))))
-  ; (GET "/pull-decks" []
   (POST "/pull-decks" []
     (fn [req]
       (let [email (get-in req [:params :email])]
         (response/ok (db-core/pull-decks email)))))
-
-  ; (POST "/push-decks" []
-  ;   (fn [req]
-  ;     (let [decks (get-in req [:params :decks])]
-  ;       (do
-  ;         (println "push-decks received: decks: " decks)
-  ;         (db-core/push-decks! decks)
-  ;         (response/ok "decks pushed :-)")))))
-
-
-  ; one deck at a time
-  ; (POST "/update-deck" []
-  ;   (fn [req]
-  ;     (let [deck-name (get-in req [:params :deck-name])
-  ;           deck (get-in req [:params :deck])]
-  ;       (do
-  ;         (println "update-deck received: deck-name: " deck-name)
-  ;         (println "update-deck received: deck: " deck)
-  ;         (db-core/update-deck! deck-name deck)
-  ;         (response/ok "Deck updated... Check DB.")))))
 
   (POST "/update-deck" []
     (fn [req]
@@ -74,12 +33,6 @@
           (println "update-deck received: deck: " deck)
           (db-core/update-deck! (name deck-name) deck email)
           (response/ok "Deck updated... Check DB.")))))
-
-
-  ; (POST "/remove-deck" []
-  ;   (fn [req]
-  ;     (let [deck-name (get-in req [:params :deck-name])]
-  ;       (response/ok (db-core/remove-deck! (name deck-name))))))
 
   (POST "/remove-deck" []
     (fn [req]

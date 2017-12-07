@@ -10,8 +10,8 @@
 
    :pw-reset-flow-stage :sending-pw-reset-email
 
-   ; :current-panel :auth ;; i.e. login / signup
-   :current-panel :home
+   :current-panel :auth ;; i.e. login / signup
+   ; :current-panel :home
    ; :current-panel :study
    ; :current-panel :edit
 
@@ -33,11 +33,11 @@
     ;                   {:front "Es tut mir leid" :back "I'm sorry"}
     ;                   {:front "Alles klar" :back "Alright"}}
 
-    :cards #{{:front "das Haus" :back "house"}
-             {:front "der Hund" :back "dog"}}
+    ; :cards #{{:front "das Haus" :back "house"}
+             ; {:front "der Hund" :back "dog"}}
 
 
-   :current-card {:front "das Haus" :back "house"}
+   ; :current-card {:front "das Haus" :back "house"}
    ; :current-card {:front "A BIG CARD"
    ;                :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
 
@@ -49,11 +49,11 @@
    ; these are only to be set when
    ; we are in Edit or Study mode;
    ; otherwise they are nil.
-   ; :cards nil
-   ; :current-card nil
+   :cards nil
+   :current-card nil
 
-   ; :current-deck nil
-   :current-deck :two-card-deck
+   :current-deck nil
+   ; :current-deck :two-card-deck
 
    ; make sure we wipe these
    :excluded #{}
@@ -74,9 +74,9 @@
    :decks {
    ; :decks {
 
-    :two-card-deck #{{:front "das Haus" :back "house"}
-                     {:front "der Hund" :back "dog"}}
-    :one-card-deck #{{:front "lieben" :back "to love"}}
+    ; :two-card-deck #{{:front "das Haus" :back "house"}
+    ;                  {:front "der Hund" :back "dog"}}
+    ; :one-card-deck #{{:front "lieben" :back "to love"}}
 
    ;  :wild-deck #{
    ;    {:front "LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG front"

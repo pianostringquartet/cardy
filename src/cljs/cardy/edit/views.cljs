@@ -71,7 +71,6 @@
     :padding "10px"
     :child [trash-and-card card]])
 
-
 (defn card-list []
   (let [cards @(re-frame/subscribe [::core-subs/cards]) ;; will be a set
         removed-cards @(re-frame/subscribe [::subs/removed])]
@@ -80,7 +79,6 @@
         (for [card (clojure.set/difference cards removed-cards)]
           ^{:key (rand-int 99999)}
           [card-displayer card])]]))
-
 
 (defn add-card []
   (let [text-val (reagent/atom "")]

@@ -49,6 +49,17 @@
   (assoc-in db [:decks deck-name] #{}))
 
 
+; (re-frame/reg-event-db
+;   ::study-given-deck
+;   ;;; where deck-name is keyword
+;   (fn study-given-deck [db [event-id-to-ignore deck-name]]
+;     (change-panel
+;       (assoc
+;         (assoc db :current-deck deck-name) ;; set :current-deck, so Study knows which cards to draw from
+;         :current-card
+;         (first (deck-name (:decks db)))) ;; set :current-card as simply the first card from now :current-deck
+;       :study)))
+
 (re-frame/reg-event-db
   ::study-given-deck
   ;;; where deck-name is keyword
@@ -59,6 +70,8 @@
         :current-card
         (first (deck-name (:decks db)))) ;; set :current-card as simply the first card from now :current-deck
       :study)))
+
+
 
 
 (re-frame/reg-event-db

@@ -264,17 +264,31 @@
     ;; email itself
     {:from cardy-mail-address :to email
      :subject "Cardy here. Let's reset your password."
-     :body (str "Use this code to reset your password: " code)}))
+     ; :body (str "Use this code to reset your password: " code)
+     :body [{:type "text/html"
+             :content
+               (str "<html>
+                       <head></head>
+                       <body>
+                          <h2>Hi there " email ", </h2>
+                         <h3>Use this code to reset your password:</h3>
+                         <p>" code "</p>
+                         <h3>Now get back to studying!</h3>
+                         <h3>Your pal, </h3>
+                         <h3>Cardy </h3>
+                       </body>
+                     </html>")}]}))
+
 
 ;; the entrypoint/gate function
 (defn send-password-reset-email [email]
-  (let [reset-code (generate-password-reset-code)]
+  ; (let [reset-code (generate-password-reset-code)]
+  (let [reset-code (subs (generate-password-reset-code) 15)]
     (do
       (doall (add-pw-reset-code-to-user email reset-code))
       (send-reset-code-in-email email reset-code)
       "pw reset email sent from server"
-      )
-    ))
+      )))
 
 
 

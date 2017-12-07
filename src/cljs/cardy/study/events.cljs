@@ -36,20 +36,13 @@
   (let [cards ((:current-deck db) (:decks db))
         excluded (:excluded db)
         current-card (:current-card db)]
-
     (if (know-all-cards? cards excluded)
       (add-congrats-message
         (add-back-excluded db))
-
-      ;; else, just pick a random card
-      ;; (can't be in :excluded,
-      ;; and if card len > 1 then can't be :current-card either)
-      ;; and set it to :current-card
       (assoc
         db
         :current-card
         (pick-random (eligible-cards cards excluded current-card))))))
-
 
 (defn exclude-card [db]
   (let [excluded (:excluded db)

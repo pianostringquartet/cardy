@@ -211,6 +211,7 @@
 
 (defn deck-fuzzy-search []
   (let [decks @(re-frame/subscribe [::subs/decks])
+        decks-names (map #(name %) (keys decks)) ; added
         suggestion-for-search
           (fn [a-string]
               (into [])
@@ -226,8 +227,9 @@
         :attr {:auto-focus "true"}
         :on-change
           (fn [selection]
-            (if (empty? selection)
-              nil ;; ignore input if field was blank when enter was pressed
+            (if (or (empty? selection)
+                    (not (some #{selection} decks-names)))
+              nil ;; ignore blank or a non-deck-name inputs
               (re-frame/dispatch [::events/study-given-deck (keyword selection)])))
         :change-on-blur? true])))
 
