@@ -1,11 +1,8 @@
 (ns cardy.study.views
   (:require [re-frame.core :as re-frame]
-
             [cardy.study.subs :as subs]
-
             [cardy.study.events :as events]
             [cardy.events :as core-events]
-
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [ajax.core :refer [GET POST]]
@@ -26,15 +23,12 @@
     {:style {:font-size "120%" :width "150px" :min-width "150px"}}
     card-text])
 
-; (defn show-flag [flag]
-;   [:img {:src flag}])
 
-;; better?: flag and text display
 (defn card-side-display [flag card-text]
   [re-com/h-box
     :children [
       [re-com/box
-        :child [:img {:src flag}] ;[show-flag flag]
+        :child [:img {:src flag}]
         :width "120px"
         :height "90px"
         :padding "20px 10px 10px 10px"]
@@ -56,7 +50,7 @@
        ;; WORKAROUND: when resizing to 0 (e.g. #(reset! size 0)),
        ;; re-animated intermittently shows full-size image;
        ;; smaller resizing steps avoid this.
-       [anim/timeout #(reset! size 200)] ;; show immediately
+       [anim/timeout #(reset! size 200)]
        [anim/timeout #(reset! size 100) 2000]
        [anim/timeout #(reset! size 50) 3000]
        [anim/timeout #(reset! size 25) 4000]
@@ -67,7 +61,6 @@
        [:img
         {:src "good_job.png"
          :width (str @width "px")
-         ;; user can click the image to kill it
          :on-click #(re-frame/dispatch [::events/remove-congrats-message])}]])))
 
 
@@ -81,7 +74,6 @@
    :height "150px"
    :box-shadow "10px 10px 5px grey"})
 
-
 (defn card-front []
   [re-com/box
     :style (merge
@@ -94,7 +86,6 @@
         @(re-frame/subscribe [::subs/front-flag])
         @(re-frame/subscribe [::subs/current-card-front])]])
 
-
 (defn card-back []
   [re-com/box
     :style (merge
@@ -106,9 +97,6 @@
         @(re-frame/subscribe [::subs/back-flag])
         @(re-frame/subscribe [::subs/current-card-back])]])
 
-
-
-;; works
 (defn card [show-back?]
   [re-com/v-box
     :style
@@ -121,7 +109,7 @@
     :children [[card-front]
                [card-back]]])
 
-(defn flippable-card [] ; true or nil
+(defn flippable-card []
   (let [show-back? (reagent/atom false)]
     (fn flippable-card-comp []
       [re-com/v-box
@@ -133,14 +121,11 @@
         :children [
           [card show-back?]]])))
 
-
-; make this prettier?
 (defn next-card-button []
   [re-com/button
     :label "I don't know it"
     :on-click #(re-frame/dispatch [::events/next])
     :class "btn btn-warning"])
-
 
 (defn exclude-current-card-button []
   [re-com/button
@@ -148,15 +133,12 @@
     :on-click #(re-frame/dispatch [::events/exclude-card])
     :class "btn btn-success"])
 
-
-
 (defn card-review []
   [re-com/h-box
     :gap "20px"
     :children [
       [exclude-current-card-button]
       [next-card-button]]])
-
 
 (defn show-study-progress [study-progress]
   (let [study-progress (re-frame/subscribe [::subs/study-progress])]
@@ -167,7 +149,6 @@
         :striped? true])))
 
 (defn study-panel []
-  ; (let [congrats (re-frame/subscribe [::subs/congrats])]
   (let [congrats (re-frame/subscribe [::subs/congrats])]
     (fn study-panel-comp []
       [re-com/v-box
@@ -179,7 +160,6 @@
             [flippable-card]
             (when @congrats [congrats-message])
             [card-review]
-            ; [show-study-progress study-progress]
             [show-study-progress]
             [return-home-button]
             ]])))

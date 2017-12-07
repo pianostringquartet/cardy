@@ -15,7 +15,6 @@
 
 ;;; AUTHENTICATION
 
-
 (defn retrieve-user [email]
   (first (jdbc/query *db* ["select * from users where email=?" email])))
 
@@ -66,7 +65,6 @@
             (doall (add-user! username email (encrypt password)))
             "registered")))
 
-
 (defn validate-credentials [{:keys [username email password]}]
   (let [user (retrieve-user email)]
     (if (and (= (:username user) username)
@@ -75,10 +73,6 @@
         "succeeded"
         "failed")))
 
-
-;; RESET PASSWORD
-
-; for pw reset, first confirm email/user exists
 (defn verify-user-exists [email]
   (if (not (user-already-exists? email))
       "failed"
@@ -116,8 +110,7 @@
     (do
       (doall (add-pw-reset-code-to-user email reset-code))
       (send-reset-code-in-email email reset-code)
-      "pw reset email sent from server"
-      )))
+      "pw reset email sent from server")))
 
 
 (defn retrieve-reset-code [email]
@@ -130,7 +123,6 @@
   (if (= code (retrieve-reset-code email))
     "succeeded"
     "failed"))
-
 
 (defn update-pw! [email new-pw]
   (jdbc/update! *db* :users {:password (encrypt new-pw)} ["email = ?" email]))

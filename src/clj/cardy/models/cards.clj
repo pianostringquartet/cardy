@@ -36,11 +36,10 @@
 (defn update-deck! [deck-name deck email]
   "deck-name: str
   deck: seq of card-maps, where map is {:deck :front :back}"
-  (jdbc/with-db-transaction [t-conn *db*] ;; binding expr
+  (jdbc/with-db-transaction [t-conn *db*]
       (remove-deck! deck-name email)
       (doseq [card deck]
         (add-card! deck-name card email))))
-
 
 
 (defn get-all-decks [email]
