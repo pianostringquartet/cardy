@@ -217,7 +217,7 @@
 
 (re-frame/reg-event-fx
   ::login-or-show-new-pw-error
-  (fn login-or-show-new-pw-error [db [event-id-to-ignore server-response]]
+  (fn login-or-show-new-pw-error [cofx [event-id-to-ignore server-response]]
     (let [db (:db cofx)]
       (if (= server-response "succeeded")
           {:db (assoc

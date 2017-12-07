@@ -60,9 +60,10 @@
        [anim/timeout #(reset! size 100) 2000]
        [anim/timeout #(reset! size 50) 3000]
        [anim/timeout #(reset! size 25) 4000]
+       [anim/timeout #(reset! size 10) 4500]
        [anim/timeout
           #(re-frame/dispatch [::events/remove-congrats-message])
-          4100]
+          4550]
        [:img
         {:src "good_job.png"
          :width (str @width "px")

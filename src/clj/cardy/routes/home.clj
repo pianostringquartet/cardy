@@ -1,18 +1,19 @@
 (ns cardy.routes.home
   (:require [cardy.layout :as layout]
-            [compojure.core :refer [defroutes GET POST]]
+            [compojure.core :refer [routes defroutes GET POST]]
             [compojure.route :as route]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]
-            [cardy.db.core :as db-core]))
+            [cardy.db.core :as db-core]
+            [cardy.models.users :as users]
+            [cardy.models.cards :as cards]))
 
 (defn home-page []
   (layout/render "home.html"))
 
-; (defn home-page []
-;   (layout/render "index.html"))
 
 (defroutes home-routes
+
   (GET "/" []
     (home-page))
 
@@ -21,70 +22,77 @@
   (POST "/pull-decks" []
     (fn [req]
       (let [email (get-in req [:params :email])]
-        (response/ok (db-core/pull-decks email)))))
+        (response/ok (cards/pull-decks email)))))
 
+  (POST "/remove-deck" []
+    (fn [req]
+      (let [deck-name (get-in req [:params :deck-name])
+            email (get-in req [:params :email])]
+        (response/ok (cards/remove-deck! (name deck-name) email)))))
   (POST "/update-deck" []
     (fn [req]
       (let [deck-name (get-in req [:params :deck-name])
             deck (get-in req [:params :deck])
             email (get-in req [:params :email])]
         (do
-          (println "update-deck received: (name deck-name): " (name deck-name))
-          (println "update-deck received: deck: " deck)
-          (db-core/update-deck! (name deck-name) deck email)
+          (cards/update-deck! (name deck-name) deck email)
           (response/ok "Deck updated... Check DB.")))))
-
-  (POST "/remove-deck" []
-    (fn [req]
-      (let [deck-name (get-in req [:params :deck-name])
-            email (get-in req [:params :email])]
-        (response/ok (db-core/remove-deck! (name deck-name) email)))))
-
 
 
   ;;; Users API
 
-  (POST "/login" []
+(POST "/login" []
     (fn [req]
       (let [credentials (:params req)]
-        (response/ok (db-core/validate-credentials credentials)))))
-
+        (response/ok (users/validate-credentials credentials)))))
   (POST "/register-creds" []
     (fn [req]
       (let [credentials (:params req)]
-        (response/ok (db-core/register-user! credentials)))))
-
-  ;; confirm that user (email) really exists
+        (response/ok (users/register-user! credentials)))))
   (POST "/verify-user-exists" []
     (fn [req]
       (let [email (get-in req [:params :email ])]
-        (response/ok (db-core/verify-user-exists email)))))
-
+        (response/ok (users/verify-user-exists email)))))
   (POST "/send-pw-reset-email" []
     (fn [req]
       (let [email (get-in req [:params :email ])]
-        (response/ok (db-core/send-password-reset-email email)))))
-
+        (response/ok (users/send-password-reset-email email)))))
   (POST "/verify-pw-reset-code" []
     (fn [req]
       (let [email (get-in req [:params :email])
             code (get-in req [:params :code])]
-        (response/ok (db-core/verify-pw-reset-code email code)))))
-
+        (response/ok (users/verify-pw-reset-code email code)))))
   (POST "/set-new-pw-ajax" []
     (fn [req]
       (let [email (get-in req [:params :email])
             new-pw (get-in req [:params :new-pw])]
-        (response/ok (db-core/set-new-pw email new-pw)))))
-
-  )
+        (response/ok (users/set-new-pw email new-pw))))))
 
 
-;; these are Compojure API routes
-; (defroutes home-routes
-;   (GET "/" []
-;        (home-page))
-;   (GET "/docs" []
-;        (-> (response/ok (-> "docs/docs.md" io/resource slurp))
-;            (response/header "Content-Type" "text/plain; charset=utf-8"))))
 
+  ; (POST "/login" []
+  ;   (fn [req]
+  ;     (let [credentials (:params req)]
+  ;       (response/ok (db-core/validate-credentials credentials)))))
+  ; (POST "/register-creds" []
+  ;   (fn [req]
+  ;     (let [credentials (:params req)]
+  ;       (response/ok (db-core/register-user! credentials)))))
+  ; (POST "/verify-user-exists" []
+  ;   (fn [req]
+  ;     (let [email (get-in req [:params :email ])]
+  ;       (response/ok (db-core/verify-user-exists email)))))
+  ; (POST "/send-pw-reset-email" []
+  ;   (fn [req]
+  ;     (let [email (get-in req [:params :email ])]
+  ;       (response/ok (db-core/send-password-reset-email email)))))
+  ; (POST "/verify-pw-reset-code" []
+  ;   (fn [req]
+  ;     (let [email (get-in req [:params :email])
+  ;           code (get-in req [:params :code])]
+  ;       (response/ok (db-core/verify-pw-reset-code email code)))))
+  ; (POST "/set-new-pw-ajax" []
+  ;   (fn [req]
+  ;     (let [email (get-in req [:params :email])
+  ;           new-pw (get-in req [:params :new-pw])]
+  ;       (response/ok (db-core/set-new-pw email new-pw))))))

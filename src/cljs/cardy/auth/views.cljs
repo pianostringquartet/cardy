@@ -6,7 +6,8 @@
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
-            [re-frame-tracer.core :refer [tracer]]))
+            [re-frame-tracer.core :refer [tracer]]
+            [reanimated.core :as anim]))
 
 
 (trace-forms {:tracer (tracer :color "gold")}
@@ -17,17 +18,51 @@
     {:type "button" :value "home"
      :on-click #(re-frame/dispatch [::core-events/change-panel :home])}])
 
-(defn intro-picture []
-  [re-com/box
-    :max-width "300px"
-    :max-height "200px"
-    :child [:img {:src "intent_bear.png"}]])
+(defn intro-picture [img-src ]
+  (let [tilt (reagent/atom 0)
+        rotation (anim/spring tilt)]
+    (fn jingle-component []
+      [:div
+      [anim/timeout #(reset! tilt 5)]
+      [anim/timeout #(reset! tilt -5) 1500]
+      [anim/timeout #(reset! tilt 0) 2000]
+       [:img
+          {:src "intent_bear.png"
+           :width "300px"
+           :height "200px"
+           :style (zipmap [:-ms-transform
+                           :-moz-transform
+                           :-webkit-transform
+                           :transform]
+                          (repeat (str "rotate(" @rotation "deg)")))}]])))
 
 (defn pw-reset-picture []
   [re-com/box
     :max-width "200px"
     :max-height "300px"
     :child [:img {:src "bearstack_right_facing.png"}]])
+
+
+(defn reset-code-sent-picture []
+  (let [tilt (reagent/atom 0)
+        rotation (anim/spring tilt)]
+    (fn jingle-component []
+      [:div
+      [anim/timeout #(reset! tilt 30) 1000]
+      [anim/timeout #(reset! tilt 0) 2000]
+      [anim/timeout #(reset! tilt -30) 3000]
+      [anim/timeout #(reset! tilt 0) 4000]
+       [:img
+          {:src "bearstack_right_facing.png"
+           :width "200px"
+           :style (zipmap [:-ms-transform
+                           :-moz-transform
+                           :-webkit-transform
+                           :transform]
+                          (repeat (str "rotate(" @rotation "deg)")))}]])))
+
+
+
 
 (defn code-verified-picture []
   [re-com/box
@@ -131,7 +166,7 @@
             "enter password reset code"
             (fn [] (re-frame/dispatch
                       [::events/verify-pw-reset-code
-                        @(re-frame/subscribe [::subs/current-email])
+                        @(re-frame/subscribe [::subs/email])
                         @code]))]]])))
 
 (defn set-new-password-form []
@@ -199,7 +234,8 @@
                   :align :center
                   :gap "10px"
                   :children [
-                    [pw-reset-picture]
+                    ; [pw-reset-picture]
+                    [reset-code-sent-picture]
                     [verify-reset-code-form]
                     [message-for-user
                       code-verification-failed?
@@ -253,7 +289,7 @@
 
 (defn intro-panel []
   [re-com/v-box
-    :gap "40px"
+    :gap "20px"
     :align :center
     :children [
       [intro-picture]

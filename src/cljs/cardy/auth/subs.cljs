@@ -74,9 +74,9 @@
 ; used during password reset flow
 ; so we don't have to keep asking user for PW
 (re-frame/reg-sub
-  ::current-email
-  (fn current-email [db]
-    (:current-email db)))
+  ::email
+  (fn email [db]
+    (:email db)))
 
 
 (re-frame/reg-sub
