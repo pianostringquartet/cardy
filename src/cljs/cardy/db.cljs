@@ -2,17 +2,7 @@
 
 
 (def default-db
-; (def db
   {
-
-    ;; authentication (basics)
-   :logged-in false
-
-   :pw-reset-flow-stage :sending-pw-reset-email
-   ; :pw-reset-flow-stage :confirming-pw-reset-code
-
-
-
 
    :current-panel :auth ;; i.e. login / signup
    ; :current-panel :home
@@ -21,57 +11,23 @@
 
    :panels '(:auth :home :study :edit :profile)
 
+   :logged-in false
+
    ;; use nil, because empty string is truthy
    :intro-error-message nil
 
-   ;; for now just use this for "password was reset"
-   ;; better name: reset-email-sent?
+   :pw-reset-flow-stage :sending-pw-reset-email
    :pw-reset-message nil
    :code-verified? nil
 
-   :excluded-count 0
-    ;; study-panel's data
 
-    ; :cards #{{:front "Deutsch" :back "German"}
-    ;                   {:front "Genau" :back "Exactly"}
-    ;                   {:front "Es tut mir leid" :back "I'm sorry"}
-    ;                   {:front "Alles klar" :back "Alright"}}
-
-    ; :cards #{{:front "das Haus" :back "house"}
-             ; {:front "der Hund" :back "dog"}}
-
-
-   ; :current-card {:front "das Haus" :back "house"}
-   ; :current-card {:front "A BIG CARD"
-   ;                :back "A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD A BIG CARD"}
-
-
-   ; is this really used anymore?
-   :current-face :front
-
-
-   ; these are only to be set when
-   ; we are in Edit or Study mode;
-   ; otherwise they are nil.
    :cards nil
    :current-card nil
-
    :current-deck nil
-   ; :current-deck :two-card-deck
 
-   ; make sure we wipe these
    :excluded #{}
-
-
-   ; can this happen anymore?
-   ; we can only remove a card while in Edit view
    :removed #{}
 
-
-   ; :current-flag "german-flag-small"
-   ; :show-back? false
-
-   ;; i.e. cues
    :front-flag "german-flag-small.jpg"
    :back-flag "american-flag-medium.jpg"
 
@@ -304,11 +260,6 @@
     ;   {:front "schön" :back "beautiful"}}
 
          } ;; decks
-
-
-
-
-
 
 
 })

@@ -9,14 +9,10 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
+
+
+
 ;; utility events:
-
-
-; (re-frame/reg-fx
-;   :ajax-post
-;   (fn ajax-post [{:keys [uri params handler]}]
-;     (POST uri {:params params :handler handler})))
-
 
 
 (re-frame/reg-fx
@@ -47,11 +43,18 @@
     (change-panel db panel)))
 
 
-;; utility event
+(defn go-home [db]
+  (assoc db :current-panel :home))
+
 (re-frame/reg-event-db
   ::go-home
-  (fn go-home [db]
-    (assoc db :current-panel :home)))
+  go-home)
+
+;; utility event
+; (re-frame/reg-event-db
+;   ::go-home
+;   (fn go-home [db]
+;     (assoc db :current-panel :home)))
 
 
 

@@ -7,7 +7,9 @@
             [cardy.edit.events :as events]
             [cardy.events :as core-events]
 
-            [reagent.core  :as reagent]
+            [cardy.views :as core-views]
+
+            [reagent.core :as reagent]
             [re-com.core :as re-com]
             [ajax.core :refer [GET POST]]
             [clairvoyant.core :refer-macros [trace-forms]]
@@ -22,13 +24,18 @@
      :on-click #(re-frame/dispatch [::events/return-home-from-edit])}])
 
 
-(defn wrap-edit-text [card-text]
-  [re-com/p
-    {:style
-      {:font-size "90%"
-      :width "120px" :min-width "120px"
-      }}
-    card-text])
+; (defn wrap-edit-text [card-text]
+;   [re-com/p
+;     {:style
+;       {:font-size "90%"
+;       :width "120px" :min-width "120px"
+;       }}
+;     card-text])
+
+; (defn wrap-edit-text [card-text]
+;   (core-views/wrap-text
+;     card-text
+;     {:font-size "120%" :width "150px" :min-width "150px"}))
 
 
 (defn card-edit-display [{:keys [front back]}]
@@ -43,11 +50,15 @@
             [re-com/scroller
               :v-scroll :auto
               :height "45px"
-              :child [wrap-edit-text front]]
+              :child [core-views/wrap-text
+                      front
+                      {:font-size "120%" :width "150px" :min-width "150px"}]]
             [re-com/scroller
               :v-scroll :auto
               :height "45px"
-              :child [wrap-edit-text back]]]]])
+              :child [core-views/wrap-text
+                      back
+                      {:font-size "120%" :width "150px" :min-width "150px"}]]]]])
 
 
 (defn clickable-trash-icon [card]

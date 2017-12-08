@@ -3,6 +3,7 @@
             [cardy.study.subs :as subs]
             [cardy.study.events :as events]
             [cardy.events :as core-events]
+            [cardy.views :as core-views]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [ajax.core :refer [GET POST]]
@@ -12,16 +13,21 @@
 
 (trace-forms {:tracer (tracer :color "gold")}
 
-
 (defn return-home-button []
   [:input
     {:type "button" :value "home"
      :on-click #(re-frame/dispatch [::events/return-home-from-study])}])
 
-(defn wrap-text [card-text]
-  [re-com/p
-    {:style {:font-size "120%" :width "150px" :min-width "150px"}}
-    card-text])
+; (defn wrap-text [card-text]
+;   [re-com/p
+;     {:style {:font-size "120%" :width "150px" :min-width "150px"}}
+;     card-text])
+
+; (defn wrap-text [card-text]
+;   (core-views/wrap-text
+;     card-text
+;     {:font-size "120%" :width "150px" :min-width "150px"}))
+
 
 
 (defn card-side-display [flag card-text]
@@ -36,7 +42,9 @@
         :child [re-com/scroller
           :v-scroll :auto
           :height "110px"
-          :child [wrap-text card-text]
+          :child [core-views/wrap-text
+                    card-text
+                    {:font-size "120%" :width "150px" :min-width "150px"}]
         :size "auto"
         :padding "20px 10px 10px 10px"
         :align-self :center]]]])

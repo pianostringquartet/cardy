@@ -34,19 +34,14 @@
                  [ring/ring-defaults "0.3.1"]
                  [secretary "1.2.3"]
                  [selmer "1.11.3"]
-                 [re-com "2.1.0"] ;; re-frame Components
-                 [org.clojars.stumitchell/clairvoyant "0.2.1"] ;; re-frame's version of Clairvoyant
+                 [re-com "2.1.0"]
+                 [org.clojars.stumitchell/clairvoyant "0.2.1"]
                  [day8/re-frame-tracer "0.1.1-SNAPSHOT"]
-                 [medley "1.0.0"] ;; additional fns e.g. map-vals, take-upto etc.
-                 [day8.re-frame/test "0.1.5"] ;; re-frame testing
-                 [buddy/buddy-core "1.4.0"] ;; security
-                 [reanimated "0.6.0"] ;; animation
-
-                 [camdez/sendgrid "0.1.0"] ;; SendGrid Clojure API
-                 [com.draines/postal "2.0.2"] ;; sending emails
-
-                 [day8.re-frame/http-fx "0.1.4"]
-                 ]
+                 [medley "1.0.0"]
+                 [day8.re-frame/test "0.1.5"]
+                 [buddy/buddy-core "1.4.0"]
+                 [reanimated "0.6.0"]
+                 [com.draines/postal "2.0.2"]]
 
   :min-lein-version "2.0.0"
 

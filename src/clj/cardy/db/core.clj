@@ -4,10 +4,8 @@
     [clojure.java.jdbc :as jdbc]
     [conman.core :as conman]
     [cardy.config :refer [env]]
-    [mount.core :refer [defstate]])
-  (:import [java.sql
-            BatchUpdateException
-            PreparedStatement]))
+    [mount.core :refer [defstate]]))
+
 
 (defstate ^:dynamic *db*
            :start (conman/connect! {:jdbc-url (env :database-url)})

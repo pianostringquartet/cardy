@@ -11,81 +11,18 @@
             [cardy.events :as events]
             [cardy.views :as views]
             [cardy.subs :as subs]
+            [cardy.index :as cardy-index]
             [day8.re-frame.http-fx])
 
   (:import goog.History))
 
 
-;; -------------------------
-;; Routes
-; (secretary/set-config! :prefix "#")
-
-; (secretary/defroute "/" []
-;   (re-frame/dispatch [:set-active-page :home]))
-
-; (secretary/defroute "/about" []
-;   (re-frame/dispatch [:set-active-page :about]))
-
-
-;; -------------------------
-;; History
-; must be called after routes have been defined
-; (defn hook-browser-navigation! []
-;   (doto (History.)
-;     (goog-events/listen
-;       HistoryEventType/NAVIGATE
-;       (fn [event]
-;         (secretary/dispatch! (.-token event))))
-;     (.setEnabled true)))
-
-
-;; -------------------------
-;; Initialize app
-
-
 (defn mount-components []
   (re-frame/clear-subscription-cache!)
-  (reagent/render [views/cardy-app]
+  (reagent/render [cardy-index/cardy-app]
                   (.getElementById js/document "app")))
 
-
 (defn init! []
-
-  ;; initializing the db, I know this :-)
   (re-frame/dispatch-sync [::events/initialize-db])
-
-  ;; dispatch or dispatch-sync?
-  ;; as part of startup, retrieve decks from db
-  ; (re-frame/dispatch-sync [::events/pull-decks])
-
-  ;; load-interceptors! is defined in ajax.cljs
-  ;; ... seems to be us adding CSRF headers?
-  ;; ... Can leave alone for now...
   (load-interceptors!)
-
-
-  ;; ignore for now; learn about browsing history later
-  ; (hook-browser-navigation!)
-
-  ;; here we actually render the app
   (mount-components))
-
-
-
-; (defn ^:export init []
-
-;   ;; initializing the db, I know this :-)
-;   (re-frame/dispatch-sync [::events/initialize-db])
-
-;   ;; load-interceptors! is defined in ajax.cljs
-;   ;; ... seems to be us adding CSRF headers?
-;   ;; ... Can leave alone for now...
-;   (load-interceptors!)
-
-
-;   ;; ignore for now; learn about browsing history later
-;   ; (hook-browser-navigation!)
-
-;   ;; here we actually render the app
-;   (mount-components))
-

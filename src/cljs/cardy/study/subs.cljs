@@ -7,15 +7,6 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
-; study views uses:
-; front-flag
-; current-card-front
-; back-flag
-; current-card-back
-; congrats
-
-
-
 (trace-forms {:tracer (tracer :color "brown")}
 
 (re-frame/reg-sub
@@ -38,25 +29,21 @@
   (fn back-flag [db]
     (:back-flag db)))
 
-
 (re-frame/reg-sub
   ::congrats
   (fn congrats [db]
     (:congrats db)))
-
 
 (re-frame/reg-sub
   ::excluded-count
   (fn excluded-count [db]
     (:excluded-count db)))
 
-
 (re-frame/reg-sub
   ::excluded
   (fn excluded [db]
     (:excluded db)))
 
-; a Layer 3 sub for the progress bar
 (re-frame/reg-sub
   ::study-progress
   :<-[::core-subs/cards]
