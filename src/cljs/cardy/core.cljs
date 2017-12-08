@@ -11,8 +11,7 @@
             [cardy.events :as events]
             [cardy.views :as views]
             [cardy.subs :as subs]
-            [cardy.index :as cardy-index]
-            [day8.re-frame.http-fx])
+            [cardy.index :as cardy-index])
 
   (:import goog.History))
 

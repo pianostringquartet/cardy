@@ -11,24 +11,13 @@
             [reanimated.core :as anim]
             [re-frame-tracer.core :refer [tracer]]))
 
+
 (trace-forms {:tracer (tracer :color "gold")}
 
 (defn return-home-button []
   [:input
     {:type "button" :value "home"
      :on-click #(re-frame/dispatch [::events/return-home-from-study])}])
-
-; (defn wrap-text [card-text]
-;   [re-com/p
-;     {:style {:font-size "120%" :width "150px" :min-width "150px"}}
-;     card-text])
-
-; (defn wrap-text [card-text]
-;   (core-views/wrap-text
-;     card-text
-;     {:font-size "120%" :width "150px" :min-width "150px"}))
-
-
 
 (defn card-side-display [flag card-text]
   [re-com/h-box
@@ -48,7 +37,6 @@
         :size "auto"
         :padding "20px 10px 10px 10px"
         :align-self :center]]]])
-
 
 (defn congrats-message []
   (let [size (reagent/atom 0)
@@ -70,7 +58,6 @@
         {:src "good_job.png"
          :width (str @width "px")
          :on-click #(re-frame/dispatch [::events/remove-congrats-message])}]])))
-
 
 (def card-style-front-and-back
   {:backface-visibility "hidden"
@@ -160,7 +147,6 @@
   (let [congrats (re-frame/subscribe [::subs/congrats])]
     (fn study-panel-comp []
       [re-com/v-box
-          ; :gap "20px"
           :gap "40px"
           :padding "20px 20px 20px 20px"
           :align :center
@@ -169,8 +155,6 @@
             (when @congrats [congrats-message])
             [card-review]
             [show-study-progress]
-            [return-home-button]
-            ]])))
-
+            [return-home-button]]])))
 
 ) ;; end of tracer form
