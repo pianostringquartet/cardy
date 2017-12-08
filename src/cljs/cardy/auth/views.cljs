@@ -27,7 +27,8 @@
       [anim/timeout #(reset! tilt -5) 1500]
       [anim/timeout #(reset! tilt 0) 2000]
        [:img
-          {:src "intent_bear.png"
+          ; {:src "intent_bear.png"
+          {:src "/img/intent_bear.png"
            :width "300px"
            :height "200px"
            :style (zipmap [:-ms-transform
@@ -40,7 +41,7 @@
   [re-com/box
     :max-width "200px"
     :max-height "300px"
-    :child [:img {:src "bearstack_right_facing.png"}]])
+    :child [:img {:src "/img/bearstack_right_facing.png"}]])
 
 
 (defn reset-code-sent-picture []
@@ -53,7 +54,7 @@
       [anim/timeout #(reset! tilt -30) 3000]
       [anim/timeout #(reset! tilt 0) 4000]
        [:img
-          {:src "bearstack_right_facing.png"
+          {:src "/img/bearstack_right_facing.png"
            :width "200px"
            :style (zipmap [:-ms-transform
                            :-moz-transform
@@ -68,7 +69,7 @@
   [re-com/box
     :max-width "200px"
     :max-height "300px"
-    :child [:img {:src "bearstack_right_facing_handup.png"}]])
+    :child [:img {:src "/img/bearstack_right_facing_handup.png"}]])
 
 (defn message-for-user [sub message]
   (when @sub

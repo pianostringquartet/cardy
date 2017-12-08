@@ -63,14 +63,12 @@
   :figwheel
   {:http-server-root "public"
    :nrepl-port 7002
-   ; probably want to move your cardy.css into this directory
    :css-dirs ["resources/public/css"]
    :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
 
   :profiles
 
-  ;; okay, it looks
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
              :cljsbuild
@@ -84,18 +82,12 @@
                  :closure-warnings
                  {:externs-validation :off :non-standard-jsdoc :off}
                  :externs ["react/externs/react.js"]}}}}
-
-
              :aot :all
              :uberjar-name "cardy.jar"
              :source-paths ["env/prod/clj"]
              :resource-paths ["env/prod/resources"]}
-
-    ;; e.g. the :dev profile is a mix of two profiles:
-    ;;  the :project/dev profile and the :profiles/dev profile
    :dev           [:project/dev :profiles/dev]
    :test          [:project/dev :project/test :profiles/test]
-
    :project/dev  {:dependencies [[prone "1.1.4"]
                                  [ring/ring-mock "0.3.1"]
                                  [ring/ring-devel "1.6.3"]
@@ -121,17 +113,8 @@
                       :source-map true
                       :optimizations :none
                       :pretty-print true
-
-                      ;; added:
                       :closure-defines {"clairvoyant.core.devmode" true}
-
-                      ; added
-                      :preloads [devtools.preload]
-
-                      }}}}
-
-
-
+                      :preloads [devtools.preload]}}}}
                   :doo {:build "test"}
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
@@ -147,8 +130,6 @@
                      {:output-to "target/test.js"
                       :main "cardy.doo-runner"
                       :optimizations :whitespace
-                      :pretty-print true}}}}
-
-                  }
+                      :pretty-print true}}}}}
    :profiles/dev {}
    :profiles/test {}})

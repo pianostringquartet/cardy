@@ -15,33 +15,17 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
-(trace-forms {:tracer (tracer :color "gold")}
 
+(trace-forms {:tracer (tracer :color "gold")}
 
 (defn return-home-button []
   [:input
     {:type "button" :value "return home"
      :on-click #(re-frame/dispatch [::events/return-home-from-edit])}])
 
-
-; (defn wrap-edit-text [card-text]
-;   [re-com/p
-;     {:style
-;       {:font-size "90%"
-;       :width "120px" :min-width "120px"
-;       }}
-;     card-text])
-
-; (defn wrap-edit-text [card-text]
-;   (core-views/wrap-text
-;     card-text
-;     {:font-size "120%" :width "150px" :min-width "150px"}))
-
-
 (defn card-edit-display [{:keys [front back]}]
   [re-com/border
       :border "1px dashed lightgrey"
-      ; top, right, bottom, left
       :padding "10px 10px 0px 10px"
       :child [re-com/h-box
           :size "auto"
@@ -60,7 +44,6 @@
                       back
                       {:font-size "120%" :width "150px" :min-width "150px"}]]]]])
 
-
 (defn clickable-trash-icon [card]
   [re-com/box
     :child [:img
@@ -68,14 +51,12 @@
         :style {:max-width "20px" :max-height "20px"}
         :on-click #(re-frame/dispatch [::events/remove-card card])}]])
 
-
 (defn trash-and-card [card]
   [re-com/h-box
     :gap "10px"
     :children [
       [clickable-trash-icon card]
       [card-edit-display card]]])
-
 
 (defn card-displayer [card]
   [re-com/box
@@ -112,9 +93,7 @@
     :children [
       [add-card]
       [card-list]
-      ; [home-panel-button]
-      [return-home-button]
-    ]])
+      [return-home-button]]])
 
 
 ) ;; end of tracer form

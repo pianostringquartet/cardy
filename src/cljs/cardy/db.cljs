@@ -20,7 +20,6 @@
    :pw-reset-message nil
    :code-verified? nil
 
-
    :cards nil
    :current-card nil
    :current-deck nil
@@ -28,8 +27,8 @@
    :excluded #{}
    :removed #{}
 
-   :front-flag "german-flag-small.jpg"
-   :back-flag "american-flag-medium.jpg"
+   :front-flag "/img/german-flag-small.jpg"
+   :back-flag "/img/american-flag-medium.jpg"
 
    :decks {
    ; :decks {
