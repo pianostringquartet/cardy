@@ -19,9 +19,10 @@
 (trace-forms {:tracer (tracer :color "gold")}
 
 (defn return-home-button []
-  [:input
-    {:type "button" :value "return home"
-     :on-click #(re-frame/dispatch [::events/return-home-from-edit])}])
+  [re-com/button
+    :label "return home"
+    :class "btn btn-info"
+    :on-click #(re-frame/dispatch [::events/return-home-from-edit])])
 
 (defn card-edit-display [{:keys [front back]}]
   [re-com/border
@@ -33,23 +34,22 @@
           :children [
             [re-com/scroller
               :v-scroll :auto
-              :height "45px"
+              :height "80px"
               :child [core-views/wrap-text
                       front
-                      {:font-size "120%" :width "150px" :min-width "150px"}]]
+                      {:font-size "100%" :width "150px" :min-width "150px"}]]
             [re-com/scroller
               :v-scroll :auto
-              :height "45px"
+              :height "80px"
               :child [core-views/wrap-text
                       back
-                      {:font-size "120%" :width "150px" :min-width "150px"}]]]]])
+                      {:font-size "100%" :width "150px" :min-width "150px"}]]]]])
 
 (defn clickable-trash-icon [card]
-  [re-com/box
-    :child [:img
-      {:src "trash_icon.png"
-        :style {:max-width "20px" :max-height "20px"}
-        :on-click #(re-frame/dispatch [::events/remove-card card])}]])
+    [re-com/md-icon-button
+      :md-icon-name "zmdi-delete"
+      :on-click #(re-frame/dispatch [::events/remove-card card])
+      :tooltip "Delete this card"])
 
 (defn trash-and-card [card]
   [re-com/h-box
@@ -64,7 +64,7 @@
     :child [trash-and-card card]])
 
 (defn card-list []
-  (let [cards @(re-frame/subscribe [::core-subs/cards]) ;; will be a set
+  (let [cards @(re-frame/subscribe [::core-subs/cards])
         removed-cards @(re-frame/subscribe [::subs/removed])]
     [re-com/v-box
       :children [
@@ -90,12 +90,14 @@
     :padding "50px 0px 20px 0px"
     :gap "20px"
     :align :center
-    :children [
-      [add-card]
-      [card-list]
-      [return-home-button]]])
 
+    :children [
+      [re-com/h-box
+        :gap "10px"
+        :padding "5px"
+        :children [
+          [add-card]
+          [return-home-button]]]
+      [card-list]]])
 
 ) ;; end of tracer form
-
-

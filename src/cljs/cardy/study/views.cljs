@@ -55,7 +55,7 @@
           #(re-frame/dispatch [::events/remove-congrats-message])
           4550]
        [:img
-        {:src "good_job.png"
+        {:src "/img/good_job.png"
          :width (str @width "px")
          :on-click #(re-frame/dispatch [::events/remove-congrats-message])}]])))
 

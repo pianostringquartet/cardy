@@ -9,7 +9,7 @@
    ; :current-panel :study
    ; :current-panel :edit
 
-   :panels '(:auth :home :study :edit :profile)
+   :panels '(:auth :home :study :edit)
 
    :logged-in false
 
@@ -30,11 +30,16 @@
    :front-flag "/img/german-flag-small.jpg"
    :back-flag "/img/american-flag-medium.jpg"
 
-   :decks {}
+   :decks {
+      :starter #{{:front "Deutsch" :back "German"}
+                {:front "Genau" :back "Exactly"}
+                {:front "Es tut mir leid" :back "I'm sorry"}
+                {:front "Alles klar" :back "Alright"}}
+      :one-card-deck #{{:front "das Haus" :back "house"}}
+
+   }
 
 })
-
-
 
 
 ;; this is a hardcoded test db...

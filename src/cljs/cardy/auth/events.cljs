@@ -87,18 +87,39 @@
 (defn attempt-registration [cofx [event-id-to-ignore registration-attempt]]
   (let [db (:db cofx)]
     (case registration-attempt
+
       "registered"
         {:db (core-events/change-panel
                 (assoc db :logged-in true)
                 :home)
          :dispatch [::core-events/pull-decks]}
+
       "invalid email format"
-        (registration-failure-reason db registration-attempt)
+        (registration-failure-reason
+          db
+          "That's not a valid email address.")
+
       "email already in use"
-        (registration-failure-reason db registration-attempt)
+        (registration-failure-reason
+          db
+          "This email is already in use. Did you forget your password?")
+
       "invalid password format"
-        (registration-failure-reason db registration-attempt)
-      (registration-failure-reason db "An unknown error happened while registering. Reach out to Cardy at cardytheapp@gmail.com"))))
+        (registration-failure-reason
+          db
+          "Password must be at least 8 letters and contain 1 number, and 1 uppercase and 1 lowercase letter.")
+
+      "passwords do not match"
+        (registration-failure-reason
+          db
+          "The passwords do not match!")
+
+      ;; :else
+        (registration-failure-reason
+          db
+          "An unknown error happened. Reach out to Cardy at cardytheapp@gmail.com"))))
+
+
 
 (re-frame/reg-event-fx
   ::attempt-registration

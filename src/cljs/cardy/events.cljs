@@ -9,23 +9,17 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-
-
-
-;; utility events:
-
-
 (re-frame/reg-fx
   :ajax-post
   (fn ajax-post [{:keys [uri params handler]}]
     (POST uri {:params params :handler handler})))
 
-; accepts uri, params, handler
-; returns {:ajax-post {:uri :params :handler}}
-(defn post-request [uri params handler]
-  {:ajax-post {:uri uri :params params :handler handler}})
 
-;;; PANELS
+(defn post-request [uri params handler]
+  "uri: str
+   params: map
+   handler: fn"
+  {:ajax-post {:uri uri :params params :handler handler}})
 
 (defn change-panel [db panel]
   (assoc db :current-panel panel))
@@ -35,7 +29,6 @@
   (fn change-panel-handler [db [event-id-to-ignore panel]]
     (change-panel db panel)))
 
-
 (defn go-home [db]
   (assoc db :current-panel :home))
 
@@ -43,25 +36,25 @@
   ::go-home
   go-home)
 
-;; utility event
-; (re-frame/reg-event-db
-;   ::go-home
-;   (fn go-home [db]
-;     (assoc db :current-panel :home)))
 
 ;; ----------------------------------------
 ;; Helper fns for event handler fns
 ;; ----------------------------------------
 
-(defn input-to-keyword
-  [a-string]
-  (keyword (clojure.string/trim a-string)))
+(defn input-to-keyword [a-str]
+  (-> a-str
+    (clojure.string/trim)
+    (clojure.string/replace " " "-")
+    (keyword)))
 
-(defn input-to-card
-  "Accepts input (a string), returns a card (a map)."
-  ; [[event-id-to-ignore a-string]] ;; note the destructuring of the Event vector!
-  [a-string] ;; note the destructuring of the Event vector!
-    (do (println "a-string in input-to-card: " a-string)
+(defn keyword-to-display [a-kw]
+  (-> a-kw
+    (name)
+    (clojure.string/replace "-" " ")))
+
+(defn input-to-card [a-string]
+    (do
+      (println "a-string in input-to-card: " a-string)
       (let [words (map clojure.string/trim (clojure.string/split a-string #";"))]
           {:front (first words) :back (second words)})))
 
@@ -80,28 +73,17 @@
  (fn initialize-db [_ _]
    db/default-db))
 
-
 (re-frame/reg-event-fx
   ::pull-decks
   (fn pull-deck-handler [cofx event]
-    {:pull-decks-fx (:email (:db cofx))})) ;; return a map with just the key :pull-decks-effect
-
-;; should use post-request...
-(re-frame/reg-fx
-  :pull-decks-fx
-  (fn pull-decks-ajax [email]
-    (POST
+    (post-request
       "/pull-decks"
-      {:params {:email email}
-        :handler #(re-frame/dispatch [::set-decks %])})))
-    ; (GET "/pull-decks" {:handler #(re-frame/dispatch [::set-decks %])})))
+      {:email (:email (:db cofx))}
+      #(re-frame/dispatch [::set-decks %]))))
 
 (re-frame/reg-event-db
   ::set-decks
   (fn set-decks-handler [db [event-id-to-ignore decks]]
     (assoc db :decks decks)))
-
-
-
 
 ) ; end of tracer form

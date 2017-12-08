@@ -3,10 +3,12 @@
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
-            [ajax.core :refer [GET POST]]
             [medley.core :refer [dissoc-in]]
-            [cardy.events :refer [input-to-card change-panel post-request]]
+            [cardy.events :refer [
+              input-to-card change-panel go-home
+              post-request keyword-to-display]]
             ))
+
 
 (trace-forms {:tracer (tracer :color "blue")}
 
@@ -46,22 +48,21 @@
   (fn update-deck! [cofx [event-id-to-ignore deck-name]]
     (post-request
       "/update-deck"
-      {:deck-name deck-name
+      {:deck-name (keyword-to-display deck-name)
        :deck (get-in cofx [:db :decks deck-name])
-       :email (:email (:db cofx))} ;; added :email
+       :email (:email (:db cofx))}
       #(js/console.log "update-deck-ajax response was: " %))))
-
 
 (re-frame/reg-event-fx
   ::remove-deck
   (fn remove-deck-handler [cofx [event-id-to-ignore deck-name]]
     (let [db (:db cofx)]
       (merge
-        {:db (dissoc-in db [:decks (keyword deck-name)])}
+        {:db (dissoc-in db [:decks deck-name])}
         (post-request
           "/remove-deck"
-          {:deck-name deck-name
-           :email (:email (:db cofx))} ;; added :email
+          {:deck-name (keyword-to-display deck-name)
+           :email (:email (:db cofx))}
           #(js/console.log "remove-deck-ajax response was: " %))))))
 
 (re-frame/reg-event-fx
@@ -73,7 +74,5 @@
          :db (assoc db :current-panel :home)}
         {:dispatch [::update-deck (:current-deck db)]
          :db (assoc db :current-panel :home)}))))
-
-
 
 ) ;; end of tracer form

@@ -5,6 +5,8 @@
             [cardy.home.events :as events]
             [cardy.edit.events :as edit-events]
 
+            [cardy.events :as core-events]
+
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [ajax.core :refer [GET POST]]
@@ -75,7 +77,7 @@
                   [:input
                     {:type "button" :value "confirm"
                      :on-click
-                       #(re-frame/dispatch [::edit-events/remove-deck (name deck-name)])}]
+                       #(re-frame/dispatch [::edit-events/remove-deck deck-name])}]
                   [:input
                     {:type "button" :value "cancel"
                      :on-click #(reset! showing? false)}]]]]])))
@@ -89,7 +91,7 @@
         :tooltip "Study this deck"
         :on-click #(re-frame/dispatch
                     [::events/study-given-deck deck-name])
-        :label (name deck-name)]])
+        :label (core-events/keyword-to-display deck-name)]])
 
 (defn deck-clickables [deck-name]
   [re-com/border
@@ -131,7 +133,6 @@
               nil ;; ignore blank or a non-deck-name inputs
               (re-frame/dispatch [::events/study-given-deck (keyword selection)])))
         :change-on-blur? true])))
-
 
 (defn home-panel []
   [re-com/v-box

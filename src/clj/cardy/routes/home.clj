@@ -8,14 +8,11 @@
             [cardy.models.users :as users]
             [cardy.models.cards :as cards]))
 
-(defn home-page []
-  (layout/render "home.html"))
-
 
 (defroutes home-routes
 
   (GET "/" []
-    (home-page))
+    (layout/render "home.html"))
 
   ;; Cards API
 
@@ -23,25 +20,21 @@
     (fn [req]
       (let [email (get-in req [:params :email])]
         (response/ok (cards/pull-decks email)))))
-
   (POST "/remove-deck" []
     (fn [req]
       (let [deck-name (get-in req [:params :deck-name])
             email (get-in req [:params :email])]
-        (response/ok (cards/remove-deck! (name deck-name) email)))))
+        (response/ok (cards/remove-deck! deck-name email)))))
   (POST "/update-deck" []
     (fn [req]
       (let [deck-name (get-in req [:params :deck-name])
             deck (get-in req [:params :deck])
             email (get-in req [:params :email])]
-        (do
-          (cards/update-deck! (name deck-name) deck email)
-          (response/ok "Deck updated... Check DB.")))))
-
+          (response/ok (cards/update-deck! deck-name deck email)))))
 
   ;;; Users API
 
-(POST "/login" []
+  (POST "/login" []
     (fn [req]
       (let [credentials (:params req)]
         (response/ok (users/validate-credentials credentials)))))
@@ -67,32 +60,3 @@
       (let [email (get-in req [:params :email])
             new-pw (get-in req [:params :new-pw])]
         (response/ok (users/set-new-pw email new-pw))))))
-
-
-
-  ; (POST "/login" []
-  ;   (fn [req]
-  ;     (let [credentials (:params req)]
-  ;       (response/ok (db-core/validate-credentials credentials)))))
-  ; (POST "/register-creds" []
-  ;   (fn [req]
-  ;     (let [credentials (:params req)]
-  ;       (response/ok (db-core/register-user! credentials)))))
-  ; (POST "/verify-user-exists" []
-  ;   (fn [req]
-  ;     (let [email (get-in req [:params :email ])]
-  ;       (response/ok (db-core/verify-user-exists email)))))
-  ; (POST "/send-pw-reset-email" []
-  ;   (fn [req]
-  ;     (let [email (get-in req [:params :email ])]
-  ;       (response/ok (db-core/send-password-reset-email email)))))
-  ; (POST "/verify-pw-reset-code" []
-  ;   (fn [req]
-  ;     (let [email (get-in req [:params :email])
-  ;           code (get-in req [:params :code])]
-  ;       (response/ok (db-core/verify-pw-reset-code email code)))))
-  ; (POST "/set-new-pw-ajax" []
-  ;   (fn [req]
-  ;     (let [email (get-in req [:params :email])
-  ;           new-pw (get-in req [:params :new-pw])]
-  ;       (response/ok (db-core/set-new-pw email new-pw))))))

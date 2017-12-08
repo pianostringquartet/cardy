@@ -3,6 +3,7 @@
             [cardy.auth.subs :as subs]
             [cardy.auth.events :as events]
             [cardy.events :as core-events]
+            [cardy.views :as core-views]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
@@ -65,23 +66,23 @@
     [re-com/box
       :align-self :center
       :padding "5px"
-      :child [re-com/title
-                :label message
-                :level :level3
-                :style {:color "red" :font-size "12px"}]]))
+      :child [
+        core-views/wrap-text
+          message
+          {:font-size "80%" :width "200px" :min-width "200px" :color "red"}]]))
 
-(defn password-input [model]
-  [re-com/input-password
-    :model model
-    :placeholder "password"
-    :on-change #(reset! model %)
-    :change-on-blur? true])
+(defn password-input [model placeholder]
+    [re-com/input-password
+      :model model
+      :placeholder placeholder
+      :on-change #(reset! model %)
+      :change-on-blur? true])
 
 (defn form-submit [submit-name on-click-fn]
-  [:input
-    {:type "button"
-     :value submit-name
-     :on-click on-click-fn}])
+  [re-com/button
+    :label submit-name
+    :class "btn btn-success"
+    :on-click on-click-fn])
 
 (defn primary-input [input-name state]
   [re-com/input-text
@@ -100,7 +101,7 @@
         :gap "10px"
         :children [
           [primary-input "email" email]
-          [password-input password]
+          [password-input password "password"]
           [message-for-user
             login-failed?
             "Uh oh - login failed. Check email and password?"]
@@ -111,19 +112,26 @@
 (defn registration-form []
   (let [email (reagent/atom "")
         password (reagent/atom "")
+        password-confirm (reagent/atom "")
         registration-failed-bc (re-frame/subscribe [::subs/registration-failure-reason])]
     (fn []
       [re-com/v-box
         :gap "10px"
         :children [
           [primary-input "email" email]
-          [password-input password]
+          [password-input password "password"]
+          [password-input password-confirm "confirm password"]
           [message-for-user
             registration-failed-bc
             @registration-failed-bc]
           [form-submit
             "register"
-            (fn [] (re-frame/dispatch [::events/register "" @email @password]))]]])))
+            (fn []
+              (if (not= @password @password-confirm)
+                (re-frame/dispatch
+                  [::events/attempt-registration "passwords do not match"])
+                (re-frame/dispatch
+                  [::events/register "" @email @password])))]]])))
 
 (defn request-reset-code-form []
   (let [email (reagent/atom "")]
@@ -160,7 +168,7 @@
         :gap "10px"
         :children [
           [re-com/label :label "Code verified! Now let's set your new password."]
-          [password-input password]
+          [password-input password "new password"]
           [form-submit
             "save new password"
             (fn [] (re-frame/dispatch [::events/set-new-pw @password]))]]])))
@@ -245,7 +253,7 @@
     :children [
       [intro-picture]
       [re-com/v-box
-        :gap "5px"
+        :gap "10px"
         :children [
           [login-or-register-form]
           [re-com/hyperlink
