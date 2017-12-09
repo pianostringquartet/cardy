@@ -1,5 +1,5 @@
 (ns cardy.events
-  (:require [cardy.db :as db]
+  (:require [cardy.db :as core-db]
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [medley.core :refer [dissoc-in]]
@@ -65,31 +65,21 @@
 (re-frame/reg-event-db
   ::initialize-test-db
   (fn initialize-test-db [_ _]
-    db/test-db))
+    core-db/test-db))
 
-; (re-frame/reg-event-db
+
 (re-frame/reg-event-fx
- ::initialize-db
- ; [(re-frame/inject-cofx :local-store-todos)]
+ ::add-local-storage
  [(re-frame/inject-cofx :is-logged-in-localStorage)]
- (fn initialize-db [cofx [_ _]]
+ (fn add-local-storage [cofx [_ _]]
    (let [db (:db cofx)
          is-logged-in-localStorage? (:is-logged-in-localStorage? cofx)]
-    {:db (assoc
-            db/default-db
-            :is-logged-in-localStorage?
-            is-logged-in-localStorage?
-            ; (cljs.reader/read-string is-logged-in-localStorage?)
+    {:db (assoc db :is-logged-in-localStorage? is-logged-in-localStorage?)})))
 
-            )
-    })))
-
-
-#_(re-frame/reg-event-db
+(re-frame/reg-event-db
  ::initialize-db
  (fn initialize-db [_ _]
-   db/default-db))
-
+   core-db/default-db))
 
 
 
@@ -156,13 +146,13 @@
 
 (re-frame/reg-event-fx
   ::logout
-  (fn logout [db [event-id-to-ignore]]
+  (fn logout [cofx [event-id-to-ignore]]
     {:db (change-panel
             (assoc
               ; db
               ;; Note the "false" str instead of false (bool);
               ;; See "WORKAROUND" in index.cljs
-              (assoc db :is-logged-in-localStorage? "false")
+              (assoc (:db cofx) :is-logged-in-localStorage? "false")
               :logged-in?
               false)
             :auth)
