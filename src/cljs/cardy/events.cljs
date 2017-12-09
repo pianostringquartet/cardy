@@ -4,7 +4,7 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [medley.core :refer [dissoc-in]]
             [re-frame-tracer.core :refer [tracer]]
-            [ajax.core :refer [GET POST]]))
+            [ajax.core :refer [POST]]))
 
 
 (trace-forms {:tracer (tracer :color "blue")}
@@ -12,76 +12,41 @@
 
 (def ls-auth-key "is-logged-in")
 
-; (def ls-key
-;   "todos-reframe") ;; localstore key
-
-; ; ;; todomvc has a "path" interceptor
-; ; ;; that hands the event-handlers the :todos key in the db,
-; ; ;; instead of the entire db
-; ; (defn todos->local-store
-; ;   "Puts todos into localStorage"
-; ;   [todos]
-; ;   ; (.setItem js/localStorage ls-key (str todos))
-; ;   (do
-; ;     (js/console.log "todos->local-store todos param is: " todos)
-; ;     (.setItem js/localStorage ls-key (str todos))))
-
-; ; (def ->local-store
-; ;   (re-frame/after todos->local-store))
-
-; ; ;; this would be for an event
-; ; ;; (so far you've not used this anywhere)
-; ; (def todo-interceptors
-; ;   [->local-store])
-
-; ;; registering a handler for a cofx-id
-; (re-frame/reg-cofx
-;   :local-store-todos
-;   (fn from-local-stroage-cofx [cofx _]
-;       ;; put the localstore todos into the coeffect under :local-store-todos
-
-;       ;; Right. Cofx is the actual "world state",
-;       ;; of which :db is just a part
-;       (assoc cofx :local-store-todos
-;              ;; read in todos from localstore, and process into a sorted map
-;              (into (sorted-map)
-;                    (some->> (.getItem js/localStorage ls-key)
-;                             (js/console.log "Here it is: " )
-;                             (cljs.reader/read-string)    ;; EDN map -> map
-;                             )))))
-
 (re-frame/reg-cofx
-  :is-logged-in-localStorage
+  :user-session
   (fn is-logged-in-localStorage [cofx _]
     (assoc
       cofx
       :is-logged-in-localStorage?
       (some->>
-        (.getItem js/localStorage ls-auth-key)
-        ; (cljs.reader/read-string) ;; not needed?
-        )
-      )))
+        (.getItem js/localStorage ls-auth-key)))))
 
 (re-frame/reg-event-db
   ::initialize-test-db
   (fn initialize-test-db [_ _]
     core-db/test-db))
 
-
-(re-frame/reg-event-fx
- ::add-local-storage
- [(re-frame/inject-cofx :is-logged-in-localStorage)]
- (fn add-local-storage [cofx [_ _]]
-   (let [db (:db cofx)
-         is-logged-in-localStorage? (:is-logged-in-localStorage? cofx)]
-    {:db (assoc db :is-logged-in-localStorage? is-logged-in-localStorage?)})))
-
 (re-frame/reg-event-db
  ::initialize-db
  (fn initialize-db [_ _]
    core-db/default-db))
 
+;; WORKAROUND:
+;; cljs.reader/read-string throws a perplexing error
+;; when reading content of localStorage;
+;; so for now, we explicitly convert "false" (str) to false (bool)
+(defn to-cljs [a-str]
+  (if (= "false" a-str)
+    false
+    a-str))
 
+(re-frame/reg-event-fx
+ ::retrieve-user-session
+ [(re-frame/inject-cofx :user-session)]
+ (fn retrieve-user-session [cofx [_ _]]
+   (let [db (:db cofx)
+         session (:user-session cofx)]
+    {:db (assoc db :session (to-cljs session))})))
 
 (defn input-to-keyword [a-str]
   (-> a-str
@@ -140,23 +105,25 @@
     (assoc db :decks decks)))
 
 (re-frame/reg-fx
-  :login-false-localStorage
-  (fn login-localStorage [_]
+  :end-session
+  (fn end-session [_]
     (.setItem js/localStorage ls-auth-key (str false))))
 
+(defn logout-app-db
+  "Set login-relevant keys in app-db to false."
+  [db]
+  (-> db
+    (assoc :session false)
+    (assoc :logged-in? false)))
+
+;; Log out: includes ending session in localStorage
 (re-frame/reg-event-fx
   ::logout
   (fn logout [cofx [event-id-to-ignore]]
     {:db (change-panel
-            (assoc
-              ; db
-              ;; Note the "false" str instead of false (bool);
-              ;; See "WORKAROUND" in index.cljs
-              (assoc (:db cofx) :is-logged-in-localStorage? "false")
-              :logged-in?
-              false)
-            :auth)
-     :login-false-localStorage nil}))
+           (logout-app-db (:db cofx))
+           :auth)
+     :end-session nil}))
 
 (re-frame/reg-event-fx
   ::resume-active-session

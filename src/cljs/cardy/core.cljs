@@ -23,6 +23,6 @@
 
 (defn init! []
   (re-frame/dispatch-sync [::events/initialize-db])
-  (re-frame/dispatch-sync [::events/add-local-storage]) ;; added
+  (re-frame/dispatch-sync [::events/retrieve-user-session]) ;; added
   (load-interceptors!)
   (mount-components))

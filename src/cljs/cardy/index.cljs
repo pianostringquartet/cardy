@@ -13,29 +13,18 @@
 
 (trace-forms {:tracer (tracer :color "gold")}
 
-;; WORKAROUND:
-;; cljs.reader/read-string throws a perplexing error
-;; when reading content of localStorage during :initialize-db;
-;; for now, we keep localStorage content as a string,
-;; e.g. using "false" (Clojure str) instead of false (Clojure bool)
-(defn str-is-false? [a-str]
-  (= "false" a-str))
-
-(defn has-active-session? [session-info]
-  (not (str-is-false? session-info)))
-
 (defn cardy-app []
   (let [logged-in? (re-frame/subscribe [::subs/logged-in?])
-        session-info (re-frame/subscribe [::subs/is-logged-in-localStorage?])
+        session (re-frame/subscribe [::subs/session])
         current-panel (re-frame/subscribe [::subs/current-panel])]
 
     (fn cardy-app-container []
-      (cond ;; cond does short circuit eval :-)
+      (cond
 
-        (has-active-session? @session-info)
-        (do
-          (re-frame/dispatch [::events/resume-active-session @session-info])
-          [home-panel])
+        @session
+          (do
+            (re-frame/dispatch [::events/resume-active-session @session])
+            [home-panel])
 
         (and (not @logged-in?) (= @current-panel :pw-reset))
           [pw-reset-panel]
