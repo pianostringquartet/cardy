@@ -1,15 +1,12 @@
 (ns cardy.home.views
   (:require [re-frame.core :as re-frame]
-
             [cardy.home.subs :as subs]
             [cardy.home.events :as events]
             [cardy.edit.events :as edit-events]
-
             [cardy.events :as core-events]
-
+            [cardy.views :as core-views]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
-            [ajax.core :refer [GET POST]]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
@@ -136,10 +133,16 @@
 
 (defn home-panel []
   [re-com/v-box
-    :gap "50px"
+    :gap "40px"
     :align :center
     :children [
-      [re-com/title :label "DECKS" :level :level1]
+      [re-com/h-box
+        :gap "40px"
+        :children [
+          [re-com/title :label "DECKS" :level :level1]
+          [re-com/box
+            :align-self :center
+            :child [core-views/logout-button]]]]
       [re-com/h-box
         :gap "20px"
         :children [

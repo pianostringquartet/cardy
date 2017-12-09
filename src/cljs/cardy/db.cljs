@@ -3,8 +3,7 @@
 
 (def default-db
   {
-
-   :current-panel :auth
+    :current-panel :auth
    ; :current-panel :home
    ; :current-panel :study
    ; :current-panel :edit
@@ -12,9 +11,6 @@
    :panels '(:auth :home :study :edit)
 
    :logged-in false
-
-   ;; use nil, because empty string is truthy
-   :intro-error-message nil
 
    :pw-reset-flow-stage :sending-pw-reset-email
    :pw-reset-message nil
@@ -36,11 +32,9 @@
                 {:front "Es tut mir leid" :back "I'm sorry"}
                 {:front "Alles klar" :back "Alright"}}
       :one-card-deck #{{:front "das Haus" :back "house"}}
-
    }
 
 })
-
 
 ;; this is a hardcoded test db...
 ;; seems brittle...

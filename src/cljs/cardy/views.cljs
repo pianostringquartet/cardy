@@ -3,8 +3,9 @@
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
-            [re-frame-tracer.core :refer [tracer]]
-            ))
+            [cardy.events :as core-events]
+            [re-frame-tracer.core :refer [tracer]]))
+
 
 (trace-forms {:tracer (tracer :color "gold")}
 
@@ -13,6 +14,10 @@
     {:style style-map}
     card-text])
 
+(defn logout-button []
+  [re-com/button
+    :label "logout"
+    :class "btn-danger"
+    :on-click #(re-frame/dispatch [::core-events/logout])])
+
 ) ;; end of tracer form
-
-

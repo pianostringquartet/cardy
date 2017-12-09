@@ -1,13 +1,15 @@
 (ns cardy.subs
   (:require [re-frame.core :as re-frame]
-            [cardy.events :as events]
-
             [clairvoyant.core :refer-macros [trace-forms]]
-            [re-frame-tracer.core :refer [tracer]]
-            ))
-
+            [re-frame-tracer.core :refer [tracer]]))
 
 (trace-forms {:tracer (tracer :color "brown")}
+
+
+(re-frame/reg-sub
+  ::logged-in?
+  (fn logged-in? [db]
+    (:logged-in? db)))
 
 (re-frame/reg-sub
   ::current-panel
@@ -31,6 +33,4 @@
   (fn cards [[current-deck decks]]
     (current-deck decks)))
 
-
 ) ;; end of tracer form
-

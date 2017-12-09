@@ -9,11 +9,28 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
+
+(defn input-to-keyword [a-str]
+  (-> a-str
+    (clojure.string/trim)
+    (clojure.string/replace " " "-")
+    (keyword)))
+
+(defn keyword-to-display [a-kw]
+  (-> a-kw
+    (name)
+    (clojure.string/replace "-" " ")))
+
+(defn input-to-card [a-string]
+    (do
+      (println "a-string in input-to-card: " a-string)
+      (let [words (map clojure.string/trim (clojure.string/split a-string #";"))]
+          {:front (first words) :back (second words)})))
+
 (re-frame/reg-fx
   :ajax-post
   (fn ajax-post [{:keys [uri params handler]}]
     (POST uri {:params params :handler handler})))
-
 
 (defn post-request [uri params handler]
   "uri: str
@@ -35,33 +52,6 @@
 (re-frame/reg-event-db
   ::go-home
   go-home)
-
-
-;; ----------------------------------------
-;; Helper fns for event handler fns
-;; ----------------------------------------
-
-(defn input-to-keyword [a-str]
-  (-> a-str
-    (clojure.string/trim)
-    (clojure.string/replace " " "-")
-    (keyword)))
-
-(defn keyword-to-display [a-kw]
-  (-> a-kw
-    (name)
-    (clojure.string/replace "-" " ")))
-
-(defn input-to-card [a-string]
-    (do
-      (println "a-string in input-to-card: " a-string)
-      (let [words (map clojure.string/trim (clojure.string/split a-string #";"))]
-          {:front (first words) :back (second words)})))
-
-
-;; ----------------------------------------
-;; Associating event-ids with event handler fns
-;; ----------------------------------------
 
 (re-frame/reg-event-db
   ::initialize-test-db
@@ -85,5 +75,12 @@
   ::set-decks
   (fn set-decks-handler [db [event-id-to-ignore decks]]
     (assoc db :decks decks)))
+
+(re-frame/reg-event-db
+  ::logout
+  (fn logout [db [event-id-to-ignore]]
+    (change-panel
+      (assoc db :logged-in? false)
+      :auth)))
 
 ) ; end of tracer form

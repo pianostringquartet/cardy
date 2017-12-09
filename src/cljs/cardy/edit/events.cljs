@@ -6,8 +6,7 @@
             [medley.core :refer [dissoc-in]]
             [cardy.events :refer [
               input-to-card change-panel go-home
-              post-request keyword-to-display]]
-            ))
+              post-request keyword-to-display]]))
 
 
 (trace-forms {:tracer (tracer :color "blue")}
@@ -19,9 +18,9 @@
             (nil? (:back new-card)))
       db
       (assoc-in
-          db
-          [:decks (:current-deck db)]
-          (conj cards new-card)))))
+        db
+        [:decks (:current-deck db)]
+        (conj cards new-card)))))
 
 (re-frame/reg-event-db
   ::add-card
@@ -33,10 +32,6 @@
       db
       [:decks (:current-deck db)]
       (clojure.set/difference cards #{card}))))
-
-(defn current-deck-empty? [db]
-  (let [cards (get-in db [:decks (:current-deck db)])]
-    (empty? cards)))
 
 (re-frame/reg-event-db
   ::remove-card
@@ -65,14 +60,19 @@
            :email (:email (:db cofx))}
           #(js/console.log "remove-deck-ajax response was: " %))))))
 
+(defn current-deck-empty? [db]
+  (let [cards (get-in db [:decks (:current-deck db)])]
+    (empty? cards)))
+
 (re-frame/reg-event-fx
   ::return-home-from-edit
   (fn return-home-from-edit [cofx [event-id-to-ignore]]
     (let [db (:db cofx)]
       (if (current-deck-empty? db)
         {:dispatch [::remove-deck (:current-deck db)]
-         :db (assoc db :current-panel :home)}
+         :db (go-home db)}
         {:dispatch [::update-deck (:current-deck db)]
-         :db (assoc db :current-panel :home)}))))
+         :db (go-home db)}
+         ))))
 
 ) ;; end of tracer form
