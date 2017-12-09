@@ -8,6 +8,37 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
+
+(re-frame/reg-event-db
+  ::go-to-auth
+  (fn go-to-auth [db]
+    (assoc db :current-panel :auth)))
+
+
+;; logged-in?: bool
+; (defn auth-status->local-store
+;   "Puts auth-status kv pair into localStorage."
+;   [logged-in?]
+;   (do
+;     (js/console.log
+;       "auth-status->local-store: logged-in?: " logged-in?)
+;     (.setItem js/localStorage ls-auth-key (str logged-in?))))
+; ; what will the interceptor be given?
+; ;; the whole db?
+; ;; and you actually want to modify the auth-key in ls conditionally;
+; ;; i.e. if the login-attempt in attempt-login event is "failed",
+; ;; then don't
+
+
+; (def auth->ls-interceptor
+;   (re-frame/after auth-status->local-store))
+
+;; don't need to yet register a cofx-id,
+;; since that will be for reading from localStorage (later)
+; (re-frame/reg-cofx
+;   :)
+
+
 ;;; LOGIN
 
 (defn log-user-in [db]
@@ -23,11 +54,23 @@
         {:username username :email email :password password}
         #(re-frame/dispatch [::attempt-login %])))))
 
+(re-frame/reg-fx
+  :login-true-localStorage
+  (fn login-localStorage [email]
+    (.setItem js/localStorage core-events/ls-auth-key (str email))))
+
+
+(re-frame/reg-event-fx
+  ::login-attempt-succeeded
+  (fn login-attempt-succeeded [cofx [_ _]]
+    {:dispatch [::core-events/pull-decks]
+     :login-true-localStorage (:email (:db cofx))
+     :db (core-events/go-home (log-user-in (:db cofx)))}))
+
 (defn attempt-login [db login-attempt]
   (case login-attempt
     "succeeded"
-      {:dispatch [::core-events/pull-decks]
-       :db (core-events/go-home (log-user-in db))}
+      {:dispatch [::login-attempt-succeeded]}
     "failed"
       {:db (assoc db :login-attempt-failed? true)}))
 
@@ -56,6 +99,8 @@
     (case registration-attempt
       "registered"
         {:db (core-events/go-home (log-user-in db))
+         ; :login-true-localStorage nil
+         :login-true-localStorage (:email (:db cofx))
          :dispatch [::core-events/pull-decks]}
       "invalid email format"
         (registration-failure-reason
@@ -144,6 +189,8 @@
     (let [db (:db cofx)]
       (if (= server-response "succeeded")
           {:db (core-events/go-home (log-user-in db))
+           ; :login-true-localStorage nil
+           :login-true-localStorage (:email (:db cofx))
            :dispatch [::core-events/pull-decks]}
           (assoc db :new-pw-not-set? true)))))
 

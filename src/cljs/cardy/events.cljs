@@ -10,6 +10,89 @@
 (trace-forms {:tracer (tracer :color "blue")}
 
 
+(def ls-auth-key "is-logged-in")
+
+; (def ls-key
+;   "todos-reframe") ;; localstore key
+
+; ; ;; todomvc has a "path" interceptor
+; ; ;; that hands the event-handlers the :todos key in the db,
+; ; ;; instead of the entire db
+; ; (defn todos->local-store
+; ;   "Puts todos into localStorage"
+; ;   [todos]
+; ;   ; (.setItem js/localStorage ls-key (str todos))
+; ;   (do
+; ;     (js/console.log "todos->local-store todos param is: " todos)
+; ;     (.setItem js/localStorage ls-key (str todos))))
+
+; ; (def ->local-store
+; ;   (re-frame/after todos->local-store))
+
+; ; ;; this would be for an event
+; ; ;; (so far you've not used this anywhere)
+; ; (def todo-interceptors
+; ;   [->local-store])
+
+; ;; registering a handler for a cofx-id
+; (re-frame/reg-cofx
+;   :local-store-todos
+;   (fn from-local-stroage-cofx [cofx _]
+;       ;; put the localstore todos into the coeffect under :local-store-todos
+
+;       ;; Right. Cofx is the actual "world state",
+;       ;; of which :db is just a part
+;       (assoc cofx :local-store-todos
+;              ;; read in todos from localstore, and process into a sorted map
+;              (into (sorted-map)
+;                    (some->> (.getItem js/localStorage ls-key)
+;                             (js/console.log "Here it is: " )
+;                             (cljs.reader/read-string)    ;; EDN map -> map
+;                             )))))
+
+(re-frame/reg-cofx
+  :is-logged-in-localStorage
+  (fn is-logged-in-localStorage [cofx _]
+    (assoc
+      cofx
+      :is-logged-in-localStorage?
+      (some->>
+        (.getItem js/localStorage ls-auth-key)
+        ; (cljs.reader/read-string) ;; not needed?
+        )
+      )))
+
+(re-frame/reg-event-db
+  ::initialize-test-db
+  (fn initialize-test-db [_ _]
+    db/test-db))
+
+; (re-frame/reg-event-db
+(re-frame/reg-event-fx
+ ::initialize-db
+ ; [(re-frame/inject-cofx :local-store-todos)]
+ [(re-frame/inject-cofx :is-logged-in-localStorage)]
+ (fn initialize-db [cofx [_ _]]
+   (let [db (:db cofx)
+         is-logged-in-localStorage? (:is-logged-in-localStorage? cofx)]
+    {:db (assoc
+            db/default-db
+            :is-logged-in-localStorage?
+            is-logged-in-localStorage?
+            ; (cljs.reader/read-string is-logged-in-localStorage?)
+
+            )
+    })))
+
+
+#_(re-frame/reg-event-db
+ ::initialize-db
+ (fn initialize-db [_ _]
+   db/default-db))
+
+
+
+
 (defn input-to-keyword [a-str]
   (-> a-str
     (clojure.string/trim)
@@ -53,16 +136,6 @@
   ::go-home
   go-home)
 
-(re-frame/reg-event-db
-  ::initialize-test-db
-  (fn initialize-test-db [_ _]
-    db/test-db))
-
-(re-frame/reg-event-db
- ::initialize-db
- (fn initialize-db [_ _]
-   db/default-db))
-
 (re-frame/reg-event-fx
   ::pull-decks
   (fn pull-deck-handler [cofx event]
@@ -76,11 +149,29 @@
   (fn set-decks-handler [db [event-id-to-ignore decks]]
     (assoc db :decks decks)))
 
-(re-frame/reg-event-db
+(re-frame/reg-fx
+  :login-false-localStorage
+  (fn login-localStorage [_]
+    (.setItem js/localStorage ls-auth-key (str false))))
+
+(re-frame/reg-event-fx
   ::logout
   (fn logout [db [event-id-to-ignore]]
-    (change-panel
-      (assoc db :logged-in? false)
-      :auth)))
+    {:db (change-panel
+            (assoc
+              ; db
+              ;; Note the "false" str instead of false (bool);
+              ;; See "WORKAROUND" in index.cljs
+              (assoc db :is-logged-in-localStorage? "false")
+              :logged-in?
+              false)
+            :auth)
+     :login-false-localStorage nil}))
+
+(re-frame/reg-event-fx
+  ::resume-active-session
+  (fn resume-active-session [cofx [event-id-to-ignore session-email]]
+    {:db (go-home (assoc (:db cofx) :email session-email))
+     :dispatch [::pull-decks]}))
 
 ) ; end of tracer form

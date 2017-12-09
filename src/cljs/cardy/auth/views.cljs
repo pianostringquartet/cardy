@@ -13,6 +13,14 @@
 
 (trace-forms {:tracer (tracer :color "gold")}
 
+(defn go-back-button
+  "Return to login/register screen."
+  []
+  [re-com/button
+    :label "go back"
+    :on-click #(re-frame/dispatch [::events/go-to-auth])
+    :class "btn btn-danger"])
+
 (defn intro-picture []
   (let [tilt (reagent/atom 0)
         rotation (anim/spring tilt)]
@@ -141,9 +149,13 @@
         :children [
           [re-com/label :label "Let's get you a new password!"]
           [primary-input "email" email]
-          [form-submit
-            "send reset code"
-            (fn [] (re-frame/dispatch [::events/verify-user-exists @email]))]]])))
+          [re-com/h-box
+            :gap "10px"
+            :children [
+              [form-submit
+                "send reset code"
+                (fn [] (re-frame/dispatch [::events/verify-user-exists @email]))]
+              [go-back-button]]]]])))
 
 (defn verify-reset-code-form []
   (let [code (reagent/atom "")
@@ -154,12 +166,16 @@
         :children [
           [re-com/label :label "Code sent! Check your email."]
           [primary-input "code" code]
-          [form-submit
-            "enter password reset code"
-            (fn [] (re-frame/dispatch
-                      [::events/verify-pw-reset-code
-                        @(re-frame/subscribe [::subs/email])
-                        @code]))]]])))
+          [re-com/h-box
+            :gap "10px"
+            :children [
+              [form-submit
+                "enter password reset code"
+                (fn [] (re-frame/dispatch
+                          [::events/verify-pw-reset-code
+                            @(re-frame/subscribe [::subs/email])
+                            @code]))]
+              [go-back-button]]]]])))
 
 (defn set-new-password-form []
   (let [password (reagent/atom "")]
@@ -169,9 +185,13 @@
         :children [
           [re-com/label :label "Code verified! Now let's set your new password."]
           [password-input password "new password"]
-          [form-submit
-            "save new password"
-            (fn [] (re-frame/dispatch [::events/set-new-pw @password]))]]])))
+          [re-com/h-box
+            :gap "10px"
+            :children [
+              [form-submit
+                "save new password"
+                (fn [] (re-frame/dispatch [::events/set-new-pw @password]))]
+              [go-back-button]]]]])))
 
 (defn pw-reset-panel []
   (let [flow-stage (re-frame/subscribe [::subs/pw-reset-flow-stage])

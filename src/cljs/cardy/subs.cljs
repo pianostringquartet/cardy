@@ -12,6 +12,11 @@
     (:logged-in? db)))
 
 (re-frame/reg-sub
+  ::is-logged-in-localStorage?
+  (fn is-logged-in-localStorage? [db]
+    (:is-logged-in-localStorage? db)))
+
+(re-frame/reg-sub
   ::current-panel
   (fn current-panel [db]
     (:current-panel db)))
