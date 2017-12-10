@@ -11,7 +11,7 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-(defn add-card [db [event-id-to-ignore user-input]]
+(defn add-card [db user-input]
   (let [cards (get-in db [:decks (:current-deck db)])
         new-card (input-to-card user-input)]
     (if (or (nil? (:front new-card))
@@ -24,7 +24,8 @@
 
 (re-frame/reg-event-db
   ::add-card
-  add-card)
+  (fn add-card-handler [db [event-id-to-ignore user-input]]
+    (add-card db user-input)))
 
 (defn remove-card [db card]
   (let [cards (get-in db [:decks (:current-deck db)])]

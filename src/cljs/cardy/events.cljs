@@ -22,11 +22,6 @@
         (.getItem js/localStorage ls-auth-key)))))
 
 (re-frame/reg-event-db
-  ::initialize-test-db
-  (fn initialize-test-db [_ _]
-    core-db/test-db))
-
-(re-frame/reg-event-db
  ::initialize-db
  (fn initialize-db [_ _]
    core-db/default-db))
@@ -60,10 +55,10 @@
     (clojure.string/replace "-" " ")))
 
 (defn input-to-card [a-string]
-    (do
-      (println "a-string in input-to-card: " a-string)
-      (let [words (map clojure.string/trim (clojure.string/split a-string #";"))]
-          {:front (first words) :back (second words)})))
+  (let [words (map
+               clojure.string/trim
+               (clojure.string/split a-string #";"))]
+    {:front (first words) :back (second words)}))
 
 (re-frame/reg-fx
   :ajax-post

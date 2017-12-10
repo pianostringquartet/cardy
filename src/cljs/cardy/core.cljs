@@ -1,11 +1,7 @@
 (ns cardy.core
   (:require [reagent.core :as reagent]
             [re-frame.core :as re-frame]
-            [secretary.core :as secretary]
-            [goog.events :as go-events]
-            [goog.history.EventType :as HistoryEventType]
-            [markdown.core :refer [md->html]]
-            [ajax.core :refer [GET POST]]
+
             [cardy.ajax :refer [load-interceptors!]]
             [re-com.core :as re-com]
             [cardy.events :as events]
@@ -14,6 +10,11 @@
             [cardy.index :as cardy-index])
 
   (:import goog.History))
+
+            ; [secretary.core :as secretary]
+            ; [goog.events :as go-events]
+            ; [goog.history.EventType :as HistoryEventType]))
+            ; ; [markdown.core :refer [md->html]]))
 
 
 (defn mount-components []

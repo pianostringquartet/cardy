@@ -1,23 +1,14 @@
 (ns cardy.study.subs
   (:require [re-frame.core :as re-frame]
             [cardy.events :as events]
-
             [cardy.subs :as core-subs]
-
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
+
 (trace-forms {:tracer (tracer :color "brown")}
 
-(re-frame/reg-sub
-  ::current-card-front
-  (fn current-card-front [db]
-    (:front (:current-card db))))
 
-(re-frame/reg-sub
-  ::current-card-back
-  (fn current-card-back [db]
-    (:back (:current-card db))))
 
 (re-frame/reg-sub
   ::front-flag
@@ -35,9 +26,9 @@
     (:congrats db)))
 
 (re-frame/reg-sub
-  ::excluded-count
-  (fn excluded-count [db]
-    (:excluded-count db)))
+  ::current-card
+  (fn current-card [db]
+    (:current-card db)))
 
 (re-frame/reg-sub
   ::excluded
@@ -53,5 +44,18 @@
       (* 100
          (/ (count excluded)
             (count cards))))))
+
+(re-frame/reg-sub
+  ::current-card-front
+  :<-[::current-card]
+  (fn current-card-front [current-card]
+    (:front current-card)))
+
+(re-frame/reg-sub
+  ::current-card-back
+  :<-[::current-card]
+  (fn current-card-back [current-card]
+    (:back current-card)))
+
 
 ) ;; end of tracer form

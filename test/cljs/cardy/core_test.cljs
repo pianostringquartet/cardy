@@ -2,179 +2,108 @@
   (:require [cljs.test :refer-macros [is are deftest testing use-fixtures]]
             [pjstadig.humane-test-output]
             [reagent.core :as reagent :refer [atom]]
-            [cardy.core :as rc]
-
             [re-frame.core :as re-frame]
             [day8.re-frame.test :as rf-test]
             [cardy.events :as events]
-            [cardy.subs :as subs]))
+            [cardy.subs :as subs]
+            [cardy.auth.events :as auth-events]
+            [cardy.auth.subs :as auth-subs]
+            [cardy.edit.events :as edit-events]
+            [cardy.edit.subs :as edit-subs]
+            [cardy.home.events :as home-events]
+            [cardy.home.subs :as home-subs]
+            [cardy.study.events :as study-events]
+            [cardy.study.subs :as study-subs]
+            [cardy.utils :as utils]))
 
 
-; (deftest test-home
-;   (is (= true true)))
-
-; (deftest another-test
-;   (is (= 2 (+ 1 1))))
+(deftest test-basic
+  (is (= 2 (+ 1 1))))
 
 
-; (deftest another-test-2
-;   (is (= 4 (+ 3 1))))
+;; TESTS TO DO:
+;; Create test setup for POST requests and external MySQL;
+;; Significant functionality of the app, including authentication
+;; and deck mutation, cannot be tested until then.
 
 
+;; --------------------
+;; Edit panel tests
+;; --------------------
 
-; (deftest remove-card
-;   (rf-test/run-test-sync
-;     ; (test-fixtures) ; what would these be in this case?
+(deftest remove-card
+  (rf-test/run-test-sync
+    (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])
+    (let [cards (re-frame/subscribe [::subs/cards])
+          card-to-remove {:front "Deutsch" :back "German"}]
+      ;; Assert "before" state
+      (is (not (empty? (clojure.set/intersection #{card-to-remove} @cards))))
+      ;; Trigger the event we're testing
+      (re-frame/dispatch [::edit-events/remove-card card-to-remove])
+      ;; Assert "after" state
+      (is (empty? (clojure.set/intersection #{card-to-remove} @cards))))))
 
-;     (re-frame/dispatch [::events/initialize-test-db])
+(deftest add-card
+  (rf-test/run-test-sync
+    (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])
+    (let [cards (re-frame/subscribe [::subs/cards])
+          user-input "die Zahlen; numbers"
+          card-to-add {:front "die Zahlen" :back "numbers"}]
+      ;; Assert "before" state
+      (is (empty? (clojure.set/intersection #{card-to-add} @cards)))
+      ;; Trigger the event we're testing
+      (re-frame/dispatch [::edit-events/add-card user-input])
+      ;; Assert "after" state
+      (is (not (empty? (clojure.set/intersection #{card-to-add} @cards)))))))
 
-;     (let [removed (re-frame/subscribe [::subs/removed])]
-
-;       ;; Assert "before" state
-;       (is (empty? @removed))
-
-;       ;; Trigger the event we're testing
-;       (re-frame/dispatch [::events/remove-card])
-
-;       ;; Assert "after" state
-;       (is (not (empty? @removed)))
-;       (is (not (nil? @removed)))
-;       (is (= #{{:front "Deutsch" :back "German"}} @removed)))))
-
-
-; (deftest add-card
-;   (rf-test/run-test-sync
-
-;     (re-frame/dispatch [::events/initialize-test-db])
-
-;     (let [cards (re-frame/subscribe [::subs/cards])
-;           user-input "Bayern; Bavaria"
-;           added-card {:front "Bayern" :back "Bavaria"}]
-
-;       ;; Assert "before" state
-;       (is (not (contains? @cards added-card)))
-
-;       (def before-card-count (count @cards))
-
-;       ;; Trigger the event we're testing
-;       (re-frame/dispatch [::events/add-card user-input])
-
-;       ;; Assert "after" state
-;       (is (contains? @cards added-card))
-;       (is (= (inc before-card-count) (count @cards))))))
-
-
-; (deftest change-deck
-;   (rf-test/run-test-sync
-
-;     (re-frame/dispatch [::events/initialize-test-db])
-
-;     (let [cards (re-frame/subscribe [::subs/cards])
-;           current-deck (re-frame/subscribe [::subs/current-deck])
-;           current-card (re-frame/subscribe [::subs/current-card])
-;           user-input "one-card-deck"
-;           ; before-card {:front "Deutsch" :back "German"}
-;           expected-card {:front "das Haus" :back "house"}]
-
-;       ;; Assert "before" state
-;       (is (not (contains? @cards expected-card)))
-
-;       (def before-current-card @current-card)
-;       (def before-current-deck @current-deck)
-
-;       ;; Trigger the event we're testing
-;       (re-frame/dispatch [::events/change-deck user-input])
-
-;       ;; Assert "after" state
-;       (is (contains? @cards expected-card))
-;       (is (= @current-deck (events/input-to-keyword user-input)))
-;       (is (not (= before-current-deck @current-deck)))
-;       (is (not (= before-current-card @current-card))))))
+;; TODO: proper testing of 'removing last card and returning home'
+;; requires test setup for POST requests and external db
+(deftest remove-last-card
+  (rf-test/run-test-sync
+    (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])
+    (let [cards (re-frame/subscribe [::subs/cards])
+          cards-to-remove #{{:front "Deutsch" :back "German"}
+                            {:front "Genau" :back "Exactly"}
+                            {:front "Es tut mir leid" :back "I'm sorry"}}]
+      ;; Assert "before" state
+      (is (not (empty? (clojure.set/intersection cards-to-remove @cards))))
+      ;; Trigger the event we're testing
+      (doseq [card cards-to-remove]
+        (re-frame/dispatch [::edit-events/remove-card card]))
+      ;; Assert "after" state
+      (is (empty? (clojure.set/intersection cards-to-remove @cards))))))
 
 
+;; --------------------
+;; Study panel tests
+;; --------------------
 
-; (deftest exclude-card
-;   (rf-test/run-test-sync
+(deftest exclude-card
+  (rf-test/run-test-sync
+    (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])
+    (let [excluded (re-frame/subscribe [::study-subs/excluded])
+          current-card (re-frame/subscribe [::study-subs/current-card])
+          old-current-card @current-card]
+      ; Assert "before" state
+      (is (empty? @excluded))
+      ; Trigger the event we're testing
+      (re-frame/dispatch [::study-events/exclude-card])
+      ; Assert "after" state
+      (is (not (empty? @excluded)))
+      (is (not (empty? (clojure.set/intersection #{old-current-card} @excluded))))
+      (is (not (= old-current-card @current-card))))))
 
-;     (re-frame/dispatch [::events/initialize-test-db])
-
-;     (let [cards (re-frame/subscribe [::subs/cards])
-;           excluded (re-frame/subscribe [::subs/excluded])
-;           current-card (re-frame/subscribe [::subs/current-card])
-;           ; user-input "one-card-deck"
-;           ; before-card {:front "Deutsch" :back "German"}
-;           ; expected-card {:front "das Haus" :back "house"}
-;           ]
-
-;       ;; Assert "before" state
-;       ; (is (not (contains? @cards expected-card)))
-;       (is (empty? @excluded))
-
-;       (def before-current-card @current-card)
-
-;       ;; Trigger the event we're testing
-;       (re-frame/dispatch [::events/exclude-card])
-
-;       ;; Assert "after" state
-;       (is (not (empty? @excluded)))
-;       (is (not (= before-current-card @current-card))))))
-
-
-
-; (deftest remove-last-card
-;   (rf-test/run-test-sync
-
-;     (re-frame/dispatch [::events/initialize-test-db])
-
-;     (let [removed (re-frame/subscribe [::subs/removed])
-;           current-card (re-frame/subscribe [::subs/current-card])]
-
-;       ;; Assert "before" state
-;       (is (empty? @removed))
-
-;       ;; Trigger the event we're testing
-;       (re-frame/dispatch [::events/change-deck "one-card-deck"])
-;       (def before-current-card @current-card)
-;       (re-frame/dispatch [::events/remove-card])
-
-;       ;; Assert "after" state
-;       (is (not (empty? @removed)))
-;       (is (= #{before-current-card} @removed))
-;       (is (= subs/placeholder-card @current-card)))))
-
-
-
-
-; ; (deftest basic--sync
-; ;   (rf-test/run-test-sync
-; ;     (test-fixtures)
-; ;     (rf/dispatch [:initialise-db])
-
-; ;         ;; Define subscriptions to the app state
-; ;         (let [showing         (rf/subscribe [:showing])
-; ;               sorted-todos    (rf/subscribe [:sorted-todos])
-; ;               todos           (rf/subscribe [:todos])
-; ;               visible-todos   (rf/subscribe [:visible-todos])
-; ;               all-complete?   (rf/subscribe [:all-complete?])
-; ;               completed-count (rf/subscribe [:completed-count])
-; ;               footer-counts   (rf/subscribe [:footer-counts])]
-
-; ;           ;;Assert the initial state
-; ;           (is (= :all @showing))
-; ;           (is (empty? @sorted-todos))
-; ;           (is (empty? @todos))
-; ;           (is (empty? @visible-todos))
-; ;           (is (= false (boolean @all-complete?)))
-; ;           (is (= 0 @completed-count))
-; ;           (is (= [0 0] @footer-counts))
-
-; ;           ;;Dispatch the event that you want to test, remember that `re-frame-test`
-; ;           ;;will process this event immediately.
-; ;           (rf/dispatch [:add-todo "write first test"])
-
-; ;           ;;Test that the dispatch has mutated the state in the way that we expect.
-; ;           (is (= 1 (count @todos) (count @visible-todos) (count @sorted-todos)))
-; ;           (is (= 0 @completed-count))
-; ;           (is (= [1 0] @footer-counts))
-; ;           (is (= {:id 1, :title "write first test", :done false}
-; ;                  (first @todos)))
+(deftest add-back-excluded
+  (rf-test/run-test-sync
+    (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])
+    (let [excluded (re-frame/subscribe [::study-subs/excluded])
+          cards (re-frame/subscribe [::subs/cards])
+          cards-to-exclude @cards]
+      ; Assert "before" state
+      (is (empty? @excluded))
+      ; Trigger the event we're testing
+      (doseq [card cards-to-exclude]
+        (re-frame/dispatch [::study-events/exclude-card]))
+      ; Assert "after" state
+      (is (empty? @excluded))
+      (is (= cards-to-exclude @cards)))))

@@ -4,11 +4,12 @@
             [re-frame-tracer.core :refer [tracer]]))
 
 
-(trace-forms {:tracer (tracer :color "brown")}
+; (trace-forms {:tracer (tracer :color "brown")}
 
-(re-frame/reg-sub
-  ::removed
-  (fn removed-cards [db]
-    (:removed db)))
+; ;; not used anymore?
+; (re-frame/reg-sub
+;   ::removed
+;   (fn removed-cards [db]
+;     (:removed db)))
 
-) ;; end of tracer form
+; ) ;; end of tracer form
