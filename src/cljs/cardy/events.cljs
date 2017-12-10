@@ -116,7 +116,7 @@
     (assoc :session false)
     (assoc :logged-in? false)))
 
-;; Log out: includes ending session in localStorage
+;; includes ending session in localStorage
 (re-frame/reg-event-fx
   ::logout
   (fn logout [cofx [event-id-to-ignore]]

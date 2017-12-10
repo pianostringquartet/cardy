@@ -11,6 +11,40 @@
             [reanimated.core :as anim]))
 
 
+;; Do not re-frame-trace these animation components;
+;; they simply clutter up the developer console.
+(defn jingle-picture [img-src img-width img-height]
+  (let [tilt (reagent/atom 0)
+        rotation (anim/spring tilt)]
+    (fn jingle-component []
+      [:div
+      [anim/interval
+        #(reset! tilt (first (shuffle [-7 -5 -2 0 2 5 7])))
+        500]
+       [:img
+          {:src img-src
+           :width img-width
+           :height img-height
+           :on-click #(reset! tilt 270)
+           :style (zipmap [:-ms-transform
+                           :-moz-transform
+                           :-webkit-transform
+                           :transform]
+                          (repeat (str "rotate(" @rotation "deg)")))}]])))
+
+(defn intro-picture []
+  [jingle-picture "/img/intent_bear.png" "300px" "200px"])
+
+(defn pw-reset-picture []
+  [jingle-picture "/img/bearstack_right_facing.png" "200px" "300px"])
+
+(defn reset-code-sent-picture []
+  [jingle-picture "/img/bearstack_right_facing.png" "200px" "300px"])
+
+(defn code-verified-picture []
+  [jingle-picture "/img/bearstack_right_facing_handup.png" "200px" "300px"])
+
+
 (trace-forms {:tracer (tracer :color "gold")}
 
 (defn go-back-button
@@ -20,54 +54,6 @@
     :label "go back"
     :on-click #(re-frame/dispatch [::events/go-to-auth])
     :class "btn btn-danger"])
-
-(defn intro-picture []
-  (let [tilt (reagent/atom 0)
-        rotation (anim/spring tilt)]
-    (fn jingle-component []
-      [:div
-      [anim/timeout #(reset! tilt 5)]
-      [anim/timeout #(reset! tilt -5) 1500]
-      [anim/timeout #(reset! tilt 0) 2000]
-       [:img
-          {:src "/img/intent_bear.png"
-           :width "300px"
-           :height "200px"
-           :style (zipmap [:-ms-transform
-                           :-moz-transform
-                           :-webkit-transform
-                           :transform]
-                          (repeat (str "rotate(" @rotation "deg)")))}]])))
-
-(defn pw-reset-picture []
-  [re-com/box
-    :max-width "200px"
-    :max-height "300px"
-    :child [:img {:src "/img/bearstack_right_facing.png"}]])
-
-(defn reset-code-sent-picture []
-  (let [tilt (reagent/atom 0)
-        rotation (anim/spring tilt)]
-    (fn jingle-component []
-      [:div
-      [anim/timeout #(reset! tilt 30) 1000]
-      [anim/timeout #(reset! tilt 0) 2000]
-      [anim/timeout #(reset! tilt -30) 3000]
-      [anim/timeout #(reset! tilt 0) 4000]
-       [:img
-          {:src "/img/bearstack_right_facing.png"
-           :width "200px"
-           :style (zipmap [:-ms-transform
-                           :-moz-transform
-                           :-webkit-transform
-                           :transform]
-                          (repeat (str "rotate(" @rotation "deg)")))}]])))
-
-(defn code-verified-picture []
-  [re-com/box
-    :max-width "200px"
-    :max-height "300px"
-    :child [:img {:src "/img/bearstack_right_facing_handup.png"}]])
 
 (defn message-for-user [sub message]
   (when @sub
@@ -94,11 +80,11 @@
 
 (defn primary-input [input-name state]
   [re-com/input-text
-          :model state
-          :placeholder input-name
-          :on-change #(reset! state %)
-          :attr {:auto-focus "true"}
-          :change-on-blur? true])
+    :model state
+    :placeholder input-name
+    :on-change #(reset! state %)
+    :attr {:auto-focus "true"}
+    :change-on-blur? true])
 
 (defn login-form []
   (let [email (reagent/atom "")

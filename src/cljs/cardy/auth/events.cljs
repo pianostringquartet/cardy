@@ -20,10 +20,14 @@
     (assoc :code-verification-failed? nil)
     (assoc :new-pw-not-set? nil)))
 
+(defn reset-pw-reset-stage [db]
+  (assoc db :pw-reset-flow-stage :sending-pw-reset-email))
+
 (defn log-user-in [db]
-  (assoc
-    (reset-auth-error-messages db)
-    :logged-in? true))
+  (-> db
+    (reset-auth-error-messages)
+    (reset-pw-reset-stage)
+    (assoc :logged-in? true)))
 
 (re-frame/reg-event-fx
   ::login
@@ -109,9 +113,6 @@
 
 ;; PASSWORD RESET
 
-(defn reset-pw-reset-stage [db]
-  (assoc db :pw-reset-flow-stage :sending-pw-reset-email))
-
 (re-frame/reg-event-db
   ::go-to-auth
   (fn go-to-auth [db]
@@ -185,7 +186,7 @@
           {:db (core-events/go-home (log-user-in db))
            :create-session (:email (:db cofx))
            :dispatch [::core-events/pull-decks]}
-          (assoc db :new-pw-not-set? true)))))
+          {:db (assoc db :new-pw-not-set? true)}))))
 
 (re-frame/reg-event-db
   ::update-pw-reset-flow-stage

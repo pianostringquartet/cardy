@@ -17,21 +17,20 @@
   (let [logged-in? (re-frame/subscribe [::subs/logged-in?])
         session (re-frame/subscribe [::subs/session])
         current-panel (re-frame/subscribe [::subs/current-panel])]
-
     (fn cardy-app-container []
       (cond
-
+        ;; Does user already have an active session?
         @session
           (do
             (re-frame/dispatch [::events/resume-active-session @session])
             [home-panel])
-
+        ;; Is user resetting his or her password?
         (and (not @logged-in?) (= @current-panel :pw-reset))
           [pw-reset-panel]
-
+        ;; Has user simply not logged in yet?
         (not @logged-in?)
           [intro-panel]
-
+        ;; User is already in app.
         :else
           (case @current-panel
             :home [home-panel]

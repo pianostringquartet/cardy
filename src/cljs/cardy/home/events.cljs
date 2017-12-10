@@ -3,14 +3,7 @@
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
-            [ajax.core :refer [GET POST]]
-
-            [cardy.events :refer [
-                input-to-card
-                input-to-keyword
-                change-panel
-                ]]
-            ))
+            [cardy.events :refer [input-to-keyword change-panel]]))
 
 (trace-forms {:tracer (tracer :color "blue")}
 
@@ -21,19 +14,17 @@
 (re-frame/reg-event-db
   ::study-given-deck
   (fn study-given-deck [db [event-id-to-ignore deck-name]]
-    (change-panel
-      (assoc
-        (assoc db :current-deck deck-name)
-        :current-card
-        (first (deck-name (:decks db))))
-      :study)))
+    (as-> db db_
+      (assoc db_ :current-deck deck-name)
+      (assoc db_ :current-card (first (deck-name (:decks db_))))
+      (change-panel db_ :study))))
 
 (re-frame/reg-event-db
   ::edit-given-deck
   (fn edit-given-deck [db [event-id-to-ignore deck-name]]
-    (change-panel
-      (assoc db :current-deck deck-name)
-      :edit)))
+    (-> db
+      (assoc :current-deck deck-name)
+      (change-panel :edit))))
 
 (re-frame/reg-event-fx
   ::add-deck
