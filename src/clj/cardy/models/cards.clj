@@ -10,6 +10,24 @@
             BatchUpdateException
             PreparedStatement]))
 
+;;; ----------------------------------------
+;;; A card:
+;;;   - has a front and a back,
+;;;   - belongs to a deck, and
+;;;   - belongs to a user (an email)
+;;; ----------------------------------------
+
+
+;; TO DO:
+;; use a single "to-keyword" fn
+;; instead of a Clojure "display-to-keyword" fn
+;; and a Clojurescript "input-to-keyword" fn
+(defn display-to-keyword [a-str]
+  (-> a-str
+    (clojure.string/trim)
+    (clojure.string/replace " " "-")
+    (keyword)))
+
 (defn to-card-row [deck-name card email]
   (merge
     {:deck (name deck-name) :email email}
@@ -43,4 +61,4 @@
       #(into #{}
           (for [m %]
             (dissoc m :id :deck :email))))
-    (m/map-keys keyword)))
+    (m/map-keys display-to-keyword)))

@@ -9,18 +9,33 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-(defn add-back-excluded [db]
-  (assoc db :excluded #{}))
+;;; ----------------------------------------
+;;; Congratulating user on finishing deck
+;;; ----------------------------------------
 
 (defn add-congrats-message [db]
   (assoc db :congrats true))
+
+(defn remove-congrats-message [db]
+  (assoc db :congrats nil))
+
+(re-frame/reg-event-db
+  ::remove-congrats-message
+  remove-congrats-message)
+
+
+
+;;; ----------------------------------------
+;;; Moving to new card,
+;;;   i.e. "I don't know [the current card]"
+;;; ----------------------------------------
 
 (defn pick-random [coll]
   (first (shuffle coll)))
 
 (defn ineligible-cards [cards excluded current-card]
-  ;; if all the other cards were excluded, allow current-card to be chosen
   (if (= 1 (count (clojure.set/difference cards excluded)))
+    ;; if all the other cards were excluded, allow current-card to be chosen
     excluded
     (conj excluded current-card)))
 
@@ -31,6 +46,9 @@
 
 (defn know-all-cards? [cards excluded]
   (= cards excluded))
+
+(defn add-back-excluded [db]
+  (assoc db :excluded #{}))
 
 (defn new-current-card [db]
   (let [cards ((:current-deck db) (:decks db))
@@ -44,6 +62,16 @@
         :current-card
         (pick-random (eligible-cards cards excluded current-card))))))
 
+(re-frame/reg-event-db
+  ::next
+  (fn next-handler [db]
+    (new-current-card db)))
+
+;;; ----------------------------------------
+;;; Excluding a card,
+;;;   i.e. "I know [the current card]"
+;;; ----------------------------------------
+
 (defn exclude-card [db]
   (let [excluded (:excluded db)
         current-card (:current-card db)]
@@ -55,17 +83,9 @@
   ::exclude-card
   exclude-card)
 
-(re-frame/reg-event-db
-  ::next
-  (fn next-handler [db]
-    (new-current-card db)))
-
-(defn remove-congrats-message [db]
-  (assoc db :congrats nil))
-
-(re-frame/reg-event-db
-  ::remove-congrats-message
-  remove-congrats-message)
+;;; ----------------------------------------
+;;; Navigation
+;;; ----------------------------------------
 
 (re-frame/reg-event-db
   ::return-home-from-study

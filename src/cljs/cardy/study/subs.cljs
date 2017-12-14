@@ -9,6 +9,8 @@
 (trace-forms {:tracer (tracer :color "brown")}
 
 
+;; TO DO:
+;; Allow user to customize which flags are shown on which sides
 
 (re-frame/reg-sub
   ::front-flag

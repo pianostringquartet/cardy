@@ -7,17 +7,14 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-(defn add-deck [db deck-name]
-  "Assumes deck-name is :keyword"
-  (assoc-in db [:decks deck-name] #{}))
 
 (re-frame/reg-event-db
   ::study-given-deck
   (fn study-given-deck [db [event-id-to-ignore deck-name]]
-    (as-> db db_
-      (assoc db_ :current-deck deck-name)
-      (assoc db_ :current-card (first (deck-name (:decks db_))))
-      (change-panel db_ :study))))
+    (as-> db app-db
+      (assoc app-db :current-deck deck-name)
+      (assoc app-db :current-card (first (deck-name (:decks app-db))))
+      (change-panel app-db :study))))
 
 (re-frame/reg-event-db
   ::edit-given-deck
@@ -25,6 +22,10 @@
     (-> db
       (assoc :current-deck deck-name)
       (change-panel :edit))))
+
+(defn add-deck [db deck-name]
+  "Assumes deck-name is :keyword"
+  (assoc-in db [:decks deck-name] #{}))
 
 (re-frame/reg-event-fx
   ::add-deck

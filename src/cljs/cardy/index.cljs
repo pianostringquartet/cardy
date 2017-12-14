@@ -5,7 +5,7 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [cardy.events :as events]
-            [cardy.auth.views :refer [intro-panel pw-reset-panel]]
+            [cardy.auth.views :refer [auth-panel pw-reset-panel]]
             [cardy.home.views :refer [home-panel]]
             [cardy.edit.views :refer [edit-panel]]
             [cardy.study.views :refer [study-panel]]))
@@ -19,18 +19,22 @@
         current-panel (re-frame/subscribe [::subs/current-panel])]
     (fn cardy-app-container []
       (cond
-        ;; Does user already have an active session?
-        @session
+
+        ;; Resuming a previous session?
+        (and (not @logged-in?) @session)
           (do
             (re-frame/dispatch [::events/resume-active-session @session])
             [home-panel])
-        ;; Is user resetting his or her password?
+
+        ;; Resetting a password?
         (and (not @logged-in?) (= @current-panel :pw-reset))
           [pw-reset-panel]
-        ;; Has user simply not logged in yet?
+
+        ;; Need to authenticate (login/register)?
         (not @logged-in?)
-          [intro-panel]
-        ;; User is already in app.
+          [auth-panel]
+
+        ;; Already authenticated
         :else
           (case @current-panel
             :home [home-panel]

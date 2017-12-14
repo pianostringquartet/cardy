@@ -12,8 +12,17 @@
             BatchUpdateException
             PreparedStatement]))
 
+;;; ----------------------------------------
+;;; A user:
+;;;   - has an email address,
+;;;   - has a password, and
+;;;   - may have a password reset code
+;;; ----------------------------------------
 
-;;; AUTHENTICATION
+
+;;; ----------------------------------------
+;;; Logging in / registering a user
+;;; ----------------------------------------
 
 (defn retrieve-user [email]
   (first (jdbc/query *db* ["select * from users where email=?" email])))
@@ -78,6 +87,10 @@
       "failed"
       "succeeded"))
 
+;;; ----------------------------------------
+;;; Resetting a forgotton password
+;;; ----------------------------------------
+
 (defn generate-password-reset-code []
   (encrypt (str (rand-int 9999))))
 
@@ -104,14 +117,12 @@
                        </body>
                      </html>")}]}))
 
-
 (defn send-password-reset-email [email]
   (let [reset-code (subs (generate-password-reset-code) 15)]
     (do
       (doall (add-pw-reset-code-to-user email reset-code))
       (send-reset-code-in-email email reset-code)
       "pw reset email sent from server")))
-
 
 (defn retrieve-reset-code [email]
   (:reset_code

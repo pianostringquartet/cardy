@@ -1,14 +1,10 @@
 (ns cardy.edit.views
   (:require [re-frame.core :as re-frame]
-
             [cardy.edit.subs :as subs]
             [cardy.subs :as core-subs]
-
             [cardy.edit.events :as events]
             [cardy.events :as core-events]
-
             [cardy.views :as core-views]
-
             [reagent.core :as reagent]
             [re-com.core :as re-com]
             [ajax.core :refer [GET POST]]
@@ -16,13 +12,13 @@
             [re-frame-tracer.core :refer [tracer]]))
 
 
-(trace-forms {:tracer (tracer :color "gold")}
+;;; ----------------------------------------
+;;; EDIT PANEL
+;;; where user can add or remove cards
+;;; from a single deck
+;;; ----------------------------------------
 
-(defn return-home-button []
-  [re-com/button
-    :label "return home"
-    :class "btn btn-info"
-    :on-click #(re-frame/dispatch [::events/return-home-from-edit])])
+(trace-forms {:tracer (tracer :color "gold")}
 
 (defn card-edit-display [{:keys [front back]}]
   [re-com/border
@@ -64,11 +60,10 @@
     :child [trash-and-card card]])
 
 (defn card-list []
-  (let [cards @(re-frame/subscribe [::core-subs/cards])
-        removed-cards @(re-frame/subscribe [::subs/removed])]
+  (let [cards @(re-frame/subscribe [::core-subs/cards])]
     [re-com/v-box
       :children [
-        (for [card (clojure.set/difference cards removed-cards)]
+        (for [card cards]
           ^{:key (rand-int 99999)}
           [card-displayer card])]]))
 
@@ -78,19 +73,24 @@
       [re-com/input-text
         :model text-val
         :change-on-blur? true
-        :placeholder "new card: the front ; the back"
+        :placeholder "new card front ; new card back"
         :attr {:auto-focus "true"}
         :on-change
           #(if (empty? %)
             nil ;; i.e. do nothing if input is empty
             (re-frame/dispatch [::events/add-card (reset! text-val %)]))])))
 
+(defn return-home-button []
+  [re-com/button
+    :label "return home"
+    :class "btn btn-info"
+    :on-click #(re-frame/dispatch [::events/return-home-from-edit])])
+
 (defn edit-panel []
   [re-com/v-box
     :padding "50px 0px 20px 0px"
     :gap "20px"
     :align :center
-
     :children [
       [re-com/h-box
         :gap "10px"

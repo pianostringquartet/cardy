@@ -1,20 +1,12 @@
 (ns cardy.core
   (:require [reagent.core :as reagent]
             [re-frame.core :as re-frame]
-
             [cardy.ajax :refer [load-interceptors!]]
             [re-com.core :as re-com]
             [cardy.events :as events]
             [cardy.views :as views]
             [cardy.subs :as subs]
-            [cardy.index :as cardy-index])
-
-  (:import goog.History))
-
-            ; [secretary.core :as secretary]
-            ; [goog.events :as go-events]
-            ; [goog.history.EventType :as HistoryEventType]))
-            ; ; [markdown.core :refer [md->html]]))
+            [cardy.index :as cardy-index]))
 
 
 (defn mount-components []
@@ -24,6 +16,6 @@
 
 (defn init! []
   (re-frame/dispatch-sync [::events/initialize-db])
-  (re-frame/dispatch-sync [::events/retrieve-user-session]) ;; added
+  (re-frame/dispatch-sync [::events/retrieve-user-session])
   (load-interceptors!)
   (mount-components))

@@ -11,25 +11,37 @@
             [re-frame-tracer.core :refer [tracer]]))
 
 
+;;; ----------------------------------------
+;;; HOME PANEL
+;;; where user can add a new deck,
+;;; or edit/delete/study an existing deck
+;;; ----------------------------------------
+
 (trace-forms {:tracer (tracer :color "gold")}
+
+;;; ----------------------------------------
+;;; Adding a new deck
+;;; ----------------------------------------
 
 (defn add-deck []
   (let [text-val (reagent/atom "")]
-    (fn []
+    (fn add-deck-text-input []
       [re-com/input-text
         :model text-val
         :change-on-blur? true
         :placeholder "add a new deck"
         :attr {:auto-focus "true"}
         :on-change
-          #(re-frame/dispatch [::events/add-deck (reset! text-val %)])])))
+          #(if (empty? %)
+            nil ;; i.e. do nothing if input is empty
+            (re-frame/dispatch [::events/add-deck (reset! text-val %)]))])))
 
 (defn add-deck-container []
   (let [showing? (reagent/atom false)]
-    (fn add-deck-comp []
+    (fn add-deck-popover []
       [re-com/popover-anchor-wrapper
         :showing? showing?
-        :position :right-below
+        :position :below-center
         :anchor [
           re-com/button
             :label "add deck"
@@ -41,16 +53,42 @@
             :backdrop-opacity 0.3
             :body [add-deck]]])))
 
+;;; ----------------------------------------
+;;; Searching and listing existing decks
+;;; ----------------------------------------
+
+(defn deck-search []
+  (let [decks @(re-frame/subscribe [::subs/decks])
+        decks-names (map #(core-events/keyword-to-display %) (keys decks))
+        suggestion-for-search
+          (fn suggestion-for-search-fn [a-string]
+              (into [])
+                (take 16
+                  (for [n (map #(core-events/keyword-to-display %) (keys decks))
+                        :when (re-find (re-pattern (str "(?i)" a-string)) n)]
+                    n)))]
+    (fn deck-search-typeahead []
+      [re-com/typeahead
+        :data-source suggestion-for-search
+        :placeholder "search for a deck"
+        :on-change
+          (fn deck-search-on-change [selection]
+            (if (or (empty? selection)
+                    (not (some #{selection} decks-names)))
+              nil ;; ignore blank or a non-deck-name inputs
+              (re-frame/dispatch [::events/study-given-deck (core-events/input-to-keyword selection)])))
+        :change-on-blur? true])))
+
 (defn clickable-pencil [deck-name]
   [re-com/md-icon-button
-          :md-icon-name "zmdi-edit"
-          :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])
-          :size :larger
-          :tooltip "Edit this deck"])
+    :md-icon-name "zmdi-edit"
+    :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])
+    :size :larger
+    :tooltip "Edit this deck"])
 
 (defn clickable-trash [deck-name]
   (let [showing? (reagent/atom false)]
-    (fn []
+    (fn clickable-trash-popover []
       [re-com/popover-anchor-wrapper
         :showing? showing?
         :position :right-below
@@ -109,27 +147,9 @@
           ^{:key (rand-int 99999)}
           [deck-clickables deck-name])]]))
 
-(defn deck-search []
-  (let [decks @(re-frame/subscribe [::subs/decks])
-        decks-names (map #(name %) (keys decks))
-        suggestion-for-search
-          (fn [a-string]
-              (into [])
-                (take 16
-                  (for [n (map #(name %) (keys decks))
-                        :when (re-find (re-pattern (str "(?i)" a-string)) n)]
-                    n)))]
-    (fn []
-      [re-com/typeahead
-        :data-source suggestion-for-search
-        :placeholder "search for a deck"
-        :on-change
-          (fn [selection]
-            (if (or (empty? selection)
-                    (not (some #{selection} decks-names)))
-              nil ;; ignore blank or a non-deck-name inputs
-              (re-frame/dispatch [::events/study-given-deck (keyword selection)])))
-        :change-on-blur? true])))
+;;; ----------------------------------------
+;;; Main view
+;;; ----------------------------------------
 
 (defn home-panel []
   [re-com/v-box

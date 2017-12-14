@@ -12,12 +12,73 @@
             [re-frame-tracer.core :refer [tracer]]))
 
 
+;;; ----------------------------------------
+;;; STUDY PANEL
+;;; where user can progress through cards
+;;; from a single deck
+;;; ----------------------------------------
+
 (trace-forms {:tracer (tracer :color "gold")}
 
-(defn return-home-button []
-  [:input
-    {:type "button" :value "home"
-     :on-click #(re-frame/dispatch [::events/return-home-from-study])}])
+;;; ----------------------------------------
+;;; Moving between cards
+;;; ----------------------------------------
+
+(defn next-card-button []
+  [re-com/button
+    :label "I don't know it"
+    :on-click #(re-frame/dispatch [::events/next])
+    :class "btn btn-warning"])
+
+(defn exclude-current-card-button []
+  [re-com/button
+    :label "I know it"
+    :on-click #(re-frame/dispatch [::events/exclude-card])
+    :class "btn btn-success"])
+
+(defn card-navigation []
+  [re-com/h-box
+    :gap "20px"
+    :children [
+      [exclude-current-card-button]
+      [next-card-button]]])
+
+;;; ----------------------------------------
+;;; Progress bar and congrats
+;;; ----------------------------------------
+
+(defn show-study-progress [study-progress]
+  (let [study-progress (re-frame/subscribe [::subs/study-progress])]
+    (fn []
+      [re-com/progress-bar
+        :model @study-progress
+        :width "300px"
+        :striped? true])))
+
+(defn congrats-message []
+  (let [size (reagent/atom 0)
+        width (anim/spring size)]
+    (fn a-congrats-message []
+      [:div
+       ;; HACK: when resizing to 0 (e.g. #(reset! size 0)),
+       ;; re-animated intermittently shows full-size image;
+       ;; smaller resizing steps avoid this.
+       [anim/timeout #(reset! size 200)]
+       [anim/timeout #(reset! size 100) 1500]
+       [anim/timeout #(reset! size 50) 2500]
+       [anim/timeout #(reset! size 25) 3000]
+       [anim/timeout #(reset! size 10) 3500]
+       [anim/timeout
+          #(re-frame/dispatch [::events/remove-congrats-message])
+          3550]
+       [:img
+        {:src "/img/good_job.png"
+         :width (str @width "px")
+         :on-click #(re-frame/dispatch [::events/remove-congrats-message])}]])))
+
+;;; ----------------------------------------
+;;; Displaying a card
+;;; ----------------------------------------
 
 (defn card-side-display [flag card-text]
   [re-com/h-box
@@ -38,27 +99,7 @@
         :padding "20px 10px 10px 10px"
         :align-self :center]]]])
 
-(defn congrats-message []
-  (let [size (reagent/atom 0)
-        width (anim/spring size)]
-    (fn a-congrats-message []
-      [:div
-       ;; WORKAROUND: when resizing to 0 (e.g. #(reset! size 0)),
-       ;; re-animated intermittently shows full-size image;
-       ;; smaller resizing steps avoid this.
-       [anim/timeout #(reset! size 200)]
-       [anim/timeout #(reset! size 100) 2000]
-       [anim/timeout #(reset! size 50) 3000]
-       [anim/timeout #(reset! size 25) 4000]
-       [anim/timeout #(reset! size 10) 4500]
-       [anim/timeout
-          #(re-frame/dispatch [::events/remove-congrats-message])
-          4550]
-       [:img
-        {:src "/img/good_job.png"
-         :width (str @width "px")
-         :on-click #(re-frame/dispatch [::events/remove-congrats-message])}]])))
-
+;; Card flip effect is achieved via CSS
 (def card-style-front-and-back
   {:backface-visibility "hidden"
    :background "lightgrey"
@@ -116,32 +157,14 @@
         :children [
           [card show-back?]]])))
 
-(defn next-card-button []
-  [re-com/button
-    :label "I don't know it"
-    :on-click #(re-frame/dispatch [::events/next])
-    :class "btn btn-warning"])
+;;; ----------------------------------------
+;;; Panel and navigation
+;;; ----------------------------------------
 
-(defn exclude-current-card-button []
-  [re-com/button
-    :label "I know it"
-    :on-click #(re-frame/dispatch [::events/exclude-card])
-    :class "btn btn-success"])
-
-(defn card-review []
-  [re-com/h-box
-    :gap "20px"
-    :children [
-      [exclude-current-card-button]
-      [next-card-button]]])
-
-(defn show-study-progress [study-progress]
-  (let [study-progress (re-frame/subscribe [::subs/study-progress])]
-    (fn []
-      [re-com/progress-bar
-        :model @study-progress
-        :width "300px"
-        :striped? true])))
+(defn return-home-button []
+  [:input
+    {:type "button" :value "home"
+     :on-click #(re-frame/dispatch [::events/return-home-from-study])}])
 
 (defn study-panel []
   (let [congrats (re-frame/subscribe [::subs/congrats])]
@@ -153,7 +176,7 @@
           :children [
             [flippable-card]
             (when @congrats [congrats-message])
-            [card-review]
+            [card-navigation]
             [show-study-progress]
             [return-home-button]]])))
 

@@ -11,6 +11,10 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
+;;; ----------------------------------------
+;;; Cards
+;;; ----------------------------------------
+
 (defn add-card [db user-input]
   (let [cards (get-in db [:decks (:current-deck db)])
         new-card (input-to-card user-input)]
@@ -39,6 +43,10 @@
   (fn remove-card-handler [db [event-id-to-ignore card]]
     (remove-card db card)))
 
+;;; ----------------------------------------
+;;; Decks
+;;; ----------------------------------------
+
 (re-frame/reg-event-fx
   ::update-deck
   (fn update-deck! [cofx [event-id-to-ignore deck-name]]
@@ -61,6 +69,10 @@
            :email (:email (:db cofx))}
           #(js/console.log "remove-deck-ajax response was: " %))))))
 
+;;; ----------------------------------------
+;;; Navigation
+;;; ----------------------------------------
+
 (defn current-deck-empty? [db]
   (let [cards (get-in db [:decks (:current-deck db)])]
     (empty? cards)))
@@ -73,7 +85,6 @@
         {:dispatch [::remove-deck (:current-deck db)]
          :db (go-home db)}
         {:dispatch [::update-deck (:current-deck db)]
-         :db (go-home db)}
-         ))))
+         :db (go-home db)}))))
 
 ) ;; end of tracer form

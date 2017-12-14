@@ -11,10 +11,16 @@
 
 (defroutes home-routes
 
+  ;;; ----------------------------------------
+  ;;; Serving the app itself
+  ;;; ----------------------------------------
+
   (GET "/" []
     (layout/render "home.html"))
 
-  ;; Cards API
+  ;;; ----------------------------------------
+  ;;; Cards API
+  ;;; ----------------------------------------
 
   (POST "/pull-decks" []
     (fn [req]
@@ -32,7 +38,9 @@
             email (get-in req [:params :email])]
           (response/ok (cards/update-deck! deck-name deck email)))))
 
+  ;;; ----------------------------------------
   ;;; Users API
+  ;;; ----------------------------------------
 
   (POST "/login" []
     (fn [req]

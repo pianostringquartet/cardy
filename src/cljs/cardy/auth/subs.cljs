@@ -7,20 +7,14 @@
 
 (trace-forms {:tracer (tracer :color "brown")}
 
-(re-frame/reg-sub
-  ::pw-reset-message
-  (fn pw-reset-message [db]
-    (:pw-reset-message db)))
+;;; ----------------------------------------
+;;; Logging and registering
+;;; ----------------------------------------
 
 (re-frame/reg-sub
-  ::code-verification-failed?
-  (fn code-verified? [db]
-    (:code-verification-failed? db)))
-
-(re-frame/reg-sub
-  ::pw-reset-flow-stage
-  (fn pw-reset-flow-stage [db]
-    (:pw-reset-flow-stage db)))
+  ::email
+  (fn email [db]
+    (:email db)))
 
 (re-frame/reg-sub
   ::login-attempt-failed?
@@ -28,19 +22,33 @@
     (:login-attempt-failed? db)))
 
 (re-frame/reg-sub
+  ::registration-failure-reason
+  (fn registration-failure-reason [db]
+    (:registration-failure-reason db)))
+
+;;; ----------------------------------------
+;;; Resetting a forgotten password
+;;; ----------------------------------------
+
+(re-frame/reg-sub
+  ::pw-reset-flow-stage
+  (fn pw-reset-flow-stage [db]
+    (:pw-reset-flow-stage db)))
+
+(re-frame/reg-sub
+  ::pw-reset-message
+  (fn pw-reset-message [db]
+    (:pw-reset-message db)))
+
+(re-frame/reg-sub
   ::pw-reset-email-sending-failed?
   (fn pw-reset-email-sending-failed? [db]
     (:pw-reset-email-sending-failed? db)))
 
 (re-frame/reg-sub
-  ::registration-failure-reason
-  (fn registration-failure-reason [db]
-    (:registration-failure-reason db)))
-
-(re-frame/reg-sub
-  ::email
-  (fn email [db]
-    (:email db)))
+  ::code-verification-failed?
+  (fn code-verified? [db]
+    (:code-verification-failed? db)))
 
 (re-frame/reg-sub
   ::new-pw-not-set?

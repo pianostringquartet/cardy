@@ -8,7 +8,9 @@
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-;;; LOGIN
+;;; ----------------------------------------
+;;; Logging in
+;;; ----------------------------------------
 
 (defn reset-auth-error-messages
   "Clean up any error messages we showed to user when authenticating."
@@ -63,7 +65,9 @@
   (fn attempt-login-handler [cofx [event-id-to-ignore login-attempt]]
     (attempt-login (:db cofx) login-attempt)))
 
-;; REGISTER
+;;; ----------------------------------------
+;;; Registering
+;;; ----------------------------------------
 
 (re-frame/reg-event-fx
   ::register
@@ -110,8 +114,9 @@
   ::attempt-registration
   attempt-registration)
 
-
-;; PASSWORD RESET
+;;; ----------------------------------------
+;;; Resetting password
+;;; ----------------------------------------
 
 (re-frame/reg-event-db
   ::go-to-auth
@@ -121,8 +126,10 @@
       :current-panel
       :auth)))
 
-
-;; SENDING PASSWORD RESET CODE VIA EMAIL
+;;; ----------------------------------------
+;;; Resetting password:
+;;;   Sending password reset code via email
+;;; ----------------------------------------
 
 (re-frame/reg-event-fx
   ::verify-user-exists
@@ -151,7 +158,10 @@
       {:email (:email (:db cofx))}
       #(js/console.log "response from send-pw-reset-email request was: " %))))
 
-;; VERIFYING RESET CODE
+;;; ----------------------------------------
+;;; Resetting password:
+;;;   Verifying reset code
+;;; ----------------------------------------
 
 (re-frame/reg-event-fx
   ::verify-pw-reset-code
@@ -168,7 +178,10 @@
         (assoc db :code-verification-failed? true)
         (assoc db :pw-reset-flow-stage :setting-new-pw))))
 
-;; SETTING NEW PASSWORD FOR USER
+;;; ----------------------------------------
+;;; Resetting password:
+;;;   Setting user's new password
+;;; ----------------------------------------
 
 (re-frame/reg-event-fx
   ::set-new-pw

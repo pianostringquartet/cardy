@@ -11,6 +11,10 @@
             [reanimated.core :as anim]))
 
 
+;;; ----------------------------------------
+;;; Pictures
+;;; ----------------------------------------
+
 ;; Do not re-frame-trace these animation components;
 ;; they simply clutter up the developer console.
 (defn jingle-picture [img-src img-width img-height]
@@ -32,7 +36,7 @@
                            :transform]
                           (repeat (str "rotate(" @rotation "deg)")))}]])))
 
-(defn intro-picture []
+(defn auth-picture []
   [jingle-picture "/img/intent_bear.png" "300px" "200px"])
 
 (defn pw-reset-picture []
@@ -44,16 +48,11 @@
 (defn code-verified-picture []
   [jingle-picture "/img/bearstack_right_facing_handup.png" "200px" "300px"])
 
-
 (trace-forms {:tracer (tracer :color "gold")}
 
-(defn go-back-button
-  "Return to login/register screen."
-  []
-  [re-com/button
-    :label "go back"
-    :on-click #(re-frame/dispatch [::events/go-to-auth])
-    :class "btn btn-danger"])
+;;; ----------------------------------------
+;;; Utility components
+;;; ----------------------------------------
 
 (defn message-for-user [sub message]
   (when @sub
@@ -82,9 +81,21 @@
   [re-com/input-text
     :model state
     :placeholder input-name
+    :change-on-blur? true
     :on-change #(reset! state %)
-    :attr {:auto-focus "true"}
-    :change-on-blur? true])
+    :attr {:auto-focus "true"}])
+
+;;; ----------------------------------------
+;;; Logging and registering
+;;; ----------------------------------------
+
+;; TODO:
+;; Submit forms (login-form, registration-form etc.) on Enter key
+;; even when "submit button" is not focused.
+
+;; TODO:
+;; Use 'username', not just 'email', so that the email for a given user's
+;; account can be changed.
 
 (defn login-form []
   (let [email (reagent/atom "")
@@ -126,6 +137,43 @@
                   [::events/attempt-registration "passwords do not match"])
                 (re-frame/dispatch
                   [::events/register "" @email @password])))]]])))
+
+(def tabs-definition
+  [{:id ::tab1  :label "Login" :component [login-form]}
+   {:id ::tab2  :label "Register" :component [registration-form]}])
+
+(defn login-or-register-form []
+  (let [selected-tab-id (reagent/atom (:id (first tabs-definition)))
+        change-tab      #(reset! selected-tab-id %)
+        fn-name-width   "240px"]
+    (fn []
+      [re-com/v-box
+        :align :center
+        :gap "20px"
+        :children [
+          [re-com/horizontal-tabs
+            :model     selected-tab-id
+            :tabs      tabs-definition
+            :on-change change-tab]
+          [re-com/box
+            :align :center
+            :child
+              (:component
+                (first
+                  (filter #(= (:id %) @selected-tab-id)
+                          tabs-definition)))]]])))
+
+;;; ----------------------------------------
+;;; Resetting a forgotten password
+;;; ----------------------------------------
+
+(defn go-back-button
+  "Return to login/register screen."
+  []
+  [re-com/button
+    :label "go back"
+    :on-click #(re-frame/dispatch [::events/go-to-auth])
+    :class "btn btn-danger"])
 
 (defn request-reset-code-form []
   (let [email (reagent/atom "")]
@@ -179,6 +227,10 @@
                 (fn [] (re-frame/dispatch [::events/set-new-pw @password]))]
               [go-back-button]]]]])))
 
+;;; ------------------------------------------
+;;; Panels (login/register or password reset)
+;;; ------------------------------------------
+
 (defn pw-reset-panel []
   (let [flow-stage (re-frame/subscribe [::subs/pw-reset-flow-stage])
         reset-mail-failed? (re-frame/subscribe [::subs/pw-reset-email-sending-failed?])
@@ -227,37 +279,12 @@
                            " and contain one number and one uppercase"
                            " and one lowercase letter.")]]])]])))
 
-(def tabs-definition
-  [{:id ::tab1  :label "Login" :component [login-form]}
-   {:id ::tab2  :label "Register" :component [registration-form]}])
-
-(defn login-or-register-form []
-  (let [selected-tab-id (reagent/atom (:id (first tabs-definition)))
-        change-tab      #(reset! selected-tab-id %)
-        fn-name-width   "240px"]
-    (fn []
-      [re-com/v-box
-        :align :center
-        :gap "20px"
-        :children [
-          [re-com/horizontal-tabs
-            :model     selected-tab-id
-            :tabs      tabs-definition
-            :on-change change-tab]
-          [re-com/box
-            :align :center
-            :child
-              (:component
-                (first
-                  (filter #(= (:id %) @selected-tab-id)
-                          tabs-definition)))]]])))
-
-(defn intro-panel []
+(defn auth-panel []
   [re-com/v-box
     :gap "20px"
     :align :center
     :children [
-      [intro-picture]
+      [auth-picture]
       [re-com/v-box
         :gap "10px"
         :children [
@@ -266,7 +293,6 @@
             :label "Forgot password?"
             :on-click #(re-frame/dispatch [::core-events/change-panel :pw-reset])
             :style {:color "blue"}]]]]])
-
 
 ) ;; end of tracer form
 

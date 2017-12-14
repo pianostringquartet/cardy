@@ -21,11 +21,10 @@
   (is (= 2 (+ 1 1))))
 
 
-;; TESTS TO DO:
-;; Create test setup for POST requests and external MySQL;
-;; Significant functionality of the app, including authentication
-;; and deck mutation, cannot be tested until then.
-
+;; TODO:
+;; Create test setup for POST requests, external db and localStorage;
+;; Significant functionality of the app, including authentication,
+;; cannot be tested until then.
 
 ;; --------------------
 ;; Edit panel tests
@@ -84,11 +83,11 @@
     (let [excluded (re-frame/subscribe [::study-subs/excluded])
           current-card (re-frame/subscribe [::study-subs/current-card])
           old-current-card @current-card]
-      ; Assert "before" state
+      ;; Assert "before" state
       (is (empty? @excluded))
-      ; Trigger the event we're testing
+      ;; Trigger the event we're testing
       (re-frame/dispatch [::study-events/exclude-card])
-      ; Assert "after" state
+      ;; Assert "after" state
       (is (not (empty? @excluded)))
       (is (not (empty? (clojure.set/intersection #{old-current-card} @excluded))))
       (is (not (= old-current-card @current-card))))))
@@ -99,11 +98,11 @@
     (let [excluded (re-frame/subscribe [::study-subs/excluded])
           cards (re-frame/subscribe [::subs/cards])
           cards-to-exclude @cards]
-      ; Assert "before" state
+      ;; Assert "before" state
       (is (empty? @excluded))
-      ; Trigger the event we're testing
+      ;; Trigger the event we're testing
       (doseq [card cards-to-exclude]
         (re-frame/dispatch [::study-events/exclude-card]))
-      ; Assert "after" state
+      ;; Assert "after" state
       (is (empty? @excluded))
       (is (= cards-to-exclude @cards)))))
