@@ -57,11 +57,18 @@
     :on-click #(re-frame/dispatch [::events/exclude-card])
     :class "btn btn-success"])
 
+(defn flip-card-button []
+  [re-com/button
+    :label "flip"
+    :on-click #(re-frame/dispatch [::events/flip-card])
+    :class "btn btn-default"])
+
 (defn card-navigation []
   [re-com/h-box
     :gap "20px"
     :children [
       [exclude-current-card-button]
+      [flip-card-button]
       [next-card-button]]])
 
 ;;; ----------------------------------------

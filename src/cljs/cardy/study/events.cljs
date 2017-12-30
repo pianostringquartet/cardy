@@ -3,8 +3,6 @@
             [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
-            [ajax.core :refer [GET POST]]
-
             [cardy.events :refer [input-to-card]]))
 
 (trace-forms {:tracer (tracer :color "blue")}
