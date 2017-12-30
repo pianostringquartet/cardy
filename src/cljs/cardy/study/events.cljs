@@ -101,7 +101,6 @@
 ;;; Navigation
 ;;; ----------------------------------------
 
-;; flipping the current card
 (re-frame/reg-event-db
   ::flip-card
   (fn flip-card [db]
@@ -110,9 +109,9 @@
 (re-frame/reg-event-db
   ::return-home-from-study
   (fn return-home-from-study [db]
-    (assoc
-      (add-back-excluded db)
-      :current-panel
-      :home)))
+    (remove-congrats-message
+      (assoc (add-back-excluded db) :current-panel :home))))
+
+
 
 ) ;; end of tracer form
