@@ -23,11 +23,23 @@
   ::remove-congrats-message
   remove-congrats-message)
 
+;;; ----------------------------------------
+;;; User preference: front vs back on new card
+;;; ----------------------------------------
 
+(re-frame/reg-event-db
+  ::update-preferred-face
+  (fn update-preferred-face-handler [db [event-id-to-ignore face]]
+    (assoc db :preferred-face face)))
+
+(defn show-preferred-face [db]
+  (let [preferred-face (:preferred-face db)]
+    (if (= preferred-face :back)
+      (assoc db :show-back? true)
+      (assoc db :show-back? false))))
 
 ;;; ----------------------------------------
-;;; Moving to new card,
-;;;   i.e. "I don't know [the current card]"
+;;; Moving to new card bc "I don't know [current card]"
 ;;; ----------------------------------------
 
 (defn pick-random [coll]
@@ -65,11 +77,11 @@
 (re-frame/reg-event-db
   ::next
   (fn next-handler [db]
-    (new-current-card db)))
+    (show-preferred-face
+      (new-current-card db))))
 
 ;;; ----------------------------------------
-;;; Excluding a card,
-;;;   i.e. "I know [the current card]"
+;;; Moving to new card bc "I *know* [current card]"
 ;;; ----------------------------------------
 
 (defn exclude-card [db]
@@ -81,11 +93,19 @@
 
 (re-frame/reg-event-db
   ::exclude-card
-  exclude-card)
+  (fn exclude-card-handler [db]
+    (show-preferred-face
+      (exclude-card db))))
 
 ;;; ----------------------------------------
 ;;; Navigation
 ;;; ----------------------------------------
+
+;; flipping the current card
+(re-frame/reg-event-db
+  ::flip-card
+  (fn flip-card [db]
+    (update db :show-back? not)))
 
 (re-frame/reg-event-db
   ::return-home-from-study

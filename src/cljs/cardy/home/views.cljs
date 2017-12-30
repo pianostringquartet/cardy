@@ -45,7 +45,7 @@
         :anchor [
           re-com/button
             :label "add deck"
-            :class "btn-info"
+            :class "btn btn-success"
             :on-click #(reset! showing? true)]
         :popover [
           re-com/popover-content-wrapper

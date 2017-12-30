@@ -1,6 +1,5 @@
 (ns cardy.edit.views
   (:require [re-frame.core :as re-frame]
-            [cardy.edit.subs :as subs]
             [cardy.subs :as core-subs]
             [cardy.edit.events :as events]
             [cardy.events :as core-events]

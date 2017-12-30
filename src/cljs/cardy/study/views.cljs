@@ -24,6 +24,27 @@
 ;;; Moving between cards
 ;;; ----------------------------------------
 
+(defn button-face-selected? [preferred-face button-face]
+  (if (= button-face @preferred-face)
+    "btn btn-danger"
+    "btn"))
+
+(defn prefer-front-button []
+  (let [preferred-face (re-frame/subscribe [::subs/preferred-face])]
+    (fn []
+      [re-com/button
+        :label "show new cards' front"
+        :on-click #(re-frame/dispatch [::events/update-preferred-face :front])
+        :class (button-face-selected? preferred-face :front)])))
+
+(defn prefer-back-button []
+  (let [preferred-face (re-frame/subscribe [::subs/preferred-face])]
+    (fn []
+      [re-com/button
+        :label "show new cards' back"
+        :on-click #(re-frame/dispatch [::events/update-preferred-face :back])
+        :class (button-face-selected? preferred-face :back)])))
+
 (defn next-card-button []
   [re-com/button
     :label "I don't know it"
@@ -55,6 +76,8 @@
         :width "300px"
         :striped? true])))
 
+;; TODO:
+;; Make remove congrats message when user exits Study
 (defn congrats-message []
   (let [size (reagent/atom 0)
         width (anim/spring size)]
@@ -146,14 +169,14 @@
                [card-back]]])
 
 (defn flippable-card []
-  (let [show-back? (reagent/atom false)]
+  (let [show-back? (re-frame/subscribe [::subs/show-back?])]
     (fn flippable-card-comp []
       [re-com/v-box
         :size "auto"
         :style {:perspective "1000px"
                 :width "300px"
                 :height "150px"}
-        :attr {:on-click #(reset! show-back? (if @show-back? false true))}
+        :attr {:on-click #(re-frame/dispatch [::events/flip-card])}
         :children [
           [card show-back?]]])))
 
@@ -162,9 +185,10 @@
 ;;; ----------------------------------------
 
 (defn return-home-button []
-  [:input
-    {:type "button" :value "home"
-     :on-click #(re-frame/dispatch [::events/return-home-from-study])}])
+  [re-com/button
+    :label "return home"
+    :class "btn btn-info"
+    :on-click #(re-frame/dispatch [::events/return-home-from-study])])
 
 (defn study-panel []
   (let [congrats (re-frame/subscribe [::subs/congrats])]
@@ -178,6 +202,12 @@
             (when @congrats [congrats-message])
             [card-navigation]
             [show-study-progress]
-            [return-home-button]]])))
+            [re-com/h-box
+              :gap "10px"
+              :children [
+                [prefer-front-button]
+                [prefer-back-button]
+                [return-home-button]]]
+            ]])))
 
 ) ;; end of tracer form

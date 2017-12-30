@@ -5,12 +5,7 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
-
 (trace-forms {:tracer (tracer :color "brown")}
-
-
-;; TO DO:
-;; Allow user to customize which flags are shown on which sides
 
 (re-frame/reg-sub
   ::front-flag
@@ -21,6 +16,16 @@
   ::back-flag
   (fn back-flag [db]
     (:back-flag db)))
+
+(re-frame/reg-sub
+  ::show-back?
+  (fn show-back? [db]
+    (:show-back? db)))
+
+(re-frame/reg-sub
+  ::preferred-face
+  (fn preferred-face-handler [db]
+    (:preferred-face db)))
 
 (re-frame/reg-sub
   ::congrats
@@ -58,6 +63,5 @@
   :<-[::current-card]
   (fn current-card-back [current-card]
     (:back current-card)))
-
 
 ) ;; end of tracer form
