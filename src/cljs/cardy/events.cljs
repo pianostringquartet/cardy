@@ -81,6 +81,8 @@
 ;; cljs.reader/read-string throws a perplexing error
 ;; when reading content of localStorage;
 ;; so for now, we explicitly convert "false" (str) to false (bool)
+;: TODO:
+;; identify cause of error and switch to proper use of read-string
 (defn to-cljs [a-str]
   (if (= "false" a-str)
     false

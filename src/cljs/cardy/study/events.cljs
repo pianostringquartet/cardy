@@ -112,6 +112,4 @@
     (remove-congrats-message
       (assoc (add-back-excluded db) :current-panel :home))))
 
-
-
 ) ;; end of tracer form
