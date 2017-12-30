@@ -54,30 +54,40 @@
             :body [add-deck]]])))
 
 ;;; ----------------------------------------
-;;; Searching and listing existing decks
+;;; Searching existing decks
 ;;; ----------------------------------------
 
+(defn suggestion-for-search [a-string decks]
+  (into [])
+    (take 16
+      (for [n (map #(core-events/keyword-to-display %) (keys decks))
+            :when (re-find (re-pattern (str "(?i)" a-string)) n)]
+        n)))
+
+(defn decks-names [decks]
+  (map #(core-events/keyword-to-display %) (keys decks)))
+
+(defn deck-search-on-change [selection decks-names]
+  (if (or (empty? selection)
+          (not (some #{selection} decks-names)))
+    nil ;; ignore blank or a non-deck-name inputs
+    (re-frame/dispatch
+      [::events/study-given-deck (core-events/input-to-keyword selection)])))
+
 (defn deck-search []
-  (let [decks @(re-frame/subscribe [::subs/decks])
-        decks-names (map #(core-events/keyword-to-display %) (keys decks))
-        suggestion-for-search
-          (fn suggestion-for-search-fn [a-string]
-              (into [])
-                (take 16
-                  (for [n (map #(core-events/keyword-to-display %) (keys decks))
-                        :when (re-find (re-pattern (str "(?i)" a-string)) n)]
-                    n)))]
+  (let [decks (re-frame/subscribe [::subs/decks])]
     (fn deck-search-typeahead []
       [re-com/typeahead
-        :data-source suggestion-for-search
+        :data-source #(suggestion-for-search % @decks)
         :placeholder "search for a deck"
-        :on-change
-          (fn deck-search-on-change [selection]
-            (if (or (empty? selection)
-                    (not (some #{selection} decks-names)))
-              nil ;; ignore blank or a non-deck-name inputs
-              (re-frame/dispatch [::events/study-given-deck (core-events/input-to-keyword selection)])))
+        :on-change #(deck-search-on-change % (decks-names @decks))
         :change-on-blur? true])))
+
+
+;;; ----------------------------------------
+;;; Listing existing decks
+;;; ----------------------------------------
+
 
 (defn clickable-pencil [deck-name]
   [re-com/md-icon-button
