@@ -6,7 +6,6 @@
             [cardy.views :as core-views]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
-            [ajax.core :refer [GET POST]]
             [clairvoyant.core :refer-macros [trace-forms]]
             [reanimated.core :as anim]
             [re-frame-tracer.core :refer [tracer]]))
@@ -33,7 +32,8 @@
   (let [preferred-face (re-frame/subscribe [::subs/preferred-face])]
     (fn []
       [re-com/button
-        :label "show new cards' front"
+        :label "default: front"
+        :tooltip "Show me the FRONT when a new card is brought out."
         :on-click #(re-frame/dispatch [::events/update-preferred-face :front])
         :class (button-face-selected? preferred-face :front)])))
 
@@ -41,20 +41,21 @@
   (let [preferred-face (re-frame/subscribe [::subs/preferred-face])]
     (fn []
       [re-com/button
-        :label "show new cards' back"
+        :label "default: back"
+        :tooltip "Show me the BACK when a new card is brought out."
         :on-click #(re-frame/dispatch [::events/update-preferred-face :back])
         :class (button-face-selected? preferred-face :back)])))
 
 (defn next-card-button []
   [re-com/button
     :label "I don't know it"
-    :on-click #(re-frame/dispatch [::events/next])
+    :on-click #(re-frame/dispatch [::events/new-card :old-card-unknown])
     :class "btn btn-warning"])
 
 (defn exclude-current-card-button []
   [re-com/button
     :label "I know it"
-    :on-click #(re-frame/dispatch [::events/exclude-card])
+    :on-click #(re-frame/dispatch [::events/new-card :old-card-known])
     :class "btn btn-success"])
 
 (defn flip-card-button []
@@ -83,8 +84,6 @@
         :width "300px"
         :striped? true])))
 
-;; TODO:
-;; Make remove congrats message when user exits Study
 (defn congrats-message []
   (let [size (reagent/atom 0)
         width (anim/spring size)]
@@ -100,7 +99,7 @@
        [anim/timeout #(reset! size 10) 3500]
        [anim/timeout
           #(re-frame/dispatch [::events/remove-congrats-message])
-          3550]
+          3600]
        [:img
         {:src "/img/good_job.png"
          :width (str @width "px")

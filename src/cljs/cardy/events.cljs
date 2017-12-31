@@ -57,6 +57,12 @@
    handler: fn"
   {:ajax-post {:uri uri :params params :handler handler}})
 
+(defn show-preferred-face [db]
+  (let [preferred-face (:preferred-face db)]
+    (if (= preferred-face :back)
+      (assoc db :show-back? true)
+      (assoc db :show-back? false))))
+
 ;;; ----------------------------------------
 ;;; Initializing database
 ;;; ----------------------------------------

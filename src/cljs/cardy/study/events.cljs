@@ -1,11 +1,17 @@
 (ns cardy.study.events
   (:require [cardy.db :as db]
             [re-frame.core :as re-frame]
+            [cardy.events :as core-events]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [cardy.events :refer [input-to-card]]))
 
 (trace-forms {:tracer (tracer :color "blue")}
+
+; (defn call-after-card-flip-transition [f db]
+;   (do
+;     (js/setTimeout f 1000)
+;     db))
 
 ;;; ----------------------------------------
 ;;; Congratulating user on finishing deck
@@ -30,14 +36,14 @@
   (fn update-preferred-face-handler [db [event-id-to-ignore face]]
     (assoc db :preferred-face face)))
 
-(defn show-preferred-face [db]
-  (let [preferred-face (:preferred-face db)]
-    (if (= preferred-face :back)
-      (assoc db :show-back? true)
-      (assoc db :show-back? false))))
+; (defn show-preferred-face [db]
+;   (let [preferred-face (:preferred-face db)]
+;     (if (= preferred-face :back)
+;       (assoc db :show-back? true)
+;       (assoc db :show-back? false))))
 
 ;;; ----------------------------------------
-;;; Moving to new card bc "I don't know [current card]"
+;;; Moving to new card: helper fns
 ;;; ----------------------------------------
 
 (defn pick-random [coll]
@@ -72,11 +78,14 @@
         :current-card
         (pick-random (eligible-cards cards excluded current-card))))))
 
+;;; ----------------------------------------
+;;; Moving to new card bc "I don't know [current card]"
+;;; ----------------------------------------
+
 (re-frame/reg-event-db
   ::next
   (fn next-handler [db]
-    (show-preferred-face
-      (new-current-card db))))
+    (new-current-card db)))
 
 ;;; ----------------------------------------
 ;;; Moving to new card bc "I *know* [current card]"
@@ -92,8 +101,27 @@
 (re-frame/reg-event-db
   ::exclude-card
   (fn exclude-card-handler [db]
-    (show-preferred-face
-      (exclude-card db))))
+    (exclude-card db)))
+
+
+;;; ----------------------------------------
+;;; Moving to a new card: control flow
+;;; ----------------------------------------
+
+(re-frame/reg-fx
+  :new-card-when-flip-ends
+  (fn new-card-when-flip-ends-handler [card-known?]
+    (let [new-card-event (if card-known? ::exclude-card ::next)]
+      (js/setTimeout
+        #(re-frame/dispatch [new-card-event])
+        200))))
+
+(re-frame/reg-event-fx
+  ::new-card
+  (fn new-card-handlder [cofx [event-id-to-ignore old-card-status]]
+    (let [card-known? (if (= old-card-status :old-card-known) true false)]
+      {:db (core-events/show-preferred-face (:db cofx))
+         :new-card-when-flip-ends card-known?})))
 
 ;;; ----------------------------------------
 ;;; Navigation

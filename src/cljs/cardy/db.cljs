@@ -10,4 +10,5 @@
    :back-flag "/img/american-flag-medium.jpg"
    :show-back? false
    :preferred-face :front
+   :card-flipping? false
    :decks {}})
