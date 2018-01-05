@@ -5,6 +5,7 @@
             [cardy.edit.events :as edit-events]
             [cardy.events :as core-events]
             [cardy.views :as core-views]
+            [cardy.utils :refer [str->kw kw->str]]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
@@ -60,19 +61,19 @@
 (defn suggestion-for-search [a-string decks]
   (into [])
     (take 16
-      (for [n (map #(core-events/keyword-to-display %) (keys decks))
+      (for [n (map #(kw->str %) (keys decks))
             :when (re-find (re-pattern (str "(?i)" a-string)) n)]
         n)))
 
 (defn decks-names [decks]
-  (map #(core-events/keyword-to-display %) (keys decks)))
+  (map #(kw->str %) (keys decks)))
 
 (defn deck-search-on-change [selection decks-names]
   (if (or (empty? selection)
           (not (some #{selection} decks-names)))
     nil ;; ignore blank or a non-deck-name inputs
     (re-frame/dispatch
-      [::events/study-given-deck (core-events/input-to-keyword selection)])))
+      [::events/study-deck (str->kw selection)])))
 
 (defn deck-search []
   (let [decks (re-frame/subscribe [::subs/decks])]
@@ -92,7 +93,7 @@
 (defn clickable-pencil [deck-name]
   [re-com/md-icon-button
     :md-icon-name "zmdi-edit"
-    :on-click #(re-frame/dispatch [::events/edit-given-deck deck-name])
+    :on-click #(re-frame/dispatch [::events/edit-deck deck-name])
     :size :larger
     :tooltip "Edit this deck"])
 
@@ -135,8 +136,8 @@
         :attr {:cursor "pointer"}
         :tooltip "Study this deck"
         :on-click #(re-frame/dispatch
-                    [::events/study-given-deck deck-name])
-        :label (core-events/keyword-to-display deck-name)]])
+                    [::events/study-deck deck-name])
+        :label (kw->str deck-name)]])
 
 (defn deck-clickables [deck-name]
   [re-com/border
@@ -150,12 +151,13 @@
         [clickable-deck-name deck-name]]]])
 
 (defn deck-list []
-  (let [decks @(re-frame/subscribe [::subs/decks])]
+  (let [decks (re-frame/subscribe [::subs/decks])]
     [re-com/v-box
       :children [
-        (for [deck-name (keys decks)]
-          ^{:key (rand-int 99999)}
+        (for [deck-name (keys @decks)]
+          ^{:key deck-name}
           [deck-clickables deck-name])]]))
+
 
 ;;; ----------------------------------------
 ;;; Main view

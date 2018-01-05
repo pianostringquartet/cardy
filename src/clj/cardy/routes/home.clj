@@ -45,26 +45,38 @@
   (POST "/login" []
     (fn [req]
       (let [credentials (:params req)]
-        (response/ok (users/validate-credentials credentials)))))
-  (POST "/register-creds" []
+        (if (users/credentials-valid? credentials)
+          (response/ok)
+          (response/unprocessable-entity)))))
+  (POST "/register" []
     (fn [req]
-      (let [credentials (:params req)]
-        (response/ok (users/register-user! credentials)))))
+      (let [credentials (:params req)
+            outcome (users/register-user! credentials)]
+        (if (= outcome "registered")
+          (response/ok)
+          (response/unprocessable-entity outcome)))))
   (POST "/verify-user-exists" []
     (fn [req]
-      (let [email (get-in req [:params :email ])]
-        (response/ok (users/verify-user-exists email)))))
+      (let [email (get-in req [:params :email])]
+        (if (users/user-exists? email)
+          (response/ok)
+          (response/unprocessable-entity)))))
   (POST "/send-pw-reset-email" []
     (fn [req]
       (let [email (get-in req [:params :email ])]
-        (response/ok (users/send-password-reset-email email)))))
+        (do (users/send-password-reset-email email)
+            (response/ok) ))))
   (POST "/verify-pw-reset-code" []
     (fn [req]
       (let [email (get-in req [:params :email])
             code (get-in req [:params :code])]
-        (response/ok (users/verify-pw-reset-code email code)))))
-  (POST "/set-new-pw-ajax" []
+        (if (users/reset-codes-match? email code)
+          (response/ok)
+          (response/unprocessable-entity)))))
+  (POST "/set-new-pw" []
     (fn [req]
       (let [email (get-in req [:params :email])
             new-pw (get-in req [:params :new-pw])]
-        (response/ok (users/set-new-pw email new-pw))))))
+        (if (users/set-new-pw email new-pw)
+          (response/ok)
+          (response/unprocessable-entity))))))

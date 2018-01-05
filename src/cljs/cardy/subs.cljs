@@ -11,7 +11,7 @@
   (fn logged-in? [db]
     (:logged-in? db)))
 
-;; TO DO?:
+;; TODO?:
 ;; Disambiguate :session --
 ;; currently, :session can be either
 ;; false (bool) or an email (string)

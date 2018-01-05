@@ -6,6 +6,7 @@
     [buddy.core.hash :refer [sha256]]
     [buddy.core.codecs :refer [bytes->hex]]
     [postal.core :as postal]
+    [cardy.constants :as constants]
     [cardy.db.core :refer [*db*]])
 
   (:import [java.sql
@@ -39,19 +40,17 @@
       false)))
 
 (defn valid-password-format?
-  [password]
   "Password should be 8 or more characters long and
-   have at least one of each: uppercase, lowercase, number."
+  have at least one of each: uppercase, lowercase, number."
+  [password]
   (let [uppercase #"[A-Z]"
         lowercase #"[a-z]"
         number #"[0-9]"
         has (fn [regex a-str] (re-find regex a-str))]
-    (if (and (has uppercase password)
-             (has lowercase password)
-             (has number password)
-             (>= (count password) 8))
-        true
-        false)))
+    (and (has uppercase password)
+         (has lowercase password)
+         (has number password)
+         (>= (count password) 8))))
 
 (defn add-user! [username email password]
   (jdbc/insert!
@@ -59,40 +58,36 @@
     :users
     {:username username :email email :password password}))
 
-(defn user-already-exists? [email]
+(defn user-exists? [email]
   (not (nil? (retrieve-user email))))
 
 (defn register-user! [{:keys [username email password]}]
   (cond
     (not (valid-email-format? email))
-      "invalid email format"
-    (user-already-exists? email)
-      "email already in use"
+      constants/INVALID-EMAIL-FORMAT
+    (user-exists? email)
+      constants/EMAIL-ALREADY-EXISTS
     (not (valid-password-format? password))
-      "invalid password format"
+      constants/INVALID-PASSWORD-FORMAT
     :else (do
             (doall (add-user! username email (encrypt password)))
             "registered")))
 
-(defn validate-credentials [{:keys [username email password]}]
+(defn credentials-valid? [{:keys [username email password]}]
   (let [user (retrieve-user email)]
-    (if (and (= (:username user) username)
-             (= (:email user) email)
-             (= (:password user) (encrypt password)))
-        "succeeded"
-        "failed")))
-
-(defn verify-user-exists [email]
-  (if (not (user-already-exists? email))
-      "failed"
-      "succeeded"))
+    (and (= (:username user) username)
+         (= (:email user) email)
+         (= (:password user) (encrypt password)))))
 
 ;;; ----------------------------------------
 ;;; Resetting a forgotton password
 ;;; ----------------------------------------
 
 (defn generate-password-reset-code []
-  (encrypt (str (rand-int 9999))))
+  (-> (rand-int 9999)
+      (str)
+      (encrypt)
+      (subs 10 20)))
 
 (defn add-pw-reset-code-to-user [email code]
   (jdbc/update! *db* :users {:reset_code code} ["email = ?" email]))
@@ -118,11 +113,11 @@
                      </html>")}]}))
 
 (defn send-password-reset-email [email]
-  (let [reset-code (subs (generate-password-reset-code) 15)]
+  ; (let [reset-code (subs (generate-password-reset-code) 15)]
+  (let [reset-code (generate-password-reset-code)]
     (do
       (doall (add-pw-reset-code-to-user email reset-code))
-      (send-reset-code-in-email email reset-code)
-      "pw reset email sent from server")))
+      (send-reset-code-in-email email reset-code))))
 
 (defn retrieve-reset-code [email]
   (:reset_code
@@ -130,17 +125,15 @@
       (jdbc/query *db*
         ["select * from users where email = ?" email]))))
 
-(defn verify-pw-reset-code [email code]
-  (if (= code (retrieve-reset-code email))
-    "succeeded"
-    "failed"))
+(defn reset-codes-match? [email code]
+  (= code (retrieve-reset-code email)))
 
 (defn update-pw! [email new-pw]
   (jdbc/update! *db* :users {:password (encrypt new-pw)} ["email = ?" email]))
 
 (defn set-new-pw [email new-pw]
   (if (not (valid-password-format? new-pw))
-    "failed"
+    false
     (do
       (doall (update-pw! email new-pw))
-      "succeeded")))
+      true)))

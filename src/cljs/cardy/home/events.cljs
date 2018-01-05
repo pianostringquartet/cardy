@@ -1,28 +1,34 @@
 (ns cardy.home.events
   (:require [cardy.db :as db]
             [re-frame.core :as re-frame]
-            [cardy.events :as core-events]
+            [cardy.study.events :refer [new-current-card]]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
-            [cardy.events :refer [input-to-keyword change-panel]]))
+            [cardy.utils :refer [str->kw]]
+            [cardy.events :refer [goto show-preferred-face]]))
+
 
 (trace-forms {:tracer (tracer :color "blue")}
 
-(re-frame/reg-event-db
-  ::study-given-deck
-  (fn study-given-deck [db [event-id-to-ignore deck-name]]
-    (as-> db app-db
-      (assoc app-db :current-deck deck-name)
-      (assoc app-db :current-card (first (deck-name (:decks app-db))))
-      (core-events/show-preferred-face app-db)
-      (change-panel app-db :study))))
+(defn setup-deck [db deck-name]
+  (-> db
+    (assoc :current-deck deck-name)
+    (new-current-card)
+    (show-preferred-face)))
 
 (re-frame/reg-event-db
-  ::edit-given-deck
-  (fn edit-given-deck [db [event-id-to-ignore deck-name]]
+  ::study-deck
+  (fn study-deck-handler [db [_ deck-name]]
+    (-> db
+      (setup-deck deck-name)
+      (goto :study))))
+
+(re-frame/reg-event-db
+  ::edit-deck
+  (fn edit-deck-handler [db [_ deck-name]]
     (-> db
       (assoc :current-deck deck-name)
-      (change-panel :edit))))
+      (goto :edit))))
 
 (defn add-deck [db deck-name]
   "Assumes deck-name is :keyword"
@@ -30,10 +36,9 @@
 
 (re-frame/reg-event-fx
   ::add-deck
-  (fn add-deck-handler [cofx [event-id-to-ignore user-input]]
-    (let [deck-name (input-to-keyword user-input)
-          db (:db cofx)]
-      {:db (add-deck db deck-name)
-       :dispatch [::edit-given-deck deck-name]})))
+  (fn add-deck-handler [cofx [_ user-input]]
+    (let [deck-name (str->kw user-input)]
+      {:db (add-deck (:db cofx) deck-name)
+       :dispatch [::edit-deck deck-name]})))
 
 ) ;; end of tracer form

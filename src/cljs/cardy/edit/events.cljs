@@ -4,9 +4,8 @@
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [medley.core :refer [dissoc-in]]
-            [cardy.events :refer [
-              input-to-card change-panel go-home
-              post-request keyword-to-display]]))
+            [cardy.utils :refer [kw->str]]
+            [cardy.events :refer [goto]]))
 
 
 (trace-forms {:tracer (tracer :color "blue")}
@@ -15,20 +14,23 @@
 ;;; Cards
 ;;; ----------------------------------------
 
+(defn input-to-card [a-string]
+  (let [words (map
+               clojure.string/trim
+               (clojure.string/split a-string #";"))]
+    {:front (first words) :back (second words)}))
+
 (defn add-card [db user-input]
   (let [cards (get-in db [:decks (:current-deck db)])
         new-card (input-to-card user-input)]
     (if (or (nil? (:front new-card))
             (nil? (:back new-card)))
-      db
-      (assoc-in
-        db
-        [:decks (:current-deck db)]
-        (conj cards new-card)))))
+      db ;; i.e. then don't add card
+      (assoc-in db [:decks (:current-deck db)] (conj cards new-card)))))
 
 (re-frame/reg-event-db
   ::add-card
-  (fn add-card-handler [db [event-id-to-ignore user-input]]
+  (fn add-card-handler [db [_ user-input]]
     (add-card db user-input)))
 
 (defn remove-card [db card]
@@ -40,7 +42,7 @@
 
 (re-frame/reg-event-db
   ::remove-card
-  (fn remove-card-handler [db [event-id-to-ignore card]]
+  (fn remove-card-handler [db [_ card]]
     (remove-card db card)))
 
 ;;; ----------------------------------------
@@ -49,25 +51,23 @@
 
 (re-frame/reg-event-fx
   ::update-deck
-  (fn update-deck! [cofx [event-id-to-ignore deck-name]]
-    (post-request
-      "/update-deck"
-      {:deck-name (keyword-to-display deck-name)
-       :deck (get-in cofx [:db :decks deck-name])
-       :email (:email (:db cofx))}
-      #(js/console.log "update-deck-ajax response was: " %))))
+  (fn update-deck! [cofx [_ deck-name]]
+    {:post-request
+      {:uri "/update-deck"
+       :params {:deck-name (kw->str deck-name)
+                :deck (get-in cofx [:db :decks deck-name])
+                :email (:email (:db cofx))}
+       :handler #(js/console.log "Deck successfully updated. " %)}}))
 
 (re-frame/reg-event-fx
   ::remove-deck
-  (fn remove-deck-handler [cofx [event-id-to-ignore deck-name]]
-    (let [db (:db cofx)]
-      (merge
-        {:db (dissoc-in db [:decks deck-name])}
-        (post-request
-          "/remove-deck"
-          {:deck-name (keyword-to-display deck-name)
-           :email (:email (:db cofx))}
-          #(js/console.log "remove-deck-ajax response was: " %))))))
+  (fn remove-deck-handler [cofx [_ deck-name]]
+    {:db (dissoc-in (:db cofx) [:decks deck-name])
+     :post-request
+      {:uri "/remove-deck"
+       :params {:deck-name (kw->str deck-name)
+                :email (:email (:db cofx))}
+       :handler #(js/console.log "Deck successfully removed. " %)}}))
 
 ;;; ----------------------------------------
 ;;; Navigation
@@ -79,12 +79,11 @@
 
 (re-frame/reg-event-fx
   ::return-home-from-edit
-  (fn return-home-from-edit [cofx [event-id-to-ignore]]
+  (fn return-home-from-edit-handler [cofx _]
     (let [db (:db cofx)]
-      (if (current-deck-empty? db)
-        {:dispatch [::remove-deck (:current-deck db)]
-         :db (go-home db)}
-        {:dispatch [::update-deck (:current-deck db)]
-         :db (go-home db)}))))
+      {:db (goto db :home)
+       :dispatch (if (current-deck-empty? db)
+                    [::remove-deck (:current-deck db)]
+                    [::update-deck (:current-deck db)])})))
 
 ) ;; end of tracer form

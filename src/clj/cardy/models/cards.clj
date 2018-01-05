@@ -4,6 +4,7 @@
     [clojure.java.jdbc :as jdbc]
     [cardy.config :refer [env]]
     [medley.core :as m]
+    [cardy.utils :refer [str->kw]]
     [cardy.db.core :refer [*db*]])
 
   (:import [java.sql
@@ -16,17 +17,6 @@
 ;;;   - belongs to a deck, and
 ;;;   - belongs to a user (an email)
 ;;; ----------------------------------------
-
-
-;; TO DO:
-;; use a single "to-keyword" fn
-;; instead of a Clojure "display-to-keyword" fn
-;; and a Clojurescript "input-to-keyword" fn
-(defn display-to-keyword [a-str]
-  (-> a-str
-    (clojure.string/trim)
-    (clojure.string/replace " " "-")
-    (keyword)))
 
 (defn to-card-row [deck-name card email]
   (merge
@@ -51,14 +41,12 @@
       (doseq [card deck]
         (add-card! deck-name card email))))
 
-(defn get-all-decks [email]
+(defn get-decks [email]
   (jdbc/query *db* ["select * from cards where email=?" email]))
 
 (defn pull-decks [email]
-  (->> (get-all-decks email)
+  (->> (get-decks email)
     (group-by :deck)
     (m/map-vals
-      #(into #{}
-          (for [m %]
-            (dissoc m :id :deck :email))))
-    (m/map-keys display-to-keyword)))
+      #(into #{} (for [m %] (dissoc m :id :deck :email))))
+    (m/map-keys str->kw)))

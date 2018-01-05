@@ -7,6 +7,7 @@
             [mount.core :as mount]
             [cardy.middleware :as middleware]))
 
+
 (mount/defstate init-app
                 :start ((or (:init defaults) identity))
                 :stop  ((or (:stop defaults) identity)))
@@ -20,6 +21,5 @@
       (:body
         (error-page {:status 404
                      :title "page not found"})))))
-
 
 (defn app [] (middleware/wrap-base #'app-routes))

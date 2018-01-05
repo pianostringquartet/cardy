@@ -7,92 +7,59 @@
             [ajax.core :refer [POST]]))
 
 
+(def ls-auth-key "session-info")
+
 (trace-forms {:tracer (tracer :color "blue")}
 
 ;;; ----------------------------------------
 ;;; Utility functions and effects
 ;;; ----------------------------------------
 
-;; TODO: See note in cards.clj: display-to-keyword fn
-(defn input-to-keyword [a-str]
-  (-> a-str
-    (clojure.string/trim)
-    (clojure.string/replace " " "-")
-    (keyword)))
-
-(defn keyword-to-display [a-kw]
-  (-> a-kw
-    (name)
-    (clojure.string/replace "-" " ")))
-
-(defn input-to-card [a-string]
-  (let [words (map
-               clojure.string/trim
-               (clojure.string/split a-string #";"))]
-    {:front (first words) :back (second words)}))
-
 (defn change-panel [db panel]
   (assoc db :current-panel panel))
 
-(re-frame/reg-event-db
-  ::change-panel
-  (fn change-panel-handler [db [event-id-to-ignore panel]]
-    (change-panel db panel)))
-
-(defn go-home [db]
-  (change-panel db :home))
+(defn goto [db panel]
+  (assoc db :current-panel panel))
 
 (re-frame/reg-event-db
-  ::go-home
-  go-home)
+  ::goto
+  (fn goto-handler [db [_ panel]]
+    (goto db panel)))
+
+(defn default-error-handler [response]
+  (js/console.log "Encountered unexpected error: " response))
 
 (re-frame/reg-fx
-  :ajax-post
-  (fn ajax-post [{:keys [uri params handler]}]
-    (POST uri {:params params :handler handler})))
-
-(defn post-request [uri params handler]
-  "uri: str
-   params: map
-   handler: fn"
-  {:ajax-post {:uri uri :params params :handler handler}})
+  :post-request
+  (fn post-request-handler
+    [{uri :uri params :params handler :handler error-handler :error-handler
+      :or {error-handler default-error-handler}}]
+    (POST uri {:params params :handler handler :error-handler error-handler})))
 
 (defn show-preferred-face [db]
   (let [preferred-face (:preferred-face db)]
-    (if (= preferred-face :back)
-      (assoc db :show-back? true)
-      (assoc db :show-back? false))))
+    (assoc db :show-back? (= preferred-face :back))))
 
 ;;; ----------------------------------------
 ;;; Initializing database
 ;;; ----------------------------------------
 
-(def ls-auth-key "session-info")
-
 (re-frame/reg-cofx
   :user-session
   (fn user-session [cofx _]
-    (assoc
-      cofx
-      :user-session
-      (some->>
-        (.getItem js/localStorage ls-auth-key)))))
+    (assoc cofx :user-session (some->> (.getItem js/localStorage ls-auth-key)))))
 
 (re-frame/reg-event-db
  ::initialize-db
  (fn initialize-db [_ _]
    core-db/default-db))
 
-;; HACK:
-;; cljs.reader/read-string throws a perplexing error
-;; when reading content of localStorage;
-;; so for now, we explicitly convert "false" (str) to false (bool)
-;: TODO:
-;; identify cause of error and switch to proper use of read-string
-(defn to-cljs [a-str]
-  (if (= "false" a-str)
-    false
-    a-str))
+;; NOTE:
+;; Since we use email-address strings in localStorage to
+;; indicate an active session, and '@' is not valid Clojure,
+;; we don't use (cljs.reader/read-string <localStorage content>).
+(defn ls->cljs [a-str]
+  (if (= "false" a-str) false a-str))
 
 (re-frame/reg-event-fx
  ::retrieve-user-session
@@ -100,19 +67,20 @@
  (fn retrieve-user-session [cofx [_ _]]
    (let [db (:db cofx)
          session (:user-session cofx)]
-      {:db (assoc db :session (to-cljs session))})))
+      {:db (assoc db :session (ls->cljs session))})))
 
 ;;; -----------------------------------------------
 ;;; Setup after auth'ing in
 ;;; -----------------------------------------------
 
+; WORKS!
 (defn pull-decks
   "Retrieve user's decks from external database."
   [email]
-  (post-request
-      "/pull-decks"
-      {:email email}
-      #(re-frame/dispatch [::set-decks %])))
+  {:post-request
+    {:uri "/pull-decks"
+     :params {:email email}
+     :handler #(re-frame/dispatch [::set-decks %])}})
 
 (re-frame/reg-event-fx
   ::pull-decks
@@ -121,41 +89,35 @@
 
 (re-frame/reg-event-db
   ::set-decks
-  (fn set-decks-handler [db [event-id-to-ignore decks]]
+  (fn set-decks-handler [db [_ decks]]
     (assoc db :decks decks)))
 
 (re-frame/reg-event-fx
-  ::resume-active-session
-  (fn resume-active-session [cofx [event-id-to-ignore session-email]]
-    (let [db (:db cofx)]
-      {:db (-> db
-            (assoc :logged-in? true)
-            (assoc :email session-email)
-            (go-home))
-       :dispatch [::pull-decks]})))
+  ::resume-session
+  (fn resume-session [cofx [_ session-email]]
+      {:db (-> (:db cofx)
+               (assoc :logged-in? true :email session-email)
+               (goto :home))
+       :dispatch [::pull-decks]}))
 
 ;;; -----------------------------------------------
 ;;; Teardown after logging out
 ;;; -----------------------------------------------
 
 (re-frame/reg-fx
-  :end-session
+  :end-session ;; logout of localStorage
   (fn end-session [_]
-    (.setItem js/localStorage ls-auth-key (str false))))
+    (.setItem js/localStorage ls-auth-key false)))
 
-(defn logout-app-db
-  "Set login-relevant keys in app-db to false."
-  [db]
-  (-> db
-    (assoc :session false)
-    (assoc :logged-in? false)))
+(defn logout-app-db [db]
+  (assoc db :session false :logged-in? false))
 
 (re-frame/reg-event-fx
   ::logout
-  (fn logout [cofx [event-id-to-ignore]]
-    {:db (change-panel
-           (logout-app-db (:db cofx))
-           :auth)
+  (fn logout [cofx [_]]
+    {:db (-> (:db cofx)
+             (logout-app-db)
+             (goto :auth))
      :end-session nil}))
 
 ) ; end of tracer form

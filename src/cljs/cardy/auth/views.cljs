@@ -172,7 +172,7 @@
   []
   [re-com/button
     :label "go back"
-    :on-click #(re-frame/dispatch [::events/go-to-auth])
+    :on-click #(re-frame/dispatch [::events/exit-pw-reset-flow])
     :class "btn btn-danger"])
 
 (defn request-reset-code-form []
@@ -291,7 +291,7 @@
           [login-or-register-form]
           [re-com/hyperlink
             :label "Forgot password?"
-            :on-click #(re-frame/dispatch [::core-events/change-panel :pw-reset])
+            :on-click #(re-frame/dispatch [::core-events/goto :pw-reset])
             :style {:color "blue"}]]]]])
 
 ) ;; end of tracer form

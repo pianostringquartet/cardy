@@ -23,7 +23,7 @@
         ;; Resuming a previous session?
         (and (not @logged-in?) @session)
           (do
-            (re-frame/dispatch [::events/resume-active-session @session])
+            (re-frame/dispatch [::events/resume-session @session])
             [home-panel])
 
         ;; Resetting a password?
