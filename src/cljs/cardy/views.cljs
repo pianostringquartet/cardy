@@ -8,6 +8,9 @@
             [goog.object]
             [re-frame-tracer.core :refer [tracer]]))
 
+;;; ----------------------------------------
+;;; Common and utility components
+;;; ----------------------------------------
 
 (trace-forms {:tracer (tracer :color "gold")}
 
@@ -23,6 +26,10 @@
     :on-click #(re-frame/dispatch [::core-events/logout])])
 
 
+;;; ----------------------------------------
+;;; Using semantic-ui-react
+;;; ----------------------------------------
+
 ; ;; Easy handle to the top-level extern for semantic-ui-react
 (def semantic-ui js/semanticUIReact)
 
@@ -35,27 +42,12 @@
     (apply goog.object/getValueByKeys semantic-ui k ks)
     (goog.object/get semantic-ui k)))
 
-
+;; import elsewhere in app:
 (def icon (component "Icon"))
 (def segment (component "Segment"))
 (def grid (component "Grid"))
 (def grid-column (component "Grid" "Column"))
 (def header (component "Header"))
 (def search (component "Search"))
-
-; not used?
-(def card (component "Card"))
-(def container (component "Container"))
-(def grid-row (component "Grid" "Row"))
-(def button (component "Button"))
-(def popup (component "Popup"))
-
-(defn sample-icon []
-  [:> icon {:name "folder" :size "massive"}])
-
-(defn sample-segment []
-  [:> segment
-    {:piled true :size "massive" :textAlign "center"}
-    "Love is life"])
 
 ) ;; end of tracer form

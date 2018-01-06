@@ -4,6 +4,7 @@
             [cardy.auth.events :as events]
             [cardy.events :as core-events]
             [cardy.views :as core-views]
+            [cardy.constants :as constants]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
@@ -54,15 +55,14 @@
 ;;; Utility components
 ;;; ----------------------------------------
 
-(defn message-for-user [sub message]
-  (when @sub
+(defn message-for-user [message]
     [re-com/box
       :align-self :center
       :padding "5px"
       :child [
         core-views/wrap-text
           message
-          {:font-size "80%" :width "200px" :min-width "200px" :color "red"}]]))
+          {:font-size "80%" :width "200px" :min-width "200px" :color "red"}]])
 
 (defn password-input [model placeholder]
     [re-com/input-password
@@ -96,7 +96,6 @@
 ;; TODO:
 ;; Use 'username', not just 'email', so that the email for a given user's
 ;; account can be changed.
-
 (defn login-form []
   (let [email (reagent/atom "")
         password (reagent/atom "")
@@ -107,9 +106,8 @@
         :children [
           [primary-input "email" email]
           [password-input password "password"]
-          [message-for-user
-            login-failed?
-            "Uh oh - login failed. Check email and password?"]
+          (when @login-failed?
+            [message-for-user "Uh oh - login failed. Check email and password?"])
           [form-submit
             "login"
             (fn [] (re-frame/dispatch [::events/login "" @email @password]))]]])))
@@ -126,42 +124,32 @@
           [primary-input "email" email]
           [password-input password "password"]
           [password-input password-confirm "confirm password"]
-          [message-for-user
-            registration-failed-bc
-            @registration-failed-bc]
+          (when @registration-failed-bc
+            [message-for-user @registration-failed-bc])
           [form-submit
             "register"
             (fn []
               (if (not= @password @password-confirm)
                 (re-frame/dispatch
-                  [::events/attempt-registration "passwords do not match"])
+                  [::events/attempt-registration-error constants/PASSWORDS-DO-NOT-MATCH])
                 (re-frame/dispatch
                   [::events/register "" @email @password])))]]])))
 
-(def tabs-definition
-  [{:id ::tab1  :label "Login" :component [login-form]}
-   {:id ::tab2  :label "Register" :component [registration-form]}])
-
 (defn login-or-register-form []
-  (let [selected-tab-id (reagent/atom (:id (first tabs-definition)))
-        change-tab      #(reset! selected-tab-id %)
-        fn-name-width   "240px"]
+  (let [tabs [{:id :login  :label "Login" :component [login-form]}
+              {:id :register :label "Register" :component [registration-form]}]
+        selected-tab (reagent/atom (:id (first tabs)))]
     (fn []
       [re-com/v-box
         :align :center
         :gap "20px"
         :children [
           [re-com/horizontal-tabs
-            :model     selected-tab-id
-            :tabs      tabs-definition
-            :on-change change-tab]
-          [re-com/box
-            :align :center
-            :child
-              (:component
-                (first
-                  (filter #(= (:id %) @selected-tab-id)
-                          tabs-definition)))]]])))
+            :model selected-tab
+            :tabs tabs
+            :on-change #(reset! selected-tab %)]
+          ;; component of currently selected tab:
+          (:component (first (filter #(= (:id %) @selected-tab) tabs)))]])))
 
 ;;; ----------------------------------------
 ;;; Resetting a forgotten password
@@ -243,7 +231,6 @@
           :gap "25px"
           :children [
             (case @flow-stage
-
               :sending-pw-reset-email
                 [re-com/v-box
                   :align :center
@@ -251,10 +238,8 @@
                   :children [
                     [pw-reset-picture]
                     [request-reset-code-form]
-                    [message-for-user
-                      reset-mail-failed?
-                      "Hmmm... We couldn't find that email."]]]
-
+                    (when @reset-mail-failed?
+                      [message-for-user "Hmmm... We couldn't find that email."])]]
               :confirming-pw-reset-code
                 [re-com/v-box
                   :align :center
@@ -262,10 +247,8 @@
                   :children [
                     [reset-code-sent-picture]
                     [verify-reset-code-form]
-                    [message-for-user
-                      code-verification-failed?
-                      "That's not the reset code we sent you!"]]]
-
+                    (when @code-verification-failed?
+                      [message-for-user "That's not the reset code we sent you!"])]]
               :setting-new-pw
                 [re-com/v-box
                   :align :center
@@ -273,11 +256,11 @@
                   :children [
                     [code-verified-picture]
                     [set-new-password-form]
-                    [message-for-user
-                      new-pw-not-set?
-                      (str "Password must be at least 8 characters long,"
-                           " and contain one number and one uppercase"
-                           " and one lowercase letter.")]]])]])))
+                    (when @new-pw-not-set?
+                      [message-for-user
+                         "Password must be at least 8 characters long,"
+                         " and contain one number and one uppercase"
+                         " and one lowercase letter."])]])]])))
 
 (defn auth-panel []
   [re-com/v-box

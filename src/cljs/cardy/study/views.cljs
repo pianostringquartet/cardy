@@ -84,14 +84,14 @@
         :width "300px"
         :striped? true])))
 
+;; HACK: when resizing to 0 (e.g. #(reset! size 0)),
+;; re-animated intermittently shows full-size image;
+;; smaller resizing steps avoid this.
 (defn congrats-message []
   (let [size (reagent/atom 0)
         width (anim/spring size)]
     (fn a-congrats-message []
       [:div
-       ;; HACK: when resizing to 0 (e.g. #(reset! size 0)),
-       ;; re-animated intermittently shows full-size image;
-       ;; smaller resizing steps avoid this.
        [anim/timeout #(reset! size 200)]
        [anim/timeout #(reset! size 100) 1500]
        [anim/timeout #(reset! size 50) 2500]
@@ -130,7 +130,7 @@
 
 ;; Card flip effect is achieved via CSS
 (def card-style-front-and-back
-  {:backface-visibility "hidden"
+  {:-webkit-backface-visibility "hidden" ;; for Safari and mobile Chrome
    :background "lightgrey"
    :position "absolute"
    :top "0"
@@ -155,7 +155,8 @@
   [re-com/box
     :style (merge
               card-style-front-and-back
-              {:transform "rotateY(180deg)"})
+              {:transform "rotateY(180deg)"}
+              )
     :align-self :start
     :child [
       card-side-display
@@ -213,7 +214,6 @@
               :children [
                 [prefer-front-button]
                 [prefer-back-button]
-                [return-home-button]]]
-            ]])))
+                [return-home-button]]]]])))
 
 ) ;; end of tracer form

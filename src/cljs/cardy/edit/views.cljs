@@ -17,12 +17,7 @@
 ;;; from a single deck
 ;;; ----------------------------------------
 
-
-
-
-
 (trace-forms {:tracer (tracer :color "gold")}
-
 
 (defn card-edit-display [{:keys [front back]}]
   [:> segment
@@ -43,8 +38,7 @@
     :gap "10px"
     :children [
       [clickable-trash-icon card]
-      [card-edit-display card]
-      ]])
+      [card-edit-display card]]])
 
 (defn card-displayer [card]
   [re-com/box

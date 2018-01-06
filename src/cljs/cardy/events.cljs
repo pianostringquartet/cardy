@@ -70,7 +70,6 @@
 ;;; Setup after auth'ing in
 ;;; -----------------------------------------------
 
-; WORKS!
 (defn pull-decks
   "Retrieve user's decks from external database."
   [email]
@@ -102,7 +101,7 @@
 ;;; -----------------------------------------------
 
 (re-frame/reg-fx
-  :end-session ;; logout of localStorage
+  :end-session
   (fn end-session [_]
     (.setItem js/localStorage ls-auth-key false)))
 

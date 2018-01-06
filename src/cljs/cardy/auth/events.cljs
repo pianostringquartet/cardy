@@ -16,15 +16,18 @@
 (defn reset-auth-error-messages
   "Clean up any error messages shown to user when authenticating."
   [db]
-  (assoc db
+  (assoc
+      db
      :login-attempt-failed? nil
-     :registration-failure-reason nil
-     :pw-reset-email-sending-failed? nil
-     :code-verification-failed? nil
-     :new-pw-not-set? nil))
+     :registration-failure-reason nil))
 
 (defn reset-pw-reset-flow [db]
-  (assoc db :pw-reset-flow-stage :sending-pw-reset-email))
+  (assoc
+    db
+    :pw-reset-flow-stage :sending-pw-reset-email
+    :pw-reset-email-sending-failed? nil
+     :code-verification-failed? nil
+     :new-pw-not-set? nil))
 
 (defn log-user-in [db]
   (-> db
@@ -32,9 +35,6 @@
     (reset-pw-reset-flow)
     (assoc :logged-in? true)))
 
-;; TODO:
-;; rename 'login' and 'attempt-login' to clarify
-;; where the potential login failure occurs
 (re-frame/reg-event-fx
   ::login
   (fn login [cofx [_ username email password]]
@@ -78,27 +78,26 @@
        :handler #(re-frame/dispatch [::attempt-registration-success %])
        :error-handler #(re-frame/dispatch [::attempt-registration-error (:response %)])}}))
 
-;; HACK:
-;; Use (condp = x ...) instead of (case x ...), since case test-constants
+;; WORKAROUND:
+;; Use (condp = x ...) instead of (case x ...), since case tests
 ;; are *not evaluated and must be compile-time literals*.
 ;; See https://clojuredocs.org/clojure.core/case
 (defn attempt-registration-error [cofx [_ registration-attempt]]
   (let [db (:db cofx)
-        fail-reason
-          (fn [db reason] {:db (assoc db :registration-failure-reason reason)})]
+        failed-bc
+          (fn [reason] {:db (assoc db :registration-failure-reason reason)})]
     (condp = registration-attempt
       constants/INVALID-EMAIL-FORMAT
-        (fail-reason db constants/INVALID-EMAIL-FORMAT)
+        (failed-bc constants/INVALID-EMAIL-FORMAT)
       constants/EMAIL-ALREADY-EXISTS
-        (fail-reason db constants/EMAIL-ALREADY-EXISTS)
+        (failed-bc constants/EMAIL-ALREADY-EXISTS)
       constants/INVALID-PASSWORD-FORMAT
-        (fail-reason db constants/INVALID-PASSWORD-FORMAT)
+        (failed-bc constants/INVALID-PASSWORD-FORMAT)
       constants/PASSWORDS-DO-NOT-MATCH
-        (fail-reason db constants/PASSWORDS-DO-NOT-MATCH)
+        (failed-bc constants/PASSWORDS-DO-NOT-MATCH)
       ;; :else
-      (fail-reason db
-        "Hmmm... Something went wrong.
-        Reach out to Cardy at cardytheapp@gmail.com"))))
+      (failed-bc "Hmmm... Something went wrong.
+                 Reach out to Cardy at cardytheapp@gmail.com"))))
 
 (re-frame/reg-event-fx
   ::attempt-registration-error
@@ -153,7 +152,7 @@
 
 ;; NOTE:
 ;; Server returns response *before* email is actually sent,
-;; so we're *optimistically* tell user email has been sent.
+;; so we're *optimistically* telling the user the email has been sent.
 (re-frame/reg-event-fx
   ::send-pw-reset-email
   (fn send-pw-reset-email [cofx [_ email]]

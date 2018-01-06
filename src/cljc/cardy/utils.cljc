@@ -1,8 +1,9 @@
 (ns cardy.utils)
 
 ;; ----------------------------------------
-;;
+;; Utility functions shared by server and client
 ;; ----------------------------------------
+
 (defn str->kw [a-str]
   (-> a-str
     (clojure.string/trim)

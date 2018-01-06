@@ -59,7 +59,7 @@
 ;;; Searching existing decks
 ;;; ----------------------------------------
 
-(defn handleResultSelect [e obj]
+(defn on-result-select [e obj]
   (let [deck-name (.-title (.-result obj))]
     (re-frame/dispatch [::events/study-deck (str->kw deck-name)])))
 
@@ -70,10 +70,10 @@
     (into #{}
       (take 10
         (for [deck-name deck-names :when (matches-input? deck-name)]
-          ;; semantic-ui-react expects 'results' as seq of {:tite :description}
+
           {:title deck-name :description ""})))))
 
-(defn handleSearchChange [decks text-val results e obj]
+(defn on-search-change [decks text-val results e obj]
   (let [user-input (.-value obj)]
     (do
       (reset! text-val user-input)
@@ -81,12 +81,13 @@
 
 (defn deck-search []
   (let [text-val (reagent/atom "")
+        ;; semantic-ui-react expects 'results' as "array of {:tite :description}"
         results (reagent/atom #{})
         decks (re-frame/subscribe [::subs/decks])]
     (fn deck-search-typeahead []
       [:> search
-        {:onResultSelect #(handleResultSelect %1 %2)
-         :onSearchChange #(handleSearchChange decks text-val results %1 %2)
+        {:onResultSelect #(on-result-select %1 %2)
+         :onSearchChange #(on-search-change decks text-val results %1 %2)
          :results @results
          :value @text-val}])))
 
@@ -164,7 +165,6 @@
         (for [deck-name (keys @decks)]
           ^{:key deck-name}
           [deck-clickables deck-name])]]))
-
 
 ;;; ----------------------------------------
 ;;; Main view

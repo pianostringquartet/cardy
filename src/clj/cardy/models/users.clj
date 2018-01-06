@@ -20,7 +20,6 @@
 ;;;   - may have a password reset code
 ;;; ----------------------------------------
 
-
 ;;; ----------------------------------------
 ;;; Logging in / registering a user
 ;;; ----------------------------------------
@@ -113,7 +112,6 @@
                      </html>")}]}))
 
 (defn send-password-reset-email [email]
-  ; (let [reset-code (subs (generate-password-reset-code) 15)]
   (let [reset-code (generate-password-reset-code)]
     (do
       (doall (add-pw-reset-code-to-user email reset-code))
