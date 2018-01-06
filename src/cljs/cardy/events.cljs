@@ -15,9 +15,6 @@
 ;;; Utility functions and effects
 ;;; ----------------------------------------
 
-(defn change-panel [db panel]
-  (assoc db :current-panel panel))
-
 (defn goto [db panel]
   (assoc db :current-panel panel))
 

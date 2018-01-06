@@ -4,9 +4,9 @@
             [cardy.edit.events :as events]
             [cardy.events :as core-events]
             [cardy.views :as core-views]
+            [cardy.views :refer [segment grid grid-column]]
             [reagent.core :as reagent]
             [re-com.core :as re-com]
-            [ajax.core :refer [GET POST]]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
@@ -17,28 +17,20 @@
 ;;; from a single deck
 ;;; ----------------------------------------
 
+
+
+
+
 (trace-forms {:tracer (tracer :color "gold")}
 
+
 (defn card-edit-display [{:keys [front back]}]
-  [re-com/border
-      :border "1px dashed lightgrey"
-      :padding "10px 10px 0px 10px"
-      :child [re-com/h-box
-          :size "auto"
-          :align-self :center
-          :children [
-            [re-com/scroller
-              :v-scroll :auto
-              :height "80px"
-              :child [core-views/wrap-text
-                      front
-                      {:font-size "100%" :width "150px" :min-width "150px"}]]
-            [re-com/scroller
-              :v-scroll :auto
-              :height "80px"
-              :child [core-views/wrap-text
-                      back
-                      {:font-size "100%" :width "150px" :min-width "150px"}]]]]])
+  [:> segment
+    {:style {:minWidth "300px" :maxWidth "400px" :minHeight "100px"}}
+    [:> grid
+      {:columns 2 :padded true}
+      [:> grid-column front]
+      [:> grid-column back]]])
 
 (defn clickable-trash-icon [card]
     [re-com/md-icon-button
@@ -51,7 +43,8 @@
     :gap "10px"
     :children [
       [clickable-trash-icon card]
-      [card-edit-display card]]])
+      [card-edit-display card]
+      ]])
 
 (defn card-displayer [card]
   [re-com/box

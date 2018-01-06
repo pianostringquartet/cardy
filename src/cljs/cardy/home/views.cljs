@@ -5,6 +5,7 @@
             [cardy.edit.events :as edit-events]
             [cardy.events :as core-events]
             [cardy.views :as core-views]
+            [cardy.views :refer [grid grid-column segment icon search]]
             [cardy.utils :refer [str->kw kw->str]]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
@@ -58,37 +59,40 @@
 ;;; Searching existing decks
 ;;; ----------------------------------------
 
-(defn suggestion-for-search [a-string decks]
-  (into [])
-    (take 16
-      (for [n (map #(kw->str %) (keys decks))
-            :when (re-find (re-pattern (str "(?i)" a-string)) n)]
-        n)))
+(defn handleResultSelect [e obj]
+  (let [deck-name (.-title (.-result obj))]
+    (re-frame/dispatch [::events/study-deck (str->kw deck-name)])))
 
-(defn decks-names [decks]
-  (map #(kw->str %) (keys decks)))
+(defn suggestions [user-input decks]
+  (let [deck-names (map #(kw->str %) (keys decks))
+        matches-input?
+          (fn [deck] (re-find (re-pattern (str "(?i)" user-input)) deck))]
+    (into #{}
+      (take 10
+        (for [deck-name deck-names :when (matches-input? deck-name)]
+          ;; semantic-ui-react expects 'results' as seq of {:tite :description}
+          {:title deck-name :description ""})))))
 
-(defn deck-search-on-change [selection decks-names]
-  (if (or (empty? selection)
-          (not (some #{selection} decks-names)))
-    nil ;; ignore blank or a non-deck-name inputs
-    (re-frame/dispatch
-      [::events/study-deck (str->kw selection)])))
+(defn handleSearchChange [decks text-val results e obj]
+  (let [user-input (.-value obj)]
+    (do
+      (reset! text-val user-input)
+      (reset! results (suggestions user-input @decks)))))
 
 (defn deck-search []
-  (let [decks (re-frame/subscribe [::subs/decks])]
+  (let [text-val (reagent/atom "")
+        results (reagent/atom #{})
+        decks (re-frame/subscribe [::subs/decks])]
     (fn deck-search-typeahead []
-      [re-com/typeahead
-        :data-source #(suggestion-for-search % @decks)
-        :placeholder "search for a deck"
-        :on-change #(deck-search-on-change % (decks-names @decks))
-        :change-on-blur? true])))
-
+      [:> search
+        {:onResultSelect #(handleResultSelect %1 %2)
+         :onSearchChange #(handleSearchChange decks text-val results %1 %2)
+         :results @results
+         :value @text-val}])))
 
 ;;; ----------------------------------------
 ;;; Listing existing decks
 ;;; ----------------------------------------
-
 
 (defn clickable-pencil [deck-name]
   [re-com/md-icon-button
@@ -140,14 +144,17 @@
         :label (kw->str deck-name)]])
 
 (defn deck-clickables [deck-name]
-  [re-com/border
-      :border "1px dashed lightgrey"
-      :child [re-com/h-box
-      :padding "30px"
-      :gap "20px"
-      :children [
-        [clickable-pencil deck-name]
-        [clickable-trash deck-name]
+  [:> segment
+    {:stacked true}
+    [:> grid
+      {:columns 3 :padded true}
+      [:> grid-column
+        {:width 3}
+        [clickable-pencil deck-name]]
+      [:> grid-column
+        {:width 3}
+        [clickable-trash deck-name]]
+      [:> grid-column
         [clickable-deck-name deck-name]]]])
 
 (defn deck-list []
@@ -180,7 +187,8 @@
         :children [
           [deck-search]
           [add-deck-container]]]
-      [deck-list]]])
+      [deck-list]
+      [:br]]])
 
 ) ;; end of tracer form
 

@@ -41,7 +41,8 @@
                  [day8.re-frame/test "0.1.5"]
                  [buddy/buddy-core "1.4.0"]
                  [reanimated "0.6.0"]
-                 [com.draines/postal "2.0.2"]]
+                 [com.draines/postal "2.0.2"]
+                 [cljsjs/semantic-ui-react "0.76.0-0" :exclusions [cljsjs/react]]]
 
   :min-lein-version "2.0.0"
 
