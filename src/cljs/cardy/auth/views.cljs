@@ -4,9 +4,11 @@
             [cardy.auth.events :as events]
             [cardy.events :as core-events]
             [cardy.views :as core-views]
+            [cardy.views :refer [tab tab-pane]]
             [cardy.constants :as constants]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
+
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [reanimated.core :as anim]))
@@ -135,21 +137,12 @@
                 (re-frame/dispatch
                   [::events/register "" @email @password])))]]])))
 
+(def tabs
+  [{:menuItem "Login" :render #(reagent/as-element [:> tab-pane [login-form]])}
+   {:menuItem "Register" :render #(reagent/as-element [:> tab-pane [registration-form]])}])
+
 (defn login-or-register-form []
-  (let [tabs [{:id :login  :label "Login" :component [login-form]}
-              {:id :register :label "Register" :component [registration-form]}]
-        selected-tab (reagent/atom (:id (first tabs)))]
-    (fn []
-      [re-com/v-box
-        :align :center
-        :gap "20px"
-        :children [
-          [re-com/horizontal-tabs
-            :model selected-tab
-            :tabs tabs
-            :on-change #(reset! selected-tab %)]
-          ;; component of currently selected tab:
-          (:component (first (filter #(= (:id %) @selected-tab) tabs)))]])))
+  [:> tab {:panes tabs}])
 
 ;;; ----------------------------------------
 ;;; Resetting a forgotten password

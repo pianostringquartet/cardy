@@ -25,7 +25,6 @@
     :class "btn-danger"
     :on-click #(re-frame/dispatch [::core-events/logout])])
 
-
 ;;; ----------------------------------------
 ;;; Using semantic-ui-react
 ;;; ----------------------------------------
@@ -49,5 +48,7 @@
 (def grid-column (component "Grid" "Column"))
 (def header (component "Header"))
 (def search (component "Search"))
+(def tab (component "Tab"))
+(def tab-pane (component "Tab" "Pane"))
 
 ) ;; end of tracer form
