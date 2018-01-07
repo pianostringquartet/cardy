@@ -42,6 +42,7 @@
                  [buddy/buddy-core "1.4.0"]
                  [reanimated "0.6.0"]
                  [com.draines/postal "2.0.2"]
+                 [clj-sendgrid "0.1.2"] ;; SendGrid v3 API
                  [cljsjs/semantic-ui-react "0.76.0-0" :exclusions [cljsjs/react]]]
 
   :min-lein-version "2.0.0"

@@ -7,6 +7,7 @@
     [buddy.core.codecs :refer [bytes->hex]]
     [postal.core :as postal]
     [cardy.constants :as constants]
+    [sendgrid.core :as sg]
     [cardy.db.core :refer [*db*]])
 
   (:import [java.sql
@@ -91,25 +92,26 @@
 (defn add-pw-reset-code-to-user [email code]
   (jdbc/update! *db* :users {:reset_code code} ["email = ?" email]))
 
+(defn email-content [email code]
+  (str "<html>
+         <head></head>
+         <body>
+            <h2>Hi there " email ", </h2>
+           <h3>Use this code to reset your password:</h3>
+           <p>" code "</p>
+           <h3>Now get back to studying!</h3>
+           <h3>Your pal, </h3>
+           <h3>Cardy </h3>
+         </body>
+        </html>"))
+
 (defn send-reset-code-in-email [email code]
-  (postal/send-message
-    {:host "smtp.gmail.com" :ssl true
-     :user (:cardy-mail-address env) :pass (:cardy-mail-pw env)}
-    {:from (:cardy-mail-address env) :to email
+  (sg/send-email
+    {:api-token (str "Bearer " (:sendgrid-api-key env))
+     :from (:cardy-mail-address env)
+     :to email
      :subject "Cardy here. Let's reset your password."
-     :body [{:type "text/html"
-             :content
-               (str "<html>
-                       <head></head>
-                       <body>
-                          <h2>Hi there " email ", </h2>
-                         <h3>Use this code to reset your password:</h3>
-                         <p>" code "</p>
-                         <h3>Now get back to studying!</h3>
-                         <h3>Your pal, </h3>
-                         <h3>Cardy </h3>
-                       </body>
-                     </html>")}]}))
+     :message (email-content email code)}))
 
 (defn send-password-reset-email [email]
   (let [reset-code (generate-password-reset-code)]
