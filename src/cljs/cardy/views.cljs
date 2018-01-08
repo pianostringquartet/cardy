@@ -41,7 +41,7 @@
     (apply goog.object/getValueByKeys semantic-ui k ks)
     (goog.object/get semantic-ui k)))
 
-;; import elsewhere in app:
+;; to be imported elsewhere in app:
 (def icon (component "Icon"))
 (def segment (component "Segment"))
 (def grid (component "Grid"))

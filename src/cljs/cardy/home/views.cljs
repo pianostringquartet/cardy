@@ -140,8 +140,7 @@
       re-com/hyperlink
         :attr {:cursor "pointer"}
         :tooltip "Study this deck"
-        :on-click #(re-frame/dispatch
-                    [::events/study-deck deck-name])
+        :on-click #(re-frame/dispatch [::events/study-deck deck-name])
         :label (kw->str deck-name)]])
 
 (defn deck-clickables [deck-name]
@@ -159,37 +158,37 @@
         [clickable-deck-name deck-name]]]])
 
 (defn deck-list [decks]
-  [re-com/v-box
-    :children [
-      (for [deck-name (keys decks)]
-        ^{:key deck-name}
-        [deck-clickables deck-name])]])
+  (let [decks (re-frame/subscribe [::subs/decks])]
+    (fn []
+      [re-com/v-box
+        :children [
+          (for [deck-name (keys @decks)]
+            ^{:key deck-name}
+            [deck-clickables deck-name])]])))
 
 ;;; ----------------------------------------
 ;;; Main view
 ;;; ----------------------------------------
 
 (defn home-panel []
-  (let [decks (re-frame/subscribe [::subs/decks])]
-    (fn []
-      [re-com/v-box
+  [re-com/v-box
+    :gap "40px"
+    :align :center
+    :children [
+      [re-com/h-box
         :gap "40px"
-        :align :center
         :children [
-          [re-com/h-box
-            :gap "40px"
-            :children [
-              [re-com/title :label "DECKS" :level :level1]
-              [re-com/box
-                :align-self :center
-                :child [core-views/logout-button]]]]
-          [re-com/h-box
-            :gap "20px"
-            :children [
-              [deck-search]
-              [add-deck-container]]]
-          [deck-list @decks]
-          [:br]]])))
+          [re-com/title :label "DECKS" :level :level1]
+          [re-com/box
+            :align-self :center
+            :child [core-views/logout-button]]]]
+      [re-com/h-box
+        :gap "20px"
+        :children [
+          [deck-search]
+          [add-deck-container]]]
+      [deck-list]
+      [:br]]])
 
 ) ;; end of tracer form
 
