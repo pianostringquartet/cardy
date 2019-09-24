@@ -2,7 +2,6 @@
   (:require [re-frame.core :as re-frame]
             [cardy.study.subs :as subs]
             [cardy.study.events :as events]
-            [cardy.events :as core-events]
             [cardy.views :as core-views]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]

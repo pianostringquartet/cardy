@@ -5,7 +5,6 @@
     [cardy.config :refer [env]]
     [buddy.core.hash :refer [sha256]]
     [buddy.core.codecs :refer [bytes->hex]]
-    [postal.core :as postal]
     [cardy.constants :as constants]
     [sendgrid.core :as sg]
     [cardy.db.core :refer [*db*]])

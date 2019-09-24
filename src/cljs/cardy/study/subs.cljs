@@ -1,6 +1,5 @@
 (ns cardy.study.subs
   (:require [re-frame.core :as re-frame]
-            [cardy.events :as events]
             [cardy.subs :as core-subs]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))

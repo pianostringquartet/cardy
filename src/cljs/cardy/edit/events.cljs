@@ -1,6 +1,5 @@
 (ns cardy.edit.events
-  (:require [cardy.db :as db]
-            [re-frame.core :as re-frame]
+  (:require [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [medley.core :refer [dissoc-in]]

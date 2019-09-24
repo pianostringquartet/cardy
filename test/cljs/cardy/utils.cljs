@@ -1,19 +1,5 @@
 (ns cardy.utils
-  (:require [cardy.db :as core-db]
-            [re-frame.core :as re-frame]
-
-            [cardy.events :as events]
-            [cardy.subs :as subs]
-
-            [cardy.auth.events :as auth-events]
-            [cardy.auth.subs :as auth-subs]
-            [cardy.edit.events :as edit-events]
-            [cardy.edit.subs :as edit-subs]
-            [cardy.home.events :as home-events]
-            [cardy.home.subs :as home-subs]
-            [cardy.study.events :as study-events]
-            [cardy.study.subs :as study-subs]))
-
+  (:require [re-frame.core :as re-frame]))
 
 ;; An app-db suitable to test Study and Edit panels.
 ;; Assumes we've successfully logged in and pulled :decks from external db.

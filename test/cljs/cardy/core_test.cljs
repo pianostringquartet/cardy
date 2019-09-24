@@ -1,25 +1,13 @@
 (ns cardy.core-test
   (:require [cljs.test :refer-macros [is are deftest testing use-fixtures]]
             [pjstadig.humane-test-output]
-            [reagent.core :as reagent :refer [atom]]
             [re-frame.core :as re-frame]
             [day8.re-frame.test :as rf-test]
-            [cardy.events :as events]
             [cardy.subs :as subs]
-            [cardy.auth.events :as auth-events]
-            [cardy.auth.subs :as auth-subs]
             [cardy.edit.events :as edit-events]
-            [cardy.edit.subs :as edit-subs]
-            [cardy.home.events :as home-events]
-            [cardy.home.subs :as home-subs]
             [cardy.study.events :as study-events]
             [cardy.study.subs :as study-subs]
             [cardy.utils :as utils]))
-
-
-(deftest test-basic
-  (is (= 2 (+ 1 1))))
-
 
 ;; TODO:
 ;; Create test setup for POST requests, external db and localStorage;
@@ -92,6 +80,8 @@
       (is (not (empty? (clojure.set/intersection #{old-current-card} @excluded))))
       (is (not (= old-current-card @current-card))))))
 
+;; TODO: Update exclude-card event handler to exclude provided card,
+;; not simply the :current-card
 (deftest add-back-excluded
   (rf-test/run-test-sync
     (re-frame/dispatch [::utils/initialize-edit-and-study-test-db])

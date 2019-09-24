@@ -2,8 +2,6 @@
   (:require [re-frame.core :as re-frame]
             [cardy.subs :as core-subs]
             [cardy.edit.events :as events]
-            [cardy.events :as core-events]
-            [cardy.views :as core-views]
             [cardy.views :refer [segment grid grid-column]]
             [reagent.core :as reagent]
             [re-com.core :as re-com]

@@ -1,8 +1,6 @@
 (defproject cardy "0.1.0-SNAPSHOT"
-
   :description "A flashcard app built with re-frame."
   :url "http://example.com/FIXME"
-
   :dependencies [[clj-time "0.14.0"]
                  [cljs-ajax "0.7.3"]
                  [compojure "1.6.0"]
@@ -41,7 +39,6 @@
                  [day8.re-frame/test "0.1.5"]
                  [buddy/buddy-core "1.4.0"]
                  [reanimated "0.6.0"]
-                 [com.draines/postal "2.0.2"]
                  [clj-sendgrid "0.1.2"] ;; SendGrid v3 API
                  [cljsjs/semantic-ui-react "0.76.0-0" :exclusions [cljsjs/react]]]
 
@@ -120,7 +117,7 @@
                   :doo {:build "test"}
                   :source-paths ["env/dev/clj"]
                   :resource-paths ["env/dev/resources"]
-                  :repl-options {:init-ns user}
+                  :repl-options {:init-ns user :timeout 180000}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]}
    :project/test {:resource-paths ["env/test/resources"]

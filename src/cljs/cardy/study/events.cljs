@@ -1,6 +1,5 @@
 (ns cardy.study.events
-  (:require [cardy.db :as db]
-            [re-frame.core :as re-frame]
+  (:require [re-frame.core :as re-frame]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [cardy.events :refer [goto show-preferred-face]]))

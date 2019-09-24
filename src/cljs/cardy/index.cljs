@@ -1,7 +1,6 @@
 (ns cardy.index
   (:require [re-frame.core :as re-frame]
             [cardy.subs :as subs]
-            [reagent.core  :as reagent]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [cardy.events :as events]

@@ -1,6 +1,5 @@
 (ns cardy.views
   (:require [re-frame.core :as re-frame]
-            [reagent.core  :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
             [cardy.events :as core-events]
@@ -46,7 +45,6 @@
 (def segment (component "Segment"))
 (def grid (component "Grid"))
 (def grid-column (component "Grid" "Column"))
-(def header (component "Header"))
 (def search (component "Search"))
 (def tab (component "Tab"))
 (def tab-pane (component "Tab" "Pane"))

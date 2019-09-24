@@ -8,7 +8,6 @@
             [cardy.constants :as constants]
             [reagent.core  :as reagent]
             [re-com.core :as re-com]
-
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]
             [reanimated.core :as anim]))

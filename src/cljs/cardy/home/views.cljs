@@ -3,7 +3,6 @@
             [cardy.home.subs :as subs]
             [cardy.home.events :as events]
             [cardy.edit.events :as edit-events]
-            [cardy.events :as core-events]
             [cardy.views :as core-views]
             [cardy.views :refer [grid grid-column segment icon search]]
             [cardy.utils :refer [str->kw kw->str]]
@@ -157,7 +156,7 @@
       [:> grid-column
         [clickable-deck-name deck-name]]]])
 
-(defn deck-list [decks]
+(defn deck-list []
   (let [decks (re-frame/subscribe [::subs/decks])]
     (fn []
       [re-com/v-box

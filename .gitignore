@@ -14,3 +14,5 @@ profiles.clj
 figwheel_server.log
 /out
 .DS_Store
+*.iml
+.idea/

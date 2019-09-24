@@ -2,10 +2,7 @@
   (:require [reagent.core :as reagent]
             [re-frame.core :as re-frame]
             [cardy.ajax :refer [load-interceptors!]]
-            [re-com.core :as re-com]
             [cardy.events :as events]
-            [cardy.views :as views]
-            [cardy.subs :as subs]
             [cardy.index :as cardy-index]))
 
 

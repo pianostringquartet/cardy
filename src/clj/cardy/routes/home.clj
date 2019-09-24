@@ -1,10 +1,7 @@
 (ns cardy.routes.home
   (:require [cardy.layout :as layout]
             [compojure.core :refer [routes defroutes GET POST]]
-            [compojure.route :as route]
             [ring.util.http-response :as response]
-            [clojure.java.io :as io]
-            [cardy.db.core :as db-core]
             [cardy.models.users :as users]
             [cardy.models.cards :as cards]))
 
@@ -63,9 +60,9 @@
           (response/unprocessable-entity)))))
   (POST "/send-pw-reset-email" []
     (fn [req]
-      (let [email (get-in req [:params :email ])]
+      (let [email (get-in req [:params :email])]
         (do (users/send-password-reset-email email)
-            (response/ok) ))))
+            (response/ok)))))
   (POST "/verify-pw-reset-code" []
     (fn [req]
       (let [email (get-in req [:params :email])

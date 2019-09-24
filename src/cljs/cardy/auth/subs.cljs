@@ -1,6 +1,5 @@
 (ns cardy.auth.subs
   (:require [re-frame.core :as re-frame]
-            [cardy.events :as events]
             [clairvoyant.core :refer-macros [trace-forms]]
             [re-frame-tracer.core :refer [tracer]]))
 
