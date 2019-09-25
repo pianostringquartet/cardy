@@ -6,10 +6,11 @@
             [cardy.views :as core-views]
             [cardy.views :refer [grid grid-column segment icon search]]
             [cardy.utils :refer [str->kw kw->str]]
-            [reagent.core  :as reagent]
+            [reagent.core :as reagent]
             [re-com.core :as re-com]
             [clairvoyant.core :refer-macros [trace-forms]]
-            [re-frame-tracer.core :refer [tracer]]))
+            [re-frame-tracer.core :refer [tracer]]
+            [cardy.utils :as utils]))
 
 
 ;;; ----------------------------------------
@@ -123,7 +124,7 @@
                 :padding "10px"
                 :children [
                   [re-com/label
-                    :label (str "Really delete " (name deck-name) " deck?")]
+                    :label (str "Really delete " (utils/kw->str deck-name) "?")]
                   [:input
                     {:type "button" :value "confirm"
                      :on-click

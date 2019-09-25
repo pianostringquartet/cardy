@@ -56,7 +56,7 @@
        :params {:deck-name (kw->str deck-name)
                 :deck (get-in cofx [:db :decks deck-name])
                 :email (:email (:db cofx))}
-       :handler #(js/console.log "Deck successfully updated. " %)}}))
+       }}))
 
 (re-frame/reg-event-fx
   ::remove-deck
@@ -66,7 +66,7 @@
       {:uri "/remove-deck"
        :params {:deck-name (kw->str deck-name)
                 :email (:email (:db cofx))}
-       :handler #(js/console.log "Deck successfully removed. " %)}}))
+       }}))
 
 ;;; ----------------------------------------
 ;;; Navigation
